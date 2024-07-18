@@ -18,6 +18,10 @@ class KdenliveInstaller(Plugin):
     _alias_ = "Kdenlive Installer"
     icon = "https://kdenlive.org/wp-content/uploads/2022/01/kdenlive-logo-blank-500px.png"
     description = "Kdenlive is an acronym for KDE Non-Linear Video Editor. It works on GNU/Linux, Windows and BSD."
+    fields = [
+        Plugin.field("url", "Download URL", required=False),
+        Plugin.field("destination", "Destination directory", required=True)
+    ]
 
     def preflight(self, *args, **kwargs) -> bool:
         """
