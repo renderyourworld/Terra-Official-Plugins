@@ -47,7 +47,7 @@ class KdenliveInstaller(Plugin):
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if run(
-            f"bash {scripts_directory}/kdenlive.sh {self.download_url} {self.destination}",
+            f"bash {scripts_directory}/kdenlive-installer.sh {self.download_url} {self.destination}",
             shell=True
         ).returncode != 0:
             raise RuntimeError("Failed to install kdenlive")
