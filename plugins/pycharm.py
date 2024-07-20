@@ -1,5 +1,5 @@
 """
-Installer for kdenlive on linux systems.
+Handles installing PyCharm by JetBrains
 """
 
 # std
@@ -10,18 +10,18 @@ from subprocess import run
 from terra import Plugin
 
 
-class KdenliveInstaller(Plugin):
+class PyCharmInstaller(Plugin):
     """
-    Kdenlive installer plugin.
+    PyCharm
     """
 
-    _alias_ = "Kdenlive Installer"
-    icon = "https://kdenlive.org/wp-content/uploads/2022/01/kdenlive-logo-blank-500px.png"
-    description = "Kdenlive is an acronym for KDE Non-Linear Video Editor. It works on GNU/Linux, Windows and BSD."
-    category = "Media and Entertainment"
-    tags = ["video", "editor", "media", "editorial", "kde"]
+    _alias_ = "PyCharm Installer"
+    icon = "https://intellij-support.jetbrains.com/hc/user_images/5l0fLOoDkFwpjU_ZKu7Ofg.png"
+    description = "Python development IDE by JetBrains."
+    category = "Software Development"
+    tags = ["ide", "python", "development", "jetbrains"]
     fields = [
-        Plugin.field("url", "Download URL", required=False),
+        Plugin.field("version", "Version of PyCharm to install. i.e. 2024.1.4", required=False),
         Plugin.field("destination", "Destination directory", required=True)
     ]
 
@@ -30,7 +30,7 @@ class KdenliveInstaller(Plugin):
         Check if the target directory exists and validate the arguments passed.
         """
         # store on instance
-        self.download_url = kwargs.get("url", "https://download.kde.org/stable/kdenlive/24.05/linux/kdenlive-24.05.2-x86_64.AppImage")
+        self.version = kwargs.get("version", "2024.1.4")
         self.destination = kwargs.get("destination")
 
         # validate
@@ -44,12 +44,12 @@ class KdenliveInstaller(Plugin):
 
     def install(self, *args, **kwargs) -> None:
         """
-        Download and unpack the appimage to the destination directory.
+        Download and unpack the PyCharm.
         """
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if run(
-            f"bash {scripts_directory}/kdenlive-installer.sh {self.download_url} {self.destination}",
-            shell=True
+                f"bash {scripts_directory}/pycharm-installer.sh {self.version} {self.destination}",
+                shell=True
         ).returncode != 0:
-            raise RuntimeError("Failed to install kdenlive")
+            raise RuntimeError("Failed to install PyCharm")

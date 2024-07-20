@@ -18,4 +18,3 @@ def test_kdenlive():
         allow_failure=False,
         destination='/apps/kdenlive'
     )
-    # assert 'README.md' in listdir('/tmp/terra')

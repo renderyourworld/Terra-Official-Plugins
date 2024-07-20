@@ -21,6 +21,8 @@ class Plugin:
     icon: str = ""
     description: str = ""
     fields: list[dict] = []
+    category: str = "Uncategorized"
+    tags: list[str] = []
 
     @classmethod
     def source(cls) -> str:

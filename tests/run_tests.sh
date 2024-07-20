@@ -12,10 +12,6 @@ fi
 cov_exit_code=$?
 
 coverage report -m
-coverage html > /dev/null
-zip -r htmlcov.zip htmlcov > /dev/null
-curl -XPOST -F 'data=@htmlcov.zip' repo:3000/upload?key=CI > /dev/null
-coverage report -m > /dev/null
 
 test_exit_code=$?
 exit_code=$((cov_exit_code + test_exit_code))

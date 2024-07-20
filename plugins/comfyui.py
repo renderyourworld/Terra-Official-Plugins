@@ -1,5 +1,5 @@
 """
-Installer for kdenlive on linux systems.
+Handles installing ComfyUI
 """
 
 # std
@@ -10,18 +10,17 @@ from subprocess import run
 from terra import Plugin
 
 
-class KdenliveInstaller(Plugin):
+class ComfyUIInstaller(Plugin):
     """
-    Kdenlive installer plugin.
+    ComfyUI
     """
 
-    _alias_ = "Kdenlive Installer"
-    icon = "https://kdenlive.org/wp-content/uploads/2022/01/kdenlive-logo-blank-500px.png"
-    description = "Kdenlive is an acronym for KDE Non-Linear Video Editor. It works on GNU/Linux, Windows and BSD."
+    _alias_ = "ComfyUI Installer"
+    icon = "https://avatars.githubusercontent.com/u/121283862?v=4"
+    description = "The most powerful and modular stable diffusion GUI, api and backend with a graph/nodes interface."
     category = "Media and Entertainment"
-    tags = ["video", "editor", "media", "editorial", "kde"]
+    tags = ["ai", "stable diffusion", "media", "vfx", "visual effects", "comfyui", "generative ai", "gen ai"]
     fields = [
-        Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True)
     ]
 
@@ -30,7 +29,6 @@ class KdenliveInstaller(Plugin):
         Check if the target directory exists and validate the arguments passed.
         """
         # store on instance
-        self.download_url = kwargs.get("url", "https://download.kde.org/stable/kdenlive/24.05/linux/kdenlive-24.05.2-x86_64.AppImage")
         self.destination = kwargs.get("destination")
 
         # validate
@@ -44,12 +42,12 @@ class KdenliveInstaller(Plugin):
 
     def install(self, *args, **kwargs) -> None:
         """
-        Download and unpack the appimage to the destination directory.
+        Download and unpack the ComfyUI.
         """
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if run(
-            f"bash {scripts_directory}/kdenlive-installer.sh {self.download_url} {self.destination}",
-            shell=True
+                f"bash {scripts_directory}/comfyui-installer.sh {self.destination}",
+                shell=True
         ).returncode != 0:
-            raise RuntimeError("Failed to install kdenlive")
+            raise RuntimeError("Failed to install ComfyUI")

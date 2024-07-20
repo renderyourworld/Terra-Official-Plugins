@@ -18,4 +18,3 @@ def test_nuke():
         destination='/apps/nuke',
         version='Nuke14.0v2'
     )
-    # assert 'README.md' in listdir('/tmp/terra')

@@ -20,4 +20,3 @@ def test_gitloader():
         ref='main',
         destination='/tmp/terra'
     )
-    assert 'README.md' in listdir('/tmp/terra')

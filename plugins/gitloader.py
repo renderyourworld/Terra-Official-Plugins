@@ -18,6 +18,8 @@ class GitLoader(Plugin):
     _alias_ = "Git Loader"
     icon = "https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png"
     description = "Clone down a repository from a Git Source"
+    category = "Utility"
+    tags = ["git", "loader", "repository", "clone"]
     fields = [
         Plugin.field("url", "Git URL", required=True),
         Plugin.field("ref", "Git Ref", required=True),
