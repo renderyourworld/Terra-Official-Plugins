@@ -22,7 +22,7 @@ class KdenliveInstaller(Plugin):
     tags = ["video", "editor", "media", "editorial", "kde"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
-        Plugin.field("destination", "Destination directory", required=True)
+        Plugin.field("destination", "Destination directory", required=True),
     ]
 
     def preflight(self, *args, **kwargs) -> bool:
@@ -30,7 +30,10 @@ class KdenliveInstaller(Plugin):
         Check if the target directory exists and validate the arguments passed.
         """
         # store on instance
-        self.download_url = kwargs.get("url", "https://download.kde.org/stable/kdenlive/24.05/linux/kdenlive-24.05.2-x86_64.AppImage")
+        self.download_url = kwargs.get(
+            "url",
+            "https://download.kde.org/stable/kdenlive/24.05/linux/kdenlive-24.05.2-x86_64.AppImage",
+        )
         self.destination = kwargs.get("destination")
 
         # validate
@@ -48,8 +51,11 @@ class KdenliveInstaller(Plugin):
         """
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         self.logger.info(f"Loading scripts from {scripts_directory}")
-        if run(
-            f"bash {scripts_directory}/kdenlive-installer.sh {self.download_url} {self.destination}",
-            shell=True
-        ).returncode != 0:
+        if (
+            run(
+                f"bash {scripts_directory}/kdenlive-installer.sh {self.download_url} {self.destination}",
+                shell=True,
+            ).returncode
+            != 0
+        ):
             raise RuntimeError("Failed to install kdenlive")

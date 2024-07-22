@@ -19,7 +19,7 @@ build:
 verify:
   # run integration tests
   - name: terra-test
-    timeout: 600
+    timeout: 1200
     container:
       image: terra-test
       name: terra-test

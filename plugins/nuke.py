@@ -22,7 +22,7 @@ class NukeInstaller(Plugin):
     tags = ["nuke", "foundry", "media", "vfx", "visual effects"]
     fields = [
         Plugin.field("version", "Version of Nuke to install. i.e. Nuke14.0v2", required=True),
-        Plugin.field("destination", "Destination directory", required=True)
+        Plugin.field("destination", "Destination directory", required=True),
     ]
 
     def preflight(self, *args, **kwargs) -> bool:
@@ -48,8 +48,11 @@ class NukeInstaller(Plugin):
         """
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         self.logger.info(f"Loading scripts from {scripts_directory}")
-        if run(
+        if (
+            run(
                 f"bash {scripts_directory}/nuke-installer.sh {self.version} {self.destination}",
-                shell=True
-        ).returncode != 0:
+                shell=True,
+            ).returncode
+            != 0
+        ):
             raise RuntimeError("Failed to install Nuke")

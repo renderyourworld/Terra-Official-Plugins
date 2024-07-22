@@ -23,7 +23,7 @@ class GitLoader(Plugin):
     fields = [
         Plugin.field("url", "Git URL", required=True),
         Plugin.field("ref", "Git Ref", required=True),
-        Plugin.field("destination", "Destination directory", required=True)
+        Plugin.field("destination", "Destination directory", required=True),
     ]
 
     def preflight(self, *args, **kwargs) -> bool:
