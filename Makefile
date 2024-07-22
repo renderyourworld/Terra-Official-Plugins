@@ -92,6 +92,13 @@ test:
 open-coverage:
 	@xdg-open htmlcov/index.html
 
-%:
-	@export TARGET="$@" && $(MAKE) --no-print-directory dev
+dev-%:
+	@export TARGET="$(subst dev-,,$@)" && $(MAKE) --no-print-directory dev
+
+install-docs: upgrade-uv
+	@source $(VENV)/activate \
+		&& $(VENV)/uv pip install -r docs-requirements.txt
+
+server: install-docs
+	$(VENV)/mkdocs serve
 
