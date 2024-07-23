@@ -42,38 +42,42 @@ class JunoPipeline(Plugin):
         handler = plugins()
         handler.run_plugin(
             "plugin",
-            "Kdenlive Installer",
+            "Pixelfudger v3.2",
             allow_failure=False,
-            destination="/apps/kdenlive",
+            destination="/pipe/nuke/external/",
         )
 
-        handler.run_plugin(
-            "plugin",
-            "Blender Installer",
-            allow_failure=False,
-            destination="/apps/blender",
-            version="4.2.0",
-        )
-
-        handler.run_plugin(
-            "plugin",
-            "PyCharm Installer",
-            allow_failure=False,
-            destination="/apps/pycharm",
-            version="2024.1.4",
-        )
-
-        handler.run_plugin(
-            "plugin",
-            "ComfyUI Installer",
-            allow_failure=False,
-            destination="/apps/comfyui"
-        )
-
-        handler.run_plugin(
-            'plugin',
-            "Nuke Installer",
-            allow_failure=False,
-            destination='/apps/nuke',
-            version='Nuke15.1v1'
-        )
+        # handler.run_plugin(
+        #     "plugin",
+        #     "Kdenlive Installer",
+        #     allow_failure=False,
+        #     destination="/apps/kdenlive",
+        # )
+        #
+        # handler.run_plugin(
+        #     "plugin",
+        #     "Blender Installer",
+        #     allow_failure=False,
+        #     destination="/apps/blender",
+        #     version="4.2.0",
+        # )
+        #
+        # handler.run_plugin(
+        #     "plugin",
+        #     "PyCharm Installer",
+        #     allow_failure=False,
+        #     destination="/apps/pycharm",
+        #     version="2024.1.4",
+        # )
+        #
+        # handler.run_plugin(
+        #     "plugin", "ComfyUI Installer", allow_failure=False, destination="/apps/comfyui"
+        # )
+        #
+        # handler.run_plugin(
+        #     "plugin",
+        #     "Nuke Installer",
+        #     allow_failure=False,
+        #     destination="/apps/nuke",
+        #     version="Nuke15.1v1",
+        # )

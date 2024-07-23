@@ -36,8 +36,8 @@ install-dev: upgrade-uv
 install: venv install-dev install-prod
 
 lint: install
-	@$(VENV)/ruff check terra --preview
-	@$(VENV)/ruff check plugins --preview
+	@$(VENV)/ruff check terra --fix --preview
+	@$(VENV)/ruff check plugins --fix --preview
 
 format: install
 	@$(VENV)/ruff format terra --preview
@@ -72,11 +72,7 @@ local-test:
 	@echo "Running Local tests... Cluster will persist after"
 	@$(MAKE) --no-print-directory _run_tests || (echo "Tests failed!" \
 		&& rm -rf build.json \
-		&& unzip -o htmlcov.zip > /dev/null \
-		&& rm -rf htmlcov.zip \
 		&& exit 1) && (rm -rf build.json \
-		&& unzip -o htmlcov.zip > /dev/null \
-		&& rm -rf htmlcov.zip \
 		&& exit 0)
 
 test:
@@ -88,9 +84,6 @@ test:
 		&& rm -rf build.json \
 		&& $(MAKE) --no-print-directory down \
 		&& exit 0)
-
-open-coverage:
-	@xdg-open htmlcov/index.html
 
 dev-%:
 	@export TARGET="$(subst dev-,,$@)" && $(MAKE) --no-print-directory dev

@@ -55,6 +55,7 @@ class KdenliveInstaller(Plugin):
             run(
                 f"bash {scripts_directory}/kdenlive-installer.sh {self.download_url} {self.destination}",
                 shell=True,
+                check=False,
             ).returncode
             != 0
         ):

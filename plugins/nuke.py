@@ -52,6 +52,7 @@ class NukeInstaller(Plugin):
             run(
                 f"bash {scripts_directory}/nuke-installer.sh {self.version} {self.destination}",
                 shell=True,
+                check=False,
             ).returncode
             != 0
         ):

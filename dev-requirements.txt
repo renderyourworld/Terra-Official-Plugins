@@ -1,4 +1,2 @@
 ruff
-pytest
-coverage
-httpx
+

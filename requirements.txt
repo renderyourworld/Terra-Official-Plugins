@@ -1,3 +1,4 @@
 kubernetes
 GitPython
 pluginlib
+pytest

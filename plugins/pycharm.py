@@ -52,6 +52,7 @@ class PyCharmInstaller(Plugin):
             run(
                 f"bash {scripts_directory}/pycharm-installer.sh {self.version} {self.destination}",
                 shell=True,
+                check=False,
             ).returncode
             != 0
         ):

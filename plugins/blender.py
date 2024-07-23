@@ -52,6 +52,7 @@ class BlenderInstaller(Plugin):
             run(
                 f"bash {scripts_directory}/blender-installer.sh {self.version} {self.destination}",
                 shell=True,
+                check=False,
             ).returncode
             != 0
         ):

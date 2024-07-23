@@ -30,7 +30,6 @@ RUN apt update && apt install -y zip curl git && \
 	apt autoclean -y && \
 	apt autoremove --purge -y && \
 	rm -rf /var/lib/{apt,cache,log}/ /tmp/* /etc/systemd
-COPY .coveragerc .coveragerc
 COPY requirements.txt .
 COPY dev-requirements.txt .
 RUN pip install uv \

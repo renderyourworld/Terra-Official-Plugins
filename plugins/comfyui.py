@@ -55,7 +55,9 @@ class ComfyUIInstaller(Plugin):
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if (
             run(
-                f"bash {scripts_directory}/comfyui-installer.sh {self.destination}", shell=True
+                f"bash {scripts_directory}/comfyui-installer.sh {self.destination}",
+                shell=True,
+                check=False,
             ).returncode
             != 0
         ):
