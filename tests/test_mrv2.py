@@ -13,7 +13,7 @@ def test_mrv2():
     assert plugin is not None
     handler.run_plugin(
         'plugin',
-        'mrv2 Installer',
+        'Mrv2 Installer',
         allow_failure=False,
         destination='/apps/mrv2',
         version='Mrv2-1.2.1'

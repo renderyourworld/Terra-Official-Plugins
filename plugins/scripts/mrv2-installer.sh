@@ -1,18 +1,22 @@
-echo "Installing $1"
+echo "Installing $1 to $2"
 
-mkdir -p /apps/mrv2
+mrv2_dir=$2
+mkdir -p $mrv2_dir
 
-curl -L -O --output-dir /apps/mrv2/ https://github.com/ggarra13/mrv2/releases/download/v1.2.1/mrv2-v1.2.1-Linux-amd64.tar.gz
-tar -xvf "/apps/mrv2/mrv2-v1.2.1-Linux-amd64.tar.gz" -C /apps/mrv2
+curl -L -O --output-dir $mrv2_dir https://github.com/ggarra13/mrv2/releases/download/v1.2.1/mrv2-v1.2.1-Linux-amd64.tar.gz
+tar -xvf "/apps/mrv2/mrv2-v1.2.1-Linux-amd64.tar.gz" -C $mrv2_dir
 
-mv /apps/mrv2/mrv2-v1.2.1-Linux-amd64/usr/local/mrv2-v1.1.7-Linux-64 /apps/mrv2/1.2.1
-rm -rf /apps/mrv2/mrv2-v1.2.1-Linux-amd64 /apps/mrv2/mrv2-v1.2.1-Linux-amd64.tar.gz
-echo "Link: /apps/mrv2/latest -> /apps/mrv2/mrv2"
+mv $mrv2_dir/mrv2-v1.2.1-Linux-amd64/usr/local/mrv2-v1.2.1-Linux-64 $mrv2_dir/1.2.1
+rm -rf $mrv2_dir/mrv2-v1.2.1-Linux-amd64 $mrv2_dir/mrv2-v1.2.1-Linux-amd64.tar.gz
+echo "Link: $mrv2_dir/latest -> $mrv2_dir/mrv2"
 
-cp /apps/mrv2/mrv2.png /apps/mrv2/1.2.1/bin/mrv2.png
-cp /apps/mrv2/run_mrv2.sh /apps/mrv2/1.2.1/run_mrv2.sh
 
-chmod +x /apps/mrv2/1.2.1/run_mrv2.sh
+#cp /apps/mrv2/run_mrv2.sh /apps/mrv2/1.2.1/run_mrv2.sh
+touch $mrv2_dir/1.2.1/run_mrv2.sh
+echo "pushd $mrv2_dir/1.2.1/bin
+./mrv2.sh" > $mrv2_dir/1.2.1/run_mrv2.sh
 
-ln -sfv "/apps/mrv2/1.2.1/bin/run_mrv2.sh" /apps/mrv2/latest
-chmod +x /apps/mrv2/latest
+chmod +x $mrv2_dir/1.2.1/run_mrv2.sh
+
+ln -sfv "$mrv2_dir/1.2.1/run_mrv2.sh" $mrv2_dir/latest
+chmod +x $mrv2_dir/latest
