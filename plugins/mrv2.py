@@ -16,20 +16,32 @@ class Mrv2Installer(Plugin):
     """
 
     _alias_ = "Mrv2 Installer"
-    icon = "https://github.com/ggarra13/mrv2/blob/main/mrv2/icons/mrviewer.svg"
+    # pylint:disable=line-too-long
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/mrv2.png?raw=true"
     description = "Install Mrv2 to a target directory."
     category = "Media and Entertainment"
-    tags = ["mrv2", "viewer", "media", "vfx", "visual effects", "video", "sequences", "exr"]
+    tags = [
+        "mrv2",
+        "viewer",
+        "media",
+        "vfx",
+        "visual effects",
+        "video",
+        "sequences",
+        "exr",
+    ]
     fields = [
-        Plugin.field("version", "Version of Mrv2 to install.", required=True),
+        Plugin.field("version", "Version of Mrv2 to install. Ex. 1.2.1", required=True),
         Plugin.field("destination", "Destination directory", required=True),
     ]
 
+    # pylint:disable=unused-argument
     def preflight(self, *args, **kwargs) -> bool:
         """
         Check if the target directory exists and validate the arguments passed.
         """
         # store on instance
+        # pylint:disable=attribute-defined-outside-init
         self.version = kwargs.get("version")
         self.destination = kwargs.get("destination")
 
@@ -42,6 +54,7 @@ class Mrv2Installer(Plugin):
 
         os.makedirs(self.destination, exist_ok=True)
 
+    # pylint:disable=unused-argument
     def install(self, *args, **kwargs) -> None:
         """
         Download and unpack the Mrv2.
