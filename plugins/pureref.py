@@ -13,7 +13,8 @@ from terra import Plugin
 
 
 
-def download_file_from_google_drive(id, destination):
+def download_file_from_google_drive(gid, destination):
+    """Download file from Google Drive."""
     def get_confirm_token(response):
         for key, value in response.cookies.items():
             if key.startswith('download_warning'):
@@ -22,23 +23,24 @@ def download_file_from_google_drive(id, destination):
         return None
 
     def save_response_content(response, destination):
-        CHUNK_SIZE = 32768
+        """Save response content."""
+        chunk_size = 32768
 
         with open(destination, "wb") as f:
-            for chunk in response.iter_content(CHUNK_SIZE):
-                if chunk: # filter out keep-alive new chunks
+            for chunk in response.iter_content(chunk_size):
+                if chunk:
                     f.write(chunk)
 
-    URL = "https://docs.google.com/uc?export=download"
+    gurl = "https://docs.google.com/uc?export=download"
 
     session = requests.Session()
 
-    response = session.get(URL, params = { 'id' : id }, stream = True)
+    response = session.get(gurl, params = { 'id' : gid }, stream = True)
     token = get_confirm_token(response)
 
     if token:
-        params = { 'id' : id, 'confirm' : token }
-        response = session.get(URL, params = params, stream = True)
+        params = { 'id' : gid, 'confirm' : token }
+        response = session.get(gurl, params = params, stream = True)
 
     save_response_content(response, destination)
 
@@ -95,10 +97,10 @@ class PureRefInstaller(Plugin):
         file_destination = self.destination + "/pureref2.Appimage"
         download_file_from_google_drive(file_id, file_destination)
 
-        if os.path.exists(destination):
+        if os.path.exists(file_destination):
             if (
                 run(
-                    f"bash {scripts_directory}/PureRef-installer.sh  {destination}  {self.destination}",
+                    f"bash {scripts_directory}/PureRef-installer.sh  {file_destination}  {self.destination}",
                     shell=True,
                     check=False,
                 ).returncode
