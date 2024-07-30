@@ -1,5 +1,6 @@
 """
-Handles installing PureRef
+Handles installing PureRef to a target directory.
+PureRef - Simple and lightweight reference image viewer.
 """
 
 # std
@@ -22,11 +23,7 @@ class PureRefInstaller(Plugin):
     category = "Media and Entertainment"
     tags = ["PureRef", "references", "media", "vfx", "visual effects", "images"]
     fields = [
-        Plugin.field(
-            "version",
-            "Version of PureRef to install. i.e. PureRef Latest",
-            required=True,
-        ),
+        Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
     ]
 
@@ -37,7 +34,10 @@ class PureRefInstaller(Plugin):
         """
         # store on instance
         # pylint: disable=attribute-defined-outside-init
-        self.version = kwargs.get("version")
+        self.download_url = kwargs.get(
+            "url",
+            "https://drive.google.com/file/d/1FBh5-xB7tZnrK6JuzjcKY5Fx7PVQf4pK",
+        )
         self.destination = kwargs.get("destination")
 
         # validate
@@ -49,6 +49,7 @@ class PureRefInstaller(Plugin):
 
         os.makedirs(self.destination, exist_ok=True)
 
+    # pylint: disable=unused-argument
     def install(self, *args, **kwargs) -> None:
         """
         Download and unpack the PureRef.
@@ -56,11 +57,11 @@ class PureRefInstaller(Plugin):
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if (
-            run(
-                f"bash {scripts_directory}/PureRef-installer.sh {self.version} {self.destination}",
-                shell=True,
-                check=False,
-            ).returncode
-            != 0
+                run(
+                    f"bash {scripts_directory}/PureRef-installer.sh {self.version} {self.destination}",
+                    shell=True,
+                    check=False,
+                ).returncode
+                != 0
         ):
             raise RuntimeError("Failed to install PureRef")
