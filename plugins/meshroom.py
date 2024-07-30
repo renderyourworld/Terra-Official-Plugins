@@ -10,6 +10,39 @@ from subprocess import run
 from terra import Plugin
 
 
+
+def download_file_from_google_drive(gid, destination):
+    """Download file from Google Drive."""
+    def get_confirm_token(response):
+        for key, value in response.cookies.items():
+            if key.startswith('download_warning'):
+                return value
+
+        return None
+
+    def save_response_content(response, destination):
+        """Save response content."""
+        chunk_size = 32768
+
+        with open(destination, "wb") as f:
+            for chunk in response.iter_content(chunk_size):
+                if chunk:
+                    f.write(chunk)
+
+    gurl = "https://docs.google.com/uc?export=download"
+
+    session = requests.Session()
+
+    response = session.get(gurl, params = { 'id' : gid }, stream = True)
+    token = get_confirm_token(response)
+
+    if token:
+        params = { 'id' : gid, 'confirm' : token }
+        response = session.get(gurl, params = params, stream = True)
+
+    save_response_content(response, destination)
+
+
 class MeshroomInstaller(Plugin):
     """
     Meshroom installer plugin.
