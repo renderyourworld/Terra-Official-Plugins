@@ -1,4 +1,3 @@
-chmod +x $1
+echo "Installing Meshroom $1 - $2"
 
-tar -xzvf /tmp/meshroom.tar.gz -C "$2"
 
