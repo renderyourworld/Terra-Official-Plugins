@@ -67,10 +67,6 @@ class MeshroomInstaller(Plugin):
         """
         # store on instance
         # pylint: disable=attribute-defined-outside-init
-        self.download_url = kwargs.get(
-            "url",
-            "https://drive.google.com/file/d/1FBh5-xB7tZnrK6JuzjcKY5Fx7PVQf4pK",
-        )
         self.destination = kwargs.get("destination")
 
         # validate
