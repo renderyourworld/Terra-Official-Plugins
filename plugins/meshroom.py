@@ -5,6 +5,7 @@ Installer for meshroom on linux systems.
 # std
 import os
 from subprocess import run
+import requests
 
 # 3rd
 from terra import Plugin
