@@ -32,16 +32,20 @@ def download_file_from_google_drive(gid, destination):
 
     gurl = "https://docs.google.com/uc?export=download"
 
-    session = requests.Session()
+    try:
+        session = requests.Session()
 
-    response = session.get(gurl, params = { 'id' : gid }, stream = True)
-    token = get_confirm_token(response)
+        response = session.get(gurl, params = { 'id' : gid }, stream = True)
+        token = get_confirm_token(response)
 
-    if token:
-        params = { 'id' : gid, 'confirm' : token }
-        response = session.get(gurl, params = params, stream = True)
+        if token:
+            params = { 'id' : gid, 'confirm' : token }
+            response = session.get(gurl, params = params, stream = True)
 
-    save_response_content(response, destination)
+        save_response_content(response, destination)
+
+    except:
+        raise RuntimeError("Failed to download meshroom from google")
 
 
 class MeshroomInstaller(Plugin):
