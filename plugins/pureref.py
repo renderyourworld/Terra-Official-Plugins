@@ -94,7 +94,7 @@ class PureRefInstaller(Plugin):
         # TAKE ID FROM SHAREABLE LINK
         file_id = "1FBh5-xB7tZnrK6JuzjcKY5Fx7PVQf4pK"
         # DESTINATION FILE ON YOUR DISK
-        file_destination = self.destination + "/pureref2.Appimage"
+        file_destination = "/tmp/pureref2.Appimage"
         download_file_from_google_drive(file_id, file_destination)
 
         if os.path.exists(file_destination):
