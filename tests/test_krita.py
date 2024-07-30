@@ -5,7 +5,7 @@ from os import listdir
 from terra.loaders import plugins
 
 
-def test_kdenlive():
+def test_krita():
     """
     Test kdenlive installer.
     """
