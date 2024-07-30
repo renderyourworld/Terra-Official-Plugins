@@ -78,6 +78,7 @@ class MeshroomInstaller(Plugin):
 
         os.makedirs(self.destination, exist_ok=True)
 
+
     # pylint: disable=unused-argument
     def install(self, *args, **kwargs) -> None:
         """
