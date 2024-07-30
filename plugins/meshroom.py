@@ -58,14 +58,17 @@ class MeshroomInstaller(Plugin):
         Plugin.field("destination", "Destination directory", required=True),
     ]
 
+
+    # pylint: disable=unused-argument
     def preflight(self, *args, **kwargs) -> bool:
         """
         Check if the target directory exists and validate the arguments passed.
         """
         # store on instance
+        # pylint: disable=attribute-defined-outside-init
         self.download_url = kwargs.get(
             "url",
-            "https://www.fosshub.com/Meshroom.html?dwl=Meshroom-2023.3.0-linux.tar.gz",
+            "https://drive.google.com/file/d/1FBh5-xB7tZnrK6JuzjcKY5Fx7PVQf4pK",
         )
         self.destination = kwargs.get("destination")
 
@@ -78,18 +81,29 @@ class MeshroomInstaller(Plugin):
 
         os.makedirs(self.destination, exist_ok=True)
 
+    # pylint: disable=unused-argument
     def install(self, *args, **kwargs) -> None:
         """
-        Download and unpack the appimage to the destination directory.
+        Download and unpack the PureRef.
         """
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         self.logger.info(f"Loading scripts from {scripts_directory}")
-        if (
-            run(
-                f"bash {scripts_directory}/meshroom-installer.sh {self.download_url} {self.destination}",
-                shell=True,
-                check=False,
-            ).returncode
-            != 0
-        ):
-            raise RuntimeError("Failed to install meshroom")
+        # TAKE ID FROM SHAREABLE LINK
+        file_id = "1ru0OxM-7f3mUIHiLikJynQQ_CHR4E8cR"
+        # DESTINATION FILE ON YOUR DISK
+        file_destination = "/tmp/meshrooom.tar.gz"
+        download_file_from_google_drive(file_id, file_destination)
+
+        if os.path.exists(file_destination):
+            if (
+                    run(
+                        f"bash {scripts_directory}/meshroom-installer.sh  {file_destination}  {self.destination}",
+                        shell=True,
+                        check=False,
+                    ).returncode
+                    != 0
+            ):
+                raise RuntimeError("Failed to install meshroom")
+
+        else:
+            raise RuntimeError("Failed to download meshroom")
