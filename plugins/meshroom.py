@@ -5,47 +5,9 @@ Installer for meshroom on linux systems.
 # std
 import os
 from subprocess import run
-import requests
 
 # 3rd
 from terra import Plugin
-
-
-
-def download_file_from_google_drive(gid, destination):
-    """Download file from Google Drive."""
-    def get_confirm_token(response):
-        for key, value in response.cookies.items():
-            if key.startswith('download_warning'):
-                return value
-
-        return None
-
-    def save_response_content(response, destination):
-        """Save response content."""
-        chunk_size = 32768
-
-        with open(destination, "wb") as f:
-            for chunk in response.iter_content(chunk_size):
-                if chunk:
-                    f.write(chunk)
-
-    gurl = "https://docs.google.com/uc?export=download"
-
-    try:
-        session = requests.Session()
-
-        response = session.get(gurl, params = { 'id' : gid }, stream = True)
-        token = get_confirm_token(response)
-
-        if token:
-            params = { 'id' : gid, 'confirm' : token }
-            response = session.get(gurl, params = params, stream = True)
-
-        save_response_content(response, destination)
-
-    except:
-        raise RuntimeError("Failed to download meshroom from google")
 
 
 class MeshroomInstaller(Plugin):
@@ -63,7 +25,6 @@ class MeshroomInstaller(Plugin):
         Plugin.field("destination", "Destination directory", required=True),
     ]
 
-
     # pylint: disable=unused-argument
     def preflight(self, *args, **kwargs) -> bool:
         """
@@ -71,6 +32,10 @@ class MeshroomInstaller(Plugin):
         """
         # store on instance
         # pylint: disable=attribute-defined-outside-init
+        self.download_url = kwargs.get(
+            "url",
+            "https://s3.eu-central-1.wasabisys.com/juno-deps/Meshroom-2023.3.0-linux.tar.gz",
+        )
         self.destination = kwargs.get("destination")
 
         # validate
@@ -82,7 +47,6 @@ class MeshroomInstaller(Plugin):
 
         os.makedirs(self.destination, exist_ok=True)
 
-
     # pylint: disable=unused-argument
     def install(self, *args, **kwargs) -> None:
         """
@@ -90,22 +54,15 @@ class MeshroomInstaller(Plugin):
         """
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         self.logger.info(f"Loading scripts from {scripts_directory}")
-        # TAKE ID FROM SHAREABLE LINK
-        file_id = "1ru0OxM-7f3mUIHiLikJynQQ_CHR4E8cR"
-        # DESTINATION FILE ON YOUR DISK
-        file_destination = "/tmp/meshrooom.tar.gz"
-        download_file_from_google_drive(file_id, file_destination)
 
-        if os.path.exists(file_destination):
-            if (
-                    run(
-                        f"bash {scripts_directory}/meshroom-installer.sh  {file_destination}  {self.destination}",
-                        shell=True,
-                        check=False,
-                    ).returncode
-                    != 0
-            ):
-                raise RuntimeError("Failed to install meshroom")
+        if (
+                run(
+                    f"bash {scripts_directory}/meshroom-installer.sh  {self.download_url}  {self.destination}",
+                    shell=True,
+                    check=False,
+                ).returncode
+                != 0
+        ):
+            raise RuntimeError("Failed to install meshroom")
 
-        else:
-            raise RuntimeError("Failed to download meshroom")
+
