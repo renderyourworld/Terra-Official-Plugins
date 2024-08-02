@@ -16,7 +16,7 @@ class GafferInstaller(Plugin):
     """
 
     _alias_ = "Gaffer Installer"
-    icon = "https://blog.gafferhq.org/wp-content/uploads/2019/07/cropped-g_512-2.png"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/gaffer.png?raw=true"
     description = "Gaffer is a VFX application that enables artists to easily build, tweak, iterate, and render scenes."
     category = "Media and Entertainment"
     tags = ["gaffer", "editor", "media", "vfx", "kde"]

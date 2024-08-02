@@ -16,7 +16,7 @@ class HdrmergeInstaller(Plugin):
     """
 
     _alias_ = "Hdrmerge Installer"
-    icon = "https://jcelaya.github.io/hdrmerge/images/logo.png"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/hdrmerge.png?raw=true"
     description = "HDRMerge creates raw images with an extended dynamic range."
     category = "Media and Entertainment"
     tags = ["hdrmerge", "editor", "media", "editorial", "kde"]

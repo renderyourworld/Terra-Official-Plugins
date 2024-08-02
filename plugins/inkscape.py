@@ -16,7 +16,7 @@ class InkscapeInstaller(Plugin):
     """
 
     _alias_ = "Inkscape Installer"
-    icon = "https://appimage.github.io/database/Inkscape/icons/scalable/org.inkscape.Inkscape.svg"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/inkscape.png?raw=true"
     description = "A Free and open source vector graphics editor."
     category = "Media and Entertainment"
     tags = ["Inkscape", "editor", "media", "graphics", "kde"]

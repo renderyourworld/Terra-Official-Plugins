@@ -15,9 +15,7 @@ class XnviewInstaller(Plugin):
     Xnview installer plugin.
     """
     _alias_ = "Xnview Installer"
-    icon = (
-        "https://www.xnview.com/img/app-xnviewmp-512.webp"
-    )
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/xnview.png?raw=true"
     description = "XnView MP is a versatile and powerful photo viewer, image management, image resizer."
     category = "Media and Entertainment"
     tags = ["Xnview", "editor", "media", "editorial", "kde"]

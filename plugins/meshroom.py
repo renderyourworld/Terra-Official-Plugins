@@ -16,7 +16,7 @@ class MeshroomInstaller(Plugin):
     """
 
     _alias_ = "Meshroom Installer"
-    icon = "https://alicevision.org/img/product/anim-meshroom-once.gif"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/meshroom.png?raw=true"
     description = "Meshroom is a free, open-source 3D Reconstruction Software based on the AliceVision framework. Requires a CUDA-enabled GPU."
     category = "Media and Entertainment"
     tags = ["meshroom", "editor", "media", "reconstruction", "kde"]

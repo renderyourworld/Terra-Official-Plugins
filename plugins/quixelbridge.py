@@ -16,7 +16,7 @@ class QuixelBridgeInstaller(Plugin):
     """
 
     _alias_ = "QuixelBridge Installer"
-    icon = "https://d3uwib8iif8w1p.cloudfront.net/megascans/icons/bridge_icon_2048_preview.png"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/msbridge.png?raw=true"
     description = "Browse the libraries of Megascans and MetaHumans content in a quick and artist-friendly way through Bridge."
     category = "Media and Entertainment"
     tags = ["bridge", "editor", "media", "textures", "cg"]

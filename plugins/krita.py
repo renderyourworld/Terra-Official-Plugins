@@ -16,7 +16,7 @@ class KritaInstaller(Plugin):
     """
 
     _alias_ = "Krita Installer"
-    icon = "https://docs.krita.org/en/_static/sidebar-logo.png"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/krita.png?raw=true"
     description = (
         "Krita is a sketching and painting program designed for digital artists. "
     )

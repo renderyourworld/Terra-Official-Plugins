@@ -16,7 +16,7 @@ class UsdPackInstaller(Plugin):
     """
 
     _alias_ = "UsdPack Installer"
-    icon = "https://github.com/PixarAnimationStudios/OpenUSD/blob/release/docs/doxygen/images/USDLogoDocs.png"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/usdview.png?raw=true"
     description = "Kdenlive is an acronym for KDE Non-Linear Video Editor. It works on GNU/Linux, Windows and BSD."
     category = "Media and Entertainment"
     tags = ["usd", "editor", "media", "editorial", "vfx"]
