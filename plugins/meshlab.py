@@ -16,7 +16,7 @@ class MeshlabInstaller(Plugin):
     """
 
     _alias_ = "Meshlab Installer"
-    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/meshlab.png?raw=true"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/pack-additional-software/plugins/assets/meshlab.png?raw=true"
     description = "MeshLabthe open source system for processing and editing 3D triangular meshes."
     category = "Media and Entertainment"
     tags = ["mesh","cg", "editor", "media", "editorial", "kde"]

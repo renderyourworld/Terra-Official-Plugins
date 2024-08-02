@@ -17,7 +17,7 @@ class Sublime3Installer(Plugin):
 
     _alias_ = "Sublime3 Installer"
     # pylint: disable=line-too-long
-    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/sublime3.png?raw=true"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/pack-additional-software/plugins/assets/sublime3.png?raw=true"
     description = "Install Sublime3 to a target directory."
     category = "Text editor"
     tags = ["Sublime3", "text", "editor", "code", "python"]
