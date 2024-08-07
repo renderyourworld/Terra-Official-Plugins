@@ -15,8 +15,8 @@ class AudacityInstaller(Plugin):
     Audacity installer plugin.
     """
     _alias_ = "Audacity Installer"
-    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/pack-additional-software/plugins/assets/xnview.png?raw=true"
-    description = "XnView MP is a versatile and powerful photo viewer, image management, image resizer."
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/pack-additional-software/plugins/assets/audacity.png?raw=true"
+    description = "Audacity is the world's most popular audio editing and recording app."
     category = "Media and Entertainment"
     tags = ["Audacity", "editor", "media", "audio", "kde"]
     fields = [
@@ -58,4 +58,4 @@ class AudacityInstaller(Plugin):
                 ).returncode
                 != 0
         ):
-            raise RuntimeError("Failed to install Audacit")
+            raise RuntimeError("Failed to install Audacity")
