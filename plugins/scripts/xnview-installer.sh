@@ -18,4 +18,4 @@ Exec=/bin/bash -x $2/xnview.sh
 Terminal=true
 Type=Application
 Categories=Apps
-Icon={app_icon}" > "$2/xnview.desktop"
+Icon=$2/xnview.png" > "$2/xnview.desktop"

@@ -18,4 +18,4 @@ Exec=/bin/bash -x $2/obsidian.sh
 Terminal=true
 Type=Application
 Categories=Apps
-Icon={app_icon}" > "$2/obsidian.desktop"
+Icon=$2/obsidian.png" > "$2/obsidian.desktop"
