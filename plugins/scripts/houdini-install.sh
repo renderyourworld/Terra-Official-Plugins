@@ -26,7 +26,8 @@ mkdir -p $temp_folder/$HOUDINI_VERSION.$HOUDINI_BUILD/installs
 temp_folder_version=$temp_folder/$HOUDINI_VERSION.$HOUDINI_BUILD
 
 echo "Downloading Houdini $houdini_install_version"
-python3 /opt/official-plugins/plugins/scripts/sidefx_downloader.py --version $HOUDINI_VERSION --build $HOUDINI_BUILD --key $SIDEFX_CLIENT_ID --secret $SIDEFX_CLIENT_SECRET --output $temp_folder_version
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+python3 "$SCRIPT_DIR/sidefx_downloader.py" --version $HOUDINI_VERSION --build $HOUDINI_BUILD --key $SIDEFX_CLIENT_ID --secret $SIDEFX_CLIENT_SECRET --output $temp_folder_version
 ls $temp_folder_version
 
 
