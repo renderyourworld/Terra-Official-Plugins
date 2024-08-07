@@ -17,7 +17,7 @@ class Mrv2Installer(Plugin):
 
     _alias_ = "Mrv2 Installer"
     # pylint:disable=line-too-long
-    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/mrv2.png?raw=true"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/pack-additional-software//plugins/assets/mrv2.png?raw=true"
     description = "Install Mrv2 to a target directory."
     category = "Media and Entertainment"
     tags = [
