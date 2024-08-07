@@ -7,9 +7,8 @@ import hashlib
 import shutil
 import click
 import requests
-import importlib
 
-sys.path.append("/opt/official-plugins/plugins/scripts")
+sys.path.append(os.path.abspath(f"{__file__}/../"))
 
 import sidefx
 
