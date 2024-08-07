@@ -1,12 +1,14 @@
 aws --version
 
-echo "Installing $1 - $2"
+echo "Installing $1 - $2  $3"
 houdini_install_dir=$2
 # We need to pass export SIDEFX_CLIENT_ID=''; export SIDEFX_CLIENT_SECRET=''; export DEV_APPS_DEBUG=true to the scipt itself
+export SIDEFX_CLIENT_ID=$4
+export SIDEFX_CLIENT_SECRET=$5
 # same as versions
-#export "HOUDINI_VERSION"="20.0"
-#export "HOUDINI_BUILD"="688"
-#export "SESI_HOST"='hlicense'
+export HOUDINI_VERSION=$1
+export HOUDINI_BUILD=$2
+export SESI_HOST="hlicense"
 echo "Setting up prequesites"
 apt-get install bc -y
 python3 -m venv venv
