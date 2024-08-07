@@ -26,24 +26,9 @@ mkdir -p $temp_folder/$HOUDINI_VERSION.$HOUDINI_BUILD/installs
 temp_folder_version=$temp_folder/$HOUDINI_VERSION.$HOUDINI_BUILD
 
 echo "Downloading Houdini $houdini_install_version"
+python3 sidefx_downloader.py --version $HOUDINI_VERSION --build $HOUDINI_BUILD --key $SIDEFX_CLIENT_ID --secret $SIDEFX_CLIENT_SECRET --output $temp_folder_version
+ls $temp_folder_version
 
-if [ "$DEV_APPS_DEBUG" = true ]
-then
-	echo "Dev Apps Debug is enabled."
-	#python downloader.py --version $HOUDINI_VERSION --build $HOUDINI_BUILD --key $SIDEFX_CLIENT_ID --secret $SIDEFX_CLIENT_SECRET
-	#cp ~/Desktop/houdini-20.0.688-linux_x86_64_gcc9.3.tar.gz /apps/houdini/houdini.tar.gz
-	temp_folder="/mnt/data/tmp/apps_temp"
-  mkdir -p $temp_folder
-  mkdir -p $temp_folder/$HOUDINI_VERSION.$HOUDINI_BUILD
-  mkdir -p $temp_folder/$HOUDINI_VERSION.$HOUDINI_BUILD/installs
-  temp_folder_version=$temp_folder/$HOUDINI_VERSION.$HOUDINI_BUILD
-	cp /mnt/data/tmp/houdini-20.0.688-linux_x86_64_gcc11.2.tar.gz $temp_folder_version/houdini.tar.gz
-	echo "Local files copied."
-else
-  echo "Downloading Houdini..."
-	python3 sidefx_downloader.py --version $HOUDINI_VERSION --build $HOUDINI_BUILD --key $SIDEFX_CLIENT_ID --secret $SIDEFX_CLIENT_SECRET --output $temp_folder_version
-	ls $temp_folder_version
-fi
 
 echo "Extracting Houdini tar.gz"
 chmod 777 $temp_folder_version/houdini.tar.gz
@@ -65,7 +50,6 @@ echo "License Date:" $LICENSE_DATE
 #
 cd $hou_installer_folder
 ./houdini.install --auto-install --install-menus --install-sidefxlabs --no-install-hfs-symlink --no-root-check  --no-install-bin-symlink --license-server-name $SESI_HOST --no-install-license --accept-EULA $LICENSE_DATE --install-dir $houdini_install_dir/houdini-$houdini_install_version > /tmp/houdini_install.log
-# update-edit paths so it matches when we launch houdini on the workstation
 
 echo "Create Houdini Version sh file $houdini_version"
 cp houdini/run_houdini.sh $houdini_install_dir/run_houdini_$houdini_version.sh
