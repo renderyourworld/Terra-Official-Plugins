@@ -3,3 +3,5 @@ echo "Switching to squashfs-root directory"
 cd $SCRIPT_DIR/squashfs-root/
 echo "Running PureRef"
 ./AppRun
+
+
