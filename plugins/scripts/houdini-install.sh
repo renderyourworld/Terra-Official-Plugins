@@ -11,7 +11,8 @@ echo "Setting up prequesites"
 apt-get install bc -y
 python3 -m venv venv
 source venv/bin/activate
-pip install requests click
+pip3 install requests
+pip3 install click
 
 export houdini_install_version="$HOUDINI_VERSION.$HOUDINI_BUILD"
 
