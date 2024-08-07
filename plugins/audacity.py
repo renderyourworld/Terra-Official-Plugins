@@ -1,5 +1,5 @@
 """
-Installer for Xnview on linux systems.
+Installer for Audacity on linux systems.
 """
 
 # std
@@ -10,15 +10,15 @@ from subprocess import run
 from terra import Plugin
 
 
-class XnviewInstaller(Plugin):
+class AudacityInstaller(Plugin):
     """
-    Xnview installer plugin.
+    Audacity installer plugin.
     """
-    _alias_ = "Xnview Installer"
+    _alias_ = "Audacity Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/pack-additional-software/plugins/assets/xnview.png?raw=true"
     description = "XnView MP is a versatile and powerful photo viewer, image management, image resizer."
     category = "Media and Entertainment"
-    tags = ["Xnview", "editor", "media", "editorial", "kde"]
+    tags = ["Audacity", "editor", "media", "audio", "kde"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
@@ -31,7 +31,7 @@ class XnviewInstaller(Plugin):
         # store on instance
         self.download_url = kwargs.get(
             "url",
-            "https://download.xnview.com/XnView_MP.glibc2.17-x86_64.AppImage",
+            "https://github.com/audacity/audacity/releases/download/Audacity-3.6.1/audacity-linux-3.6.1-x64.AppImage",
         )
         self.destination = kwargs.get("destination")
 
@@ -52,10 +52,10 @@ class XnviewInstaller(Plugin):
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if (
                 run(
-                    f"bash {scripts_directory}/xnview-installer.sh {self.download_url} {self.destination}",
+                    f"bash {scripts_directory}/audacity-installer.sh {self.download_url} {self.destination}",
                     shell=True,
                     check=False,
                 ).returncode
                 != 0
         ):
-            raise RuntimeError("Failed to install xnview")
+            raise RuntimeError("Failed to install Audacit")

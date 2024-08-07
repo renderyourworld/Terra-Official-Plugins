@@ -18,7 +18,7 @@ class ObsidianInstaller(Plugin):
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/pack-additional-software/plugins/assets/obsidian.png?raw=true"
     description = "Obsidian.md - md file editor, note taking app."
     category = "Media and Entertainment"
-    tags = ["obsidian", "editor", "media", "editorial", "kde"]
+    tags = ["obsidian", "editor", "media", "md", "kde"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
