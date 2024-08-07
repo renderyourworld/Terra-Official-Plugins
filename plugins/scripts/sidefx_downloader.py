@@ -6,7 +6,9 @@ import hashlib
 import shutil
 import click
 import requests
-import sidefx  # pylint: disable=import-error
+import importlib
+
+import sidefx
 
 @click.command()
 @click.option("--version", default="20.0", help="Set Houdini version, default is 20.0")

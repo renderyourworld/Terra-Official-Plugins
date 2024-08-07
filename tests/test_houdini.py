@@ -6,8 +6,7 @@ from terra.loaders import plugins
 
 def test_houdini():
     """
-    Test houdini
-     installer.
+    Test houdini installer.
     """
     handler = plugins()
     plugin = handler.get_plugin('plugin', 'Houdini Installer')
