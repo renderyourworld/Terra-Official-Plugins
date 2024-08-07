@@ -1,6 +1,7 @@
 """Description: This script will download a specific Houdini build from the SideFX website."""
 
 import os
+import sys
 
 import hashlib
 import shutil
@@ -8,6 +9,7 @@ import click
 import requests
 import importlib
 
+sys.path.append("/opt/official-plugins/plugins/scripts")
 import sidefx
 
 @click.command()
