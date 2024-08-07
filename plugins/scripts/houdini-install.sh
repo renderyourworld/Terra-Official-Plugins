@@ -1,54 +1,81 @@
-echo "Installing $1"
+aws --version
+
+echo "Installing $1 - $2"
+houdini_install_dir=$2
+# We need to pass export SIDEFX_CLIENT_ID=''; export SIDEFX_CLIENT_SECRET=''; export DEV_APPS_DEBUG=true to the scipt itself
+# same as versions
+#export "HOUDINI_VERSION"="20.0"
+#export "HOUDINI_BUILD"="688"
+#export "SESI_HOST"='hlicense'
+echo "Setting up prequesites"
+apt-get install bc -y
+python3 -m venv venv
+source venv/bin/activate
+pip install requests click
 
 export houdini_install_version="$HOUDINI_VERSION.$HOUDINI_BUILD"
 
+
+temp_folder="/tmp/apps_temp"
+mkdir -p $temp_folder
+mkdir -p $temp_folder/$HOUDINI_VERSION.$HOUDINI_BUILD
+mkdir -p $temp_folder/$HOUDINI_VERSION.$HOUDINI_BUILD/installs
+temp_folder_version=$temp_folder/$HOUDINI_VERSION.$HOUDINI_BUILD
+
+echo "Downloading Houdini $houdini_install_version"
+
 if [ "$DEV_APPS_DEBUG" = true ]
 then
-	echo "Dev Apps Debug is enabled"
-  packaged_houdini_path=/mnt/data/tmp/apps_temp/packed/houdini_packed.tar.gz
-  install_path=/mnt/data/apps/houdini/versions
-  unpack_temp=/mnt/data/apps/houdini/versions_unpack
-  unpacked_path=/mnt/data/apps/houdini/versions_unpack/mnt/data/tmp/apps_temp/installed
+	echo "Dev Apps Debug is enabled."
+	#python downloader.py --version $HOUDINI_VERSION --build $HOUDINI_BUILD --key $SIDEFX_CLIENT_ID --secret $SIDEFX_CLIENT_SECRET
+	#cp ~/Desktop/houdini-20.0.688-linux_x86_64_gcc9.3.tar.gz /apps/houdini/houdini.tar.gz
+	temp_folder="/mnt/data/tmp/apps_temp"
+  mkdir -p $temp_folder
+  mkdir -p $temp_folder/$HOUDINI_VERSION.$HOUDINI_BUILD
+  mkdir -p $temp_folder/$HOUDINI_VERSION.$HOUDINI_BUILD/installs
+  temp_folder_version=$temp_folder/$HOUDINI_VERSION.$HOUDINI_BUILD
+  temp_folder_version=$temp_folder/installs/$HOUDINI_VERSION.$HOUDINI_BUILD
+	cp /mnt/data/tmp/houdini-20.0.688-linux_x86_64_gcc11.2.tar.gz $temp_folder_version/houdini.tar.gz
+	echo "Local files copied."
 else
-	packaged_houdini_path=/apps/houdini/houdini_packed.tar.gz
-  install_path=/apps/houdini/versions
-  unpack_temp=/apps/houdini/versions_unpack
-  unpacked_path=/tmp/apps_temp/apps_temp/installed
+  echo "Downloading Houdini..."
+	python3 sidefx_downloader.py --version $HOUDINI_VERSION --build $HOUDINI_BUILD --key $SIDEFX_CLIENT_ID --secret $SIDEFX_CLIENT_SECRET --output $temp_folder_version
+	ls $temp_folder_version
 fi
 
-echo "Extracting Packed Houdini"
-mkdir -p $unpack_temp
-mkdir -p $install_path
-chmod -R 777 $packaged_houdini_path $install_path
-tar -xvf $packaged_houdini_path -C $unpack_temp > $unpack_temp/houdini_unpack.log
+echo "Extracting Houdini tar.gz"
+chmod 777 $temp_folder_version/houdini.tar.gz
+tar -xvf $temp_folder_version/houdini.tar.gz -C $temp_folder_version/installs > $temp_folder_version/houdini_extract.log
+rm -rf $temp_folder_version/houdini.tar.gz
 
+echo "Houdini tar.gz extracted to $temp_folder_version/installs"
 
-echo "Houdini tar.gz extracted to $unpack_temp"
-houdini_version_path=`ls -d $unpacked_path/*houdini-*`
-houdini_version=$(echo $houdini_version_path | cut -d"-" -f2 | tr -d "(")
-houdini_version_for_directory_path=$install_path/$houdini_version
-mkdir -p $houdini_version_for_directory_path
-chmod -R 777 $houdini_version_for_directory_path
+# get gcc version
 
-echo "Moving data from $unpacked_path to $houdini_version_for_directory_path"
-cp -r $unpacked_path/* $houdini_version_for_directory_path
-echo "Installed Houdini version"
-ls $install_path
+files=( "${temp_folder_version}"/installs/*/ )
+hou_installer_folder="${files[0]}"
+echo "Extracted Houdini version $hou_installer_folder"
 
-echo "Cleaning up temporary files and folders."
-rm -rf $unpacked_path
-rm -rf $unpack_temp
+echo "Installing Houdini..."
+# get license date from file
+export $(cat $hou_installer_folder/houdini.install | grep 'LICENSE_DATE=' | tr -d '"')
+echo "License Date:" $LICENSE_DATE
+#
+cd $hou_installer_folder
+./houdini.install --auto-install --install-menus --install-sidefxlabs --no-install-hfs-symlink --no-root-check  --no-install-bin-symlink --license-server-name $SESI_HOST --no-install-license --accept-EULA $LICENSE_DATE --install-dir $houdini_install_dir/houdini-$houdini_install_version > /tmp/houdini_install.log
+# update-edit paths so it matches when we launch houdini on the workstation
 
-
-echo "Create Houdini Version sh file $$houdini_version"
-cp houdini/run_houdini.sh /apps/houdini/versions/$houdini_version/run_houdini_$houdini_version.sh
+echo "Create Houdini Version sh file $houdini_version"
+cp houdini/run_houdini.sh $houdini_install_dir/run_houdini_$houdini_version.sh
 
 ### SED the version file
-sed -i 's/VERSION.*/'"$houdini_version"'/g' /apps/houdini/versions/$houdini_version/run_houdini_$houdini_version.sh
+sed -i 's/VERSION.*/'"$houdini_version"'/g' $houdini_install_dir/run_houdini_$houdini_version.sh
 
-cp houdini/splashscreen.png /apps/houdini/versions/$houdini_version/splashscreen.png
-chmod 777 /apps/houdini/versions/$houdini_version/splashscreen.png
-echo "Link: /apps/houdini/latest -> /apps/houdini/versions/$houdini_version"
-ln -sfv /apps/houdini/versions/$houdini_version/run_houdini_$houdini_version.sh /apps/houdini/latest
-chmod +x /apps/houdini/latest
+cp houdini/splashscreen.png $houdini_install_dir/houdini-$houdini_install_version/splashscreen.png
+chmod 777 $houdini_install_dir/houdini-$houdini_install_version/splashscreen.png
+echo "Link: latest -> $houdini_version"
+ln -sfv $houdini_install_dir/run_houdini_$houdini_version.sh $houdini_install_dir/latest
+chmod +x $houdini_install_dir/latest
 echo "Link to latest created."
+
+

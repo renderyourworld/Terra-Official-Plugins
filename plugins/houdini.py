@@ -49,11 +49,11 @@ class HoudiniInstaller(Plugin):
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if (
-            run(
-                f"bash {scripts_directory}/houdini-installer.sh {self.version} {self.destination}",
-                shell=True,
-                check=False,
-            ).returncode
-            != 0
+                run(
+                    f"bash {scripts_directory}/houdini-install.sh {self.version} {self.destination}",
+                    shell=True,
+                    check=False,
+                ).returncode
+                != 0
         ):
             raise RuntimeError("Failed to install Houdini")
