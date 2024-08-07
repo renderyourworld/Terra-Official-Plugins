@@ -10,6 +10,7 @@ import requests
 import importlib
 
 sys.path.append("/opt/official-plugins/plugins/scripts")
+
 import sidefx
 
 @click.command()
