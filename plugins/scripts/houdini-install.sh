@@ -34,7 +34,6 @@ then
   mkdir -p $temp_folder/$HOUDINI_VERSION.$HOUDINI_BUILD
   mkdir -p $temp_folder/$HOUDINI_VERSION.$HOUDINI_BUILD/installs
   temp_folder_version=$temp_folder/$HOUDINI_VERSION.$HOUDINI_BUILD
-  temp_folder_version=$temp_folder/installs/$HOUDINI_VERSION.$HOUDINI_BUILD
 	cp /mnt/data/tmp/houdini-20.0.688-linux_x86_64_gcc11.2.tar.gz $temp_folder_version/houdini.tar.gz
 	echo "Local files copied."
 else
