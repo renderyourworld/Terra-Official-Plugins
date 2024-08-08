@@ -21,8 +21,7 @@ class HoudiniInstaller(Plugin):
     category = "Media and Entertainment"
     tags = ["houdini", "sidefx", "media", "vfx", "visual effects"]
     fields = [
-        Plugin.field("version", "Version of Houdini to install. i.e. 20.5", required=True),
-        Plugin.field("build", "Build of Houdini to install. i.e. 278", required=True),
+        Plugin.field("version", "Version of Houdini to install. i.e. 20.5.278", required=True),
         Plugin.field("destination", "Destination directory", required=True),
         Plugin.field("client_id", "Cliend ID", required=True),
         Plugin.field("client_secret", "Client secret", required=True),
@@ -34,13 +33,17 @@ class HoudiniInstaller(Plugin):
         """
         # store on instance
         self.version = kwargs.get("version")
-        self.build = kwargs.get("build")
         self.destination = kwargs.get("destination")
         self.client_id = kwargs.get("client_id")
         self.client_secret = kwargs.get("client_secret")
 
         assert self.client_secret
         assert self.client_id
+        assert self.version
+
+        self.build = self.version.split(".")[2]
+        self.version = self.version.split(".")[0] + "." + self.version.split(".")[1]
+
         assert self.version
         assert self.build
 
@@ -61,7 +64,7 @@ class HoudiniInstaller(Plugin):
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if (
                 run(
-                    f"bash {scripts_directory}/houdini-install.sh {self.version} {self.build}  {self.destination} {self.client_id} {self.client_secret}",
+                    f"bash {scripts_directory}/houdini-install.sh {self.version} {self.build} {self.destination} {self.client_id} {self.client_secret}",
                     shell=True,
                     check=False,
                 ).returncode
