@@ -3,6 +3,7 @@ Plugin Loader for the service module
 """
 
 # std
+import os
 import inspect
 from traceback import format_exc
 from logging import Logger
@@ -37,6 +38,17 @@ class Plugin:
         Create a field
         """
         return {"name": name, "description": description, "required": required}
+
+    def update_metadata(self, metadata: dict) -> None:  # pragma: no cover
+        """
+        Update install metadata
+        """
+        self.logger.info(f"Updating metadata: {metadata}")
+        try:
+            import src.plugins.service as service
+            service.set_metadata(os.environ["INSTALL_NAME"], metadata)
+        except ImportError:
+            self.logger.error("Service module not found, running in dev mode.")
 
     def __init__(self, logger: Logger):  # pragma: no cover
         """

@@ -58,3 +58,5 @@ class GitLoader(Plugin):
         self.logger.info(f"Checking out {self.ref}")
         repo = Repo(self.destination)
         repo.git.checkout(self.ref)
+
+        self.update_metadata({"install_location": self.destination})
