@@ -1,20 +1,20 @@
 """
-Tests for Threedeelight
+Tests for threedelight
 """
 from os import listdir
 from terra.loaders import plugins
 
 
-def test_threedeelight():
+def test_threedelight():
     """
-    Test Threedeelight installer.
+    Test threedelight installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'Threedeelight Installer')
+    plugin = handler.get_plugin('plugin', 'Threedelight Installer')
     assert plugin is not None
     handler.run_plugin(
         'plugin',
-        'Threedeelight Installer',
+        'Threedelight Installer',
         allow_failure=False,
         destination='/apps/3delight'
     )

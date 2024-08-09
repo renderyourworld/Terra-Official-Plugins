@@ -10,12 +10,12 @@ from subprocess import run
 from terra import Plugin
 
 
-class ThreedeelightInstaller(Plugin):
+class ThreedelightInstaller(Plugin):
     """
-    threedeelight installer plugin.
+    threedelight installer plugin.
     """
 
-    _alias_ = "Threedeelight Installer"
+    _alias_ = "Threedelight Installer"
     icon = "https://www.3delight.com/static/media/3delight_white_2k.8d2b2410.png"
     description = "Refreshingly Simple and Fast rendering engine."
     category = "Media and Entertainment"
@@ -53,10 +53,10 @@ class ThreedeelightInstaller(Plugin):
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if (
             run(
-                f"bash {scripts_directory}/threedeelight-installer.sh {self.download_url} {self.destination}",
+                f"bash {scripts_directory}/threedelight-installer.sh {self.download_url} {self.destination}",
                 shell=True,
                 check=False,
             ).returncode
             != 0
         ):
-            raise RuntimeError("Failed to install threedeelight")
+            raise RuntimeError("Failed to install threedelight")
