@@ -1,5 +1,5 @@
 """
-Installer for threedeelight on linux systems.
+Installer for threedelight on linux systems.
 """
 
 # std
@@ -16,7 +16,7 @@ class ThreedelightInstaller(Plugin):
     """
 
     _alias_ = "Threedelight Installer"
-    icon = "https://www.3delight.com/static/media/3delight_white_2k.8d2b2410.png"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/threedelight.png?raw=true"
     description = "Refreshingly Simple and Fast rendering engine."
     category = "Media and Entertainment"
     tags = ["3delight", "editor", "media", "editorial", "vfx"]
@@ -32,7 +32,7 @@ class ThreedelightInstaller(Plugin):
         # store on instance
         self.download_url = kwargs.get(
             "url",
-            "https://s3.eu-central-1.wasabisys.com/juno-deps/3DelightNSI-2.9.104-Linux-x86_64.tar.xz",
+            "https://3delight-downloads.s3-us-east-2.amazonaws.com/free/release/2024-08-05-TPhetmWH/3DelightNSI-2.9.105-Linux-x86_64.tar.xz",
         )
         self.destination = kwargs.get("destination")
 
