@@ -10,7 +10,7 @@ import click
 def create_sh_file(houdini_install_dir=None, houdini_version=None, serverhost=None, debug=None):
     if debug:
         houdini_install_dir = "/home/des/_juno/Terra-Official-Plugins/.apps/houdini"
-        path_runfile = "/home/des/_juno/Terra-Official-Plugins/.apps/houdini/run_houdini.sh"
+        #path_runfile = "/home/des/_juno/Terra-Official-Plugins/.apps/houdini/run_houdini.sh"
         houdini_version = "20.0.668"
         serverhost = "None"
 

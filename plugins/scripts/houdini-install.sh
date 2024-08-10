@@ -66,13 +66,18 @@ cp $SCRIPT_DIR/houdini_splashscreen.png "$houdini_install_dir"splashscreen.png
 chmod 777 "$houdini_install_dir"splashscreen.png
 
 # LINK IT!
+ls /apps/houdini/
+latestlink="$houdini_install_dir"latest
 echo "Link: latest -> $houdini_install_version"
-ln -sfv $runner_file "$houdini_install_dir"latest
-chmod +x "$houdini_install_dir"latest
+echo "Linking $runner_file to $latestlink"
+ln -sfv $runner_file latestlink
+chmod +x $runner_file
 echo "Link to latest created."
 
 echo "Adding desktop file"
 python3 $SCRIPT_DIR/create_desktop_file.py --app_name="Houdini" --version=$houdini_install_version --latest_path="$houdini_install_dir"latest --categories="3d, vfx"
+ls /apps/applications
+echo "Desktop file created."
 
 
 
