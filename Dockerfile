@@ -26,6 +26,7 @@ COPY --from=system /usr/local/bin/kubectl /usr/local/bin/kubectl
 COPY --from=system /usr/local/bin/helm /usr/local/bin/helm
 
 RUN apt update && apt install -y zip curl git && \
+    apt install libfuse2 -y && \
 	apt clean -y && \
 	apt autoclean -y && \
 	apt autoremove --purge -y && \
