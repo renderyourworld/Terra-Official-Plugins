@@ -16,9 +16,9 @@ echo '
   --enable-autoexec \
   --engine \
   CYCLES \
-  /"$2"clasroom/clasroom.blend \
+  /"$2"clasroom/main.blend \
   --python \
-  main.py \
+  "$2"2blender-benchmark-script-2.0.0main.py \
   -- \
   --device-type CPU
 ' > "$2"blenderbenchmark.sh

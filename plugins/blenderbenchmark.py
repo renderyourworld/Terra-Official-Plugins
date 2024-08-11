@@ -53,7 +53,7 @@ class BlenderbenchmarkInstaller(Plugin):
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if (
             run(
-                f"bash {scripts_directory}/Blenderbenchmark-installer.sh {self.download_url} {self.destination}",
+                f"bash {scripts_directory}/blenderbenchmark-installer.sh {self.download_url} {self.destination}",
                 shell=True,
                 check=False,
             ).returncode
