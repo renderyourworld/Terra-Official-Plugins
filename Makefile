@@ -95,3 +95,6 @@ install-docs: upgrade-uv
 server: install-docs
 	$(VENV)/mkdocs serve
 
+app-%:
+	@template/templateapp/makeapp.sh "$(subst app-,,$@)"
+
