@@ -10,9 +10,9 @@ from subprocess import run
 from terra import Plugin
 
 
-class TemplateappInstaller(Plugin):
+class templateappInstaller(Plugin):
     """
-    Kdenlive installer plugin.
+    templateapp installer plugin.
     """
 
     _alias_ = "templateapp Installer"
