@@ -32,7 +32,7 @@ class WpsofficeInstaller(Plugin):
         # store on instance
         self.download_url = kwargs.get(
             "url",
-            "https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/11723/wps-office_11.1.0.11723.XA_amd64.deb",
+            "https://github.com/area-of-dev/WPS-Office.AppImage/releases/download/latest/WPS-Office.AppImage",
         )
         self.destination = kwargs.get("destination")
 

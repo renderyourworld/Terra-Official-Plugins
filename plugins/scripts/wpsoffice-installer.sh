@@ -1,3 +1,5 @@
-wget -q -O /tmp/wpsoffice.deb "$1"
-chmod +x /tmp/wpsoffice.deb
-dpkg-deb -x /tmp/wpsoffice.deb --instdir=$2
+wget -q -O /tmp/wpsoffice.appimage "$1"
+chmod +x /tmp/wpsoffice.appimage
+/tmp/wpsoffice.appimage --appimage-extract > /dev/null
+mv ./squashfs-root "$2/"
+
