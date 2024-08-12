@@ -32,7 +32,7 @@ class ResolveInstaller(Plugin):
         # store on instance
         self.download_url = kwargs.get(
             "url",
-            "resolve",
+            "https://swr.cloud.blackmagicdesign.com/DaVinciResolve/v18.6.6/DaVinci_Resolve_18.6.6_Linux.zip?verify=1723467358-f%2F4cqBSkZOIOnzqneYOYUaJOMAAEmMCWaz2RBrVsF%2BI%3D",
         )
         self.destination = kwargs.get("destination")
 
