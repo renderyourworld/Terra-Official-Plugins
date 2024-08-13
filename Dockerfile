@@ -22,6 +22,12 @@ ENV BRANCH=${BRANCH}
 ENV COMMIT=${COMMIT}
 ENV TARGET=${TARGET}
 
+ENV DEV_APPS_DEBUG=false
+ENV SESI_HOST='hlicense'
+ENV PYTHONPATH=/app
+ENV SIDEFX_CLIENT_ID=''
+ENV SIDEFX_CLIENT_SECRET=''
+
 COPY --from=system /usr/local/bin/kubectl /usr/local/bin/kubectl
 COPY --from=system /usr/local/bin/helm /usr/local/bin/helm
 
