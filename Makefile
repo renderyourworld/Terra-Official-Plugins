@@ -97,4 +97,3 @@ server: install-docs
 
 app-%:
 	@template/templateapp/makeapp.sh "$(subst app-,,$@)"
-
