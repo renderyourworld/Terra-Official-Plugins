@@ -16,7 +16,7 @@ class RawtherapeeInstaller(Plugin):
     """
 
     _alias_ = "Rawtherapee Installer"
-    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/pack-additional-software/plugins/assets/rawtherapee.png?raw=true"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/rawtherapee.png?raw=true"
     description = (
         "RawTherapee is a powerful, cross-platform raw photo processing system."
     )

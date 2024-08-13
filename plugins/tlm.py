@@ -15,7 +15,7 @@ class TlmInstaller(Plugin):
     Xnview installer plugin.
     """
     _alias_ = "Tlm Installer"
-    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/pack-additional-software/plugins/assets/tlm.png?raw=true"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/tlm.png?raw=true"
     description = "Tool that mimics the permformance monitoring of windows task manager under linux"
     category = "Media and Entertainment"
     tags = ["Tlm", "editor", "media", "editorial", "kde"]

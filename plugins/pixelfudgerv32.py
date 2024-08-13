@@ -17,7 +17,7 @@ class Pixelfudger_v32(Plugin):
     """
 
     _alias_ = "Pixelfudger v3.2"
-    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/pack-additional-software/plugins/assets/pixelfudger.png?raw=true"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/pixelfudger.png?raw=true"
     description = "Famous Nuke Gizmos and Tools. http://www.pixelfudger.com/"
     category = "Media and Entertainment"
     tags = ["vfx", "pipeline", "pixelfudger", "visual effects"]

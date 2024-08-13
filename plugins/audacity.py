@@ -15,7 +15,7 @@ class AudacityInstaller(Plugin):
     Audacity installer plugin.
     """
     _alias_ = "Audacity Installer"
-    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/pack-additional-software/plugins/assets/audacity.png?raw=true"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/audacity.png?raw=true"
     description = "Audacity is the world's most popular audio editing and recording app."
     category = "Media and Entertainment"
     tags = ["Audacity", "editor", "media", "audio", "kde"]

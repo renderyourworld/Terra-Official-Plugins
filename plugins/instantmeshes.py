@@ -16,7 +16,7 @@ class InstantmeshesInstaller(Plugin):
     """
 
     _alias_ = "Instantmeshes Installer"
-    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/pack-additional-software/plugins/assets/instantmeshes.png?raw=true"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/instantmeshes.png?raw=true"
     description = "Instant Field-Aligned Meshes - remeshing tool."
     category = "Media and Entertainment"
     tags = ["instantmeshes", "editor", "media", "vfx", "geometry", "mesh", "remesh", "3d"]

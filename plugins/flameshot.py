@@ -16,7 +16,7 @@ class FlameshotInstaller(Plugin):
     """
 
     _alias_ = "Flameshot Installer"
-    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/pack-additional-software/plugins/assets/flameshot.png?raw=true"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/flameshot.png?raw=true"
     description = "Powerful, yet simple to use open-source screenshot software."
     category = "Media and Entertainment"
     tags = ["flameshot", "editor", "media", "editorial", "screenshot"]

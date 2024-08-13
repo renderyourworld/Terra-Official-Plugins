@@ -15,7 +15,7 @@ class CpuXInstaller(Plugin):
     CpuX installer plugin.
     """
     _alias_ = "CpuX Installer"
-    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/pack-additional-software/plugins/assets/cpux.png?raw=true"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/cpux.png?raw=true"
     description = "CPU-X is a software that gathers information on CPU, motherboard and more."
     category = "Tools"
     tags = ["cpux", "editor", "media", "editorial", "kde"]
