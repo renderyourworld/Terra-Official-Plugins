@@ -3,6 +3,7 @@ Plugin Loader for the service module
 """
 
 # std
+import os
 import inspect
 from traceback import format_exc
 from logging import Logger
