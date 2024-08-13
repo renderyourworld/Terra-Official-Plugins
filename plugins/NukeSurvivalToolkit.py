@@ -18,7 +18,7 @@ class NukeSurvivalToolkit_v211(Plugin):
     """
 
     _alias_ = "Nuke Survival Toolkit v2.1.1"
-    icon = "https://user-images.githubusercontent.com/46404545/93950690-76be2e00-fd44-11ea-96a6-07070b28df81.jpg"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/pack-additional-software/plugins/assets/nukesurvivaltoolkit.png?raw=true"
     description = "The Nuke Survival Toolkit is a portable tool menu for the Foundry’s Nuke with a hand-picked selection of nuke gizmos collected from all over the web, organized into 1 easy to install toolbar."
     category = "Media and Entertainment"
     tags = ["vfx", "pipeline", "nuke survival toolkit", "visual effects"]
