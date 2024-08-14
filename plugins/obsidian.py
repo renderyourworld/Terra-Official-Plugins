@@ -4,6 +4,7 @@ Installer for obsidian on linux systems.
 
 # std
 import os
+from pathlib import Path
 from subprocess import run
 
 # 3rd
@@ -18,7 +19,7 @@ class ObsidianInstaller(Plugin):
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/obsidian.png?raw=true"
     description = "Obsidian.md - md file editor, note taking app."
     category = "Media and Entertainment"
-    tags = ["obsidian", "editor", "media", "md", "kde"]
+    tags = ["obsidian", "editor", "text", "md", "ideas"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
@@ -33,14 +34,12 @@ class ObsidianInstaller(Plugin):
             "url",
             "https://github.com/obsidianmd/obsidian-releases/releases/download/v1.6.7/Obsidian-1.6.7.AppImage",
         )
-        self.destination = kwargs.get("destination")
+        self.destination = Path(kwargs.get("destination")).as_posix()
 
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
 
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 
