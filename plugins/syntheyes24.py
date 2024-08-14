@@ -40,8 +40,8 @@ class Syntheyes24Installer(Plugin):
         if not self.destination:
             raise ValueError("No destination directory provided")
 
-        if not self.destination.endswith("/"):
-            self.destination += "/"
+        if self.destination.endswith("/"):
+            self.destination = self.destination[:-1]
 
         os.makedirs(self.destination, exist_ok=True)
 
