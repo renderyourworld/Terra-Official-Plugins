@@ -4,6 +4,7 @@ Installer for Deadline10_repository on linux systems.
 
 # std
 import os
+import time
 from subprocess import run
 
 # 3rd
@@ -47,13 +48,28 @@ class Deadline10_repositoryInstaller(Plugin):
         Download and unpack the appimage to the destination directory.
         """
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
+        charts_directory = os.path.abspath(f"{__file__}/../charts")
         self.logger.info(f"Loading scripts from {scripts_directory}")
+        # do helm install
+
+        run(
+            f"helm upgrade -i deadline10 {charts_directory}/deadline/  "
+            f" --set start_service=false",
+            shell=True
+        )
+        time.sleep(60)
         if (
             run(
                 f"bash {scripts_directory}/deadline10_repository-installer.sh {self.download_url} {self.destination}",
                 shell=True,
-                check=False,
+                check=False
             ).returncode
             != 0
         ):
             raise RuntimeError("Failed to install Deadline10_repository")
+        #  helm star service to flase
+        run(
+            f"helm upgrade -i deadline10 {charts_directory}/deadline/  "
+            f" --set start_service=true",
+            shell=True
+        )

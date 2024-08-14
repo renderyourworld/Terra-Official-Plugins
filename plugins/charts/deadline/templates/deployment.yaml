@@ -1,0 +1,51 @@
+{{- if $.Values.start_service}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deadline-server
+  annotations:
+    linkerd.io/inject: enabled
+spec:
+  revisionHistoryLimit: 0
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deadline-server
+  template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
+      labels:
+        app: deadline-server
+    spec:
+      nodeSelector:
+        junovfx/node: service
+      containers:
+        - name: deadline-server
+          image: {{ $.Values.registry }}/deadline-server:unstable-x64
+          imagePullPolicy: Always
+          env:
+            - name: DEADLINE_CUSTOM_PATH
+              value: "/pipe/deadline/custom"
+          ports:
+            - containerPort: 8080
+              name: endpoint
+            - containerPort: 8081
+              name: rest
+          volumeMounts:
+            - mountPath: /apps/
+              name: apps
+            - mountPath: /pipe/
+              name: pipe
+      volumes:
+        - name: apps
+          persistentVolumeClaim:
+            claimName: apps
+        - name: pipe
+          persistentVolumeClaim:
+            claimName: pipe
+        - name: client_mount
+          persistentVolumeClaim:
+            claimName: {{ $.Values.client_mount_claim }}
+
+{{- end}}

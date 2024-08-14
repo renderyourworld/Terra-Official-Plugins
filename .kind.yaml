@@ -7,3 +7,5 @@ nodes:
         containerPath: /repo
       - hostPath: ./.apps
         containerPath: /apps
+    labels:
+      junovfx/node: service

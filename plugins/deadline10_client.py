@@ -5,7 +5,7 @@ Installer for Deadline10_client on linux systems.
 # std
 import os
 from subprocess import run
-
+import time
 # 3rd
 from terra import Plugin
 
@@ -46,13 +46,26 @@ class Deadline10_clientInstaller(Plugin):
         Download and unpack the appimage to the destination directory.
         """
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
+        charts_directory = os.path.abspath(f"{__file__}/../charts")
         self.logger.info(f"Loading scripts from {scripts_directory}")
+        run(
+            f"helm upgrade -i deadline10 {charts_directory}/deadline/  "
+            f" --set start_service=false",
+            shell=True
+        )
+        time.sleep(60)
         if (
             run(
                 f"bash {scripts_directory}/deadline10_client-installer.sh {self.download_url} {self.destination}",
                 shell=True,
-                check=False,
+                check=False
             ).returncode
             != 0
         ):
             raise RuntimeError("Failed to install Deadline10_client")
+        #  helm star service to flase
+        run(
+            f"helm upgrade -i deadline10 {charts_directory}/deadline/  "
+            f" --set start_service=true",
+            shell=True
+        )
