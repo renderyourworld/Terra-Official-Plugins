@@ -31,7 +31,7 @@ class ObsidianInstaller(Plugin):
         # store on instance
         self.download_url = kwargs.get(
             "url",
-            "https://github.com/obsidianmd/obsidian-releases/releases/download/v1.6.7/Obsidian-1.6.7-arm64.AppImage",
+            "https://github.com/obsidianmd/obsidian-releases/releases/download/v1.6.7/Obsidian-1.6.7.AppImage",
         )
         self.destination = kwargs.get("destination")
 
