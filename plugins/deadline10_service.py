@@ -16,7 +16,7 @@ class Deadline10_serviceInstaller(Plugin):
     """
 
     _alias_ = "Deadline10_service Installer"
-    icon = "https://kdenlive.org/wp-content/uploads/2022/01/kdenlive-logo-blank-500px.png"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/deadline10service.png?raw=true"
     description = "Deadline10.3 Webservice"
     category = "Media and Entertainment"
     tags = ["deadline", "service", "repository", "aws", "submission", "rendering"]
