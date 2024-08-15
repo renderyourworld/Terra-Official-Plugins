@@ -21,7 +21,7 @@ spec:
         junovfx/node: service
       containers:
         - name: deadline-mongo
-          image: mongo:4.2.12
+          image: mongo:5.0.22
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 27017
@@ -29,6 +29,10 @@ spec:
           volumeMounts:
             - mountPath: /data/db
               name: farm-data
+          auth:
+            enabled: false
+          tls:
+            enabled: false
       volumes:
         - name: farm-data
           persistentVolumeClaim:

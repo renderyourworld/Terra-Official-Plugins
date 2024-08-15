@@ -5,7 +5,10 @@ installers=/tmp/deadline10_installers
 chmod +x /tmp/Deadline-10.3.2.1-linux-installers.tar
 mkdir -p $installers
 tar -xvf /tmp/Deadline-10.3.2.1-linux-installers.tar -C $installers
+
 ls -la $installers
+
+mkdir -p /apps/deadline10
 mkdir -p /apps/deadline10/client
 
 chmod +x $installers/DeadlineClient-10.3.2.1-linux-x64-installer.run

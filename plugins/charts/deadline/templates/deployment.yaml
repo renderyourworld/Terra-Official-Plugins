@@ -35,15 +35,12 @@ spec:
           volumeMounts:
             - mountPath: /apps/
               name: apps
-            - mountPath: /pipe/
-              name: pipe
+            - hostPath: ./.apps
+              containerPath: /apps
       volumes:
         - name: apps
           persistentVolumeClaim:
             claimName: apps
-        - name: pipe
-          persistentVolumeClaim:
-            claimName: pipe
         - name: client_mount
           persistentVolumeClaim:
             claimName: {{ $.Values.client_mount_claim }}
