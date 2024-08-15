@@ -49,6 +49,7 @@ class Deadline10_serviceInstaller(Plugin):
         Download and unpack the appimage to the destination directory.
         """
         charts_directory = os.path.abspath(f"{__file__}/../charts")
+        configmaps_directory = os.path.abspath(f"{__file__}/../configmaps")
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         self.logger.info(f"Loading scripts from {scripts_directory}")
         self.logger.info("Installing Service to Terra")
@@ -68,5 +69,9 @@ class Deadline10_serviceInstaller(Plugin):
         #     f" --set start_service=true",
         #     shell=True
         # )
+        run(
+            f"kubectl apply -f {configmaps_directory}/configmap.yaml",
+            shell=True
+        )
         #
         # print("Setup Service done")
