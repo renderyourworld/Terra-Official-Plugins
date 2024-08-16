@@ -5,13 +5,11 @@ metadata:
 data:
   run_webservice.sh: |
     #!/bin/bash
+    mono --version
     export DEADLINE_PATH=/apps/deadline10/client
     echo "Starting up Terra service for: Deadline10 Webservice"
-    ls /apps/deadline10
-    ls /apps/deadline10/repository
-    ls /apps/deadline10/client
-    ls /apps/deadline10/service
+    echo "---------------------------------------------"
     cd /apps/deadline10/client/bin/
-    ./deadlinelauncher
+    ./deadlinewebservice.exe 
     echo "Terra service for Deadline10 Webservice is running"
     
