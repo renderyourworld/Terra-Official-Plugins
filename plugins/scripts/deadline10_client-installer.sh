@@ -20,7 +20,7 @@ $installers/DeadlineClient-10.3.2.1-linux-x64-installer.run \
       --connectiontype Direct
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-cp -v "$SCRIPT_DIR/deadline.ini" /apps/deadline10/client/deadeline.ini
+cp -v "$SCRIPT_DIR/deadline.ini" /apps/deadline10/client/deadline.ini
 chmod -R 777 /apps/deadline10/client
 
 ls /apps/deadline10/client

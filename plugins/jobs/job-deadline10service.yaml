@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: deadeline10-webservice
+  name: deadline10-webservice
 spec:
   backoffLimit: 0
   activeDeadlineSeconds: 6000
@@ -22,7 +22,6 @@ spec:
               mountPath: /script
             - name: apps
               mountPath: /apps
-
       volumes:
         - name: apps
           hostPath:

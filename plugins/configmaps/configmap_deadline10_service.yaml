@@ -5,11 +5,10 @@ metadata:
 data:
   run_webservice.sh: |
     #!/bin/bash
-    echo "Hi!"
-    echo "My name is"
-    echo "What?"
-    echo "My name is"
-    echo "Who?"
-    echo "My name is"
-    echo "Chika-chika"
-    echo "Slim Shady"
+    echo "Starting up Terra service for: Deadline10 Webservice"
+    ls /apps/deadline10
+    ls /apps/deadline10/repository
+    ls /apps/deadline10/client
+    ls /apps/deadline10/webservice
+    bash /apps/deadline10/client/bin/deadlinelauncher
+    

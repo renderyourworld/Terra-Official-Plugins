@@ -24,7 +24,9 @@ spec:
           command: ["/script/run_webservice.sh"]
           volumeMounts:
             - name: script
-              mountPath: "/script"
+              mountPath: /script
+            - name: d10-webservice-ini
+              mountPath: /var/lib/Thinkbox/Deadline10/deadline.ini
             - name: apps
               mountPath: /apps
       volumes:
@@ -35,5 +37,9 @@ spec:
         - name: script
           configMap:
             name: d10webservice-configmap
+            defaultMode: 0500
+        - name: d10-webservice-ini
+          configMap:
+            name: d10webservice-ini-configmap
             defaultMode: 0500
 

@@ -76,15 +76,15 @@ class Deadline10_serviceInstaller(Plugin):
             f"kubectl apply -f {configmaps_directory}/configmap_deadline10_service.yaml",
             shell=True
         )
-        print(configmaps_set.stdout)
-        #
-        # print("Setup Service done")
 
-        time.sleep(5)
+        print(configmaps_set.stdout)
+
+        #
+        print("Setup Service done")
         job_run = run(
             f"kubectl apply -f {jobs_directory}/job-deadline10service.yaml",
             shell=True
         )
-        time.sleep(100)
+        time.sleep(200)
         print(job_run.stdout)
         print(run("kubectl get jobs", shell=True).stdout)

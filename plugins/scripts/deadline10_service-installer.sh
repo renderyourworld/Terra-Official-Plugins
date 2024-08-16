@@ -1,2 +1,5 @@
-echo $1
-echo $2
+echo "Setting up Deadline 10 Services"
+
+mkdir /apps/deadline10/service
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+cp -v "$SCRIPT_DIR"/deadline.ini /apps/deadline10/service/deadline.ini
