@@ -51,6 +51,9 @@ class Deadline10_serviceInstaller(Plugin):
         charts_directory = os.path.abspath(f"{__file__}/../charts")
         configmaps_directory = os.path.abspath(f"{__file__}/../configmaps")
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
+        jobs_directory = os.path.abspath(f"{__file__}/../jobs")
+
+
         self.logger.info(f"Loading scripts from {scripts_directory}")
         self.logger.info("Installing Service to Terra")
 
@@ -69,9 +72,19 @@ class Deadline10_serviceInstaller(Plugin):
         #     f" --set start_service=true",
         #     shell=True
         # )
-        run(
-            f"kubectl apply -f {configmaps_directory}/configmap.yaml",
+        configmaps_set = run(
+            f"kubectl apply -f {configmaps_directory}/configmap_deadline10_service.yaml",
             shell=True
         )
+        print(configmaps_set.stdout)
         #
         # print("Setup Service done")
+
+        time.sleep(5)
+        job_run = run(
+            f"kubectl apply -f {jobs_directory}/job-deadline10service.yaml",
+            shell=True
+        )
+        time.sleep(100)
+        print(job_run.stdout)
+        print(run("kubectl get jobs", shell=True).stdout)

@@ -1,0 +1,35 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: deadeline10-webservice
+spec:
+  backoffLimit: 0
+  activeDeadlineSeconds: 6000
+
+  template:
+    spec:
+      serviceAccountName: terra
+      restartPolicy: Never
+      nodeSelector:
+        kubernetes.io/arch: amd64
+
+      containers:
+        - name: d10container-webservice
+          image: mono:latest
+          command: ["/script/run_webservice.sh"]
+          volumeMounts:
+            - name: script
+              mountPath: /script
+            - name: apps
+              mountPath: /apps
+
+      volumes:
+        - name: apps
+          hostPath:
+            path: /apps
+            type: Directory
+        - name: script
+          configMap:
+            name: d10webservice-configmap
+            defaultMode: 0500
+
