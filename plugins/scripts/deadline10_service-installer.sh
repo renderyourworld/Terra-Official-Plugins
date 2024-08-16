@@ -10,3 +10,6 @@ cp -v "$SCRIPT_DIR"/deadline.ini /apps/deadline10/service/deadline.ini
 mkdir -p /root/Thinkbox
 mkdir -p /root/Thinkbox/Deadline10
 cp -v "$SCRIPT_DIR"/deadline.ini /root/Thinkbox/Deadline10/deadline.ini
+mkdir -p /var/lib/Thinkbox/
+mkdir -p /var/lib/Thinkbox/Deadline10
+cp -v "$SCRIPT_DIR"/deadline.ini /var/lib/Thinkbox/Deadline10/deadline.ini
