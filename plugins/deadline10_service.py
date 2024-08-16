@@ -58,6 +58,15 @@ class Deadline10_serviceInstaller(Plugin):
         self.logger.info("Installing Service to Terra")
 
         self.logger.info(f"{self.destination} Service installed.")
+        if (
+            run(
+                f"bash {scripts_directory}/deadline10_service-installer.sh",
+                shell=True,
+                check=False
+            ).returncode
+            != 0
+        ):
+            raise RuntimeError("Failed to install Deadline10_service")
         #
         # run(
         #     f"helm upgrade -i deadline10 {charts_directory}/deadline/  "
