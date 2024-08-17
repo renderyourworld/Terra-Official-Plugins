@@ -29,10 +29,7 @@ spec:
           volumeMounts:
             - mountPath: /data/db
               name: farm-data
-          auth:
-            enabled: false
-          tls:
-            enabled: false
+
       volumes:
         - name: farm-data
           persistentVolumeClaim:

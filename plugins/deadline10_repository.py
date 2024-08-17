@@ -67,6 +67,15 @@ class Deadline10_repositoryInstaller(Plugin):
             != 0
         ):
             raise RuntimeError("Failed to install Deadline10_repository")
+        if (
+            run(
+                f"bash {scripts_directory}/deadline10_client-installer.sh {self.download_url} {self.destination}",
+                shell=True,
+                check=False
+            ).returncode
+            != 0
+        ):
+            raise RuntimeError("Failed to install Deadline10_repository")
         #  helm star service to flase
         run(
             f"helm upgrade -i deadline10 {charts_directory}/deadline/  "

@@ -20,29 +20,27 @@ spec:
     spec:
       nodeSelector:
         junovfx/node: service
+
       containers:
-        - name: deadline-server
-          image: {{ $.Values.registry }}/deadline-server:unstable-x64
-          imagePullPolicy: Always
-          env:
-            - name: DEADLINE_CUSTOM_PATH
-              value: "/pipe/deadline/custom"
-          ports:
-            - containerPort: 8080
-              name: endpoint
-            - containerPort: 8081
-              name: rest
+        - name: d10container-webservice
+          image: mono:latest
+          command: [ "/script/run_webservice.sh" ]
+          # command: ["sh", "-c", "tail -f /dev/null"]
           volumeMounts:
-            - mountPath: /apps/
-              name: apps
-            - hostPath: ./.apps
-              containerPath: /apps
+            - name: script
+              mountPath: /script
+#            - name: script
+#              mountPath: /var/lib/Thinkbox/Deadline10/deadline.ini
+#              subPath: deadline.ini
+            - name: apps
+              mountPath: /apps
       volumes:
         - name: apps
-          persistentVolumeClaim:
-            claimName: apps
-        - name: client_mount
-          persistentVolumeClaim:
-            claimName: {{ $.Values.client_mount_claim }}
-
+          hostPath:
+            path: /apps
+            type: Directory
+        - name: script
+          configMap:
+            name: d10webservice-configmap
+            defaultMode: 0500
 {{- end}}
