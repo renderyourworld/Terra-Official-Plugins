@@ -7,6 +7,7 @@ import os
 import time
 from subprocess import run
 
+
 # 3rd
 from terra import Plugin
 
@@ -18,7 +19,7 @@ class Deadline10_repositoryInstaller(Plugin):
 
     _alias_ = "Deadline10_repository Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/deadline10repository.png?raw=true"
-    description = "Deadline10_repository"
+    description = "Deadline10 repository, client and service installer. Long install time - 10 minutes."
     category = "Rendering Management"
     tags = ["deadline10_repository", "editor", "media", "editorial", "kde"]
     fields = [
@@ -82,3 +83,7 @@ class Deadline10_repositoryInstaller(Plugin):
             f" --set start_service=true",
             shell=True
         )
+        time.sleep(45)
+
+
+

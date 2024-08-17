@@ -5,6 +5,7 @@ metadata:
 data:
   run_webservice.sh: |
     #!/bin/bash
+    hostname deadline-server
     mono --version
     ulimit -u unlimited
     export DEADLINE_PATH=/apps/deadline10/client
