@@ -83,7 +83,7 @@ class Deadline10_repositoryInstaller(Plugin):
             f" --set start_service=true",
             shell=True
         )
-        time.sleep(45)
+        time.sleep(90)
 
 
 
