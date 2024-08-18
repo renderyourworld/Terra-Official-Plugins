@@ -21,9 +21,10 @@ spec:
       nodeSelector:
         junovfx/node: service
 
+      hostname: deadline-server
+
       containers:
         - name: d10container-webservice
-          hostname: deadline-server
           image: mono:latest
           command: [ "/script/run_webservice.sh" ]
           # command: ["sh", "-c", "tail -f /dev/null"]

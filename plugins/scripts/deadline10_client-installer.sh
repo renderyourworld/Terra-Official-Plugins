@@ -1,7 +1,7 @@
 echo "Installing $1"
 echo $2
 installers=/tmp/deadline10_installers
-#wget -q -O /tmp/Deadline-10.3.2.1-linux-installers.tar "$1"
+wget -q -O /tmp/Deadline-10.3.2.1-linux-installers.tar "$1"
 chmod +x /tmp/Deadline-10.3.2.1-linux-installers.tar
 mkdir -p $installers
 tar -xvf /tmp/Deadline-10.3.2.1-linux-installers.tar -C $installers

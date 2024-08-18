@@ -47,7 +47,7 @@ COPY terra terra
 COPY plugins /opt/official-plugins/plugins/
 COPY tests tests
 
-COPY Deadline-10.3.2.1-linux-installers.tar /tmp/Deadline-10.3.2.1-linux-installers.tar
+#COPY Deadline-10.3.2.1-linux-installers.tar /tmp/Deadline-10.3.2.1-linux-installers.tar
 #COPY .apps/syntheys24.tar.gz /apps/syntheys241.tar.gz
 
 CMD sh tests/run_tests.sh
