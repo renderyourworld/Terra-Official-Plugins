@@ -11,10 +11,6 @@ spec:
   selector:
     matchLabels:
       app: deadline-server
-  ports:
-    - protocol: TCP
-      port: 8081
-      targetPort: 8081
   template:
     metadata:
       annotations:
@@ -39,6 +35,13 @@ spec:
 #              subPath: deadline.ini
             - name: apps
               mountPath: /apps
+          ports:
+            - name: "enpoint"
+              containerPort: 8080
+              protocol: TCP
+            - name: "rest"
+              containerPort: 8081
+              protocol: TCP
       volumes:
         - name: apps
           hostPath:

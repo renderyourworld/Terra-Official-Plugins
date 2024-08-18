@@ -19,7 +19,7 @@ class Deadline10_repositoryInstaller(Plugin):
 
     _alias_ = "Deadline10_repository Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/deadline10repository.png?raw=true"
-    description = "Deadline10 repository, client and service installer. Long install time - 10 minutes."
+    description = "Deadline 10.3.2.1. The plugin will install the repository, client and web service. Long install time - 10 minutes."
     category = "Rendering Management"
     tags = ["deadline10_repository", "editor", "media", "editorial", "kde"]
     fields = [
