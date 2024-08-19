@@ -39,6 +39,7 @@ class Plugin:
         """
         return {"name": name, "description": description, "required": required}
 
+
     def update_metadata(self, metadata: dict) -> None:  # pragma: no cover
         """
         Update install metadata
@@ -60,14 +61,19 @@ class Plugin:
             name = self.__class__.__name__
         self.logger.info(f"Initializing {name} Plugin")
 
+
     def run(self, allow_failure=True, *args, **kwargs) -> None:  # pragma: no cover
         """
         Initialize the Plugin
         """
+        _metadata = self.__dict__
         try:
             preflight = self.preflight(*args, **kwargs)
             if preflight or preflight is None:
                 self.install(*args, **kwargs)
+
+                self.logger.info("Metadata: ".format(_metadata))
+                self.update_metadata(_metadata)
         except Exception as error:
             self.logger.error(f"Error: {error}")
             self.logger.error(format_exc())
