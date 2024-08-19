@@ -1,26 +1,26 @@
-echo "Installing $1"
-echo $2
-installers=/tmp/deadline10_installers
-wget -q -O /tmp/Deadline-10.3.2.1-linux-installers.tar "$1"
-chmod +x /tmp/Deadline-10.3.2.1-linux-installers.tar
-mkdir -p $installers
-tar -xvf /tmp/Deadline-10.3.2.1-linux-installers.tar -C $installers
+installers=/apps/tmp/deadline10_installers
+echo "Installing Deadline 10 Client from $installers to $2"
 
-ls -la $installers
+# create client directory
+mkdir -p $2/client
 
-mkdir -p /apps/deadline10
-mkdir -p /apps/deadline10/client
-
+# permissions
 chmod +x $installers/DeadlineClient-10.3.2.1-linux-x64-installer.run
+
+# install the client
 $installers/DeadlineClient-10.3.2.1-linux-x64-installer.run \
       --debuglevel 4 \
       --mode unattended \
-      --prefix /apps/deadline10/client \
-      --repositorydir /apps/deadline10/repository \
+      --prefix $2/client \
+      --repositorydir $2/repository \
       --connectiontype Direct
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-cp -v "$SCRIPT_DIR/deadline.ini" /apps/deadline10/client/deadline.ini
-chmod -R 777 /apps/deadline10/client
+cp -v "$SCRIPT_DIR/deadline.ini" $2/client/deadline.ini
 
-ls /apps/deadline10/client
+# permissions
+chmod -R 777 $2/client
+
+# cleanup
+echo "Cleaning up ..."
+rm -rf $installers

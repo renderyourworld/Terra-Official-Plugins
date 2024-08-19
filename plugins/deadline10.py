@@ -1,25 +1,25 @@
 """
-Installer for Deadline10_repository on linux systems.
+Installer for Deadline10 on linux systems.
 """
 
 # std
 import os
 import time
 from subprocess import run
-
+import pathlib
 
 # 3rd
 from terra import Plugin
 
 
-class Deadline10_repositoryInstaller(Plugin):
+class Deadline10Installer(Plugin):
     """
-    deadline10_repository installer plugin.
+    Deadline10 repository, client and webservice installer plugin.
     """
 
-    _alias_ = "Deadline10_repository Installer"
+    _alias_ = "Deadline10 Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/deadline10repository.png?raw=true"
-    description = "Deadline 10.3.2.1. The plugin will install the repository, client and web service. Long install time - 10 minutes."
+    description = "Deadline 10.3.2.1. The plugin will install the repository, client and web service. Long install times expected."
     category = "Rendering Management"
     tags = ["deadline10_repository", "editor", "media", "editorial", "kde"]
     fields = [
@@ -51,38 +51,65 @@ class Deadline10_repositoryInstaller(Plugin):
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         charts_directory = os.path.abspath(f"{__file__}/../charts")
         self.logger.info(f"Loading scripts from {scripts_directory}")
-        # do helm install
 
+        # setup files
+        run(
+            f"bash {scripts_directory}/deadline_setup_files.sh {charts_directory}/deadline/templates/configmap.yaml {pathlib.Path(self.destination).as_posix()}",
+            shell=True
+        )
+
+        # do helm install
         run(
             f"helm upgrade -i deadline10 {charts_directory}/deadline/  "
             f" --set start_service=false",
             shell=True
         )
-        time.sleep(60)
+
+        # wait to settle
+        time.sleep(45)
+
+        # download deadline10
         if (
             run(
-                f"bash {scripts_directory}/deadline10_repository-installer.sh {self.download_url} {self.destination}",
+                f"bash {scripts_directory}/deadline10_downloader.sh {self.download_url} {self.destination}",
                 shell=True,
                 check=False
             ).returncode
             != 0
         ):
-            raise RuntimeError("Failed to install Deadline10_repository")
+            raise RuntimeError("Failed to downloade Deadline10 installer")
+        time.sleep(15)
+        # install deadline10 repository
         if (
             run(
-                f"bash {scripts_directory}/deadline10_client-installer.sh {self.download_url} {self.destination}",
+                f"bash {scripts_directory}/deadline10_repository-installer.sh {self.download_url} {pathlib.Path(self.destination).as_posix()}",
                 shell=True,
                 check=False
             ).returncode
             != 0
         ):
-            raise RuntimeError("Failed to install Deadline10_repository")
+            raise RuntimeError("Failed to install Deadline10 repository")
+
+        time.sleep(15)
+        if (
+            run(
+                f"bash {scripts_directory}/deadline10_client-installer.sh {self.download_url} {pathlib.Path(self.destination).as_posix()}",
+                shell=True,
+                check=False
+            ).returncode
+            != 0
+        ):
+            raise RuntimeError("Failed to install Deadline10 client")
+
+        time.sleep(15)
         #  helm star service to flase
         run(
             f"helm upgrade -i deadline10 {charts_directory}/deadline/  "
             f" --set start_service=true",
             shell=True
         )
+
+        # wait to settle
         time.sleep(90)
 
 

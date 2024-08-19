@@ -6,21 +6,22 @@ import requests
 from terra.loaders import plugins
 
 
-def test_deadline10_repository():
+def test_deadline10():
     """
     Test deadline10_repository installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'Deadline10_repository Installer')
+    plugin = handler.get_plugin('plugin', 'Deadline10 Installer')
     assert plugin is not None
     handler.run_plugin(
         'plugin',
-        'Deadline10_repository Installer',
+        'Deadline10 Installer',
         allow_failure=False,
-        destination='/apps/deadline10/repository'
+        destination='/apps/deadline10'
     )
-    print("asdfasdfasfdasdfasfdfsda")
-    sleep(15)
-    response = requests.get("http://deadline-server:8081/", timeout=200)
+
+    sleep(200)
+    response = requests.get("http://deadline-server:8081/", timeout=600)
+    print(response)
     print(response.text)
     print(response.status_code)

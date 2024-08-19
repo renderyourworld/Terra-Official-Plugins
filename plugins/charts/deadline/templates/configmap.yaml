@@ -8,23 +8,15 @@ data:
     hostname deadline-server
     mono --version
     ulimit -u unlimited
-    export DEADLINE_PATH=/apps/deadline10/client
+    source DESTINATION/service/deadline_env.sh
+    export DEADLINE_PATH=DESTINATION/client
+    echo "----------------------------------------------------"
     echo "Starting up Terra service for: Deadline10 Webservice"
-    echo "---------------------------------------------"
+    echo "----------------------------------------------------"
     mkdir -p /var/lib/Thinkbox/
     mkdir -p /var/lib/Thinkbox/Deadline10
-    cp -v /apps/deadline10/service/deadline10.ini /var/lib/Thinkbox/Deadline10/deadline.ini
-    cd /apps/deadline10/client/bin/
+    cp -v $TERRA_DEADLINE_PATH/service/deadline10.ini /var/lib/Thinkbox/Deadline10/deadline.ini
+    cd $TERRA_DEADLINE_PATH/client/bin
     ./deadlinewebservice.exe 
     echo "Terra service for Deadline10 Webservice is running"
     # sh -c tail -f /dev/null
-
-  deadline.ini: |
-    [ Deadline ]
-    NetworkRoot=/apps/deadline10/repository
-    LaunchRemoteConnectionServerAtStartup=False
-    KeepRemoteConnectionServerRunning=False
-    NoGuiMode=True
-    LaunchSlaveAtStartup=False
-    LaunchWebServiceAtStartup=True
-    KeepWebServiceRunning=True
