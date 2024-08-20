@@ -7,7 +7,7 @@ PureRef - Simple and lightweight reference image viewer.
 import os
 from subprocess import run
 import requests
-
+from pathlib import Path
 # 3rd
 from terra import Plugin
 
@@ -72,14 +72,11 @@ class PureRefInstaller(Plugin):
             "url",
             "https://drive.google.com/file/d/1FBh5-xB7tZnrK6JuzjcKY5Fx7PVQf4pK",
         )
-        self.destination = kwargs.get("destination")
+        self.destination = Path(kwargs.get("destination")).as_posix()
 
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 
@@ -100,7 +97,7 @@ class PureRefInstaller(Plugin):
         if os.path.exists(file_destination):
             if (
                 run(
-                    f"bash {scripts_directory}/PureRef-installer.sh  {file_destination}  {self.destination}",
+                    f"bash {scripts_directory}/pureref-installer.sh  {file_destination}  {self.destination}",
                     shell=True,
                     check=False,
                 ).returncode
