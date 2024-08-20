@@ -1,3 +1,4 @@
+echo "Installing $1 to $2"
 wget -q -O /tmp/tlm.appimage "$1"
 chmod +x /tmp/tlm.appimage
 /tmp/tlm.appimage --appimage-extract > /dev/null
@@ -8,14 +9,11 @@ cp -v "$SCRIPT_DIR/tlm.sh" "$2/"
 chmod +x "$2/tlm.sh"
 
 # app icon setup
+cd $SCRIPT_DIR
 cp "../assets/tlm.png" "$2/tlm.png"
+echo "Adding desktop file"
+chmod +X create_desktop_file.py
+python3 create_desktop_file.py --app_name="Tlm" --version="1.0" --latest_path="$2"/tlm.sh --categories="tlm, processes" --destination="$2" --icon="$2"/tlm.png
+echo "Desktop file created."
 
-# desktop file setup
-echo "
-[Desktop Entry]
-Name=Tlm
-Exec=/bin/bash -x $2/tlm.sh
-Terminal=true
-Type=Application
-Categories=Apps
-Icon=$2/tlm.png" > "$2/tlm.desktop"
+cat $2/*.desktop
