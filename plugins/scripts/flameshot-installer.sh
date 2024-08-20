@@ -8,16 +8,11 @@ cp -v "$SCRIPT_DIR/flameshot.sh" "$2/"
 chmod +x "$2/flameshot.sh"
 
 # app icon setup
+cd $SCRIPT_DIR
 cp "../assets/flameshot.png" "$2/flameshot.png"
+echo "Adding desktop file"
+chmod +X create_desktop_file.py
+python3 create_desktop_file.py --app_name="Flameshot" --version="1.0" --latest_path="$2"/flameshot.sh --categories="flameshot, graphics, 2d" --destination="$2" --icon="$2"/flameshot.png
+echo "Desktop file created."
 
-# desktop file setup
-echo "
-[Desktop Entry]
-Name=Flameshot
-Exec=/bin/bash -x $2/flameshot.sh
-Terminal=true
-Type=Application
-Categories=Apps
-Icon=$2/flameshot.png" > "$2/flameshot.desktop"
-
-
+cat $2/*.desktop
