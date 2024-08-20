@@ -14,7 +14,7 @@ cd $SCRIPT_DIR
 cp ../assets/quixel_bridge.png "$2"/quixel_bridge.png
 echo "Adding desktop file"
 chmod +X create_desktop_file.py
-python3 create_desktop_file.py --app_name="Bridge" --version="1.0.7" --latest_path="$2"/quixel_bridge.sh --categories="quixel, bridge, quixel, texturing" --destination="$2" --icon="$2"/quixel_bridge.png
+python3 create_desktop_file.py --app_name="Bridge" --version="1.0.7" --latest_path="$2"/quixel_bridge.sh --categories="quixel, bridge, texturing" --destination="$2" --icon="$2"/quixel_bridge.png
 echo "Desktop file created."
 
 cat $2/*.desktop
