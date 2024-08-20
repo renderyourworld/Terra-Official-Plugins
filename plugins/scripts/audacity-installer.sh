@@ -7,15 +7,13 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp -v "$SCRIPT_DIR/audacity.sh" "$2/"
 chmod +x "$2/audacity.sh"
 
-# app icon setup
-cp "../assets/audacity.png" "$2/audacity.png"
 
-# desktop file setup
-echo "
-[Desktop Entry]
-Name=audacity
-Exec=/bin/bash -x $2/audacity.sh
-Terminal=true
-Type=Application
-Categories=Apps
-Icon=$2/audacity.png" > "$2/audacity.desktop"
+# app icon setup
+cd $SCRIPT_DIR
+cp "../assets/audacity.png" "$2/audacity.png"
+echo "Adding desktop file"
+chmod +X create_desktop_file.py
+python3 create_desktop_file.py --app_name="Audacity" --version="7.8" --latest_path="$2"/audacity.sh --categories="audio, audacity" --destination="$2" --icon="$2"/audacity.png
+echo "Desktop file created."
+
+cat $2/*.desktop
