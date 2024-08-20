@@ -5,7 +5,7 @@ Installer for Storyboard on linux systems.
 # std
 import os
 from subprocess import run
-
+from pathlib import Path
 # 3rd
 from terra import Plugin
 
@@ -34,14 +34,11 @@ class StoryboardInstaller(Plugin):
             "url",
             "https://github.com/wonderunit/storyboarder/releases/download/v3.0.0/Storyboarder-3.0.0-linux-x86_64.AppImage",
         )
-        self.destination = kwargs.get("destination")
+        self.destination = Path(kwargs.get("destination")).as_posix()
 
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 
