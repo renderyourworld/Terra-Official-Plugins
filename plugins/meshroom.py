@@ -5,6 +5,7 @@ Installer for meshroom on linux systems.
 # std
 import os
 from subprocess import run
+from pathlib import Path
 
 # 3rd
 from terra import Plugin
@@ -36,14 +37,11 @@ class MeshroomInstaller(Plugin):
             "url",
             "https://s3.eu-central-1.wasabisys.com/juno-deps/Meshroom-2023.3.0-linux.tar.gz",
         )
-        self.destination = kwargs.get("destination")
+        self.destination = Path(kwargs.get("destination")).as_posix()
 
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 
