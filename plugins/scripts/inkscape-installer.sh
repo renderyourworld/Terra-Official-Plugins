@@ -14,7 +14,7 @@ cd $SCRIPT_DIR
 cp "../assets/inkscape.png" "$2/inkscape.png"
 echo "Adding desktop file"
 chmod +X create_desktop_file.py
-python3 create_desktop_file.py --app_name="inkscape" --version="1.0" --latest_path="$2"/hdrmerge.sh --categories="inkscape, graphics, 2d" --destination="$2" --icon="$2"/inkscape.png
+python3 create_desktop_file.py --app_name="inkscape" --version="1.0" --latest_path="$2"/inkscape.sh --categories="inkscape, graphics, 2d" --destination="$2" --icon="$2"/inkscape.png
 echo "Desktop file created."
 
 cat $2/*.desktop
