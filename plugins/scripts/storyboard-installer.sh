@@ -1,3 +1,4 @@
+echo "Installing $1 to $2"
 wget -q -O /tmp/storyboard.appimage "$1"
 chmod +x /tmp/storyboard.appimage
 /tmp/storyboard.appimage --appimage-extract > /dev/null
@@ -8,14 +9,11 @@ cp -v "$SCRIPT_DIR/storyboard.sh" "$2/"
 chmod +x "$2/storyboard.sh"
 
 # app icon setup
+cd $SCRIPT_DIR
 cp "../assets/storyboard.png" "$2/storyboard.png"
+echo "Adding desktop file"
+chmod +X create_desktop_file.py
+python3 create_desktop_file.py --app_name="storyboard" --version="1.0" --latest_path="$2"/storyboard.sh --categories="storyboard, writing, screenplays" --destination="$2" --icon="$2"/storyboard.png
+echo "Desktop file created."
 
-# desktop file setup
-echo "
-[Desktop Entry]
-Name=PureRef
-Exec=/bin/bash -x $2/storyboard.sh
-Terminal=true
-Type=Application
-Categories=Apps
-Icon=$2/storyboard.png" > "$2/storyboard.desktop"
+cat $2/*.desktop

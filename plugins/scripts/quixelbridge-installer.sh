@@ -1,3 +1,4 @@
+echo "Installing $1 to $2"
 wget -q -O /tmp/quixelbridge.appimage "$1"
 chmod +x /tmp/quixelbridge.appimage
 /tmp/quixelbridge.appimage --appimage-extract > /dev/null
@@ -9,14 +10,12 @@ cp -v "$SCRIPT_DIR/quixel_bridge.sh" "$2/"
 chmod +x "$2/quixel_bridge.sh"
 
 # app icon setup
-cp "../assets/ms_bridge.png" "$2/quixel_bridge.png"
+cd $SCRIPT_DIR
+cp ../assets/quixel_bridge.png "$2"/quixel_bridge.png
+echo "Adding desktop file"
+chmod +X create_desktop_file.py
+python3 create_desktop_file.py --app_name="Bridge" --version="1.0.7" --latest_path="$2"/quixel_bridge.sh --categories="quixel, bridge, texturing" --destination="$2" --icon="$2"/quixel_bridge.png
+echo "Desktop file created."
 
-# desktop file setup
-echo "
-[Desktop Entry]
-Name=PureRef
-Exec=/bin/bash -x $2/quixel_bridge.sh
-Terminal=true
-Type=Application
-Categories=Apps
-Icon=$2/quixel_bridge.png" > "$2/quixel_bridge.desktop"
+cat $2/*.desktop
+

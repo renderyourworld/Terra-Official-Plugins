@@ -1,3 +1,4 @@
+echo "Installing $1 to $2"
 wget -q -O /tmp/xnview.appimage "$1"
 chmod +x /tmp/xnview.appimage
 /tmp/xnview.appimage --appimage-extract > /dev/null
@@ -8,14 +9,11 @@ cp -v "$SCRIPT_DIR/xnview.sh" "$2/"
 chmod +x "$2/xnview.sh"
 
 # app icon setup
+cd $SCRIPT_DIR
 cp "../assets/xnview.png" "$2/xnview.png"
+echo "Adding desktop file"
+chmod +X create_desktop_file.py
+python3 create_desktop_file.py --app_name="Xnview" --version="2022" --latest_path="$2"/xnview.sh --categories="xnview, viewer" --destination="$2" --icon="$2"/xnview.png
+echo "Desktop file created."
 
-# desktop file setup
-echo "
-[Desktop Entry]
-Name=XnView
-Exec=/bin/bash -x $2/xnview.sh
-Terminal=true
-Type=Application
-Categories=Apps
-Icon=$2/xnview.png" > "$2/xnview.desktop"
+cat $2/*.desktop

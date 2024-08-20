@@ -1,5 +1,5 @@
 """
-Tests for xnview
+Tests for obsidian installer.
 """
 from os import listdir
 from terra.loaders import plugins
@@ -7,7 +7,7 @@ from terra.loaders import plugins
 
 def test_obsidian():
     """
-    Test xnview installer.
+    Test obsidian installer.
     """
     handler = plugins()
     plugin = handler.get_plugin('plugin', 'Obsidian Installer')
