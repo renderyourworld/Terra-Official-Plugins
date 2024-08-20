@@ -5,7 +5,7 @@ Installer for krita on linux systems.
 # std
 import os
 from subprocess import run
-
+from pathlib import Path
 # 3rd
 from terra import Plugin
 
@@ -36,14 +36,10 @@ class KritaInstaller(Plugin):
             "url",
             "https://download.kde.org/stable/krita/5.2.3/krita-5.2.3-x86_64.appimage",
         )
-        self.destination = kwargs.get("destination")
-
+        self.destination = Path(kwargs.get("destination")).as_posix()
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 
