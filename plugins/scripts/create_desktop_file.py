@@ -18,7 +18,7 @@ Name={app_name} {version}
 Exec=terminator -x {latest_path}
 Terminal=true
 Type=Application
-Categories=Juno, {categories}
+Categories=X-Polaris
 Icon={icon}'''
 
     desktop_path = destination + "/" + app_name.lower()+ "_" + version + ".desktop"
