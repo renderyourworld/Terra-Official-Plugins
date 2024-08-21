@@ -1,2 +1,2 @@
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-$SCRIPT_DIR/"Instant Meshes"
+echo "Switching to squashfs-root directory"
+ROOT_APP/"Instant Meshes"

@@ -13,6 +13,7 @@ mv ./squashfs-root "$2/"
 echo "Setting up Obsidian"
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp -v "$SCRIPT_DIR/obsidian.sh" "$2"/obsidian.sh
+sed -i "s@ROOT_APP@$2@g" "$2/obsidian.sh"
 chmod +x "$2/obsidian.sh"
 
 # app icon setup

@@ -9,6 +9,7 @@ chmod -R 777 "$2"
 echo "Instant Meshes installed."
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp -v "$SCRIPT_DIR/instantmeshes.sh" "$2/"
+sed -i "s@ROOT_APP@$2@g" "$2/instantmeshes.sh"
 chmod +x "$2/instantmeshes.sh"
 
 # app icon setup
