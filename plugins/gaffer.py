@@ -33,7 +33,7 @@ class GafferInstaller(Plugin):
         # store on instance
         self.download_url = kwargs.get(
             "url",
-            "https://github.com/GafferHQ/gaffer/releases/download/1.4.10.0/gaffer-1.4.10.0-linux-gcc9.tar.gz",
+            "https://github.com/GafferHQ/gaffer/releases/download/1.4.11.0/gaffer-1.4.11.0-linux-gcc9.tar.gz",
         )
         self.destination = Path(kwargs.get("destination")).as_posix()
 

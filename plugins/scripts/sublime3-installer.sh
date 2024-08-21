@@ -3,7 +3,7 @@ echo "Installing Sublime3 $1 to $2"
 wget -q -O /tmp/meshroom.tar.gz "$1"
 tar vxjf /tmp/meshroom.tar.gz -C $2
 # Move the uncompressed files to an appropriate location.
-
+chmod -R 777 "$2/"
 install_dir=$2
 
 ls $install_dir

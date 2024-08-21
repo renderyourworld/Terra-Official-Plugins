@@ -9,7 +9,7 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp -v "$SCRIPT_DIR/hdrmerge.sh" "$2/"
 sed -i "s@ROOT_APP@$2@g" "$2/hdrmerge.sh"
 chmod +x "$2/hdrmerge.sh"
-
+chmod -R 777 "$2/"
 # app icon setup
 cd $SCRIPT_DIR
 cp "../assets/hdrmerge.png" "$2/hdrmerge.png"
