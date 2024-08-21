@@ -10,15 +10,19 @@ import click
 @click.option("--debug", default="None")
 @click.option("--destination", default="None")
 @click.option("--icon", default="None")
-def create_desktop_file(app_name=None, version=None, latest_path=None, categories=None, debug=None, destination=None, icon=None):
+def create_desktop_file(app_name=None, version=None, latest_path=None, categories=None, debug=None, destination=None, icon=None, terminal=None):
     """Create a desktop file for the application based on the provided arguments.
     """
+    if terminal:
+        terminator = "terminator -x "
+    else:
+        terminator = ""
     desktop_file = f'''[Desktop Entry]
 Name={app_name} {version}
-Exec=terminator -x {latest_path}
-Terminal=true
+Exec={terminator}{latest_path}
+Terminal=false
 Type=Application
-Categories=Juno, {categories}
+Categories=X-Polaris
 Icon={icon}'''
 
     desktop_path = destination + "/" + app_name.lower()+ "_" + version + ".desktop"

@@ -19,7 +19,7 @@ class BlenderInstaller(Plugin):
     icon = "https://download.blender.org/branding/community/blender_community_badge_white.png"
     description = "Blender is licensed as GNU GPL, owned by its contributors. For that reason Blender is Free and Open Source software, forever."
     category = "Media and Entertainment"
-    tags = ["3d", "animation", "media", "vfx", "blender", "visual effects"]
+    tags = ["3d", "animation", "vfx", "blender", "visual effects"]
     fields = [
         Plugin.field("version", "Version of Blender to install. i.e. 4.2.0", required=False),
         Plugin.field("destination", "Destination directory", required=True),

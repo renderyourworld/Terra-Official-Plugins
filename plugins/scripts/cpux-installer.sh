@@ -5,6 +5,7 @@ mv ./squashfs-root "$2/"
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp -v "$SCRIPT_DIR/cpux.sh" "$2/"
+sed -i "s@ROOT_APP@$2@g" "$2/cpux.sh"
 chmod +x "$2/cpux.sh"
 
 # app icon setup

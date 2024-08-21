@@ -20,7 +20,7 @@ class WpsofficeInstaller(Plugin):
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/wpsoffice.png?raw=true"
     description = "WPS Office Enable easier work within reach"
     category = "Media and Entertainment"
-    tags = ["wpsoffice", "office", "media", "editorial", "kde"]
+    tags = ["wpsoffice", "office", "media", "editorial"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),

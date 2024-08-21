@@ -17,7 +17,7 @@ class TlmInstaller(Plugin):
     _alias_ = "Tlm Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/tlm.png?raw=true"
     description = "Tool that mimics the permformance monitoring of windows task manager under linux"
-    category = "Media and Entertainment"
+    category = "Utility"
     tags = ["Tlm", "editor", "media", "editorial", "kde"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
