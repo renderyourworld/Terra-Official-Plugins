@@ -19,7 +19,7 @@ class StoryboardInstaller(Plugin):
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/storyboard.png?raw=true"
     description = "Storyboarder makes it easy to visualize a story as fast you can draw stick figures."
     category = "Media and Entertainment"
-    tags = ["Storyboard", "editor", "media", "editorial", "kde"]
+    tags = ["Storyboard", "editor"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),

@@ -6,6 +6,7 @@ mv ./squashfs-root "$2/"
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp -v "$SCRIPT_DIR/storyboard.sh" "$2/"
+sed -i "s@ROOT_APP@$2@g" "$2/storyboard.sh"
 chmod +x "$2/storyboard.sh"
 
 # app icon setup

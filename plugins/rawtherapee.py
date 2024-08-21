@@ -22,7 +22,7 @@ class RawtherapeeInstaller(Plugin):
         "RawTherapee is a powerful, cross-platform raw photo processing system."
     )
     category = "Media and Entertainment"
-    tags = ["Rawtherapee", "editor", "media", "editorial", "kde", "images", "photo"]
+    tags = ["Rawtherapee", "editor", "media", "editorial", "images", "photo"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),

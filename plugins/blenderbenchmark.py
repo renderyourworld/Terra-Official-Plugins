@@ -19,7 +19,7 @@ class BlenderbenchmarkInstaller(Plugin):
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/blenderbenchmark.png?raw=true"
     description = "Blenderbenchmark is an acronym for KDE Non-Linear Video Editor. It works on GNU/Linux, Windows and BSD."
     category = "Media and Entertainment"
-    tags = ["vfx", "editor", "media", "Blender", "benchmark", "kde"]
+    tags = ["vfx", "3d", "media", "blender", "benchmark"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
