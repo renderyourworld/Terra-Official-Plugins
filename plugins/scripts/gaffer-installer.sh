@@ -8,6 +8,7 @@ echo "Gaffer unpacked."
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp -v "$SCRIPT_DIR/gaffer.sh" "$2/"
 chmod +x "$2/gaffer.sh"
+chmod -R 777 "$2/"
 
 # app icon setup
 cd $SCRIPT_DIR

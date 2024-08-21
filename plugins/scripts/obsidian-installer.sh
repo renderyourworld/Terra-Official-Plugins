@@ -9,7 +9,7 @@ echo "Unpacking Obsidian"
 mkdir -p "$2"
 
 mv ./squashfs-root "$2/"
-
+chmod -R 777 "$2/"
 echo "Setting up Obsidian"
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp -v "$SCRIPT_DIR/obsidian.sh" "$2"/obsidian.sh

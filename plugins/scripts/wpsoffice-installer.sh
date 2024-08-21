@@ -5,7 +5,7 @@ chmod +x /tmp/wpsoffice.appimage
 mv ./squashfs-root "$2/"
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-
+chmod -R 777 "$2/"
 # app icon setup
 cd $SCRIPT_DIR
 cp ../assets/wpsoffice.png "$2"/wpsoffice.png

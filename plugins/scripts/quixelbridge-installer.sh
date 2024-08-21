@@ -8,7 +8,7 @@ chmod -R 777 $2
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp -v "$SCRIPT_DIR/quixel_bridge.sh" "$2/"
 chmod +x "$2/quixel_bridge.sh"
-
+chmod -R 777 "$2/"
 # app icon setup
 cd $SCRIPT_DIR
 cp ../assets/quixel_bridge.png "$2"/quixel_bridge.png
