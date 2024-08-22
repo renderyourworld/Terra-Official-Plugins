@@ -10,11 +10,11 @@ def test_blenderbenchmark():
     Test blenderbenchmark installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'Blenderbenchmark Installer')
+    plugin = handler.get_plugin('plugin', 'Blender Benchmark')
     assert plugin is not None
     handler.run_plugin(
         'plugin',
-        'Blenderbenchmark Installer',
+        'Blender Benchmark',
         allow_failure=False,
         destination='/apps/blenderbenchmark'
     )
