@@ -1,5 +1,5 @@
 """
-Installer for flameshot on linux systems.
+Installer for vlc on linux systems.
 """
 
 # std
@@ -11,16 +11,16 @@ from pathlib import Path
 from terra import Plugin
 
 
-class FlameshotInstaller(Plugin):
+class VlcInstaller(Plugin):
     """
-    Flameshot installer plugin.
+    vlc installer plugin.
     """
 
-    _alias_ = "Flameshot Installer"
-    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/flameshot.png?raw=true"
-    description = "Powerful, yet simple to use open-source screenshot software."
+    _alias_ = "Vlc Installer"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/vlc.png?raw=true"
+    description = "VideoLanClient aka VLC The Great Media Player"
     category = "Media and Entertainment"
-    tags = ["flameshot", "editor", "media", "editorial", "screenshot"]
+    tags = ["vlc", "video", "player", "kde"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
@@ -33,8 +33,10 @@ class FlameshotInstaller(Plugin):
         # store on instance
         self.download_url = kwargs.get(
             "url",
-            "https://github.com/flameshot-org/flameshot/releases/download/v12.1.0/Flameshot-12.1.0.x86_64.AppImage",
+            #"https://github.com/ivan-hc/VLC-appimage/releases/download/continuous/VLC-media-player_3.0.21-2-archimage3.4-x86_64.AppImage",
+            "https://github.com/ivan-hc/VLC-appimage/releases/download/3.0.19/VLC_media_player-3.0.19-20230721-with-plugins-x86_64.AppImage",
         )
+
         self.destination = Path(kwargs.get("destination")).as_posix()
 
         # validate
@@ -51,10 +53,10 @@ class FlameshotInstaller(Plugin):
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if (
             run(
-                f"bash {scripts_directory}/flameshot-installer.sh {self.download_url} {self.destination}",
+                f"bash {scripts_directory}/vlc-installer.sh {self.download_url} {self.destination}",
                 shell=True,
                 check=False,
             ).returncode
             != 0
         ):
-            raise RuntimeError("Failed to install flameshot")
+            raise RuntimeError("Failed to install vlc")

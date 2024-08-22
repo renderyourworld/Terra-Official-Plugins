@@ -20,6 +20,9 @@ echo "Adding desktop file"
 
 cp $install_dir/sublime_text_3/sublime_text.desktop $2/sublime_text.desktop
 sed -i "s@/opt/sublime_text@$2/sublime_text_3@g" $2/sublime_text.desktop
+sed -i "s@Categories=@Categories=X-Polaris;@g" $2/sublime_text.desktop
+sed -i "s@Icon=sublime-text@Icon=$2/sublime3.png@g" $2/sublime_text.desktop
+sed -i "s@GenericName=Text Editor@GenericName=Sublime 3 Text Editor@g" $2/sublime_text.desktop
 
 echo "Desktop file created."
 

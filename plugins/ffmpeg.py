@@ -1,5 +1,5 @@
 """
-Installer for blenderbenchmark on linux systems.
+Installer for ffmpeg on linux systems.
 """
 
 # std
@@ -11,16 +11,16 @@ from pathlib import Path
 from terra import Plugin
 
 
-class BlenderbenchmarkInstaller(Plugin):
+class FfmpegInstaller(Plugin):
     """
-    Blenderbenchmark installer plugin.
+    ffmpeg installer plugin.
     """
 
-    _alias_ = "Blender Benchmark"
-    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/blenderbenchmark.png?raw=true"
-    description = "Blender benchmark your system. Requires Blender to be installed."
-    category = "Media and Entertainment"
-    tags = ["vfx", "3d", "blender", "benchmark"]
+    _alias_ = "Ffmpeg Support"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/ffmpeg.png?raw=true"
+    description = "Ffmpeg is a complete, cross-platform solution to record, convert and stream audio and video."
+    category = "Utility"
+    tags = ["ffmpeg", "command line", "cli"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
@@ -33,9 +33,10 @@ class BlenderbenchmarkInstaller(Plugin):
         # store on instance
         self.download_url = kwargs.get(
             "url",
-            "https://opendata.blender.org/cdn/BlenderBenchmark2.0/script/blender-benchmark-script-2.0.0.tar.gz",
+            "ffmpeg",
         )
         self.destination = Path(kwargs.get("destination")).as_posix()
+
 
         # validate
         if not self.destination:
@@ -51,10 +52,10 @@ class BlenderbenchmarkInstaller(Plugin):
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if (
             run(
-                f"bash {scripts_directory}/blenderbenchmark-installer.sh {self.download_url} {self.destination}",
+                f"bash {scripts_directory}/ffmpeg-installer.sh {self.download_url} {self.destination}",
                 shell=True,
                 check=False,
             ).returncode
             != 0
         ):
-            raise RuntimeError("Failed to install Blenderbenchmark")
+            raise RuntimeError("Failed to install ffmpeg")

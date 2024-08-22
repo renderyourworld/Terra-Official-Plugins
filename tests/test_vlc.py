@@ -1,20 +1,20 @@
 """
-Tests for flameshot
+Tests for vlc
 """
 from os import listdir
 from terra.loaders import plugins
 
 
-def test_flameshot():
+def test_vlc():
     """
-    Test flameshot installer.
+    Test vlc installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'Flameshot Installer')
+    plugin = handler.get_plugin('plugin', 'Vlc Installer')
     assert plugin is not None
     handler.run_plugin(
         'plugin',
-        'Flameshot Installer',
+        'Vlc Installer',
         allow_failure=False,
-        destination='/apps/flameshot'
+        destination='/apps/vlc'
     )
