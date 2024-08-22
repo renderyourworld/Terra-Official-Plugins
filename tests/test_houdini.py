@@ -16,5 +16,7 @@ def test_houdini():
         'Houdini Installer',
         allow_failure=False,
         destination='/apps/houdini',
-        version='20.5.278'
+        version='20.0.668',
+        client_id='DJTcFgmhP6ctjL1bME58BBvZGHEWZQ5FhIzFRTnT',
+        client_secret='scNmefEt2B6qQEYyf9S78EOoLTzSRiAzFps5gJuZScrchZxiMKUawRi0SmiiadHlO65HYLb4A7ud9Yg8keWuxGyLu4bw3uWzZH8GVUfz4TPsFdgFGOj5MZHOE63LkO6Z'
     )

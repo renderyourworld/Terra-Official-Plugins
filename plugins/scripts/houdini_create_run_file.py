@@ -7,14 +7,15 @@ import click
 @click.option("--serverhost", default="None")
 @click.option("--path_runfile", default="None")
 @click.option("--debug", default="None")
-def create_sh_file(houdini_install_dir=None, houdini_version=None, serverhost=None, debug=None):
+def create_sh_file(houdini_install_dir=None, houdini_version=None, serverhost=None, path_runfile=None, debug=None):
     if debug:
         houdini_install_dir = "/home/des/_juno/Terra-Official-Plugins/.apps/houdini"
-        #path_runfile = "/home/des/_juno/Terra-Official-Plugins/.apps/houdini/run_houdini.sh"
+        path_runfile = "/home/des/_juno/Terra-Official-Plugins/.apps/houdini/run_houdini.sh"
         houdini_version = "20.0.668"
         serverhost = "None"
 
     houdini_version_short = houdini_version.split(".")[0]+"."+houdini_version.split(".")[1]
+
     houdini_run_file = f'''# setup user folder
 echo "Setting up user folder"
 # check lates version linked for houdini
@@ -51,7 +52,7 @@ if [ ! -f $houdini_in_home_folder/houdini.env ]; then
 houdini_python={houdini_install_dir}/$houdini_version/houdini-$houdini_version/python/lib/python3.10/site-packages
 export PYTHONPATH="$PYTHONPATH:{houdini_install_dir}/$houdini_version/houdini-$houdini_version/houdini/python310/lib/site-packages"
 
-pushd HOUDINI_INSTALLED_PATH/$houdini_version/houdini-$houdini_version
+cd HOUDINI_INSTALLED_PATH/$houdini_version/houdini-$houdini_version
 source houdini_setup
 houdini
 '''
