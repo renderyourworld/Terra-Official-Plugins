@@ -10,6 +10,7 @@ import click
 @click.option("--debug", default="None")
 @click.option("--destination", default="None")
 @click.option("--icon", default="None")
+@click.option("--terminal", default="None")
 def create_desktop_file(app_name=None, version=None, latest_path=None, categories=None, debug=None, destination=None, icon=None, terminal=None):
     """Create a desktop file for the application based on the provided arguments.
     """
