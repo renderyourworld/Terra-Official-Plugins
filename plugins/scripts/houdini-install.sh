@@ -83,10 +83,10 @@ cd $3 && echo $PWD
 for i in *.desktop;
 do
   echo "$i"
-  sed -i "s/Categories=.*/Ccategories=X-Houdini;X-Polaris/g" $i
+  sed -i "s/Categories=.*/Categories=X-Houdini;X-Polaris/g" $i
 done
-mkdir -p $houdini_install_dir/sesi
-cp -r /usr/lib/sesi $houdini_install_dir
+#mkdir -p $houdini_install_dir/sesi
+#cp -r /usr/lib/sesi $houdini_install_dir
 
 echo "Create Houdini Version sh file $houdini_install_version"
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
