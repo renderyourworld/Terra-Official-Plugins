@@ -16,5 +16,5 @@ def test_houdini():
         'Houdini Installer',
         allow_failure=False,
         destination='/apps/houdini',
-        version='20.5.278'
+        version='20.0.668',
     )
