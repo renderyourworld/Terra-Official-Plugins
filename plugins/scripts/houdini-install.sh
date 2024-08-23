@@ -1,7 +1,9 @@
 echo "Installing $1 - $2  $3"
 
 echo "Setting up prequesites"
-apt-get install bc -y
+apt update -y
+apt install apt-utils -y
+apt install bc sudo -y
 python3 -m venv venv
 source venv/bin/activate
 pip3 install requests
@@ -60,19 +62,26 @@ export $(cat $hou_installer_folder/houdini.install | grep 'LICENSE_DATE=' | tr -
 echo "License Date:" $LICENSE_DATE
 
 cd $hou_installer_folder
-./houdini.install --auto-install --no-install-menus --install-sidefxlabs --sidefxlabs-dir $houdini_install_dir --no-install-hfs-symlink --no-root-check \
+# sed -i "s@sudo @@g" hqueue.install
+mkdir -p $3/hq_server $3/hq_client $3/hqueue_shared
+chmod -R 777 $3/hq_server $3/hq_client $3/hqueue_shared
+
+# --install-hqueue-client --hqueue-client-dir $3/hq_client --hqueue-server-name "hq-server" --hqueue-client-user "polaris-render-node" \
+
+./houdini.install --auto-install --install-menus --install-sidefxlabs --sidefxlabs-dir $houdini_install_dir --no-install-hfs-symlink --no-root-check \
 --no-install-bin-symlink \
---install-hqueue-server --hqueue-server-dir $3/hq_server --hqueue-shared-dir $3/hqueue_shared \
---install-hqueue-client --hqueue-client-dir $3/hq_client --hqueue-server-name "hq-server" \
---license-server-name $SESI_HOST --no-install-license --accept-EULA $LICENSE_DATE \
---make-dir $houdini_install_dir --make-dir $3/hq_server --make-dir $3/hq_client --make-dir $3/hqueue_shared\
+--install-hqueue-server --hqueue-server-dir $3/hq_server --hqueue-shared-dir $3/hqueue_shared --hqueue-server-port 45000 \
+--license-server-name $SESI_HOST --install-license --accept-EULA $LICENSE_DATE \
+--make-dir $houdini_install_dir \
 --install-dir $houdini_install_dir > $3/houdini_install.log
 
+# save stuff from install
+cp -r $HOME/.local/share/applications/sesi_*.desktop $3
+mkdir -p $houdini_install_dir/sesi
+cp -r /usr/lib/sesi $houdini_install_dir/sesi
 
 
 echo "Create Houdini Version sh file $houdini_install_version"
-
-
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cd $SCRIPT_DIR
 runner_file=$houdini_install_dir/run_houdini_"$houdini_install_version".sh
@@ -84,8 +93,7 @@ sed -i "s@ROOT_APP@$houdini_install_dir@g" $runner_file
 sed -i "s@APPVERSION@$HOUDINI_VERSION@g" $runner_file
 sed -i "s@APPBUILD@$HOUDINI_BUILD@g" $runner_file
 sed -i "s@APPSERVERHOST@$SESI_HOST@g" $runner_file
-chmod +x $2/$runner_file.sh
-chmod -R 777 $2/
+chmod +x $runner_file
 
 # app icon setup
 cp "../assets/houdini.png" "$houdini_install_dir/houdini.png"
