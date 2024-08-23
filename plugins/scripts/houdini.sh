@@ -17,6 +17,12 @@ if [ ! -f $houdini_in_home_folder/houdini.env ]; then
     echo "HOUDINI_SPLASH_FILE=$houdini_install_dir/splashscreen.png" >> $houdini_in_home_folder/houdini.env
     echo "HOUDINI_SPLASH_MESSAGE='Welcome $USER @ $HOSTNAME $houdini_version'" >> $houdini_in_home_folder/houdini.env
     echo "HOUDINI_PACKAGE_VERBOSE=1" >> $houdini_in_home_folder/houdini.env
+    echo "HOUDINI_OCL_DEVICETYPE=CPU" >> $houdini_in_home_folder/houdini.env
+    echo "HOUDINI_USE_HFS_OCL=1" >> $houdini_in_home_folder/houdini.env
+    echo "HOUDINI_HSERVER_USE_HTTP=1" >> $houdini_in_home_folder/houdini.env
+    echo "HOUDINI_ENABLE_EXR_TEXTURE=1" >> $houdini_in_home_folder/houdini.env
+    echo "OPENIMAGEIO_IMAGECACHE_OPTIONS=max_memory_MB=5120.0,max_open_files=500" >> $houdini_in_home_folder/houdini.env
+
     #echo "HOUDINI_DISABLE_SIDEFX_PACKAGES=0" >> $houdini_in_home_folder/houdini.env
 
     # add more env VARS here
@@ -31,10 +37,12 @@ if [ ! -f $houdini_in_home_folder/houdini.env ]; then
     chown -R $USER:$USER $houdini_in_home_folder
 
     echo "User prefs for Houdini installed."
-
+fi
 houdini_python=$houdini_install_dir/python/lib/python3.10/site-packages
 export PYTHONPATH="$PYTHONPATH":"$houdini_install_dir"/houdini/python310/lib/site-packages
 
-cd $houdini_install_dir
-source houdini_setup
-houdini
+cd "$houdini_install_dir"
+echo "In $houdini_install_dir"
+ls
+"$houdini_install_dir"/houdini_setup_bash
+"$houdini_install_dir"/bin/houdini-bin

@@ -60,58 +60,39 @@ export $(cat $hou_installer_folder/houdini.install | grep 'LICENSE_DATE=' | tr -
 echo "License Date:" $LICENSE_DATE
 
 cd $hou_installer_folder
-./houdini.install --auto-install --install-menus --install-sidefxlabs --no-install-hfs-symlink --no-root-check  --no-install-bin-symlink --license-server-name $SESI_HOST --no-install-license --accept-EULA $LICENSE_DATE --make-dir $houdini_install_dir --install-dir $houdini_install_dir > $3/houdini_install.log
+./houdini.install --auto-install --no-install-menus --install-sidefxlabs --sidefxlabs-dir $houdini_install_dir --no-install-hfs-symlink --no-root-check \
+--no-install-bin-symlink \
+--install-hqueue-server --hqueue-server-dir $3/hq_server --hqueue-shared-dir $3/hqueue_shared \
+--install-hqueue-client --hqueue-client-dir $3/hq_client --hqueue-server-name "hq-server" \
+--license-server-name $SESI_HOST --no-install-license --accept-EULA $LICENSE_DATE \
+--make-dir $houdini_install_dir --make-dir $3/hq_server --make-dir $3/hq_client --make-dir $3/hqueue_shared\
+--install-dir $houdini_install_dir > $3/houdini_install.log
 
 
 
 echo "Create Houdini Version sh file $houdini_install_version"
-runner_file=$houdini_install_dir/run_houdini_"$houdini_install_version".sh
+
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cd $SCRIPT_DIR
+runner_file=$houdini_install_dir/run_houdini_"$houdini_install_version".sh
 
 # setup splashscreen
 cp houdini_splashscreen.png $houdini_install_dir/splashscreen.png
-
-cp -v "$SCRIPT_DIR/houdini.sh" $runner_file
-
+cp -v $SCRIPT_DIR/houdini.sh $runner_file
 sed -i "s@ROOT_APP@$houdini_install_dir@g" $runner_file
 sed -i "s@APPVERSION@$HOUDINI_VERSION@g" $runner_file
 sed -i "s@APPBUILD@$HOUDINI_BUILD@g" $runner_file
 sed -i "s@APPSERVERHOST@$SESI_HOST@g" $runner_file
-chmod +x "$2/$runner_file.sh"
-chmod -R 777 "$2/"
+chmod +x $2/$runner_file.sh
+chmod -R 777 $2/
+
 # app icon setup
-
 cp "../assets/houdini.png" "$houdini_install_dir/houdini.png"
-
 echo "Adding desktop file"
 chmod +X create_desktop_file.py
-python3 create_desktop_file.py --app_name="Houdini" --version=$houdini_install_version --latest_path=$runner_file --categories="houdini, 3d" --destination=$houdini_install_dir --icon="$houdini_install_dir/houdini.png"
+python3 create_desktop_file.py --app_name="Houdini" --version=$houdini_install_version --latest_path=$runner_file --categories="houdini, 3d" --destination=$houdini_install_dir --icon=$houdini_install_dir/houdini.png
 echo "Desktop file created."
-
-cat $2/*.desktop
-
+chmod -R 777 $3/
 
 
-
-chmod -R 777 $3
-echo "more list"
-ls $houdini_install_dir
-
-
-
-
-
-
-#
-## LINK IT!
-#ls /apps/houdini/
-#chmod -R 777 /apps/houdini/
-#latestlink="$houdini_install_dir"/latest
-#echo "Link: latest -> $houdini_install_version"
-#echo "Linking $runner_file to $latestlink"
-#ln -sfv $runner_file latestlink
-#chmod +x $runner_file
-#echo "Link to latest created."
-#
