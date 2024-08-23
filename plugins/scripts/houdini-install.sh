@@ -1,9 +1,7 @@
 echo "Installing $1 - $2  $3"
 
 echo "Setting up prequesites"
-apt update -y
-apt install apt-utils -y
-apt install bc sudo -y
+apt-get install bc -y
 python3 -m venv venv
 source venv/bin/activate
 pip3 install requests
