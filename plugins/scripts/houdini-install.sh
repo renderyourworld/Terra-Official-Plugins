@@ -67,19 +67,28 @@ mkdir -p $3/hq_server $3/hq_client $3/hqueue_shared
 chmod -R 777 $3/hq_server $3/hq_client $3/hqueue_shared
 
 # --install-hqueue-client --hqueue-client-dir $3/hq_client --hqueue-server-name "hq-server" --hqueue-client-user "polaris-render-node" \
+# --install-hqueue-server --hqueue-server-dir $3/hq_server --hqueue-shared-dir $3/hqueue_shared --hqueue-server-port 45000 \
 
 ./houdini.install --auto-install --install-menus --install-sidefxlabs --sidefxlabs-dir $houdini_install_dir --no-install-hfs-symlink --no-root-check \
 --no-install-bin-symlink \
---install-hqueue-server --hqueue-server-dir $3/hq_server --hqueue-shared-dir $3/hqueue_shared --hqueue-server-port 45000 \
---license-server-name $SESI_HOST --install-license --accept-EULA $LICENSE_DATE \
+--license-server-name $SESI_HOST --no-install-license --accept-EULA $LICENSE_DATE \
 --make-dir $houdini_install_dir \
 --install-dir $houdini_install_dir > $3/houdini_install.log
 
+
 # save stuff from install
 cp -r $HOME/.local/share/applications/sesi_*.desktop $3
-mkdir -p $houdini_install_dir/sesi
-cp -r /usr/lib/sesi $houdini_install_dir/sesi
 
+shopt -s nullglob
+cd $3 && echo $PWD
+# rewrite categories for XDG comaptibility
+for i in *.desktop;
+do
+  echo "$i"
+  sed -i "s/Categories=.*/Ccategories=X-Houdini;X-Polaris/g" $i
+done
+mkdir -p $houdini_install_dir/sesi
+cp -r /usr/lib/sesi $houdini_install_dir
 
 echo "Create Houdini Version sh file $houdini_install_version"
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
