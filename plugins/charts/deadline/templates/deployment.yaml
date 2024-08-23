@@ -34,8 +34,8 @@ spec:
 #            - name: script
 #              mountPath: /var/lib/Thinkbox/Deadline10/deadline.ini
 #              subPath: deadline.ini
-            - name: apps
-              mountPath: /apps
+            - name: client
+              mountPath: {{ .Values.destination }}
           ports:
             - name: "enpoint"
               containerPort: 8080
@@ -44,10 +44,9 @@ spec:
               containerPort: 8081
               protocol: TCP
       volumes:
-        - name: apps
-          hostPath:
-            path: /apps
-            type: Directory
+        - name: client
+          persistentVolumeClaim:
+            claimName: {{ .Values.claim_name }}
         - name: script
           configMap:
             name: d10webservice-configmap

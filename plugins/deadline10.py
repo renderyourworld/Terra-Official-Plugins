@@ -24,6 +24,7 @@ class Deadline10Installer(Plugin):
     tags = ["deadline10_repository", "editor", "media", "editorial", "kde"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
+        Plugin.field("install_volume", "The name of the install volume", required=True),
         Plugin.field("destination", "Destination directory", required=True),
     ]
 
@@ -34,6 +35,7 @@ class Deadline10Installer(Plugin):
         # store on instance
         self.download_url = "https://thinkbox-installers.s3.us-west-2.amazonaws.com/Releases/Deadline/10.3/7_10.3.2.1/Deadline-10.3.2.1-linux-installers.tar"
         self.destination = kwargs.get("destination")
+        self.install_volume = kwargs.get("install_volume")
 
         # validate
         if not self.destination:
@@ -105,7 +107,8 @@ class Deadline10Installer(Plugin):
         #  helm star service to flase
         run(
             f"helm upgrade -i deadline10 {charts_directory}/deadline/  "
-            f" --set start_service=true",
+            f" --set start_service=true --set claim_name={self.install_volume}"
+            f" --set destination={pathlib.Path(self.destination).as_posix()}",
             shell=True
         )
 
