@@ -43,6 +43,9 @@ spec:
             - name: "rest"
               containerPort: 8081
               protocol: TCP
+          volumeMounts:
+            - name: local-apps
+              mountPath: /apps
       volumes:
         - name: client
           persistentVolumeClaim:
@@ -51,4 +54,8 @@ spec:
           configMap:
             name: d10webservice-configmap
             defaultMode: 0500
+        - name: local-apps
+          hostPath:
+            path: .apps
+            type: Directory
 {{- end}}
