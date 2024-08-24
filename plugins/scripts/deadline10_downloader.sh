@@ -6,7 +6,7 @@ mkdir -p $installers
 
 if [ "$DEV_APPS_DEBUG" = true ]
 then
-  cp Deadline-10.3.2.1-linux-installers.tar /tmp/Deadline-10.3.2.1-linux-installers.tar
+  echo "Dev Apps Debug is enabled - deadline copied with docker"
 else
   # download the installer
   wget -q -O /tmp/Deadline-10.3.2.1-linux-installers.tar "$1"
