@@ -22,7 +22,7 @@ class FirefoxInstaller(Plugin):
     category = "Media and Entertainment"
     tags = ["firefox", "web","browser"]
     fields = [
-        Plugin.field("url", "Download URL", required=False),
+        Plugin.field("destination", "Destination", required=True),
     ]
 
     def preflight(self, *args, **kwargs) -> bool:
