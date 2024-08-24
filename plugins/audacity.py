@@ -5,6 +5,7 @@ Installer for Audacity on linux systems.
 # std
 import os
 from subprocess import run
+from pathlib import Path
 
 # 3rd
 from terra import Plugin
@@ -18,7 +19,7 @@ class AudacityInstaller(Plugin):
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/audacity.png?raw=true"
     description = "Audacity is the world's most popular audio editing and recording app."
     category = "Media and Entertainment"
-    tags = ["Audacity", "editor", "media", "audio", "kde"]
+    tags = ["Audacity", "editor", "media", "audio", "sound"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
@@ -33,14 +34,11 @@ class AudacityInstaller(Plugin):
             "url",
             "https://github.com/audacity/audacity/releases/download/Audacity-3.6.1/audacity-linux-3.6.1-x64.AppImage",
         )
-        self.destination = kwargs.get("destination")
+        self.destination = Path(kwargs.get("destination")).as_posix()
 
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 

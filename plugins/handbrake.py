@@ -1,25 +1,26 @@
 """
-Installer for Storyboard on linux systems.
+Installer for handbrake on linux systems.
 """
 
 # std
 import os
 from subprocess import run
+from pathlib import Path
 
 # 3rd
 from terra import Plugin
 
 
-class StoryboardInstaller(Plugin):
+class HandbrakeInstaller(Plugin):
     """
-    Storyboard installer plugin.
+    Handbrake installer plugin.
     """
 
-    _alias_ = "Storyboard Installer"
-    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/storyboard.png?raw=true"
-    description = "Storyboarder makes it easy to visualize a story as fast you can draw stick figures."
-    category = "Media and Entertainment"
-    tags = ["Storyboard", "editor", "media", "editorial", "kde"]
+    _alias_ = "Handbrake Installer"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/handbrake.png?raw=true"
+    description = "Hanbrake video converter"
+    category = "Utility"
+    tags = ["handbrake", "convert", "media", "video", "sequences"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
@@ -32,16 +33,14 @@ class StoryboardInstaller(Plugin):
         # store on instance
         self.download_url = kwargs.get(
             "url",
-            "https://github.com/wonderunit/storyboarder/releases/download/v3.0.0/Storyboarder-3.0.0-linux-x86_64.AppImage",
+            "https://github.com/ivan-hc/Handbrake-appimage/releases/download/continuous/HandBrake_1.8.2-1-archimage3.4-x86_64.AppImage",
         )
-        self.destination = kwargs.get("destination")
+        self.destination = Path(kwargs.get("destination")).as_posix()
+
 
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 
@@ -53,10 +52,10 @@ class StoryboardInstaller(Plugin):
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if (
             run(
-                f"bash {scripts_directory}/storyboard-installer.sh {self.download_url} {self.destination}",
+                f"bash {scripts_directory}/handbrake-installer.sh {self.download_url} {self.destination}",
                 shell=True,
                 check=False,
             ).returncode
             != 0
         ):
-            raise RuntimeError("Failed to install Storyboard")
+            raise RuntimeError("Failed to install handbrake")

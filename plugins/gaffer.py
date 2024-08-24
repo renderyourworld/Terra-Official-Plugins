@@ -5,6 +5,7 @@ Installer for gaffer on linux systems.
 # std
 import os
 from subprocess import run
+from pathlib import Path
 
 # 3rd
 from terra import Plugin
@@ -32,16 +33,13 @@ class GafferInstaller(Plugin):
         # store on instance
         self.download_url = kwargs.get(
             "url",
-            "https://github.com/GafferHQ/gaffer/releases/download/1.4.10.0/gaffer-1.4.10.0-linux-gcc9.tar.gz",
+            "https://github.com/GafferHQ/gaffer/releases/download/1.4.11.0/gaffer-1.4.11.0-linux-gcc9.tar.gz",
         )
-        self.destination = kwargs.get("destination")
+        self.destination = Path(kwargs.get("destination")).as_posix()
 
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 

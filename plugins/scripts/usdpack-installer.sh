@@ -3,3 +3,4 @@ wget -q -O /tmp/kitchen_scene.zip https://s3.eu-central-1.wasabisys.com/juno-dep
 chmod +x /tmp/usdpack.zip /tmp/kitchen_scene.zip
 unzip /tmp/usdpack.zip -d $2
 unzip /tmp/kitchen_scene.zip -d $2/demo_kitchen_scene
+chmod -R 777 "$2/"

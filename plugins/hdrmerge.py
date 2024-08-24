@@ -5,7 +5,7 @@ Installer for hdrmerge on linux systems.
 # std
 import os
 from subprocess import run
-
+from pathlib import Path
 # 3rd
 from terra import Plugin
 
@@ -34,14 +34,11 @@ class HdrmergeInstaller(Plugin):
             "url",
             "https://github.com/jcelaya/hdrmerge/releases/download/nightly/hdrmerge_release-v0.6_continuous-71-gd7d8041_20191220.AppImage",
         )
-        self.destination = kwargs.get("destination")
+        self.destination = Path(kwargs.get("destination")).as_posix()
 
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 
@@ -53,10 +50,10 @@ class HdrmergeInstaller(Plugin):
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if (
             run(
-                f"bash {scripts_directory}/kdenlive-installer.sh {self.download_url} {self.destination}",
+                f"bash {scripts_directory}/hdrmerge-installer.sh {self.download_url} {self.destination}",
                 shell=True,
                 check=False,
             ).returncode
             != 0
         ):
-            raise RuntimeError("Failed to install hdrmerge")
+            raise RuntimeError("Failed to install Hdrmerge")

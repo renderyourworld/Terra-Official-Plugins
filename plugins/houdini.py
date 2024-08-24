@@ -5,6 +5,7 @@ Handles installing Houdini by SideFX
 # std
 import os
 from subprocess import run
+from pathlib import Path
 
 # 3rd
 from terra import Plugin
@@ -33,9 +34,9 @@ class HoudiniInstaller(Plugin):
         """
         # store on instance
         self.version = kwargs.get("version")
-        self.destination = kwargs.get("destination")
         self.client_id = kwargs.get("client_id")
         self.client_secret = kwargs.get("client_secret")
+        self.destination = Path(kwargs.get("destination")).as_posix()
 
         assert self.client_secret
         assert self.client_id
@@ -47,12 +48,11 @@ class HoudiniInstaller(Plugin):
         assert self.version
         assert self.build
 
+
+
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 

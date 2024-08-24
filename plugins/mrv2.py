@@ -5,6 +5,7 @@ Handles installing Mrv2
 # std
 import os
 from subprocess import run
+from pathlib import Path
 
 # 3rd
 from terra import Plugin
@@ -43,14 +44,15 @@ class Mrv2Installer(Plugin):
         # store on instance
         # pylint:disable=attribute-defined-outside-init
         self.version = kwargs.get("version")
-        self.destination = kwargs.get("destination")
+        self.download_url = kwargs.get(
+            "url",
+            "https://github.com/ggarra13/mrv2/releases/download/v1.2.1/mrv2-v1.2.1-Linux-amd64.tar.gz",
+        )
+        self.destination = Path(kwargs.get("destination")).as_posix()
 
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 
@@ -63,7 +65,7 @@ class Mrv2Installer(Plugin):
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if (
             run(
-                f"bash {scripts_directory}/mrv2-installer.sh {self.version} {self.destination}",
+                f"bash {scripts_directory}/mrv2-installer.sh {self.download_url} {self.destination}",
                 shell=True,
                 check=False,
             ).returncode

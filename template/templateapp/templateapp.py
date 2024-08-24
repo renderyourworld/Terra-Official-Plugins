@@ -5,6 +5,7 @@ Installer for templateapp on linux systems.
 # std
 import os
 from subprocess import run
+from pathlib import Path
 
 # 3rd
 from terra import Plugin
@@ -16,7 +17,7 @@ class templateappInstaller(Plugin):
     """
 
     _alias_ = "templateapp Installer"
-    icon = "https://kdenlive.org/wp-content/uploads/2022/01/kdenlive-logo-blank-500px.png"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/handbrake.png?raw=true"
     description = "templateapp"
     category = "Media and Entertainment"
     tags = ["templateapp", "editor", "media", "editorial", "kde"]
@@ -34,14 +35,12 @@ class templateappInstaller(Plugin):
             "url",
             "templateapp",
         )
-        self.destination = kwargs.get("destination")
+        self.destination = Path(kwargs.get("destination")).as_posix()
+
 
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 

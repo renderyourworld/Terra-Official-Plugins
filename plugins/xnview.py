@@ -5,7 +5,7 @@ Installer for Xnview on linux systems.
 # std
 import os
 from subprocess import run
-
+from pathlib import Path
 # 3rd
 from terra import Plugin
 
@@ -18,7 +18,7 @@ class XnviewInstaller(Plugin):
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/xnview.png?raw=true"
     description = "XnView MP is a versatile and powerful photo viewer, image management, image resizer."
     category = "Media and Entertainment"
-    tags = ["Xnview", "editor", "media", "editorial", "kde"]
+    tags = ["Xnview", "editor", "media", "editorial", "photo"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
@@ -33,14 +33,11 @@ class XnviewInstaller(Plugin):
             "url",
             "https://download.xnview.com/XnView_MP.glibc2.17-x86_64.AppImage",
         )
-        self.destination = kwargs.get("destination")
+        self.destination = Path(kwargs.get("destination")).as_posix()
 
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 

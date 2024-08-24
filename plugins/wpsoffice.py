@@ -5,6 +5,7 @@ Installer for wpsoffice on linux systems.
 # std
 import os
 from subprocess import run
+from pathlib import Path
 
 # 3rd
 from terra import Plugin
@@ -19,7 +20,7 @@ class WpsofficeInstaller(Plugin):
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/wpsoffice.png?raw=true"
     description = "WPS Office Enable easier work within reach"
     category = "Media and Entertainment"
-    tags = ["wpsoffice", "office", "media", "editorial", "kde"]
+    tags = ["wpsoffice", "office", "media", "editorial"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
@@ -34,14 +35,11 @@ class WpsofficeInstaller(Plugin):
             "url",
             "https://github.com/area-of-dev/WPS-Office.AppImage/releases/download/latest/WPS-Office.AppImage",
         )
-        self.destination = kwargs.get("destination")
+        self.destination = Path(kwargs.get("destination")).as_posix()
 
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 

@@ -1,25 +1,26 @@
 """
-Installer for luminancehdr on linux systems.
+Installer for vlc on linux systems.
 """
 
 # std
 import os
 from subprocess import run
+from pathlib import Path
 
 # 3rd
 from terra import Plugin
 
 
-class LuminancehdrInstaller(Plugin):
+class VlcInstaller(Plugin):
     """
-    Kdenlive installer plugin.
+    vlc installer plugin.
     """
 
-    _alias_ = "Luminancehdr Installer"
-    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/luminancehdr.png?raw=true"
-    description = "Luminance HDR is an application for taking a set of pictures of the same scene with different exposure settings and creating a high dynamic range"
+    _alias_ = "Vlc Installer"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/vlc.png?raw=true"
+    description = "VideoLanClient aka VLC The Great Media Player"
     category = "Media and Entertainment"
-    tags = ["luminancehdr", "editor", "cg", "hdr", "vfx"]
+    tags = ["vlc", "video", "player", "kde"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
@@ -32,16 +33,15 @@ class LuminancehdrInstaller(Plugin):
         # store on instance
         self.download_url = kwargs.get(
             "url",
-            "https://github.com/aferrero2707/lhdr-appimage/releases/download/continuous/luminance-hdr-git-20200421_1638.glibc2.17-x86_64.AppImage",
+            #"https://github.com/ivan-hc/VLC-appimage/releases/download/continuous/VLC-media-player_3.0.21-2-archimage3.4-x86_64.AppImage",
+            "https://github.com/ivan-hc/VLC-appimage/releases/download/3.0.19/VLC_media_player-3.0.19-20230721-with-plugins-x86_64.AppImage",
         )
-        self.destination = kwargs.get("destination")
+
+        self.destination = Path(kwargs.get("destination")).as_posix()
 
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 
@@ -53,10 +53,10 @@ class LuminancehdrInstaller(Plugin):
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if (
             run(
-                f"bash {scripts_directory}/luminancehdr-installer.sh {self.download_url} {self.destination}",
+                f"bash {scripts_directory}/vlc-installer.sh {self.download_url} {self.destination}",
                 shell=True,
                 check=False,
             ).returncode
             != 0
         ):
-            raise RuntimeError("Failed to install luminancehdr")
+            raise RuntimeError("Failed to install vlc")

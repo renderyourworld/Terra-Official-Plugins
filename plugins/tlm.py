@@ -5,7 +5,7 @@ Installer for tlm on linux systems.
 # std
 import os
 from subprocess import run
-
+from pathlib import Path
 # 3rd
 from terra import Plugin
 
@@ -17,7 +17,7 @@ class TlmInstaller(Plugin):
     _alias_ = "Tlm Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/tlm.png?raw=true"
     description = "Tool that mimics the permformance monitoring of windows task manager under linux"
-    category = "Media and Entertainment"
+    category = "Utility"
     tags = ["Tlm", "editor", "media", "editorial", "kde"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
@@ -33,14 +33,11 @@ class TlmInstaller(Plugin):
             "url",
             "https://github.com/rejuce/LikeTaskManager/releases/download/v2.3/LikeTaskManager-x86_64.AppImage",
         )
-        self.destination = kwargs.get("destination")
+        self.destination = Path(kwargs.get("destination")).as_posix()
 
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 
