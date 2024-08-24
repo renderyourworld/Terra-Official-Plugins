@@ -17,7 +17,8 @@ def test_deadline10():
         'plugin',
         'Deadline10 Installer',
         allow_failure=False,
-        destination='/apps/deadline10'
+        destination='/apps/deadline10',
+        install_volume='apps'
     )
 
     sleep(200)

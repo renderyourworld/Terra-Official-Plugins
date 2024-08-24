@@ -63,7 +63,8 @@ class Deadline10Installer(Plugin):
         # do helm install
         run(
             f"helm upgrade -i deadline10 {charts_directory}/deadline/  "
-            f" --set start_service=false",
+            f" --set start_service=false --set claim_name={self.install_volume}"
+            f" --set destination={pathlib.Path(self.destination).as_posix()}",
             shell=True
         )
 
