@@ -1,7 +1,5 @@
 installers=/apps/tmp/deadline10_installers
-echo "Startying Deadline 10 repository installation:"
-echo $1
-echo $2
+echo "Startying Deadline 10 repository installation > $2"
 
 # create repository directories
 mkdir -p $installers
@@ -26,6 +24,7 @@ $installers/DeadlineRepository-10.3.2.1-linux-x64-installer.run \
       --dbhost deadline-mongo \
       --dbport 27017
       #--setpermissions true
+
 echo "Deadline 10 repository installed. Setting up ini files."
 # setup the repository
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
