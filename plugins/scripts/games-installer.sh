@@ -41,7 +41,7 @@ cd $SCRIPT_DIR
 cp "../assets/devilutionx.png" "$2/devilutionx.png"
 echo "Adding desktop file"
 chmod +X create_desktop_file.py
-python3 create_desktop_file.py --app_name="DevilutionX" --version="1.0" --latest_path=/apps/games/devilutionx.sh --categories="devilutionx, games" --destination=/apps/games --icon="$2"/devilutionx.png --terminal="True"
+python3 create_desktop_file.py --app_name="DevilutionX" --version="1.0" --latest_path=/apps/games/devilutionx.sh --categories="devilutionx, games" --destination=/apps/games --icon="$2"/devilutionx.png --terminal="False"
 echo "Desktop file created."
 chmod -R 777 "/apps/games/"
 cat $2/*.desktop
