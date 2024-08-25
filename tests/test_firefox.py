@@ -15,6 +15,5 @@ def test_firefox():
     handler.run_plugin(
         'plugin',
         'Firefox Browser',
-        allow_failure=False,
-        destination='/apps/firefox'
+        allow_failure=False
     )

@@ -18,12 +18,10 @@ class FirefoxInstaller(Plugin):
 
     _alias_ = "Firefox Browser"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/firefox.png?raw=true"
-    description = "Firefox web browser installer"
+    description = "Firefox web browser installer. This plugin installs in the /apps/firefox directory as default."
     category = "Media and Entertainment"
     tags = ["firefox", "web","browser"]
-    fields = [
-        Plugin.field("destination", "Destination", required=True),
-    ]
+    fields = []
 
     def preflight(self, *args, **kwargs) -> bool:
         """
@@ -32,7 +30,7 @@ class FirefoxInstaller(Plugin):
         # store on instance
         # firefox link is not from a rolling release
         self.download_url = "https://github.com/srevinsaju/Firefox-Appimage/releases/download/firefox-v129.0.r20240819150008/firefox-129.0.r20240819150008-x86_64.AppImage"
-        self.destination = Path(kwargs.get("destination")).as_posix()
+        self.destination = Path("/apps/firefox").as_posix()
 
         # validate
         if not self.destination:
