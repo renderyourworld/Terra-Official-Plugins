@@ -14,7 +14,7 @@ import click
 def create_desktop_file(app_name=None, version=None, latest_path=None, categories=None, debug=None, destination=None, icon=None, terminal=None):
     """Create a desktop file for the application based on the provided arguments.
     """
-    if terminal:
+    if terminal == "True":
         terminator = "terminator -x "
     else:
         terminator = ""

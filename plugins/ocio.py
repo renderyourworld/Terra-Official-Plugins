@@ -1,5 +1,5 @@
 """
-Installer for imagestacker on linux systems.
+Installer for ocio on linux systems.
 """
 
 # std
@@ -11,16 +11,16 @@ from pathlib import Path
 from terra import Plugin
 
 
-class ImagestackerInstaller(Plugin):
+class OcioInstaller(Plugin):
     """
-    Imagestacker installer plugin.
+    ocio installer plugin.
     """
 
-    _alias_ = "Imagestacker Installer"
-    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/imagestacker.png?raw=true"
-    description = "Automatically generate layered PSD/PSB Files from CG Renders with OCIO support and Cryptomatte decoding"
-    category = "Utility"
-    tags = ["imagestacker", "psd", "layer", "stack", "cli"]
+    _alias_ = "Ocio Installer"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/ocio.png?raw=true"
+    description = "Ccio configs installer"
+    category = "Media and Entertainment"
+    tags = ["ocio", "config", "color", "colour", "management"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
@@ -33,7 +33,7 @@ class ImagestackerInstaller(Plugin):
         # store on instance
         self.download_url = kwargs.get(
             "url",
-            "https://emildohne.com/wp-content/uploads/ImageStacker_1.0.0_Linux_x86.zip",
+            "ocio",
         )
         self.destination = Path(kwargs.get("destination")).as_posix()
 
@@ -51,10 +51,10 @@ class ImagestackerInstaller(Plugin):
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if (
             run(
-                f"bash {scripts_directory}/imagestacker-installer.sh {self.download_url} {self.destination}",
+                f"bash {scripts_directory}/ocio-installer.sh {self.download_url} {self.destination}",
                 shell=True,
                 check=False,
             ).returncode
             != 0
         ):
-            raise RuntimeError("Failed to install imagestacker")
+            raise RuntimeError("Failed to install ocio")

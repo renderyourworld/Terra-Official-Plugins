@@ -16,5 +16,5 @@ def test_blender():
         'Blender Installer',
         allow_failure=False,
         destination='/apps/blender',
-        version='4.2.0'
+        version='4.2.1'
     )

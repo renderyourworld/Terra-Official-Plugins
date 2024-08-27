@@ -7,9 +7,6 @@ tar -xzvf /tmp/blender-benchmark-script.tar.gz -C "$2"/ > /dev/null
 chmod +x /tmp/classroom.tar.bz2
 tar -xvjf /tmp/classroom.tar.bz2 -C "$2"/ > /dev/null
 
-ls "$2"/classroom
-ls "$2"/blender-benchmark-script-2.0.0
-
 echo "/apps/blender/latest --background \
   --factory-startup \
   -noaudio \
@@ -17,7 +14,7 @@ echo "/apps/blender/latest --background \
   --enable-autoexec \
   --engine \
   CYCLES \
-  ${2}/clasroom/main.blend \
+  ${2}/classroom/main.blend \
   --python \
   ${2}/blender-benchmark-script-2.0.0/main.py \
   -- \

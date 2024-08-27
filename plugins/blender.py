@@ -5,10 +5,10 @@ Handles installing Blender
 # std
 import os
 from subprocess import run
+from pathlib import Path
 
 # 3rd
 from terra import Plugin
-
 
 class BlenderInstaller(Plugin):
     """
@@ -16,7 +16,7 @@ class BlenderInstaller(Plugin):
     """
 
     _alias_ = "Blender Installer"
-    icon = "https://download.blender.org/branding/community/blender_community_badge_white.png"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/blender.png?raw=true"
     description = "Blender is licensed as GNU GPL, owned by its contributors. For that reason Blender is Free and Open Source software, forever."
     category = "Media and Entertainment"
     tags = ["3d", "animation", "vfx", "blender", "visual effects"]
@@ -31,14 +31,11 @@ class BlenderInstaller(Plugin):
         """
         # store on instance
         self.version = kwargs.get("version", "4.2.0")
-        self.destination = kwargs.get("destination")
+        self.destination = Path(kwargs.get("destination")).as_posix()
 
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 
