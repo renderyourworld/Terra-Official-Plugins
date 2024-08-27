@@ -12,7 +12,7 @@ else
 fi
 
 echo "Extracting Blender..."
-tar -xvf blender-*.tar.xz -C "$2"/ > /dev/null
+tar -xvf /tmp/blender-$1-linux-x64.tar.xz -C "$2"/ > /dev/null
 # blender-$1-linux-x64
 ln -sfv "$2/blender-$1-linux-x64/blender" "$2/latest"
 
