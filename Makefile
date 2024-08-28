@@ -14,7 +14,7 @@ cluster:
 down:
 	@kind delete cluster --name terra-plugins
 
-dev: test
+dev: local-test
 
 # development
 venv:
