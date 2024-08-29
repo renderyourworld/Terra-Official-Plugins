@@ -17,7 +17,7 @@ class templateappInstaller(Plugin):
     """
 
     _alias_ = "templateapp Installer"
-    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/handbrake.png?raw=true"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/missing.png?raw=true"
     description = "templateapp"
     category = "Media and Entertainment"
     tags = ["templateapp", "editor", "media", "editorial", "kde"]
