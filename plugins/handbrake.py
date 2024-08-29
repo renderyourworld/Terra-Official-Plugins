@@ -33,7 +33,8 @@ class HandbrakeInstaller(Plugin):
         # store on instance
         self.download_url = kwargs.get(
             "url",
-            "https://github.com/ivan-hc/Handbrake-appimage/releases/download/continuous/HandBrake_1.8.2-1-archimage3.4-x86_64.AppImage",
+            #"https://github.com/ivan-hc/Handbrake-appimage/releases/download/continuous/HandBrake_1.8.2-1-archimage3.4-x86_64.AppImage",
+            "https://github.com/ddesmond/Handbrake-appimage/releases/download/continuous/HandBrake_1.8.2-1-archimage3.4-x86_64.AppImage",
         )
         self.destination = Path(kwargs.get("destination")).as_posix()
 
