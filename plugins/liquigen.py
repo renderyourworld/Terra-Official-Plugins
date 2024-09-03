@@ -1,5 +1,5 @@
 """
-Installer for liquidgen on linux systems.
+Installer for liquigen on linux systems.
 """
 
 # std
@@ -11,16 +11,16 @@ from pathlib import Path
 from terra import Plugin
 
 
-class LiquidGenInstaller(Plugin):
+class LiquiGenInstaller(Plugin):
     """
-    liquidgen installer plugin.
+    liquigen installer plugin.
     """
 
-    _alias_ = "LiquidGen Installer"
-    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/liquidgen.png?raw=true"
+    _alias_ = "LiquiGen Installer"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/liquigen.png?raw=true"
     description = "LiquiGen allows you to create anything from water and blood to ketchup and slime."
     category = "Media and Entertainment"
-    tags = ["liquidgen", "editor", "media", "editorial", "kde"]
+    tags = ["liquigen", "editor", "media", "editorial", "kde"]
     fields = [
         Plugin.field("destination", "Destination directory", required=True),
     ]
@@ -48,7 +48,7 @@ class LiquidGenInstaller(Plugin):
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if (
             run(
-                f"bash {scripts_directory}/liquidgen-installer.sh {self.download_url} {self.destination}",
+                f"bash {scripts_directory}/liquigen-installer.sh {self.download_url} {self.destination}",
                 shell=True,
                 check=False,
             ).returncode
