@@ -15,6 +15,5 @@ def test_steam():
     handler.run_plugin(
         'plugin',
         'Steam Client',
-        allow_failure=False,
-        destination='/apps/steam'
+        allow_failure=False
     )
