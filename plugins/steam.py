@@ -30,7 +30,7 @@ class SteamInstaller(Plugin):
         """
         # store on instance
         self.download_url = "https://github.com/ddesmond/Steam-appimage/releases/download/continuous/Steam-1.0.0.81-2-3-x86_64.AppImage"
-        self.destination = Path(kwargs.get("destination")).as_posix()
+        self.destination = "/apps/steam"
 
 
         # validate
