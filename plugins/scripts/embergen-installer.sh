@@ -19,7 +19,7 @@ cd $SCRIPT_DIR
 cp "../assets/embergen.png" "$2/embergen.png"
 echo "Adding desktop file"
 chmod +X create_desktop_file.py
-python3 create_desktop_file.py --app_name="Embergen" --version="1.0" --latest_path="$2"/embergen.sh --categories="embergen, 3d" --destination="$2" --icon="$2"/embergen.png --terminal="False"
+python3 create_desktop_file.py --app_name="Embergen" --version="1.2" --latest_path="$2"/embergen.sh --categories="embergen, 3d" --destination="$2" --icon="$2"/embergen.png --terminal="False"
 
 echo "Desktop file created."
 chmod -R 777 "$2/"
