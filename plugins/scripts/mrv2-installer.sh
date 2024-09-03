@@ -25,7 +25,7 @@ cd $SCRIPT_DIR
 cp ../assets/mrv2.png "$2"/mrv2.png
 echo "Adding desktop file"
 chmod +X create_desktop_file.py
-python3 create_desktop_file.py --app_name="Mrv2" --version="1.2.1" --latest_path='$2/latest "$@"' --categories="mrv2, sequence, player, images, exr, video" --destination=$2 --icon="$2"/mrv2.png
+python3 create_desktop_file.py --app_name="Mrv2" --version="1.2.1" --latest_path='"$2"/run_mrv2.sh "\\$@"' --categories="mrv2, sequence, player, images, exr, video" --destination=$2 --icon="$2"/mrv2.png
 echo "Desktop file created."
 chmod -R 777 $2/
 cat $2/*.desktop
