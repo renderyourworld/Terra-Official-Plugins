@@ -19,8 +19,8 @@ class VlcInstaller(Plugin):
     _alias_ = "Vlc Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/vlc.png?raw=true"
     description = "VideoLanClient aka VLC The Great Media Player"
-    category = "Media and Entertainment"
-    tags = ["vlc", "video", "player", "kde"]
+    category = "Applications"
+    tags = ["vlc", "video", "player", "animation"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),

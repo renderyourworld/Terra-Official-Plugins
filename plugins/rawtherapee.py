@@ -21,7 +21,7 @@ class RawtherapeeInstaller(Plugin):
     description = (
         "RawTherapee is a powerful, cross-platform raw photo processing system."
     )
-    category = "Media and Entertainment"
+    category = "Applications"
     tags = ["Rawtherapee", "editor", "media", "editorial", "images", "photo"]
     fields = [
         Plugin.field("url", "Download URL", required=False),

@@ -18,8 +18,8 @@ class MeshlabInstaller(Plugin):
     _alias_ = "Meshlab Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/meshlab.png?raw=true"
     description = "MeshLab - the open source system for processing and editing 3D triangular meshes."
-    category = "Media and Entertainment"
-    tags = ["mesh","cg", "editor", "media", "editorial", "kde"]
+    category = "LibreOffice is a free and powerful office suite, and a successor to OpenOffice.org"
+    tags = ["mesh", "cg", "remesh", "tools", "3d", "utility", "generation"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),

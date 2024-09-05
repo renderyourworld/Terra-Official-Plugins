@@ -5,7 +5,8 @@ chmod +x /tmp/steam.appimage
 
 echo "Extracting steam..."
 /tmp/steam.appimage --appimage-extract > /dev/null
-mv ./squashfs-root "$2/"
+ls /tmp
+mv /tmp/squashfs-root "$2/"
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp -v "$SCRIPT_DIR/steam.sh" "$2/"
 sed -i "s@ROOT_APP@$2@g" "$2/steam.sh"

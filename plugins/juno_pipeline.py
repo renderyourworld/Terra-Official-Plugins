@@ -18,7 +18,7 @@ class JunoPipeline(Plugin):
     _alias_ = "Juno Pipeline (Full)"
     icon = "https://avatars.githubusercontent.com/u/77702266?s=200&v=4"
     description = "Install the Juno Pipeline for 2D Visual Effects. Ships with Nuke, Blender, Houdini, and more."
-    category = "Media and Entertainment"
+    category = "Pipeline"
     tags = ["vfx", "pipeline", "juno", "2d", "visual effects"]
 
     def preflight(self, *args, **kwargs) -> bool:

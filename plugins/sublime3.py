@@ -20,7 +20,7 @@ class Sublime3Installer(Plugin):
     # pylint: disable=line-too-long
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/sublime3.png?raw=true"
     description = "Install Sublime3 to a target directory."
-    category = "Text editor"
+    category = "Software Development"
     tags = ["Sublime3", "text", "editor", "code", "python"]
     fields = [
         Plugin.field(

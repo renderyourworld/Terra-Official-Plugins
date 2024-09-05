@@ -17,8 +17,8 @@ class LibreofficeInstaller(Plugin):
 
     _alias_ = "Libreoffice Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/libreoffice.png?raw=true"
-    description = "libreoffice"
-    category = "Media and Entertainment"
+    description = "LibreOffice is a free and powerful office suite, and a successor to OpenOffice.org"
+    category = "Office"
     tags = ["libreoffice", "editor", "media", "editorial", "kde"]
     fields = [
         Plugin.field("url", "Download URL", required=False),

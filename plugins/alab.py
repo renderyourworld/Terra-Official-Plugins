@@ -13,14 +13,14 @@ from terra import Plugin
 
 class AlabInstaller(Plugin):
     """
-    alab installer plugin.
+    Alab installer plugin.
     """
 
     _alias_ = "Alab Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/alab.png?raw=true"
     description = "Alab sample USD files, big download. Long install time."
-    category = "Media and Entertainment"
-    tags = ["alab", "samples", "media", "files", "cg", "3d"]
+    category = "Samples"
+    tags = ["alab", "samples", "media", "files", "cg", "3d", "usd"]
     fields = [
     ]
 

@@ -18,7 +18,7 @@ class AudacityInstaller(Plugin):
     _alias_ = "Audacity Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/audacity.png?raw=true"
     description = "Audacity is the world's most popular audio editing and recording app."
-    category = "Media and Entertainment"
+    category = "Audio"
     tags = ["Audacity", "editor", "media", "audio", "sound"]
     fields = [
         Plugin.field("url", "Download URL", required=False),

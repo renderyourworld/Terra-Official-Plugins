@@ -19,8 +19,8 @@ class GeoGenInstaller(Plugin):
     _alias_ = "GeoGen Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/geogen.png?raw=true"
     description = "GeoGen is a fresh take on what terrain and planet generation can be"
-    category = "Media and Entertainment"
-    tags = ["geogen", "editor", "media", "editorial", "kde"]
+    category = "Applications"
+    tags = ["geogen", "editor", "geometry", "terrain", "cg", "procedural", "generation", "vfx"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),

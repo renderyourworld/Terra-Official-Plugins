@@ -19,8 +19,8 @@ class FirefoxInstaller(Plugin):
     _alias_ = "Firefox Browser"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/firefox.png?raw=true"
     description = "Firefox web browser installer. This plugin installs in the /apps/firefox directory as default."
-    category = "Media and Entertainment"
-    tags = ["firefox", "web","browser"]
+    category = "Web"
+    tags = ["firefox", "web", "browser"]
     fields = []
 
     def preflight(self, *args, **kwargs) -> bool:

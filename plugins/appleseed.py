@@ -18,9 +18,9 @@ class AppleseedInstaller(Plugin):
 
     _alias_ = "Appleseed Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/appleseed.png?raw=true"
-    description = "appleseed"
-    category = "Media and Entertainment"
-    tags = ["appleseed", "editor", "media", "rendering"]
+    description = "Appleseed is an open source, physically-based global illumination rendering engine primarily designed for animation and visual effects."
+    category = "Rendering"
+    tags = ["appleseed", "rendering", "light", "3d", "vfx", "visual effects"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),

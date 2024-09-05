@@ -19,8 +19,8 @@ class NukeInstaller(Plugin):
     _alias_ = "Nuke Installer"
     icon = "https://www.foundry.com/sites/default/files/2021-03/ICON_NUKE-rgb-yellow-01.png"
     description = "Install The Foundry's Nuke to a target directory."
-    category = "Media and Entertainment"
-    tags = ["nuke", "foundry", "media", "vfx", "visual effects"]
+    category = "Applications"
+    tags = ["nuke", "foundry", "compositing", "vfx", "visual effects", "color", "grading", "3d", "animation", "rendering"]
     fields = [
         Plugin.field("version", "Version of Nuke to install. i.e. Nuke14.0v2", required=True),
         Plugin.field("destination", "Destination directory", required=True),
