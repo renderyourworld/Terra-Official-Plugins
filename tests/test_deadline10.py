@@ -18,7 +18,8 @@ def test_deadline10():
         'Deadline10 Installer',
         allow_failure=False,
         destination='/apps/deadline10',
-        install_volume='apps'
+        install_volume='terra-test-claim',
+        database_volume='terra-test-claim',
     )
 
     sleep(200)

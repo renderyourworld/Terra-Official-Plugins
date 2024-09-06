@@ -22,7 +22,6 @@ spec:
 
       volumes:
         - name: apps
-          hostPath:
-            path: /apps
-            type: Directory
+          persistentVolumeClaim:
+            claimName: terra-test-claim
 

@@ -33,5 +33,5 @@ spec:
       volumes:
         - name: farm-data
           persistentVolumeClaim:
-            claimName: farm-data
+            claimName: {{ .Values.claim_name_mongo }}
 

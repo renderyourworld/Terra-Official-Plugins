@@ -31,21 +31,15 @@ spec:
           volumeMounts:
             - name: script
               mountPath: /script
-#            - name: script
-#              mountPath: /var/lib/Thinkbox/Deadline10/deadline.ini
-#              subPath: deadline.ini
             - name: client
-              mountPath: {{ .Values.destination }}
+              mountPath: /apps/
           ports:
-            - name: "enpoint"
+            - name: "endpoint"
               containerPort: 8080
               protocol: TCP
             - name: "rest"
               containerPort: 8081
               protocol: TCP
-          volumeMounts:
-            - name: local-apps
-              mountPath: /apps
       volumes:
         - name: client
           persistentVolumeClaim:
@@ -54,8 +48,4 @@ spec:
           configMap:
             name: d10webservice-configmap
             defaultMode: 0500
-        - name: local-apps
-          hostPath:
-            path: .apps
-            type: Directory
 {{- end}}
