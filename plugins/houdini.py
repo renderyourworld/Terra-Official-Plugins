@@ -19,8 +19,8 @@ class HoudiniInstaller(Plugin):
     _alias_ = "Houdini Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/houdini.png?raw=true"
     description = "Install Houdini to a target directory."
-    category = "Media and Entertainment"
-    tags = ["houdini", "sidefx", "media", "vfx", "visual effects"]
+    category = "Applications"
+    tags = ["houdini", "sidefx", "3d", "vfx", "visual effects", "cg", "modeling", "animation", "solaris", "l-systems", "procedural"]
     fields = [
         Plugin.field("version", "Version of Houdini to install. i.e. 20.5.278", required=True),
         Plugin.field("destination", "Destination directory", required=True),

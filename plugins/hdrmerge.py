@@ -18,8 +18,8 @@ class HdrmergeInstaller(Plugin):
     _alias_ = "Hdrmerge Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/hdrmerge.png?raw=true"
     description = "HDRMerge creates raw images with an extended dynamic range."
-    category = "Media and Entertainment"
-    tags = ["hdrmerge", "editor", "media", "editorial", "kde"]
+    category = "Applications"
+    tags = ["hdrmerge", "editor", "hdri", "photos", "spheres", "panoramas", "cg", "vfx", "photography"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),

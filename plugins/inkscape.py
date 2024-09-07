@@ -18,8 +18,8 @@ class InkscapeInstaller(Plugin):
     _alias_ = "Inkscape Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/inkscape.png?raw=true"
     description = "A Free and open source vector graphics editor."
-    category = "Media and Entertainment"
-    tags = ["Inkscape", "editor", "media", "graphics", "kde"]
+    category = "Applications"
+    tags = ["Inkscape", "vector", "media", "graphics", "editor"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),

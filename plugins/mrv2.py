@@ -20,7 +20,7 @@ class Mrv2Installer(Plugin):
     # pylint:disable=line-too-long
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/mrv2.png?raw=true"
     description = "Sequence video player. Install Mrv2 to a target directory."
-    category = "Media and Entertainment"
+    category = "Applications"
     tags = [
         "mrv2",
         "viewer",

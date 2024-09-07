@@ -18,7 +18,7 @@ class KdenliveInstaller(Plugin):
     _alias_ = "Kdenlive Installer"
     icon = "https://kdenlive.org/wp-content/uploads/2022/01/kdenlive-logo-blank-500px.png"
     description = "Kdenlive is an acronym for KDE Non-Linear Video Editor. It works on GNU/Linux, Windows and BSD."
-    category = "Media and Entertainment"
+    category = "Applications"
     tags = ["video", "editor", "media", "editorial", "kde"]
     fields = [
         Plugin.field("url", "Download URL", required=False),

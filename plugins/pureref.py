@@ -54,7 +54,7 @@ class PureRefInstaller(Plugin):
     # pylint: disable=line-too-long
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/pureref.png?raw=true"
     description = "Install PureRef to a target directory."
-    category = "Media and Entertainment"
+    category = "Applications"
     tags = ["PureRef", "references", "media", "vfx", "visual effects", "images"]
     fields = [
         Plugin.field("url", "Download URL", required=False),

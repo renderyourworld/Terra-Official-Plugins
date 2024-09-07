@@ -20,7 +20,7 @@ class FfmpegInstaller(Plugin):
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/ffmpeg.png?raw=true"
     description = "Ffmpeg is a complete, cross-platform solution to record, convert and stream audio and video."
     category = "Utility"
-    tags = ["ffmpeg", "command line", "cli"]
+    tags = ["ffmpeg", "command line", "cli", "video  encoding", "audio encoding"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),

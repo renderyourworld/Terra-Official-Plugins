@@ -20,7 +20,7 @@ class HandbrakeInstaller(Plugin):
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/handbrake.png?raw=true"
     description = "Hanbrake video converter"
     category = "Utility"
-    tags = ["handbrake", "convert", "media", "video", "sequences"]
+    tags = ["handbrake", "convert", "media", "video", "sequences", "video encoding"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
@@ -33,7 +33,8 @@ class HandbrakeInstaller(Plugin):
         # store on instance
         self.download_url = kwargs.get(
             "url",
-            "https://github.com/ivan-hc/Handbrake-appimage/releases/download/continuous/HandBrake_1.8.2-1-archimage3.4-x86_64.AppImage",
+            #"https://github.com/ivan-hc/Handbrake-appimage/releases/download/continuous/HandBrake_1.8.2-1-archimage3.4-x86_64.AppImage",
+            "https://github.com/ddesmond/Handbrake-appimage/releases/download/continuous/HandBrake_1.8.2-1-archimage3.4-x86_64.AppImage",
         )
         self.destination = Path(kwargs.get("destination")).as_posix()
 

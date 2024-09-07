@@ -18,8 +18,8 @@ class UsdPackInstaller(Plugin):
     _alias_ = "UsdPack Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/usdview.png?raw=true"
     description = "NVIDIA Compiled USD binaries for Linux"
-    category = "Media and Entertainment"
-    tags = ["usd", "editor", "media", "editorial", "vfx"]
+    category = "Applications"
+    tags = ["usd", "usdview", "samples", "visual effect", "vfx", "python", "3d", "cg",  "animation"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
