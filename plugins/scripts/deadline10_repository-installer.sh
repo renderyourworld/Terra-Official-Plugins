@@ -32,16 +32,11 @@ cp -v "$SCRIPT_DIR"/deadline10/webservice-deadline.ini $2/service/deadline10.ini
 cp -v "$SCRIPT_DIR"/deadline10/deadline-repository-connection.ini $2/repository/settings/connection.ini
 cp -v "$SCRIPT_DIR"/deadline10/deadline_env.sh $2/service/deadline_env.sh
 
-# setup for polaris to pickup
-cp -v "$SCRIPT_DIR"/deadline10/deadline_client.source.sh $2/deadline_client.source.sh
-sed -i "s@DESTINATION@$2@g" $2/deadline_client.source.sh
-chmomd +x $2/deadline_client.source.sh
-
 
 chmod +x $2/service/deadline_env.sh
 echo "Deadline 10 repository setup done."
 
-echo "Making repository lighter by removing windwos and mac files"
+echo "Making repository lighter by removing Windows and Mac binary files"
 rm -rfv $2/repository/bin/Mac
 rm -rfv $2/repository/bin/Windows
 
