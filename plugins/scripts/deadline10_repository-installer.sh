@@ -28,7 +28,7 @@ $installers/DeadlineRepository-10.3.2.1-linux-x64-installer.run \
 echo "Deadline 10 repository installed. Setting up ini files."
 # setup the repository
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-cp -v "$SCRIPT_DIR"/deadline10/webservice-deadline.ini $2/service/deadline10.ini
+cp -v "$SCRIPT_DIR"/deadline10/webservice-deadline.ini $2/service/deadline.ini
 cp -v "$SCRIPT_DIR"/deadline10/deadline-repository-connection.ini $2/repository/settings/connection.ini
 cp -v "$SCRIPT_DIR"/deadline10/deadline_env.sh $2/service/deadline_env.sh
 
