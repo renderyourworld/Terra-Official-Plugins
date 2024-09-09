@@ -40,4 +40,6 @@ echo "Making repository lighter by removing Windows and Mac binary files"
 rm -rfv $2/repository/bin/Mac
 rm -rfv $2/repository/bin/Windows
 
+echo "Deadline 10 repository cleanup done."
+
 
