@@ -15,7 +15,7 @@ class Sublime3Installer(Plugin):
     """
     Sublime3
     """
-
+    _version_ = '1.0.0'
     _alias_ = "Sublime3 Installer"
     # pylint: disable=line-too-long
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/sublime3.png?raw=true"

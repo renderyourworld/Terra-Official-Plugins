@@ -15,6 +15,7 @@ class ObsidianInstaller(Plugin):
     """
     Xnview installer plugin.
     """
+    _version_ = '1.0.0'
     _alias_ = "Obsidian Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/obsidian.png?raw=true"
     description = "Obsidian.md - md file editor, note taking app."

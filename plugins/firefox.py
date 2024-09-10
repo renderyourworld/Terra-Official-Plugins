@@ -15,7 +15,7 @@ class FirefoxInstaller(Plugin):
     """
     Firefox installer plugin.
     """
-
+    _version_ = '1.0.0'
     _alias_ = "Firefox Browser"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/firefox.png?raw=true"
     description = "Firefox web browser installer. This plugin installs in the /apps/firefox directory as default."

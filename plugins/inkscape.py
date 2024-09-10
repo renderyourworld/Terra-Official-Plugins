@@ -14,7 +14,7 @@ class InkscapeInstaller(Plugin):
     """
     Inkscape installer plugin.
     """
-
+    _version_ = '1.0.0'
     _alias_ = "Inkscape Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/inkscape.png?raw=true"
     description = "A Free and open source vector graphics editor."

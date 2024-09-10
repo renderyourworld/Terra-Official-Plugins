@@ -14,7 +14,7 @@ class Silhouette2024Installer(Plugin):
     """
     Kdenlive installer plugin.
     """
-
+    _version_ = '1.0.0'
     _alias_ = "Silhouette2024 Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/silhouette2024.png?raw=true"
     description = "Silhouette 2024 animation application, Full 4GB Install."

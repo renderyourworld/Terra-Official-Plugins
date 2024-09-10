@@ -14,7 +14,7 @@ class InstantmeshesInstaller(Plugin):
     """
     instantmeshes installer plugin.
     """
-
+    _version_ = '1.0.0'
     _alias_ = "Instantmeshes Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/instantmeshes.png?raw=true"
     description = "Instant Field-Aligned Meshes - remeshing tool."

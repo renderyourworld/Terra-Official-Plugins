@@ -14,7 +14,7 @@ class MeshlabInstaller(Plugin):
     """
     meshlab installer plugin.
     """
-
+    _version_ = '1.0.0'
     _alias_ = "Meshlab Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/meshlab.png?raw=true"
     description = "MeshLab - the open source system for processing and editing 3D triangular meshes."

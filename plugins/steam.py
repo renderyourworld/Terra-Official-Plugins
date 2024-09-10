@@ -15,7 +15,7 @@ class SteamInstaller(Plugin):
     """
     steam installer plugin.
     """
-
+    _version_ = '1.0.0'
     _alias_ = "Steam Client"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/steam.png?raw=true"
     description = "Steam Client installer"

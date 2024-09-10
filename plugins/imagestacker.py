@@ -15,7 +15,7 @@ class ImagestackerInstaller(Plugin):
     """
     Imagestacker installer plugin.
     """
-
+    _version_ = '1.0.0'
     _alias_ = "Imagestacker Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/imagestacker.png?raw=true"
     description = "Automatically generate layered PSD/PSB Files from CG Renders with OCIO support and Cryptomatte decoding"

@@ -15,7 +15,7 @@ class Mrv2Installer(Plugin):
     """
     Mrv2
     """
-
+    _version_ = '1.0.0'
     _alias_ = "Mrv2 Installer"
     # pylint:disable=line-too-long
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/mrv2.png?raw=true"

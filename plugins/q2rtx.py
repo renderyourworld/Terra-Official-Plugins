@@ -15,7 +15,7 @@ class Q2rtxInstaller(Plugin):
     """
     q2rtx installer plugin.
     """
-
+    _version_ = '1.0.0'
     _alias_ = "Q2rtx Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/q2rtx.png?raw=true"
     description = "Quake 2 RTX build from NVIDIA github repository."

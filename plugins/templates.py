@@ -15,7 +15,7 @@ class TemplatesInstaller(Plugin):
     """
     templates installer plugin.
     """
-
+    _version_ = '1.0.0'
     _alias_ = "Templates Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/missing.png?raw=true"
     description = "Document User Templates"

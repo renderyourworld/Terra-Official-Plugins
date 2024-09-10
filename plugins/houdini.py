@@ -15,7 +15,7 @@ class HoudiniInstaller(Plugin):
     """
     Nuke
     """
-
+    _version_ = '1.0.0'
     _alias_ = "Houdini Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/houdini.png?raw=true"
     description = "Install Houdini to a target directory."

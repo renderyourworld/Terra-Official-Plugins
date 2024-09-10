@@ -14,7 +14,7 @@ class HdrmergeInstaller(Plugin):
     """
     Hdrmerge installer plugin.
     """
-
+    _version_ = '1.0.0'
     _alias_ = "Hdrmerge Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/hdrmerge.png?raw=true"
     description = "HDRMerge creates raw images with an extended dynamic range."

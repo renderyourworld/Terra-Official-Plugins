@@ -14,7 +14,7 @@ class BlenderInstaller(Plugin):
     """
     Blender
     """
-
+    _version_ = '1.0.0'
     _alias_ = "Blender Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/blender.png?raw=true"
     description = "Blender is licensed as GNU GPL, owned by its contributors. For that reason Blender is Free and Open Source software, forever."

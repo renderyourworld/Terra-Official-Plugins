@@ -15,7 +15,7 @@ class AppleseedInstaller(Plugin):
     """
     appleseed installer plugin.
     """
-
+    _version_ = '1.0.0'
     _alias_ = "Appleseed Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/appleseed.png?raw=true"
     description = "Appleseed is an open source, physically-based global illumination rendering engine primarily designed for animation and visual effects."

@@ -15,7 +15,7 @@ class StardustInstaller(Plugin):
     """
     Git Loader
     """
-
+    _version_ = '1.0.0'
     _alias_ = "Stardust"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/stardust.png?raw=true"
     description = "Install Stardust Client"

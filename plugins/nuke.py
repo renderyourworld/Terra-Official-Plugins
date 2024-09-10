@@ -15,7 +15,7 @@ class NukeInstaller(Plugin):
     """
     Nuke
     """
-
+    _version_ = '1.0.0'
     _alias_ = "Nuke Installer"
     icon = "https://www.foundry.com/sites/default/files/2021-03/ICON_NUKE-rgb-yellow-01.png"
     description = "Install The Foundry's Nuke to a target directory."

@@ -14,7 +14,7 @@ class Katana7Installer(Plugin):
     """
     Katana7 installer plugin.
     """
-
+    _version_ = '1.0.0'
     _alias_ = "Katana7 Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/katana.png?raw=true"
     description = "Katana's advanced lighting animation software with powerful rendering tools delivers seamless and collaborative edits to 3D lighting effects."

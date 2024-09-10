@@ -50,6 +50,7 @@ class PureRefInstaller(Plugin):
     """
     PureRef
     """
+    _version_ = '1.0.0'
     _alias_ = "PureRef Installer"
     # pylint: disable=line-too-long
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/pureref.png?raw=true"

@@ -15,7 +15,7 @@ class GamesInstaller(Plugin):
     """
     Games installer plugin.
     """
-
+    _version_ = '1.0.0'
     _alias_ = "Games Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/games.png?raw=true"
     description = "Games package installer"

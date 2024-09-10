@@ -15,7 +15,7 @@ class PyCharmInstaller(Plugin):
     """
     PyCharm
     """
-
+    _version_ = '1.0.0'
     _alias_ = "PyCharm Installer"
     icon = "https://intellij-support.jetbrains.com/hc/user_images/5l0fLOoDkFwpjU_ZKu7Ofg.png"
     description = "Python development IDE by JetBrains."

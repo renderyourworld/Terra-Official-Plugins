@@ -15,7 +15,7 @@ class VlcInstaller(Plugin):
     """
     vlc installer plugin.
     """
-
+    _version_ = '1.0.0'
     _alias_ = "Vlc Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/vlc.png?raw=true"
     description = "VideoLanClient aka VLC The Great Media Player"

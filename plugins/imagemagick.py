@@ -15,7 +15,7 @@ class ImagemagickInstaller(Plugin):
     """
     Imagemagick installer plugin.
     """
-
+    _version_ = '1.0.0'
     _alias_ = "Imagemagick Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/imagemagick.png?raw=true"
     description = "Imagemagick installer"

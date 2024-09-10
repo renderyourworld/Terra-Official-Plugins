@@ -14,7 +14,7 @@ class JunoPipeline(Plugin):
     """
     Git Loader
     """
-
+    _version_ = '1.0.0'
     _alias_ = "Juno Pipeline (Full)"
     icon = "https://avatars.githubusercontent.com/u/77702266?s=200&v=4"
     description = "Install the Juno Pipeline for 2D Visual Effects. Ships with Nuke, Blender, Houdini, and more."

@@ -15,7 +15,7 @@ class Pixelfudger_v32(Plugin):
     """
     Git Pixelfudger v3.2
     """
-
+    _version_ = '1.0.0'
     _alias_ = "Pixelfudger v3.2"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/pixelfudger.png?raw=true"
     description = "Famous Nuke Gizmos and Tools. http://www.pixelfudger.com/"

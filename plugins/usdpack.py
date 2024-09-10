@@ -14,7 +14,7 @@ class UsdPackInstaller(Plugin):
     """
     UsdPack installer plugin.
     """
-
+    _version_ = '1.0.0'
     _alias_ = "UsdPack Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/usdview.png?raw=true"
     description = "NVIDIA Compiled USD binaries for Linux"
