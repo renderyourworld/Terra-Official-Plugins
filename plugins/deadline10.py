@@ -16,7 +16,7 @@ class Deadline10Installer(Plugin):
     """
     Deadline10 repository, client and webservice installer plugin.
     """
-
+    _version_ = "1.1.0"
     _alias_ = "Deadline10 Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/deadline10repository.png?raw=true"
     description = "Deadline 10.3.2.1. The plugin will install the repository, client and web service. Long install times expected."

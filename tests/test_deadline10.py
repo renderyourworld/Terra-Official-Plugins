@@ -13,6 +13,7 @@ def test_deadline10():
     handler = plugins()
     plugin = handler.get_plugin('plugin', 'Deadline10 Installer')
     assert plugin is not None
+    assert plugin._version_ is not None
     handler.run_plugin(
         'plugin',
         'Deadline10 Installer',
