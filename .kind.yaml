@@ -5,5 +5,7 @@ nodes:
     extraMounts:
       - hostPath: ./
         containerPath: /repo
-      - hostPath: ./.apps
+      - hostPath: ./.apps       # AURORA
         containerPath: /apps
+    labels:
+      junovfx/node: service
