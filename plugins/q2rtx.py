@@ -15,7 +15,8 @@ class Q2rtxInstaller(Plugin):
     """
     q2rtx installer plugin.
     """
-    _version_ = '1.0.0'
+
+    _version_ = "1.0.0"
     _alias_ = "Q2rtx Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/q2rtx.png?raw=true"
     description = "Quake 2 RTX build from NVIDIA github repository."
@@ -35,7 +36,6 @@ class Q2rtxInstaller(Plugin):
             "https://github.com/NVIDIA/Q2RTX/releases/download/v1.7.0/q2rtx-1.7.0-linux.tar.gz",
         )
         self.destination = Path(kwargs.get("destination")).as_posix()
-
 
         # validate
         if not self.destination:

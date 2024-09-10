@@ -15,7 +15,8 @@ class GafferInstaller(Plugin):
     """
     Gaffer installer plugin.
     """
-    _version_ = '1.0.0'
+
+    _version_ = "1.0.0"
     _alias_ = "Gaffer Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/gaffer.png?raw=true"
     description = "Gaffer is a VFX application that enables artists to easily build, tweak, iterate, and render scenes."

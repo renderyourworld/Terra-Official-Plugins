@@ -6,6 +6,7 @@ Installer for Instantmeshes on linux systems.
 import os
 from subprocess import run
 from pathlib import Path
+
 # 3rd
 from terra import Plugin
 
@@ -14,7 +15,8 @@ class InstantmeshesInstaller(Plugin):
     """
     instantmeshes installer plugin.
     """
-    _version_ = '1.0.0'
+
+    _version_ = "1.0.0"
     _alias_ = "Instantmeshes Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/instantmeshes.png?raw=true"
     description = "Instant Field-Aligned Meshes - remeshing tool."

@@ -15,7 +15,8 @@ class Sublime3Installer(Plugin):
     """
     Sublime3
     """
-    _version_ = '1.0.0'
+
+    _version_ = "1.0.0"
     _alias_ = "Sublime3 Installer"
     # pylint: disable=line-too-long
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/sublime3.png?raw=true"
@@ -43,7 +44,6 @@ class Sublime3Installer(Plugin):
         )
         self.destination = Path(kwargs.get("destination")).as_posix()
 
-
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
@@ -57,12 +57,12 @@ class Sublime3Installer(Plugin):
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if (
-                run(
-                    f"bash {scripts_directory}/sublime3-installer.sh {self.download_url} {self.destination}",
-                    # pylint: disable=line-too-long
-                    shell=True,
-                    check=False,
-                ).returncode
-                != 0
+            run(
+                f"bash {scripts_directory}/sublime3-installer.sh {self.download_url} {self.destination}",
+                # pylint: disable=line-too-long
+                shell=True,
+                check=False,
+            ).returncode
+            != 0
         ):
             raise RuntimeError("Failed to install Sublime3")

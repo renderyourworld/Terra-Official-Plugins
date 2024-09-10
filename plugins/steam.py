@@ -15,14 +15,14 @@ class SteamInstaller(Plugin):
     """
     steam installer plugin.
     """
-    _version_ = '1.0.0'
+
+    _version_ = "1.0.0"
     _alias_ = "Steam Client"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/steam.png?raw=true"
     description = "Steam Client installer"
     category = "Games"
     tags = ["steam", "client", "games", "valve"]
-    fields = [
-    ]
+    fields = []
 
     def preflight(self, *args, **kwargs) -> bool:
         """
@@ -31,7 +31,6 @@ class SteamInstaller(Plugin):
         # store on instance
         self.download_url = "https://github.com/ddesmond/Steam-appimage/releases/download/continuous/Steam-1.0.0.81-2-3-x86_64.AppImage"
         self.destination = "/apps/steam"
-
 
         # validate
         if not self.destination:

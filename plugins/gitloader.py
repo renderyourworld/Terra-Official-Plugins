@@ -14,7 +14,8 @@ class GitLoader(Plugin):
     """
     Git Loader
     """
-    _version_ = '1.0.0'
+
+    _version_ = "1.0.0"
     _alias_ = "Git Loader"
     icon = "https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png"
     description = "Clone down a repository from a Git Source"

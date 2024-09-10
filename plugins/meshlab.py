@@ -6,6 +6,7 @@ Installer for meshlab on linux systems.
 import os
 from subprocess import run
 from pathlib import Path
+
 # 3rd
 from terra import Plugin
 
@@ -14,7 +15,8 @@ class MeshlabInstaller(Plugin):
     """
     meshlab installer plugin.
     """
-    _version_ = '1.0.0'
+
+    _version_ = "1.0.0"
     _alias_ = "Meshlab Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/meshlab.png?raw=true"
     description = "MeshLab - the open source system for processing and editing 3D triangular meshes."
@@ -39,7 +41,6 @@ class MeshlabInstaller(Plugin):
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
 
         os.makedirs(self.destination, exist_ok=True)
 

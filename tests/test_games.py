@@ -10,11 +10,9 @@ def test_games():
     Test games installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'Games Installer')
+    plugin = handler.get_plugin("plugin", "Games Installer")
     assert plugin is not None
+    assert plugin._version_ is not None
     handler.run_plugin(
-        'plugin',
-        'Games Installer',
-        allow_failure=False,
-        destination='/apps/games'
+        "plugin", "Games Installer", allow_failure=False, destination="/apps/games"
     )

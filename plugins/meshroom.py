@@ -15,12 +15,23 @@ class MeshroomInstaller(Plugin):
     """
     Meshroom installer plugin.
     """
-    _version_ = '1.0.0'
+
+    _version_ = "1.0.0"
     _alias_ = "Meshroom Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/meshroom.png?raw=true"
     description = "Meshroom is a free, open-source 3D Reconstruction Software based on the AliceVision framework. Requires a CUDA-enabled GPU."
     category = "Applications"
-    tags = ["meshroom", "geometry", "3d", "reconstruction", "photogrammetry", "tracking", "camera", "calibration", "alicevision"]
+    tags = [
+        "meshroom",
+        "geometry",
+        "3d",
+        "reconstruction",
+        "photogrammetry",
+        "tracking",
+        "camera",
+        "calibration",
+        "alicevision",
+    ]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
@@ -54,13 +65,11 @@ class MeshroomInstaller(Plugin):
         self.logger.info(f"Loading scripts from {scripts_directory}")
 
         if (
-                run(
-                    f"bash {scripts_directory}/meshroom-installer.sh  {self.download_url}  {self.destination}",
-                    shell=True,
-                    check=False,
-                ).returncode
-                != 0
+            run(
+                f"bash {scripts_directory}/meshroom-installer.sh  {self.download_url}  {self.destination}",
+                shell=True,
+                check=False,
+            ).returncode
+            != 0
         ):
             raise RuntimeError("Failed to install meshroom")
-
-

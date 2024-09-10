@@ -10,18 +10,31 @@ from pathlib import Path
 # 3rd
 from terra import Plugin
 
+
 class BlenderInstaller(Plugin):
     """
     Blender
     """
-    _version_ = '1.0.0'
+
+    _version_ = "1.0.0"
     _alias_ = "Blender Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/blender.png?raw=true"
     description = "Blender is licensed as GNU GPL, owned by its contributors. For that reason Blender is Free and Open Source software, forever."
     category = "Applications"
-    tags = ["3d", "animation", "vfx", "blender", "visual effects", "3d", "cg", "modeling"]
+    tags = [
+        "3d",
+        "animation",
+        "vfx",
+        "blender",
+        "visual effects",
+        "3d",
+        "cg",
+        "modeling",
+    ]
     fields = [
-        Plugin.field("version", "Version of Blender to install. i.e. 4.2.0", required=False),
+        Plugin.field(
+            "version", "Version of Blender to install. i.e. 4.2.0", required=False
+        ),
         Plugin.field("destination", "Destination directory", required=True),
     ]
 

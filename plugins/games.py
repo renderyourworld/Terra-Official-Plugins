@@ -15,7 +15,8 @@ class GamesInstaller(Plugin):
     """
     Games installer plugin.
     """
-    _version_ = '1.0.0'
+
+    _version_ = "1.0.0"
     _alias_ = "Games Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/games.png?raw=true"
     description = "Games package installer"
@@ -32,7 +33,6 @@ class GamesInstaller(Plugin):
         # store on instance
         self.download_url = "games"
         self.destination = Path(kwargs.get("destination")).as_posix()
-
 
         # validate
         if not self.destination:

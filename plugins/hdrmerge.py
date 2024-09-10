@@ -6,6 +6,7 @@ Installer for hdrmerge on linux systems.
 import os
 from subprocess import run
 from pathlib import Path
+
 # 3rd
 from terra import Plugin
 
@@ -14,12 +15,23 @@ class HdrmergeInstaller(Plugin):
     """
     Hdrmerge installer plugin.
     """
-    _version_ = '1.0.0'
+
+    _version_ = "1.0.0"
     _alias_ = "Hdrmerge Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/hdrmerge.png?raw=true"
     description = "HDRMerge creates raw images with an extended dynamic range."
     category = "Applications"
-    tags = ["hdrmerge", "editor", "hdri", "photos", "spheres", "panoramas", "cg", "vfx", "photography"]
+    tags = [
+        "hdrmerge",
+        "editor",
+        "hdri",
+        "photos",
+        "spheres",
+        "panoramas",
+        "cg",
+        "vfx",
+        "photography",
+    ]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),

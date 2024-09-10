@@ -15,7 +15,8 @@ class FfmpegInstaller(Plugin):
     """
     ffmpeg installer plugin.
     """
-    _version_ = '1.0.0'
+
+    _version_ = "1.0.0"
     _alias_ = "Ffmpeg Support"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/ffmpeg.png?raw=true"
     description = "Ffmpeg is a complete, cross-platform solution to record, convert and stream audio and video."
@@ -36,7 +37,6 @@ class FfmpegInstaller(Plugin):
             "ffmpeg",
         )
         self.destination = Path(kwargs.get("destination")).as_posix()
-
 
         # validate
         if not self.destination:

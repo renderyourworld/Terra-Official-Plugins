@@ -15,7 +15,8 @@ class ImagemagickInstaller(Plugin):
     """
     Imagemagick installer plugin.
     """
-    _version_ = '1.0.0'
+
+    _version_ = "1.0.0"
     _alias_ = "Imagemagick Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/imagemagick.png?raw=true"
     description = "Imagemagick installer"
@@ -30,9 +31,8 @@ class ImagemagickInstaller(Plugin):
         Check if the target directory exists and validate the arguments passed.
         """
         # store on instance
-        self.download_url ="https://github.com/ImageMagick/ImageMagick/releases/download/7.1.1-36/ImageMagick-852a4e9-clang-x86_64.AppImage"
+        self.download_url = "https://github.com/ImageMagick/ImageMagick/releases/download/7.1.1-36/ImageMagick-852a4e9-clang-x86_64.AppImage"
         self.destination = Path(kwargs.get("destination")).as_posix()
-
 
         # validate
         if not self.destination:

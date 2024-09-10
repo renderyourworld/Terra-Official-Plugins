@@ -15,7 +15,8 @@ class QuixelBridgeInstaller(Plugin):
     """
     QuixelBridge installer plugin.
     """
-    _version_ = '1.0.0'
+
+    _version_ = "1.0.0"
     _alias_ = "QuixelBridge Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/quixel_bridge.png?raw=true"
     description = "Browse the libraries of Megascans and MetaHumans content in a quick and artist-friendly way through Bridge."

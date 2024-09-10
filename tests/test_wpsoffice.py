@@ -10,11 +10,12 @@ def test_wpsoffice():
     Test Wpsoffice installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'Wpsoffice Installer')
+    plugin = handler.get_plugin("plugin", "Wpsoffice Installer")
     assert plugin is not None
+    assert plugin._version_ is not None
     handler.run_plugin(
-        'plugin',
-        'Wpsoffice Installer',
+        "plugin",
+        "Wpsoffice Installer",
         allow_failure=False,
-        destination='/apps/wpsoffice'
+        destination="/apps/wpsoffice",
     )

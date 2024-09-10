@@ -15,7 +15,8 @@ class ComfyUIInstaller(Plugin):
     """
     ComfyUI
     """
-    _version_ = '1.0.0'
+
+    _version_ = "1.0.0"
     _alias_ = "ComfyUI Installer"
     icon = "https://avatars.githubusercontent.com/u/121283862?v=4"
     description = "The most powerful and modular stable diffusion GUI, api and backend with a graph/nodes interface."
@@ -38,7 +39,6 @@ class ComfyUIInstaller(Plugin):
         """
         # store on instance
         self.destination = Path(kwargs.get("destination")).as_posix()
-
 
         # validate
         if not self.destination:

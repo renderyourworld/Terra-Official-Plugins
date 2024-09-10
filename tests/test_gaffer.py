@@ -10,11 +10,9 @@ def test_gaffer():
     Test gaffer installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'Gaffer Installer')
+    plugin = handler.get_plugin("plugin", "Gaffer Installer")
     assert plugin is not None
+    assert plugin._version_ is not None
     handler.run_plugin(
-        'plugin',
-        'Gaffer Installer',
-        allow_failure=False,
-        destination='/apps/gaffer'
+        "plugin", "Gaffer Installer", allow_failure=False, destination="/apps/gaffer"
     )

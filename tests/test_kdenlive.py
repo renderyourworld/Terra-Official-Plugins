@@ -10,11 +10,12 @@ def test_kdenlive():
     Test kdenlive installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'Kdenlive Installer')
+    plugin = handler.get_plugin("plugin", "Kdenlive Installer")
     assert plugin is not None
+    assert plugin._version_ is not None
     handler.run_plugin(
-        'plugin',
-        'Kdenlive Installer',
+        "plugin",
+        "Kdenlive Installer",
         allow_failure=False,
-        destination='/apps/kdenlive'
+        destination="/apps/kdenlive",
     )

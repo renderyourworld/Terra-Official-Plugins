@@ -15,7 +15,8 @@ class AppleseedInstaller(Plugin):
     """
     appleseed installer plugin.
     """
-    _version_ = '1.0.0'
+
+    _version_ = "1.0.0"
     _alias_ = "Appleseed Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/appleseed.png?raw=true"
     description = "Appleseed is an open source, physically-based global illumination rendering engine primarily designed for animation and visual effects."
@@ -36,7 +37,6 @@ class AppleseedInstaller(Plugin):
             "https://github.com/appleseedhq/appleseed/releases/download/2.1.0-beta/appleseed-2.1.0-beta-0-g015adb503-linux64-gcc74.zip",
         )
         self.destination = Path(kwargs.get("destination")).as_posix()
-
 
         # validate
         if not self.destination:

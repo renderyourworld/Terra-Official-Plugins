@@ -15,7 +15,8 @@ class ObsidianInstaller(Plugin):
     """
     Xnview installer plugin.
     """
-    _version_ = '1.0.0'
+
+    _version_ = "1.0.0"
     _alias_ = "Obsidian Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/obsidian.png?raw=true"
     description = "Obsidian.md - md file editor, note taking app."
@@ -41,7 +42,6 @@ class ObsidianInstaller(Plugin):
         if not self.destination:
             raise ValueError("No destination directory provided")
 
-
         os.makedirs(self.destination, exist_ok=True)
 
     def install(self, *args, **kwargs) -> None:
@@ -51,11 +51,11 @@ class ObsidianInstaller(Plugin):
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if (
-                run(
-                    f"bash {scripts_directory}/obsidian-installer.sh {self.download_url} {self.destination}",
-                    shell=True,
-                    check=False,
-                ).returncode
-                != 0
+            run(
+                f"bash {scripts_directory}/obsidian-installer.sh {self.download_url} {self.destination}",
+                shell=True,
+                check=False,
+            ).returncode
+            != 0
         ):
             raise RuntimeError("Failed to install obsidian")

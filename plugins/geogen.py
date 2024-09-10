@@ -15,12 +15,22 @@ class GeoGenInstaller(Plugin):
     """
     geogen installer plugin.
     """
-    _version_ = '1.0.0'
+
+    _version_ = "1.0.0"
     _alias_ = "GeoGen Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/geogen.png?raw=true"
     description = "GeoGen is a fresh take on what terrain and planet generation can be"
     category = "Applications"
-    tags = ["geogen", "editor", "geometry", "terrain", "cg", "procedural", "generation", "vfx"]
+    tags = [
+        "geogen",
+        "editor",
+        "geometry",
+        "terrain",
+        "cg",
+        "procedural",
+        "generation",
+        "vfx",
+    ]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
@@ -33,7 +43,6 @@ class GeoGenInstaller(Plugin):
         # store on instance
         self.download_url = "https://jangafx-software-files.s3.amazonaws.com/geogen/installers/linux/geogen-0-3-1-beta.zip"
         self.destination = Path(kwargs.get("destination")).as_posix()
-
 
         # validate
         if not self.destination:

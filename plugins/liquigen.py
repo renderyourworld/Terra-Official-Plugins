@@ -15,7 +15,8 @@ class LiquiGenInstaller(Plugin):
     """
     liquigen installer plugin.
     """
-    _version_ = '1.0.0'
+
+    _version_ = "1.0.0"
     _alias_ = "LiquiGen Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/liquigen.png?raw=true"
     description = "LiquiGen allows you to create anything from water and blood to ketchup and slime."
@@ -32,7 +33,6 @@ class LiquiGenInstaller(Plugin):
         # store on instance
         self.download_url = "https://jangafx-software-files.s3.amazonaws.com/liquigen/installers/linux/liquigen-0.3.0-alpha-linux.zip"
         self.destination = Path(kwargs.get("destination")).as_posix()
-
 
         # validate
         if not self.destination:
