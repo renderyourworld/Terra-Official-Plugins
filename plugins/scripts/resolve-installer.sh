@@ -33,7 +33,7 @@ cd /tmp/resolve_installer
 echo "Installing Resolve from .run file ..."
 #./DaVinci_Resolve_18.6.6_Linux.run --install --noconfirm --nonroot --directory "$2"
 ./"$resolve_version".run --appimage-extract > /dev/null
-mv /tmp/resolve_installer/squashfs-root "$1"
+mv -f /tmp/resolve_installer/squashfs-root "$1"
 
 # copy install pdf
 cp /tmp/resolve_installer/Linux_Installation_Instructions.pdf "$1/Linux_Installation_Instructions.pdf"
