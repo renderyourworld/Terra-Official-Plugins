@@ -22,7 +22,7 @@ class ResolveInstaller(Plugin):
     category = "Applications"
     tags = ["resolve", "video", "editor", "timeline", "edit"]
     fields = [
-        Plugin.field("url", "Download URL", required=False),
+        Plugin.field("version_to_install", "Version to install, 18 or 19", required=True),
         Plugin.field("destination", "Destination directory", required=True),
     ]
 
@@ -31,17 +31,15 @@ class ResolveInstaller(Plugin):
         Check if the target directory exists and validate the arguments passed.
         """
         # store on instance
-        self.download_url = kwargs.get(
-            "url",
-            "https://swr.cloud.blackmagicdesign.com/DaVinciResolve/v18.6.6/DaVinci_Resolve_18.6.6_Linux.zip?verify=1723467358-f%2F4cqBSkZOIOnzqneYOYUaJOMAAEmMCWaz2RBrVsF%2BI%3D",
-        )
         self.destination = Path(kwargs.get("destination")).as_posix()
+        self.version_to_install = str(kwargs.get("version_to_install"))
 
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        os.makedirs(self.destination, exist_ok=True)
+        # validate
+        if not self.version_to_install:
+            raise ValueError("No supported version provided")
 
     def install(self, *args, **kwargs) -> None:
         """
@@ -51,7 +49,7 @@ class ResolveInstaller(Plugin):
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if (
             run(
-                f"bash {scripts_directory}/resolve-installer.sh {self.download_url} {self.destination}",
+                f"bash {scripts_directory}/resolve-installer.sh {self.destination} {self.version_to_install}",
                 shell=True,
                 check=False,
             ).returncode

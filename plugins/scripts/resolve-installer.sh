@@ -1,45 +1,64 @@
-echo "Installing Davinci Resolve to $2"
+echo "Installing Davinci Resolve $2 to $1"
+
+echo "Required to remove old install"
+rm -rf "$1"
+
+if [ "$2" = "18" ]
+then
+  export resolve_version="DaVinci_Resolve_18.6.6_Linux"
+else
+  export resolve_version="DaVinci_Resolve_19.0.1_Linux"
+fi
 
 if [ "$DEV_APPS_DEBUG" = true ]
 then
+  # test is set to 18!
   cd /tmp
   mv /tmp/DaVinci_Resolve_18.6.6_Linux.zip /tmp/resolve.zip
 else
   echo "Downloading Resolve ..."
-  wget -q -O /tmp/resolve.zip "$1"
+  wget -q -O /tmp/resolve.zip https://s3.eu-central-1.wasabisys.com/juno-deps/resolve/"$resolve_version".zip
 fi
 
 echo "Extracting Resolve..."
 chmod +x /tmp/resolve.zip
-mkdir -p /apps/tmp/resolve_installer
+mkdir -p /tmp/resolve_installer
 mkdir -p "/var/BlackmagicDesign"
 mkdir -p "/var/BlackmagicDesign/DaVinci Resolve"
 
-unzip resolve.zip -d /apps/tmp/resolve_installer
+unzip resolve.zip -d /tmp/resolve_installer > /dev/null
 echo "Extracting Resolve done."
 
-cd /apps/tmp/resolve_installer
+cd /tmp/resolve_installer
 echo "Installing Resolve from .run file ..."
-./DaVinci_Resolve_18.6.6_Linux.run --install --noconfirm --nonroot --directory "$2"
+#./DaVinci_Resolve_18.6.6_Linux.run --install --noconfirm --nonroot --directory "$2"
+./"$resolve_version".run --appimage-extract > /dev/null
+mv /tmp/resolve_installer/squashfs-root "$1"
 
-chmod -R 777 "$2/"
-
+# copy install pdf
+cp /tmp/resolve_installer/Linux_Installation_Instructions.pdf "$1/Linux_Installation_Instructions.pdf"
+chmod -R 777 "$1/"
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-cp -v "$SCRIPT_DIR/resolve.source.sh" "$2/"
-cp -v "$SCRIPT_DIR/resolve.sh" "$2/"
-sed -i "s@ROOT_APP@$2@g" "$2/resolve.sh"
-chmod +x "$2/resolve.sh"
-chmod +x "$2/resolve.source.sh"
+cp -v "$SCRIPT_DIR/resolve.source.sh" "$1/"
+cp -v "$SCRIPT_DIR/resolve.sh" "$1/"
+sed -i "s@ROOT_APP@$2@g" "$1/resolve.sh"
+chmod +x "$1/resolve.sh"
+chmod +x "$1/resolve.source.sh"
 
 # app icon setup
 cd $SCRIPT_DIR
-cp "../assets/resolve.png" "$2/resolve.png"
+cp "../assets/resolve.png" "$1/resolve.png"
 echo "Adding desktop file"
 chmod +X create_desktop_file.py
-python3 create_desktop_file.py --app_name="Davinci Resolve" --version="18.6.6" --latest_path="$2"/resolve.sh --categories="resolve, video editor" --destination="$2" --icon="$2"/resolve.png --terminal="True"
+python3 create_desktop_file.py --app_name="Davinci_Resolve" --version="$2" --latest_path="$1"/resolve.sh --categories="resolve, video editor" --destination="$1" --icon="$1"/resolve.png --terminal="True"
 echo "Desktop file created."
+chmod -R 777 "$1/"
+cat $1/*.desktop
 
-chmod -R 777 "$2/"
+# cleanup
+rm $1/AppRun.desktop
 
-cat $2/*.desktop
+
+
+
