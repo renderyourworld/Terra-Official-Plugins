@@ -1,0 +1,2 @@
+echo "Sourcing Davinci Resolve"
+
