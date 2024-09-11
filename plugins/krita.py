@@ -6,6 +6,7 @@ Installer for krita on linux systems.
 import os
 from subprocess import run
 from pathlib import Path
+
 # 3rd
 from terra import Plugin
 
@@ -15,12 +16,13 @@ class KritaInstaller(Plugin):
     Krita installer plugin.
     """
 
+    _version_ = "1.0.0"
     _alias_ = "Krita Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/krita.png?raw=true"
     description = (
         "Krita is a sketching and painting program designed for digital artists. "
     )
-    category = "Media and Entertainment"
+    category = "Applications"
     tags = ["graphics", "editor", "media", "photoshop", "paint", "krita", "kde"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
@@ -42,7 +44,6 @@ class KritaInstaller(Plugin):
             raise ValueError("No destination directory provided")
 
         os.makedirs(self.destination, exist_ok=True)
-
 
     def install(self, *args, **kwargs) -> None:
         """

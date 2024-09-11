@@ -15,11 +15,21 @@ class Syntheyes24Installer(Plugin):
     Kdenlive installer plugin.
     """
 
+    _version_ = "1.0.0"
     _alias_ = "Syntheyes24 Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/syntheyes24.png?raw=true"
     description = "Syntheyes24 3d tracking software"
-    category = "Media and Entertainment"
-    tags = ["syntheyes", "tracking", "media", "3d", "cg"]
+    category = "Applications"
+    tags = [
+        "syntheyes",
+        "tracking",
+        "media",
+        "3d",
+        "cg",
+        "visual effects",
+        "sequence",
+        "camera",
+    ]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),

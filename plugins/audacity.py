@@ -15,10 +15,14 @@ class AudacityInstaller(Plugin):
     """
     Audacity installer plugin.
     """
+
+    _version_ = "1.0.0"
     _alias_ = "Audacity Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/audacity.png?raw=true"
-    description = "Audacity is the world's most popular audio editing and recording app."
-    category = "Media and Entertainment"
+    description = (
+        "Audacity is the world's most popular audio editing and recording app."
+    )
+    category = "Audio"
     tags = ["Audacity", "editor", "media", "audio", "sound"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
@@ -49,11 +53,11 @@ class AudacityInstaller(Plugin):
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if (
-                run(
-                    f"bash {scripts_directory}/audacity-installer.sh {self.download_url} {self.destination}",
-                    shell=True,
-                    check=False,
-                ).returncode
-                != 0
+            run(
+                f"bash {scripts_directory}/audacity-installer.sh {self.download_url} {self.destination}",
+                shell=True,
+                check=False,
+            ).returncode
+            != 0
         ):
             raise RuntimeError("Failed to install Audacity")

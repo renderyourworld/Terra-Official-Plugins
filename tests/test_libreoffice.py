@@ -10,11 +10,12 @@ def test_libreoffice():
     Test Libreoffice installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'Libreoffice Installer')
+    plugin = handler.get_plugin("plugin", "Libreoffice Installer")
     assert plugin is not None
+    assert plugin._version_ is not None
     handler.run_plugin(
-        'plugin',
-        'Libreoffice Installer',
+        "plugin",
+        "Libreoffice Installer",
         allow_failure=False,
-        destination='/apps/libreoffice'
+        destination="/apps/libreoffice",
     )

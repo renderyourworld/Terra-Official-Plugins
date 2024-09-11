@@ -10,11 +10,9 @@ def test_ocio():
     Test ocio installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'Ocio Installer')
+    plugin = handler.get_plugin("plugin", "Ocio Installer")
     assert plugin is not None
+    assert plugin._version_ is not None
     handler.run_plugin(
-        'plugin',
-        'Ocio Installer',
-        allow_failure=False,
-        destination='/apps/ocio'
+        "plugin", "Ocio Installer", allow_failure=False, destination="/apps/ocio"
     )

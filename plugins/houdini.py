@@ -16,13 +16,28 @@ class HoudiniInstaller(Plugin):
     Nuke
     """
 
+    _version_ = "1.0.0"
     _alias_ = "Houdini Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/houdini.png?raw=true"
     description = "Install Houdini to a target directory."
-    category = "Media and Entertainment"
-    tags = ["houdini", "sidefx", "media", "vfx", "visual effects"]
+    category = "Applications"
+    tags = [
+        "houdini",
+        "sidefx",
+        "3d",
+        "vfx",
+        "visual effects",
+        "cg",
+        "modeling",
+        "animation",
+        "solaris",
+        "l-systems",
+        "procedural",
+    ]
     fields = [
-        Plugin.field("version", "Version of Houdini to install. i.e. 20.5.278", required=True),
+        Plugin.field(
+            "version", "Version of Houdini to install. i.e. 20.5.278", required=True
+        ),
         Plugin.field("destination", "Destination directory", required=True),
         Plugin.field("client_id", "SideFX Cliend ID", required=True),
         Plugin.field("client_secret", "SIdeFX Client secret", required=True),
@@ -48,8 +63,6 @@ class HoudiniInstaller(Plugin):
         assert self.version
         assert self.build
 
-
-
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
@@ -63,11 +76,11 @@ class HoudiniInstaller(Plugin):
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if (
-                run(
-                    f"bash {scripts_directory}/houdini-install.sh {self.version} {self.build} {self.destination} {self.client_id} {self.client_secret}",
-                    shell=True,
-                    check=False,
-                ).returncode
-                != 0
+            run(
+                f"bash {scripts_directory}/houdini-install.sh {self.version} {self.build} {self.destination} {self.client_id} {self.client_secret}",
+                shell=True,
+                check=False,
+            ).returncode
+            != 0
         ):
             raise RuntimeError("Failed to install Houdini")

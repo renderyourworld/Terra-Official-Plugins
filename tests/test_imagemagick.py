@@ -10,11 +10,12 @@ def test_imagemagick():
     Test Imagemagick installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'Imagemagick Installer')
+    plugin = handler.get_plugin("plugin", "Imagemagick Installer")
     assert plugin is not None
+    assert plugin._version_ is not None
     handler.run_plugin(
-        'plugin',
-        'Imagemagick Installer',
+        "plugin",
+        "Imagemagick Installer",
         allow_failure=False,
-        destination='/apps/imagemagick'
+        destination="/apps/imagemagick",
     )

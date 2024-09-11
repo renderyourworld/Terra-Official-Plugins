@@ -16,11 +16,12 @@ class WpsofficeInstaller(Plugin):
     Kdenlive installer plugin.
     """
 
+    _version_ = "1.0.0"
     _alias_ = "Wpsoffice Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/wpsoffice.png?raw=true"
     description = "WPS Office Enable easier work within reach"
-    category = "Media and Entertainment"
-    tags = ["wpsoffice", "office", "media", "editorial"]
+    category = "Office"
+    tags = ["wpsoffice", "office", "word", "excel"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),

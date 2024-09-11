@@ -10,11 +10,12 @@ def test_threedelight():
     Test threedelight installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'Threedelight Installer')
+    plugin = handler.get_plugin("plugin", "Threedelight Installer")
     assert plugin is not None
+    assert plugin._version_ is not None
     handler.run_plugin(
-        'plugin',
-        'Threedelight Installer',
+        "plugin",
+        "Threedelight Installer",
         allow_failure=False,
-        destination='/apps/3delight'
+        destination="/apps/3delight",
     )

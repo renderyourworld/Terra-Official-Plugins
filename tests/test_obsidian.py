@@ -10,11 +10,12 @@ def test_obsidian():
     Test obsidian installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'Obsidian Installer')
+    plugin = handler.get_plugin("plugin", "Obsidian Installer")
     assert plugin is not None
+    assert plugin._version_ is not None
     handler.run_plugin(
-        'plugin',
-        'Obsidian Installer',
+        "plugin",
+        "Obsidian Installer",
         allow_failure=False,
-        destination='/apps/obsidian'
+        destination="/apps/obsidian",
     )

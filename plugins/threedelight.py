@@ -15,11 +15,21 @@ class ThreedelightInstaller(Plugin):
     threedelight installer plugin.
     """
 
+    _version_ = "1.0.0"
     _alias_ = "Threedelight Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/threedelight.png?raw=true"
     description = "Refreshingly Simple and Fast rendering engine."
-    category = "Media and Entertainment"
-    tags = ["3delight", "editor", "media", "editorial", "vfx"]
+    category = "Plugin"
+    tags = [
+        "3delight",
+        "rendering",
+        "plugin",
+        "3d",
+        "vfx",
+        "visual effects",
+        "light",
+        "camera",
+    ]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),

@@ -10,13 +10,14 @@ def test_gitloader():
     Verify that we can even use this endpoint
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'Git Loader')
+    plugin = handler.get_plugin("plugin", "Git Loader")
     assert plugin is not None
+    assert plugin._version_ is not None
     handler.run_plugin(
-        'plugin',
-        'Git Loader',
+        "plugin",
+        "Git Loader",
         allow_failure=False,
-        url='https://github.com/juno-fx/Terra-Official-Plugins.git',
-        ref='main',
-        destination='/tmp/terra'
+        url="https://github.com/juno-fx/Terra-Official-Plugins.git",
+        ref="main",
+        destination="/tmp/terra",
     )

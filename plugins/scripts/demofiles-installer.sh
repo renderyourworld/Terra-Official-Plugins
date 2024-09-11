@@ -25,28 +25,29 @@ echo "Installing Sample files..."
 mkdir -p $2
 cd $2
 git clone https://github.com/AcademySoftwareFoundation/OpenImageIO-images.git
+cd $2
 git clone https://github.com/AcademySoftwareFoundation/openexr-images.git
-git clone https://github.com/DigitalProductionExampleLibrary/ALab.git
-git clone https://github.com/usd-wg/assets.git
+#git clone https://github.com/DigitalProductionExampleLibrary/ALab.git
+#git clone https://github.com/usd-wg/assets.git
 chmod -R 777 $2/OpenImageIO-images
 chmod -R 777 $2/openexr-images
-chmod -R 777 $2/ALab
-chmod -R 777 $2/assets
-
-wget -q -O /tmp/intel_moorelane_v1_2_0.zip "https://dpel-assets.aswf.io/4004-moore-lane/intel_moorelane_v1_2_0.zip"
-chmod +x /tmp/intel_moorelane_v1_2_0.zip
-mkdir -p $2/intel_moorelane_v1_2_0
-7z x /tmp/intel_moorelane_v1_2_0.zip -o$2/intel_moorelane_v1_2_0
-chmod -R 777 $2/intel_moorelane_v1_2_0
-
-mkdir -p $2/blender.org
-mkdir -p /tmp/blender
-cd /tmp/blender
-wget https://download.blender.org/institute/sybren/usd/03_035_A.lighting-viewport-settings.usdc.zip
-7z x 03_035_A.lighting-viewport-settings.usdc.zip
-wget https://download.blender.org/institute/sybren/usd/spring.runcycle.usdc
-
-cd $2
-ls -la
-chmod -R 777 $2/
+#chmod -R 777 $2/ALab
+#chmod -R 777 $2/assets
+#
+#wget -q -O /tmp/intel_moorelane_v1_2_0.zip "https://dpel-assets.aswf.io/4004-moore-lane/intel_moorelane_v1_2_0.zip"
+#chmod +x /tmp/intel_moorelane_v1_2_0.zip
+#mkdir -p $2/intel_moorelane_v1_2_0
+#7z x /tmp/intel_moorelane_v1_2_0.zip -o$2/intel_moorelane_v1_2_0
+#chmod -R 777 $2/intel_moorelane_v1_2_0
+#
+#mkdir -p $2/blender.org
+#mkdir -p /tmp/blender
+#cd /tmp/blender
+#wget https://download.blender.org/institute/sybren/usd/03_035_A.lighting-viewport-settings.usdc.zip
+#7z x 03_035_A.lighting-viewport-settings.usdc.zip
+#wget https://download.blender.org/institute/sybren/usd/spring.runcycle.usdc
+#
+#cd $2
+#ls -la
+#chmod -R 777 $2/
 

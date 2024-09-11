@@ -10,11 +10,12 @@ def test_instantmeshes():
     Test instantmeshes installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'Instantmeshes Installer')
+    plugin = handler.get_plugin("plugin", "Instantmeshes Installer")
     assert plugin is not None
+    assert plugin._version_ is not None
     handler.run_plugin(
-        'plugin',
-        'Instantmeshes Installer',
+        "plugin",
+        "Instantmeshes Installer",
         allow_failure=False,
-        destination='/apps/instantmeshes'
+        destination="/apps/instantmeshes",
     )

@@ -18,5 +18,5 @@
 #chmod +X create_desktop_file.py
 #python3 create_desktop_file.py --app_name="Firefox" --version="30.0" --latest_path="$2"/firefox.sh --categories="firefox, web" --destination="$2" --icon="$2"/firefox.png --terminal="False"
 #echo "Desktop file created."
-#
+#chmod -R 777 "$2/"
 #cat $2/*.desktop

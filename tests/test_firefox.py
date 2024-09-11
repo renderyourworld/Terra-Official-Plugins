@@ -10,10 +10,7 @@ def test_firefox():
     Test firefox installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'Firefox Browser')
+    plugin = handler.get_plugin("plugin", "Firefox Browser")
     assert plugin is not None
-    handler.run_plugin(
-        'plugin',
-        'Firefox Browser',
-        allow_failure=False
-    )
+    assert plugin._version_ is not None
+    handler.run_plugin("plugin", "Firefox Browser", allow_failure=False)

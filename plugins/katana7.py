@@ -15,11 +15,23 @@ class Katana7Installer(Plugin):
     Katana7 installer plugin.
     """
 
+    _version_ = "1.0.0"
     _alias_ = "Katana7 Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/katana.png?raw=true"
     description = "Katana's advanced lighting animation software with powerful rendering tools delivers seamless and collaborative edits to 3D lighting effects."
-    category = "Media and Entertainment"
-    tags = ["katana", "vfx", "lightning", "cg", "render"]
+    category = "Applications"
+    tags = [
+        "katana",
+        "vfx",
+        "lightning",
+        "cg",
+        "render",
+        "rendering",
+        "3d",
+        "animation",
+        "lightning",
+        "visual effects",
+    ]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),

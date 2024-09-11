@@ -15,11 +15,12 @@ class ResolveInstaller(Plugin):
     Resolve installer plugin.
     """
 
+    _version_ = "1.0.0"
     _alias_ = "Resolve Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/resolve.png?raw=true"
     description = "Resolve"
-    category = "Media and Entertainment"
-    tags = ["resolve", "editor", "media", "editorial", "kde"]
+    category = "Applications"
+    tags = ["resolve", "video", "editor", "timeline", "edit"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
