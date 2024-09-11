@@ -1,4 +1,4 @@
-echo "Installing Davinci Resolve $2 to $1"
+echo "Installing DaVinci Resolve $2 to $1"
 
 echo "Required to remove old install"
 rm -rf "$1"
@@ -25,6 +25,7 @@ chmod +x /tmp/resolve.zip
 mkdir -p /tmp/resolve_installer
 mkdir -p "/var/BlackmagicDesign"
 mkdir -p "/var/BlackmagicDesign/DaVinci Resolve"
+mkdir -p $1
 
 unzip resolve.zip -d /tmp/resolve_installer > /dev/null
 echo "Extracting Resolve done."
@@ -33,7 +34,7 @@ cd /tmp/resolve_installer
 echo "Installing Resolve from .run file ..."
 #./DaVinci_Resolve_18.6.6_Linux.run --install --noconfirm --nonroot --directory "$2"
 ./"$resolve_version".run --appimage-extract > /dev/null
-mv -f /tmp/resolve_installer/squashfs-root "$1"
+mv -f /tmp/resolve_installer/squashfs-root/* "$1"
 
 # copy install pdf
 cp /tmp/resolve_installer/Linux_Installation_Instructions.pdf "$1/Linux_Installation_Instructions.pdf"
@@ -51,7 +52,7 @@ cd $SCRIPT_DIR
 cp "../assets/resolve.png" "$1/resolve.png"
 echo "Adding desktop file"
 chmod +X create_desktop_file.py
-python3 create_desktop_file.py --app_name="Davinci_Resolve" --version="$2" --latest_path="$1"/resolve.sh --categories="resolve, video editor" --destination="$1" --icon="$1"/resolve.png --terminal="True"
+python3 create_desktop_file.py --app_name="DaVinci_Resolve" --version="$2" --latest_path="$1"/resolve.sh --categories="resolve, video editor" --destination="$1" --icon="$1"/resolve.png --terminal="True"
 echo "Desktop file created."
 chmod -R 777 "$1/"
 cat $1/*.desktop
