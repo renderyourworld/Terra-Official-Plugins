@@ -30,9 +30,9 @@ sed -i "s@DESTINATION@$2@g" $2/deadlinemonitor10.desktop
 sed -i "s@DESTINATION@$2@g" $2/deadlineworker10.desktop
 
 # setup for polaris to pickup
-cp -v "$SCRIPT_DIR"/deadline10/deadline_client.source.sh $2/deadline_client.source.sh
-sed -i "s@DESTINATION@$2@g" $2/deadline_client.source.sh
-chmod +x $2/deadline_client.source.sh
+cp -v "$SCRIPT_DIR"/deadline10/deadline_client.sh.source $2/deadline_client.sh.source
+sed -i "s@DESTINATION@$2@g" $2/deadline_client.sh.source
+chmod +x $2/deadline_client.sh.source
 
 # permissions
 chmod -R 777 $2 > /dev/null

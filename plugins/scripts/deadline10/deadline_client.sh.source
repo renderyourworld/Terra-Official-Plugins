@@ -1,0 +1,11 @@
+echo "Deadline 10 env setup ..."
+
+if [ ! -f /var/lib/Thinkbox/Deadline10/deadline.ini ]; then
+  mkdir -p /var/lib/Thinkbox/
+  mkdir -p /var/lib/Thinkbox/Deadline10
+fi
+
+ln -sf /apps/deadline10/client/deadline.ini /var/lib/Thinkbox/Deadline10/deadline.ini
+export DEADLINE_PATH=/apps/deadline10/client/bin
+export PATH=$DEADLINE_PATH:$PATH
+echo "Deadline in Setup done"
