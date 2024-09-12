@@ -9,3 +9,4 @@ ln -sf /apps/deadline10/client/deadline.ini /var/lib/Thinkbox/Deadline10/deadlin
 export DEADLINE_PATH=/apps/deadline10/client/bin
 export PATH=$DEADLINE_PATH:$PATH
 echo "Deadline in Setup done"
+
