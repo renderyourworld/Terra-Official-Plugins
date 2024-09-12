@@ -16,6 +16,7 @@ then
   cd /tmp
   mv /tmp/DaVinci_Resolve_18.6.6_Linux.zip /tmp/resolve.zip
 else
+  cd /tmp
   echo "Downloading Resolve ..."
   echo "Downloading from https://s3.eu-central-1.wasabisys.com/juno-deps/resolve/$resolve_version.zip"
   wget -q -O /tmp/resolve.zip "https://s3.eu-central-1.wasabisys.com/juno-deps/resolve/$resolve_version.zip"
@@ -28,7 +29,7 @@ mkdir -p "/var/BlackmagicDesign"
 mkdir -p "/var/BlackmagicDesign/DaVinci Resolve"
 mkdir -p $1
 
-unzip resolve.zip -d /tmp/resolve_installer > /dev/null
+unzip /tmp/resolve.zip -d /tmp/resolve_installer > /dev/null
 echo "Extracting Resolve done."
 
 cd /tmp/resolve_installer
