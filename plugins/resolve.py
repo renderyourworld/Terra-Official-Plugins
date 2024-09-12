@@ -15,7 +15,7 @@ class ResolveInstaller(Plugin):
     Resolve installer plugin.
     """
 
-    _version_ = "1.0.0"
+    _version_ = "1.0.1"
     _alias_ = "Resolve Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/resolve.png?raw=true"
     description = "DaVinci Resolve for Linux is a free download and does not require a license dongle or an activation."

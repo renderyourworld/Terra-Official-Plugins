@@ -17,7 +17,8 @@ then
   mv /tmp/DaVinci_Resolve_18.6.6_Linux.zip /tmp/resolve.zip
 else
   echo "Downloading Resolve ..."
-  wget -q -O /tmp/resolve.zip https://s3.eu-central-1.wasabisys.com/juno-deps/resolve/"$resolve_version".zip
+  echo "Downloading from https://s3.eu-central-1.wasabisys.com/juno-deps/resolve/$resolve_version.zip"
+  wget -q -O /tmp/resolve.zip "https://s3.eu-central-1.wasabisys.com/juno-deps/resolve/$resolve_version.zip"
 fi
 
 echo "Extracting Resolve..."
