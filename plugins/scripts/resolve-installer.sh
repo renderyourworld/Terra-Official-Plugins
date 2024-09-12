@@ -16,6 +16,7 @@ then
   cd /tmp
   mv /tmp/DaVinci_Resolve_18.6.6_Linux.zip /tmp/resolve.zip
 else
+  cd /tmp
   echo "Downloading Resolve ..."
   echo "Downloading from https://s3.eu-central-1.wasabisys.com/juno-deps/resolve/$resolve_version.zip"
   wget -q -O /tmp/resolve.zip "https://s3.eu-central-1.wasabisys.com/juno-deps/resolve/$resolve_version.zip"
@@ -28,23 +29,23 @@ mkdir -p "/var/BlackmagicDesign"
 mkdir -p "/var/BlackmagicDesign/DaVinci Resolve"
 mkdir -p $1
 
-unzip resolve.zip -d /tmp/resolve_installer > /dev/null
+unzip /tmp/resolve.zip -d /tmp/resolve_installer > /dev/null
 echo "Extracting Resolve done."
 
 cd /tmp/resolve_installer
 echo "Installing Resolve from .run file ..."
 #./DaVinci_Resolve_18.6.6_Linux.run --install --noconfirm --nonroot --directory "$2"
 ./"$resolve_version".run --appimage-extract > /dev/null
-mv -f /tmp/resolve_installer/squashfs-root/* "$1"
+mv -f /tmp/resolve_installer/squashfs-root/* "$1" > /dev/null
 
 # copy install pdf
 cp /tmp/resolve_installer/Linux_Installation_Instructions.pdf "$1/Linux_Installation_Instructions.pdf"
-chmod -R 777 "$1/"
+chmod -R 777 "$1/" > /dev/null
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp -v "$SCRIPT_DIR/resolve.source.sh" "$1/"
 cp -v "$SCRIPT_DIR/resolve.sh" "$1/"
-sed -i "s@ROOT_APP@$2@g" "$1/resolve.sh"
+sed -i "s@ROOT_APP@$1@g" "$1/resolve.sh"
 chmod +x "$1/resolve.sh"
 chmod +x "$1/resolve.source.sh"
 
@@ -55,7 +56,7 @@ echo "Adding desktop file"
 chmod +X create_desktop_file.py
 python3 create_desktop_file.py --app_name="DaVinci_Resolve" --version="$2" --latest_path="$1"/resolve.sh --categories="resolve, video editor" --destination="$1" --icon="$1"/resolve.png --terminal="True"
 echo "Desktop file created."
-chmod -R 777 "$1/"
+chmod -R 777 "$1/" > /dev/null
 cat $1/*.desktop
 
 # cleanup
