@@ -45,7 +45,7 @@ chmod -R 777 "$1/" > /dev/null
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp -v "$SCRIPT_DIR/resolve.source.sh" "$1/"
 cp -v "$SCRIPT_DIR/resolve.sh" "$1/"
-sed -i "s@ROOT_APP@$2@g" "$1/resolve.sh"
+sed -i "s@ROOT_APP@$1@g" "$1/resolve.sh"
 chmod +x "$1/resolve.sh"
 chmod +x "$1/resolve.source.sh"
 
