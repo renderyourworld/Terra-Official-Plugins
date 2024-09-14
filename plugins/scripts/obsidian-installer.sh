@@ -26,4 +26,6 @@ chmod +X create_desktop_file.py
 python3 create_desktop_file.py --app_name="Obsidian" --version="1.6.7" --latest_path="$2"/obsidian.sh --categories="text, obsidian, markdown, notes, editor" --destination="$2" --icon="$2"/obsidian.png
 echo "Desktop file created."
 
+chmod -R 777 "$2/"
+
 cat $2/*.desktop

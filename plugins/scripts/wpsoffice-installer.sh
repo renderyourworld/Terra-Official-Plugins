@@ -42,8 +42,7 @@ sed -i "s@Icon=wps-office2019-wpsmain@Icon=$2/wps-office2019-wpsmain.png@g" $2/w
 echo "Desktop file created."
 
 cat $2/*.desktop
+chmod -R 777 "$2/"
 
-
-ls $2
 
 

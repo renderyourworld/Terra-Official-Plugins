@@ -9,7 +9,6 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp -v "$SCRIPT_DIR/pureref.sh" "$2/"
 sed -i "s@ROOT_APP@$2@g" "$2/pureref.sh"
 chmod +x "$2/pureref.sh"
-chmod -R 777 "$2/"
 
 # app icon setup
 cd $SCRIPT_DIR
@@ -19,4 +18,5 @@ chmod +X create_desktop_file.py
 python3 create_desktop_file.py --app_name="pureref" --version="1.0" --latest_path="$2"/pureref.sh --categories="pureref, images,references" --destination="$2" --icon="$2"/pureref.png
 echo "Desktop file created."
 
+chmod -R 777 "$2/"
 cat $2/*.desktop

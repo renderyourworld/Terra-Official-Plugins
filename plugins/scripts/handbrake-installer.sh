@@ -21,5 +21,6 @@ echo "Adding desktop file"
 chmod +X create_desktop_file.py
 python3 create_desktop_file.py --app_name="handbrake" --version="0.6" --latest_path="$2"/handbrake.sh --categories="handbrake, graphics, 2d" --destination="$2" --icon="$2"/handbrake.png
 echo "Desktop file created."
+
 chmod -R 777 "$2/"
 cat $2/*.desktop

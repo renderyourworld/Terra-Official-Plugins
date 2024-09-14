@@ -19,5 +19,5 @@ echo "Adding desktop file"
 chmod +X create_desktop_file.py
 python3 create_desktop_file.py --app_name="CpuX" --version="1.0" --latest_path="$2"/cpux.sh --categories="cpux, cpu, system" --destination="$2" --icon="$2"/cpux.png
 echo "Desktop file created."
-
+chmod -R 777 "$2/"
 cat $2/*.desktop

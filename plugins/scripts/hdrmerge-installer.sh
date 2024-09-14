@@ -11,7 +11,6 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp -v "$SCRIPT_DIR/hdrmerge.sh" "$2/"
 sed -i "s@ROOT_APP@$2@g" "$2/hdrmerge.sh"
 chmod +x "$2/hdrmerge.sh"
-chmod -R 777 "$2/"
 
 # app icon setup
 cd $SCRIPT_DIR
@@ -20,5 +19,6 @@ echo "Adding desktop file"
 chmod +X create_desktop_file.py
 python3 create_desktop_file.py --app_name="Hdrmerge" --version="0.6" --latest_path="$2"/hdrmerge.sh --categories="hdrmerge, graphics, 2d" --destination="$2" --icon="$2"/hdrmerge.png
 echo "Desktop file created."
+
 chmod -R 777 "$2/"
 cat $2/*.desktop

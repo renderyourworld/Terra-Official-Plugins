@@ -15,7 +15,7 @@ sed -i "s@ROOT_APP@$2@g" "$2/imagestacker.sh"
 sed -i "s@ROOT_APP@$2@g" "$2/imagestacker_cli.sh"
 chmod +x "$2/imagestacker.sh"
 chmod +x "$2/imagestacker_cli.sh"
-chmod -R 777 "$2/"
+
 # app icon setup
 cd $SCRIPT_DIR
 cp "../assets/imagestacker.png" "$2/imagestacker.png"
@@ -24,3 +24,4 @@ chmod +X create_desktop_file.py
 python3 create_desktop_file.py --app_name="Imagestacker" --version="3.0" --latest_path="$2"/imagestacker.sh --categories="imagestacker" --destination="$2" --icon="$2"/imagestacker.png --terminal="True"
 python3 create_desktop_file.py --app_name="ImagestackerCli" --version="3.0" --latest_path="$2"/imagestacker.sh --categories="imagestacker" --destination="$2" --icon="$2"/imagestacker.png --terminal="True"
 echo "Desktop file created."
+chmod -R 777 "$2/"

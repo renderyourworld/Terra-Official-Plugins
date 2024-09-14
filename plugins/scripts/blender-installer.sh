@@ -21,7 +21,6 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp -v "$SCRIPT_DIR/blender.sh" "$2/"
 sed -i "s@ROOT_APP@$2@g" "$2/blender.sh"
 chmod +x "$2/blender.sh"
-chmod -R 777 "$2/"
 
 # app icon setup
 cd $SCRIPT_DIR
@@ -30,5 +29,5 @@ echo "Adding desktop file"
 chmod +X create_desktop_file.py
 python3 create_desktop_file.py --app_name="Blender" --version=$version --latest_path="$2"/blender.sh --categories="blender, render" --destination="$2" --icon="$2"/blender.png
 echo "Desktop file created."
-
+chmod -R 777 "$2/"
 cat $2/*.desktop

@@ -22,5 +22,5 @@ echo "Adding desktop file"
 chmod +X create_desktop_file.py
 python3 create_desktop_file.py --app_name="Appleseed" --version="2.1" --latest_path="$2"/appleseed.sh --categories="appleseed, render" --destination="$2" --icon="$2"/appleseed.png
 echo "Desktop file created."
-
+chmod -R 777 "$2/"
 cat $2/*.desktop

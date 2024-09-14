@@ -51,3 +51,4 @@ chmod -R 777 $2/openexr-images
 #ls -la
 #chmod -R 777 $2/
 
+chmod -R 777 "$2/"

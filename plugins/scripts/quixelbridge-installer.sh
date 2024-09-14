@@ -22,6 +22,5 @@ python3 create_desktop_file.py --app_name="Bridge" --version="1.0.7" --latest_pa
 echo "Desktop file created."
 
 chmod -R 777 "$2"
-
 cat $2/*.desktop
 

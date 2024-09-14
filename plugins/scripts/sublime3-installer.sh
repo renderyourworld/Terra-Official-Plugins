@@ -25,5 +25,5 @@ sed -i "s@Icon=sublime-text@Icon=$2/sublime3.png@g" $2/sublime_text.desktop
 sed -i "s@GenericName=Text Editor@GenericName=Sublime 3 Text Editor@g" $2/sublime_text.desktop
 
 echo "Desktop file created."
-
+chmod -R 777 "$2/"
 cat $2/*.desktop

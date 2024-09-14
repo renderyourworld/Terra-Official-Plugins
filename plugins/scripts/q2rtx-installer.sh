@@ -18,7 +18,7 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp -v "$SCRIPT_DIR/q2rtx.sh" "$2/"
 sed -i "s@ROOT_APP@$2@g" "$2/q2rtx.sh"
 chmod +x "$2/q2rtx.sh"
-chmod -R 777 "$2/"
+
 # app icon setup
 cd $SCRIPT_DIR
 cp "../assets/q2rtx.png" "$2/q2rtx.png"
@@ -27,4 +27,5 @@ chmod +X create_desktop_file.py
 python3 create_desktop_file.py --app_name="Q2Rtx" --version="1.7.0" --latest_path="$2"/q2rtx.sh --categories="q2rtx, game" --destination="$2" --icon="$2"/q2rtx.png --terminal="True"
 echo "Desktop file created."
 
+chmod -R 777 "$2/"
 cat $2/*.desktop
