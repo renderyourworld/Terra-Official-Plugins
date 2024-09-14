@@ -1,10 +1,12 @@
 echo "Installing firefox..."
+cd /tmp
 wget -q -O /tmp/firefox.appimage "$1"
 chmod +x /tmp/firefox.appimage
 
 echo "Extracting firefox..."
 /tmp/firefox.appimage --appimage-extract > /dev/null
 mv ./squashfs-root "$2/"
+
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp -v "$SCRIPT_DIR/firefox.sh" "$2/"
 sed -i "s@ROOT_APP@$2@g" "$2/firefox.sh"

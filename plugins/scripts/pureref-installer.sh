@@ -1,4 +1,5 @@
 echo "Installing PureRef  $1 $2"
+cd /tmp
 
 chmod +x /tmp/pureref2.Appimage
 /tmp/pureref2.Appimage --appimage-extract > /dev/null
@@ -9,6 +10,7 @@ cp -v "$SCRIPT_DIR/pureref.sh" "$2/"
 sed -i "s@ROOT_APP@$2@g" "$2/pureref.sh"
 chmod +x "$2/pureref.sh"
 chmod -R 777 "$2/"
+
 # app icon setup
 cd $SCRIPT_DIR
 cp "../assets/pureref.png" "$2/pureref.png"

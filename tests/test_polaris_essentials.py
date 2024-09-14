@@ -4,7 +4,7 @@ Tests for juno_pipeline
 from terra.loaders import plugins
 
 
-def test_juno_pipeline():
+def test_polaris_essentials():
     """
     Test polaris essentials installer.
     """

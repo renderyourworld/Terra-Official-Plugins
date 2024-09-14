@@ -1,4 +1,5 @@
 echo "Installing imagemagick..."
+cd /tmp
 wget -q -O /tmp/imagemagick.appimage "$1"
 chmod +x /tmp/imagemagick.appimage
 

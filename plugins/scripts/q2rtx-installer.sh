@@ -1,5 +1,5 @@
 echo "Installing q2rtx..."
-
+cd /tmp
 
 if [ "$DEV_APPS_DEBUG" = true ]
 then

@@ -10,7 +10,7 @@ from terra import Plugin
 from terra.loaders import plugins
 
 
-class JunoPipeline(Plugin):
+class PolarisEssentials(Plugin):
     """
     Git Loader
     """

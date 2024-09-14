@@ -1,4 +1,6 @@
 echo "Installing $1 to $2"
+cd /tmp
+
 wget -q -O /tmp/tlm.appimage "$1"
 chmod +x /tmp/tlm.appimage
 /tmp/tlm.appimage --appimage-extract > /dev/null

@@ -1,4 +1,5 @@
 echo "Installing $1 to $2"
+cd /tmp
 wget -q -O /tmp/xnview.appimage "$1"
 chmod +x /tmp/xnview.appimage
 /tmp/xnview.appimage --appimage-extract > /dev/null

@@ -1,3 +1,5 @@
+echo "Installing kdenlive..."
+cd /tmp
 wget -q -O /tmp/kdenlive.appimage "$1"
 chmod +x /tmp/kdenlive.appimage
 /tmp/kdenlive.appimage --appimage-extract > /dev/null

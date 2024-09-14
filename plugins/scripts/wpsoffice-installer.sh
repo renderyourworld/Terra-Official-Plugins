@@ -1,4 +1,5 @@
 echo "Installing $1 to $2"
+cd /tmp
 wget -q -O /tmp/wpsoffice.appimage "$1"
 chmod +x /tmp/wpsoffice.appimage
 /tmp/wpsoffice.appimage --appimage-extract > /dev/null

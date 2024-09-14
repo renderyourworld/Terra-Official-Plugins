@@ -1,4 +1,5 @@
 echo "Installing $1 to $2"
+cd /tmp
 wget -q -O /tmp/vlc.appimage "$1"
 chmod +x /tmp/vlc.appimage
 /tmp/vlc.appimage --appimage-extract > /dev/null
