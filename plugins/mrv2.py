@@ -33,7 +33,6 @@ class Mrv2Installer(Plugin):
         "exr",
     ]
     fields = [
-        Plugin.field("version", "Version of Mrv2 to install. Ex. 1.2.1", required=True),
         Plugin.field("destination", "Destination directory", required=True),
     ]
 
@@ -44,10 +43,9 @@ class Mrv2Installer(Plugin):
         """
         # store on instance
         # pylint:disable=attribute-defined-outside-init
-        self.version = kwargs.get("version")
         self.download_url = kwargs.get(
             "url",
-            "https://github.com/ggarra13/mrv2/releases/download/v1.2.1/mrv2-v1.2.1-Linux-amd64.tar.gz",
+            "https://github.com/ggarra13/mrv2/releases/download/v1.2.6/mrv2-v1.2.6-Linux-amd64.tar.gz",
         )
         self.destination = Path(kwargs.get("destination")).as_posix()
 

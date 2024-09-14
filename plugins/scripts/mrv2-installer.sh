@@ -2,26 +2,28 @@ echo "Installing $1 to $2"
 
 mrv2_dir=/tmp/mrv2_install
 mkdir -p $mrv2_dir
+cd /tmp
+wget -O /tmp/mrv2.tar.gz "$1"
+tar -xvf /tmp/mrv2.tar.gz -C $mrv2_dir
+ls $mrv2_dir
 
-wget -q -O /tmp/mrv2.tar.gz "$1"
-tar -xvf /tmp/mrv2.tar.gz -C $mrv2_dir > /dev/null
-
-mv $mrv2_dir/mrv2-v1.2.1-Linux-amd64/usr/local/mrv2-v1.2.1-Linux-64 $2
+mv $mrv2_dir/mrv2-v1.2.6-Linux-amd64/usr/local/mrv2-v1.2.6-Linux-64 $2
 
 echo "Link: $2/latest -> $2/mrv2"
 
-touch $2/run_mrv2.sh
-echo 'cd $2/mrv2-v1.2.1-Linux-64/bin
-./mrv2.sh "$@"' > $2/run_mrv2.sh
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+cp -v "$SCRIPT_DIR/mrv2.sh" "$2"/mrv2.sh
+sed -i "s@ROOT_APP@$2/mrv2-v1.2.16-Linux-64/bin@g" "$2/mrv2.sh"
+chmod +x "$2/mrv2.sh"
 
-chmod +x $2/run_mrv2.sh
-
-ln -sfv "$2/run_mrv2.sh" $2/latest
+ln -sfv "$2/mrv2.sh" $2/latest
 chmod +x $2/latest
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
 # app icon setup
 cd $SCRIPT_DIR
+
 cp ../assets/mrv2.png "$2"/mrv2.png
 echo "Adding desktop file"
 chmod +X create_desktop_file.py
