@@ -3,6 +3,7 @@ cd /tmp
 wget -q -O /tmp/vlc.appimage "$1"
 chmod +x /tmp/vlc.appimage
 /tmp/vlc.appimage --appimage-extract > /dev/null
+ls /tmp
 mv ./squashfs-root "$2/"
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
