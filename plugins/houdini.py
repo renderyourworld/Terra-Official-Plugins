@@ -63,6 +63,8 @@ class HoudiniInstaller(Plugin):
         assert self.version
         assert self.build
 
+
+
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
