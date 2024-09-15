@@ -14,5 +14,8 @@ def test_resolve():
     assert plugin is not None
     assert plugin._version_ is not None
     handler.run_plugin(
-        "plugin", "Resolve Installer", allow_failure=False, destination="/apps/resolve"
+        "plugin", "Resolve Installer",
+        allow_failure=False,
+        destination="/apps/resolve",
+        version_to_install="18",
     )
