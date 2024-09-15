@@ -16,5 +16,6 @@ def test_mrv2():
         "plugin",
         "Mrv2 Installer",
         allow_failure=False,
-        destination="/apps/mrv2"
+        destination="/apps/mrv2",
+        app_version="1.2.6"
     )
