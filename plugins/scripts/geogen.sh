@@ -1,3 +1,3 @@
 cd ROOT_APP/GeoGen-0.3.1-beta
 echo "Running embergen!"
-./geogen
+junogl ./geogen
