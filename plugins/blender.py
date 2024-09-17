@@ -27,7 +27,7 @@ class BlenderInstaller(Plugin):
         "vfx",
         "blender",
         "visual effects",
-        "3d",
+        "rendering",
         "cg",
         "modeling",
     ]

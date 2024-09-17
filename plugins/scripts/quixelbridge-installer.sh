@@ -1,4 +1,6 @@
 echo "Installing $1 to $2"
+cd /tmp
+
 wget -q -O /tmp/quixelbridge.appimage "$1"
 chmod +x /tmp/quixelbridge.appimage
 /tmp/quixelbridge.appimage --appimage-extract > /dev/null
@@ -20,6 +22,5 @@ python3 create_desktop_file.py --app_name="Bridge" --version="1.0.7" --latest_pa
 echo "Desktop file created."
 
 chmod -R 777 "$2"
-
 cat $2/*.desktop
 

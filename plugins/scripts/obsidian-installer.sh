@@ -1,4 +1,5 @@
 echo "Installing $1 to $2"
+cd /tmp
 
 echo "Downloading Obsidian from $1"
 wget -q -O /tmp/obsidian.appimage "$1"
@@ -10,6 +11,7 @@ mkdir -p "$2"
 
 mv ./squashfs-root "$2/"
 chmod -R 777 "$2/"
+
 echo "Setting up Obsidian"
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp -v "$SCRIPT_DIR/obsidian.sh" "$2"/obsidian.sh
@@ -23,5 +25,7 @@ echo "Adding desktop file"
 chmod +X create_desktop_file.py
 python3 create_desktop_file.py --app_name="Obsidian" --version="1.6.7" --latest_path="$2"/obsidian.sh --categories="text, obsidian, markdown, notes, editor" --destination="$2" --icon="$2"/obsidian.png
 echo "Desktop file created."
+
+chmod -R 777 "$2/"
 
 cat $2/*.desktop

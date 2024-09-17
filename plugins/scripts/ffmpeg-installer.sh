@@ -11,12 +11,12 @@ echo $ffmpeg_installer_folder
 
 mv $ffmpeg_installer_folder/* $2/
 
-ls $2/
+
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp -v "$SCRIPT_DIR/ffmpeg.sh" "$2/"
 sed -i "s@ROOT_APP@$2@g" "$2/ffmpeg.sh"
 chmod +x "$2/ffmpeg.sh"
-chmod -R 777 "$2/"
+
 # app icon setup
 cd $SCRIPT_DIR
 cp "../assets/ffmpeg.png" "$2/ffmpeg.png"
@@ -24,3 +24,4 @@ echo "Adding desktop file"
 chmod +X create_desktop_file.py
 python3 create_desktop_file.py --app_name="Ffmpeg" --version="3.0" --latest_path="$2"/ffmpeg.sh --categories="ffmpeg" --destination="$2" --icon="$2"/ffmpeg.png --terminal="True"
 echo "Desktop file created."
+chmod -R 777 "$2/"

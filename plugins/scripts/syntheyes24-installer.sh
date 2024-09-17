@@ -14,3 +14,5 @@ mkdir -p $appdir
 echo "Install ok!"
 # move
 mv /opt/BorisFX/SynthEyes2024 $appdir
+
+chmod -R 777 "$2/"

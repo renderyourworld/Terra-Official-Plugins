@@ -52,7 +52,7 @@ class HoudiniInstaller(Plugin):
         self.client_id = kwargs.get("client_id")
         self.client_secret = kwargs.get("client_secret")
         self.destination = Path(kwargs.get("destination")).as_posix()
-
+        self.install_volume='terra-test-claim',
         assert self.client_secret
         assert self.client_id
         assert self.version

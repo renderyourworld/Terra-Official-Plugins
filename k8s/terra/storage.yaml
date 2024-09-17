@@ -3,7 +3,10 @@ kind: PersistentVolume
 metadata:
   name: terra-test-data
 spec:
-  storageClassName: local-storage
+  storageClassName: standard
+  claimRef:
+    name: terra-test-claim
+    namespace: default
   capacity:
     storage: 2Gi
   accessModes:
@@ -16,7 +19,6 @@ kind: PersistentVolumeClaim
 metadata:
   name: terra-test-claim
 spec:
-  storageClassName: local-storage
   volumeName: terra-test-data
   accessModes:
     - ReadWriteMany
