@@ -19,7 +19,7 @@ ln -sfv "$2/blender-$1-linux-x64/blender" "$2/latest"
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp -v "$SCRIPT_DIR/blender.sh" "$2/"
-sed -i "s@ROOT_APP@$2@g" "$2/blender.sh"
+sed -i "s@ROOT_APP@$2/blender-$1-linux-x64@g" "$2/blender.sh"
 chmod +x "$2/blender.sh"
 
 # app icon setup

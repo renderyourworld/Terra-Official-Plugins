@@ -1,3 +1,3 @@
 cd ROOT_APP/
 echo "Running Blender"
-junogl ./latest
+junogl $(readlink -f $0) ROOT_APP/blender
