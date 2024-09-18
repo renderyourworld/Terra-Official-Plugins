@@ -17,7 +17,7 @@ cd $SCRIPT_DIR
 cp "../assets/instantmeshes.png" "$2/instantmeshes.png"
 echo "Adding desktop file"
 chmod +X create_desktop_file.py
-python3 create_desktop_file.py --app_name="instantmeshes" --version="1.0" --latest_path="$2"/instantmeshes.sh --categories="instantmeshes, 3d, vfx" --destination="$2" --icon="$2"/instantmeshes.png
+python3 create_desktop_file.py --app_name="Instantmeshes" --version="1.0" --latest_path="$2"/instantmeshes.sh --categories="instantmeshes, 3d, vfx" --destination="$2" --icon="$2"/instantmeshes.png
 echo "Desktop file created."
 
 chmod -R 777 "$2/"

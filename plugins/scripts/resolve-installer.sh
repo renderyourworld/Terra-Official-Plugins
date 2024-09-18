@@ -43,11 +43,11 @@ cp /tmp/resolve_installer/Linux_Installation_Instructions.pdf "$1/Linux_Installa
 chmod -R 777 "$1/" > /dev/null
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-cp -v "$SCRIPT_DIR/resolve.source.sh" "$1/"
+cp -v "$SCRIPT_DIR/resolve.sh.source" "$1/"
 cp -v "$SCRIPT_DIR/resolve.sh" "$1/"
 sed -i "s@ROOT_APP@$1@g" "$1/resolve.sh"
 chmod +x "$1/resolve.sh"
-chmod +x "$1/resolve.source.sh"
+chmod +x "$1/resolve.sh.source"
 
 # app icon setup
 cd $SCRIPT_DIR
