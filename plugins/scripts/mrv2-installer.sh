@@ -5,13 +5,13 @@ mkdir -p /tmp/mrv2_install
 cd /tmp/mrv2_install
 wget -q -O /tmp/mrv2.tar.gz "$1"
 chmod +x /tmp/mrv2.tar.gz
-tar -xvf /tmp/mrv2.tar.gz -C /tmp/mrv2_install
+tar -xvf /tmp/mrv2.tar.gz -C /tmp/mrv2_install/
 
-cp -r /tmp/mrv2_install/mrv2-v$3-Linux-amd64/usr/local/mrv2-v$3-Linux-64/* $2/
+mv /tmp/mrv2_install/mrv2-v1.2.6-Linux-amd64/usr/local/mrv2-v1.2.6-Linux-64 $2
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp -v "$SCRIPT_DIR/mrv2.sh" "$2"/mrv2.sh
-sed -i "s@ROOT_APP@$2/mrv2-v1.2.16-Linux-64/bin@g" "$2/mrv2.sh"
+sed -i "s@ROOT_APP@$2/mrv2-v1.2.6-Linux-64/bin@g" "$2/mrv2.sh"
 chmod +x "$2/mrv2.sh"
 
 ln -sfv "$2/mrv2.sh" $2/latest
