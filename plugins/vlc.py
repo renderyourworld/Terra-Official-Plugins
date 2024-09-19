@@ -34,7 +34,7 @@ class VlcInstaller(Plugin):
         # store on instance
         self.download_url = kwargs.get(
             "url",
-            "https://github.com/ddesmond/VLC-appimage/releases/download/continuous/VLC-media-player_3.0.21-3-archimage3.4-x86_64.AppImage"
+            "https://github.com/ivan-hc/VLC-appimage/releases/download/3.0.19/VLC_media_player-3.0.19-20230721-with-plugins-x86_64.AppImage",
         )
 
         self.destination = Path(kwargs.get("destination")).as_posix()
