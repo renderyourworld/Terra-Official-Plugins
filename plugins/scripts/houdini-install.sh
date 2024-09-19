@@ -116,4 +116,8 @@ echo "Desktop file created."
 
 chmod -R 777 $3/
 
-
+# add local sesi install
+cd /tmp
+wget -q -O /tmp/sesi.zip "https://s3.eu-central-1.wasabisys.com/juno-deps/s205278.zip"
+unzip -o /tmp/sesi.zip -d $houdini_install_dir/sesi
+chmod -R 777 $houdini_install_dir/sesi
