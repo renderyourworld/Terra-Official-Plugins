@@ -10,6 +10,7 @@ data:
     ulimit -u unlimited
     source DESTINATION/service/deadline_env.sh
     export DEADLINE_PATH=DESTINATION/client
+    export DEADLINE_CUSTOM_PATH=TERA_CUSTOMPATH
     echo "----------------------------------------------------"
     echo "Starting up Terra service for: Deadline10 Webservice"
     echo "----------------------------------------------------"

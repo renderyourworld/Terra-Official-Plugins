@@ -21,6 +21,7 @@ def test_deadline10():
         destination='/apps/deadline10',
         install_volume='terra-test-claim',
         database_volume='terra-test-claim',
+        custom_plugins_path='/apps/deadline10plugins'
     )
 
     sleep(200)

@@ -32,6 +32,14 @@ cp -v "$SCRIPT_DIR"/deadline10/webservice-deadline.ini $2/service/deadline.ini
 cp -v "$SCRIPT_DIR"/deadline10/deadline-repository-connection.ini $2/repository/settings/connection.ini
 cp -v "$SCRIPT_DIR"/deadline10/deadline_env.sh $2/service/deadline_env.sh
 
+echo "Creating default custom deadline path location"
+mkdir -p $3
+# copy Eva to the custom path
+mkdir -p $3/events
+chmod +x "$SCRIPT_DIR"/deadline10/eva.tar
+tar -xvf "$SCRIPT_DIR"/deadline10/eva.tar -C $3/events > /dev/null
+
+chmod -R 777 $3
 
 chmod +x $2/service/deadline_env.sh
 echo "Deadline 10 repository setup done."

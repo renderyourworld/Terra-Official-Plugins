@@ -27,7 +27,9 @@ class Deadline10Installer(Plugin):
         Plugin.field("install_volume", "The name of the install volume", required=True),
         Plugin.field("database_volume", "The name of the database volume", required=True),
         Plugin.field("destination", "Destination directory", required=True),
+        Plugin.field("custom_plugins_path", "Custom Plugins path", required=False),
     ]
+
 
     def preflight(self, *args, **kwargs) -> bool:
         """
@@ -38,6 +40,7 @@ class Deadline10Installer(Plugin):
         self.destination = kwargs.get("destination")
         self.install_volume = kwargs.get("install_volume")
         self.database_volume = kwargs.get("database_volume")
+        self.custom_plugins_path = kwargs.get("custom_plugins_path" or pathlib.Path(self.destination).joinpath("custom").as_posix())
 
         # validate
         if not self.destination:
@@ -58,7 +61,7 @@ class Deadline10Installer(Plugin):
 
         # setup files
         run(
-            f"bash {scripts_directory}/deadline_setup_files.sh {charts_directory}/deadline/templates/configmap.yaml {pathlib.Path(self.destination).as_posix()}",
+            f"bash {scripts_directory}/deadline_setup_files.sh {charts_directory}/deadline/templates/configmap.yaml {pathlib.Path(self.destination).as_posix()} {self.custom_plugins_path}",
             shell=True
         )
 
@@ -87,7 +90,7 @@ class Deadline10Installer(Plugin):
         # install deadline10 repository
         if (
             run(
-                f"bash {scripts_directory}/deadline10_repository-installer.sh {self.download_url} {pathlib.Path(self.destination).as_posix()}",
+                f"bash {scripts_directory}/deadline10_repository-installer.sh {self.download_url} {pathlib.Path(self.destination).as_posix()} {self.custom_plugins_path}",
                 shell=True,
                 check=False
             ).returncode
@@ -98,7 +101,7 @@ class Deadline10Installer(Plugin):
         time.sleep(15)
         if (
             run(
-                f"bash {scripts_directory}/deadline10_client-installer.sh {self.download_url} {pathlib.Path(self.destination).as_posix()}",
+                f"bash {scripts_directory}/deadline10_client-installer.sh {self.download_url} {pathlib.Path(self.destination).as_posix()} {self.custom_plugins_path}",
                 shell=True,
                 check=False
             ).returncode

@@ -8,5 +8,6 @@ fi
 ln -sf /apps/deadline10/client/deadline.ini /var/lib/Thinkbox/Deadline10/deadline.ini
 export DEADLINE_PATH=/apps/deadline10/client/bin
 export PATH=$DEADLINE_PATH:$PATH
+export DEADLINE_CUSTOM_PATH=TERA_CUSTOMPATH
 echo "Deadline in Setup done"
 
