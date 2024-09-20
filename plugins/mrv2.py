@@ -25,9 +25,6 @@ class Mrv2Installer(Plugin):
     tags = [
         "mrv2",
         "viewer",
-        "media",
-        "vfx",
-        "visual effects",
         "video",
         "sequences",
         "exr",

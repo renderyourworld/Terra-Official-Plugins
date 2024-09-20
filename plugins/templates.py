@@ -19,7 +19,7 @@ class TemplatesInstaller(Plugin):
     _version_ = "1.0.0"
     _alias_ = "Templates Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/missing.png?raw=true"
-    description = "Document User Templates"
+    description = "Document User Templates. Provides right click context menu for creating new documents from templates."
     category = "User templates"
     tags = ["templates"]
     fields = []

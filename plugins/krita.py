@@ -23,7 +23,7 @@ class KritaInstaller(Plugin):
         "Krita is a sketching and painting program designed for digital artists. "
     )
     category = "Applications"
-    tags = ["graphics", "editor", "media", "photoshop", "paint", "krita", "kde"]
+    tags = ["graphics", "editor", "media", "photoshop", "paint", "krita"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),

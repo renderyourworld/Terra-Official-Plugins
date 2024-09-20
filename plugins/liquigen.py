@@ -20,7 +20,7 @@ class LiquiGenInstaller(Plugin):
     _alias_ = "LiquiGen Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/liquigen.png?raw=true"
     description = "LiquiGen allows you to create anything from water and blood to ketchup and slime."
-    category = "LibreOffice is a free and powerful office suite, and a successor to OpenOffice.org"
+    category = "Applications"
     tags = ["liquigen", "simulation", "3d", "vfx", "mesh", "vfx", "visual effects"]
     fields = [
         Plugin.field("destination", "Destination directory", required=True),

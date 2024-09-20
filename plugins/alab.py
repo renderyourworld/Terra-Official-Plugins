@@ -21,7 +21,7 @@ class AlabInstaller(Plugin):
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/alab.png?raw=true"
     description = "Alab sample USD files, big download. Long install time."
     category = "Samples"
-    tags = ["alab", "samples", "media", "files", "cg", "3d", "usd"]
+    tags = ["alab", "samples", "files", "cg", "3d", "usd"]
     fields = []
 
     def preflight(self, *args, **kwargs) -> bool:
