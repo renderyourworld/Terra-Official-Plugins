@@ -33,11 +33,11 @@ class Plugin:
         return inspect.getfile(cls)
 
     @staticmethod
-    def field(name: str, description: str, required: bool = False) -> dict:
+    def field(name: str, description: str, required: bool = False, type: str = "select", data: dict = None) -> dict:
         """
         Create a field
         """
-        return {"name": name, "description": description, "required": required}
+        return {"name": name, "description": description, "required": required, "type": type, "data": data}
 
     def update_metadata(self, metadata: dict) -> None:  # pragma: no cover
         """
@@ -87,3 +87,14 @@ class Plugin:
         Run install process
         """
         self.logger.info("No custom installer provided.")
+
+
+    @staticmethod
+    def uninstall(self, *args, **kwargs) -> None:  # pragma: no cover
+        """
+        Run uninstall process
+        """
+        self.logger.info("No custom uninstaller provided.")
+
+
+
