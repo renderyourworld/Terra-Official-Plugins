@@ -1,13 +1,12 @@
 echo "Deadline 10 env setup ..."
 
-if [ ! -f /var/lib/Thinkbox/Deadline10/deadline.ini ]; then
-  mkdir -p /var/lib/Thinkbox/
-  mkdir -p /var/lib/Thinkbox/Deadline10
-fi
-
-ln -sf /apps/deadline10/client/deadline.ini /var/lib/Thinkbox/Deadline10/deadline.ini
-export DEADLINE_PATH=/apps/deadline10/client/bin
+export DEADLINE_CONFIG_FILE=DESTINATION/client/deadline.ini
+export DEADLINE_PATH=DESTINATION/client/bin
 export PATH=$DEADLINE_PATH:$PATH
 export DEADLINE_CUSTOM_PATH=TERA_CUSTOMPATH
+
+# export DEADLINE_LOCAL_USER_PATH=~/.thinkbox
+
+ln -sf DESTINATION/client/userdata/monitor-juno.dmstyle ~/.config/Thinkbox/monitor-juno.dmstyle
 echo "Deadline in Setup done"
 

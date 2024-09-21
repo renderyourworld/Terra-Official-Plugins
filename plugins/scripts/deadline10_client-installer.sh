@@ -35,6 +35,11 @@ sed -i "s@DESTINATION@$2@g" $2/deadline_client.sh.source
 sed -i "s@TERA_CUSTOMPATH@$3@g" $2/deadline_client.sh.source
 chmod +x $2/deadline_client.sh.source
 
+# copy local thinkbox files
+mkdir -p $2/client/userdata
+cp -r "$SCRIPT_DIR"/deadline10/monitor-juno.dmstyle $2/client/userdata/monitor-juno.dmstyle
+chmod -R 777 $2/client/userdata
+
 # permissions
 chmod -R 777 $2 > /dev/null
 

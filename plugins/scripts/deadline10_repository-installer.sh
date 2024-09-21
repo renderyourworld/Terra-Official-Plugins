@@ -37,7 +37,7 @@ mkdir -p $3
 # copy Eva to the custom path
 mkdir -p $3/events
 chmod +x "$SCRIPT_DIR"/deadline10/eva.tar
-tar -xvf "$SCRIPT_DIR"/deadline10/eva.tar -C $3/events > /dev/null
+tar -xvf "$SCRIPT_DIR"/deadline10/eva.tar -C $2/repository/custom/events > /dev/null
 
 chmod -R 777 $3
 
@@ -49,5 +49,7 @@ rm -rfv $2/repository/bin/Mac
 rm -rfv $2/repository/bin/Windows
 
 echo "Deadline 10 repository cleanup done."
+
+
 
 
