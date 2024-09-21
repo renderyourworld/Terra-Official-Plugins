@@ -4,7 +4,7 @@ cd /tmp
 unreal_version=$4
 wget -q -O /tmp/unreal.zip "$1"
 chmod +x /tmp/unreal.zip
-wget -q -O /tmp/unreal_bridge.zip "$1"
+wget -q -O /tmp/unreal_bridge.zip "$3"
 chmod +x /tmp/unreal_bridge.zip
 mkdir -p $2
 echo "Extracting unreal..."
