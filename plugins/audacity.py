@@ -29,6 +29,7 @@ class AudacityInstaller(Plugin):
         Plugin.field("destination", "Destination directory", required=True),
     ]
 
+
     def preflight(self, *args, **kwargs) -> bool:
         """
         Check if the target directory exists and validate the arguments passed.
@@ -39,6 +40,7 @@ class AudacityInstaller(Plugin):
             "https://github.com/audacity/audacity/releases/download/Audacity-3.6.1/audacity-linux-3.6.1-x64.AppImage",
         )
         self.destination = Path(kwargs.get("destination")).as_posix()
+        self.executable = Path(self.destination).joinpath("audacity", "audacity.sh")
 
         # validate
         if not self.destination:
