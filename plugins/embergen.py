@@ -21,7 +21,16 @@ class EmbergenInstaller(Plugin):
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/embergen.png?raw=true"
     description = "Real-time Fire, Smoke, and Explosions"
     category = "Applications"
-    tags = ["embergen", "simluation", "realtime", "fire", "cg", "vfx", "explosions", "smoke"]
+    tags = [
+        "embergen",
+        "simluation",
+        "realtime",
+        "fire",
+        "cg",
+        "vfx",
+        "explosions",
+        "smoke",
+    ]
     fields = [
         Plugin.field("destination", "Destination directory", required=True),
     ]

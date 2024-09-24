@@ -6,6 +6,7 @@ Installer for Resolve on linux systems.
 import os
 from subprocess import run
 from pathlib import Path
+
 # 3rd
 from terra import Plugin
 
@@ -22,7 +23,9 @@ class ResolveInstaller(Plugin):
     category = "Applications"
     tags = ["resolve", "video", "editor", "timeline", "edit"]
     fields = [
-        Plugin.field("version_to_install", "Version to install, 18 or 19", required=True),
+        Plugin.field(
+            "version_to_install", "Version to install, 18 or 19", required=True
+        ),
         Plugin.field("destination", "Destination directory", required=True),
     ]
 

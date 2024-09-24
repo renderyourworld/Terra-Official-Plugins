@@ -21,7 +21,16 @@ class HandbrakeInstaller(Plugin):
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/handbrake.png?raw=true"
     description = "Hanbrake video converter"
     category = "Utility"
-    tags = ["handbrake", "convert", "media", "video", "sequences", "encoding", "transcoding", "decoding"]
+    tags = [
+        "handbrake",
+        "convert",
+        "media",
+        "video",
+        "sequences",
+        "encoding",
+        "transcoding",
+        "decoding",
+    ]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
