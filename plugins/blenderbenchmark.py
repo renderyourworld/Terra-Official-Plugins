@@ -37,6 +37,7 @@ class BlenderbenchmarkInstaller(Plugin):
             "https://opendata.blender.org/cdn/BlenderBenchmark2.0/script/blender-benchmark-script-2.0.0.tar.gz",
         )
         self.destination = Path(kwargs.get("destination")).as_posix()
+        self.executable = None
 
         # validate
         if not self.destination:
