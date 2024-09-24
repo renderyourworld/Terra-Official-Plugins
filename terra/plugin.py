@@ -58,10 +58,22 @@ class Plugin:
         self.logger.info(f"Updating metadata: {metadata}")
         try:
             import src.plugins.service as service
-
             service.set_metadata(os.environ["INSTALL_NAME"], metadata)
+
         except ImportError:
             self.logger.error("Service module not found, running in dev mode.")
+
+    def filter_strings_in_metadata(self, metadata: dict) -> dict:
+        """
+        Filter for strings in metadata (we dont want to store objects)
+        """
+        filtered_metadata = {}
+        for key, value in metadata.items():
+            if isinstance(value, str):
+                filtered_metadata[key] = value
+
+        return filtered_metadata
+
 
     def __init__(self, logger: Logger):  # pragma: no cover
         """
@@ -78,12 +90,14 @@ class Plugin:
         Initialize the Plugin
         """
         _metadata = self.__dict__
+
         try:
             preflight = self.preflight(*args, **kwargs)
             if preflight or preflight is None:
                 self.install(*args, **kwargs)
-
                 self.logger.info("Metadata: ".format(_metadata))
+
+                _metadata = self.filter_strings_in_metadata(_metadata)
                 self.update_metadata(_metadata)
 
         except Exception as error:
@@ -91,6 +105,8 @@ class Plugin:
             self.logger.error(format_exc())
             if not allow_failure:
                 raise error
+
+
 
     def preflight(self, *args, **kwargs) -> bool:  # pragma: no cover
         """
