@@ -1,6 +1,0 @@
-[Desktop Entry]
-Name=Houdini 20 Master
-Exec=terminator -x /apps/houdini/latest
-Terminal=true
-Type=Application
-Categories=Polaris

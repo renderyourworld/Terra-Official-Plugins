@@ -5,6 +5,7 @@ Installer for meshlab on linux systems.
 # std
 import os
 from subprocess import run
+from pathlib import Path
 
 # 3rd
 from terra import Plugin
@@ -15,11 +16,12 @@ class MeshlabInstaller(Plugin):
     meshlab installer plugin.
     """
 
+    _version_ = "1.0.0"
     _alias_ = "Meshlab Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/meshlab.png?raw=true"
     description = "MeshLab - the open source system for processing and editing 3D triangular meshes."
-    category = "Media and Entertainment"
-    tags = ["mesh","cg", "editor", "media", "editorial", "kde"]
+    category = "Applications"
+    tags = ["mesh", "cg", "remesh", "tools", "3d", "utility", "generation"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
@@ -34,14 +36,11 @@ class MeshlabInstaller(Plugin):
             "url",
             "https://github.com/cnr-isti-vclab/meshlab/releases/download/MeshLab-2023.12/MeshLab2023.12-linux.AppImage",
         )
-        self.destination = kwargs.get("destination")
+        self.destination = Path(kwargs.get("destination")).as_posix()
 
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 

@@ -10,11 +10,12 @@ def test_inkscape():
     Test Inkscape installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'Inkscape Installer')
+    plugin = handler.get_plugin("plugin", "Inkscape Installer")
     assert plugin is not None
+    assert plugin._version_ is not None
     handler.run_plugin(
-        'plugin',
-        'Inkscape Installer',
+        "plugin",
+        "Inkscape Installer",
         allow_failure=False,
-        destination='/apps/inkscape'
+        destination="/apps/inkscape",
     )

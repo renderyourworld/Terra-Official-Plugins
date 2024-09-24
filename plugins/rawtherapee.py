@@ -5,6 +5,7 @@ Installer for rawtherapee on linux systems.
 # std
 import os
 from subprocess import run
+from pathlib import Path
 
 # 3rd
 from terra import Plugin
@@ -15,13 +16,14 @@ class RawtherapeeInstaller(Plugin):
     Rawtherapee installer plugin.
     """
 
+    _version_ = "1.0.0"
     _alias_ = "Rawtherapee Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/rawtherapee.png?raw=true"
     description = (
         "RawTherapee is a powerful, cross-platform raw photo processing system."
     )
-    category = "Media and Entertainment"
-    tags = ["Rawtherapee", "editor", "media", "editorial", "kde", "images", "photo"]
+    category = "Applications"
+    tags = ["Rawtherapee", "editor", "media", "editorial", "images", "photo"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
@@ -36,14 +38,11 @@ class RawtherapeeInstaller(Plugin):
             "url",
             "https://rawtherapee.com/shared/builds/linux/RawTherapee_5.10.AppImage",
         )
-        self.destination = kwargs.get("destination")
+        self.destination = Path(kwargs.get("destination")).as_posix()
 
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 

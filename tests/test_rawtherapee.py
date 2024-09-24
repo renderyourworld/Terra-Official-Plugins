@@ -10,11 +10,12 @@ def test_rawtherapee():
     Test Rawtherapee installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'Rawtherapee Installer')
+    plugin = handler.get_plugin("plugin", "Rawtherapee Installer")
     assert plugin is not None
+    assert plugin._version_ is not None
     handler.run_plugin(
-        'plugin',
-        'Rawtherapee Installer',
+        "plugin",
+        "Rawtherapee Installer",
         allow_failure=False,
-        destination='/apps/rawtherapee'
+        destination="/apps/rawtherapee",
     )

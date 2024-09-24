@@ -17,11 +17,19 @@ class NukeSurvivalToolkit_v211(Plugin):
     Git Nuke Survival Toolkit v2.1.1
     """
 
+    _version_ = "1.0.0"
     _alias_ = "Nuke Survival Toolkit v2.1.1"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/nukesurvivaltoolkit.png?raw=true"
     description = "The Nuke Survival Toolkit is a portable tool menu for the Foundry’s Nuke with a hand-picked selection of nuke gizmos collected from all over the web, organized into 1 easy to install toolbar."
-    category = "Media and Entertainment"
-    tags = ["vfx", "pipeline", "nuke survival toolkit", "visual effects"]
+    category = "Plugins"
+    tags = [
+        "vfx",
+        "pipeline",
+        "nuke survival toolkit",
+        "visual effects",
+        "plugins",
+        "gizmos",
+    ]
 
     def install(self, *args, **kwargs) -> None:
         """
@@ -40,6 +48,9 @@ class NukeSurvivalToolkit_v211(Plugin):
         )
 
         run(f"unzip {destination}/v2.1.1 -d {destination}", shell=True, check=True)
-        shutil.move(f"{destination}/NukeSurvivalToolkit_publicRelease-2.1.1/NukeSurvivalToolkit", f"{destination}/")
+        shutil.move(
+            f"{destination}/NukeSurvivalToolkit_publicRelease-2.1.1/NukeSurvivalToolkit",
+            f"{destination}/",
+        )
         os.unlink(f"{destination}/v2.1.1")
         shutil.rmtree(f"{destination}/NukeSurvivalToolkit_publicRelease-2.1.1")

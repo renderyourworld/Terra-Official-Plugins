@@ -10,11 +10,12 @@ def test_luminancehdr():
     Test Luminancehdr installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'Luminancehdr Installer')
+    plugin = handler.get_plugin("plugin", "Luminancehdr Installer")
     assert plugin is not None
+    assert plugin._version_ is not None
     handler.run_plugin(
-        'plugin',
-        'Luminancehdr Installer',
+        "plugin",
+        "Luminancehdr Installer",
         allow_failure=False,
-        destination='/apps/luminancehdr'
+        destination="/apps/luminancehdr",
     )

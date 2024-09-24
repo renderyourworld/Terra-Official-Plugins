@@ -1,22 +1,33 @@
-echo "Installing $1 to $2"
+echo "Installing $1 to $2 - $3"
 
-mrv2_dir=$2
-mkdir -p $mrv2_dir
+version="$3"
+mkdir -p /tmp/mrv2_install
+cd /tmp/mrv2_install
+wget -q -O /tmp/mrv2.tar.gz "$1"
+chmod +x /tmp/mrv2.tar.gz
+tar -xvf /tmp/mrv2.tar.gz -C /tmp/mrv2_install/
 
-curl -L -O --output-dir $mrv2_dir https://github.com/ggarra13/mrv2/releases/download/v1.2.1/mrv2-v1.2.1-Linux-amd64.tar.gz
-tar -xvf "/apps/mrv2/mrv2-v1.2.1-Linux-amd64.tar.gz" -C $mrv2_dir
+mv /tmp/mrv2_install/mrv2-v1.2.6-Linux-amd64/usr/local/mrv2-v1.2.6-Linux-64 $2
 
-mv $mrv2_dir/mrv2-v1.2.1-Linux-amd64/usr/local/mrv2-v1.2.1-Linux-64 $mrv2_dir/1.2.1
-rm -rf $mrv2_dir/mrv2-v1.2.1-Linux-amd64 $mrv2_dir/mrv2-v1.2.1-Linux-amd64.tar.gz
-echo "Link: $mrv2_dir/latest -> $mrv2_dir/mrv2"
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+cp -v "$SCRIPT_DIR/mrv2.sh" "$2"/mrv2.sh
+sed -i "s@ROOT_APP@$2/mrv2-v1.2.6-Linux-64/bin@g" "$2/mrv2.sh"
+chmod +x "$2/mrv2.sh"
 
+ln -sfv "$2/mrv2.sh" $2/latest
+chmod +x $2/latest
 
-#cp /apps/mrv2/run_mrv2.sh /apps/mrv2/1.2.1/run_mrv2.sh
-touch $mrv2_dir/1.2.1/run_mrv2.sh
-echo "pushd $mrv2_dir/1.2.1/bin
-./mrv2.sh" > $mrv2_dir/1.2.1/run_mrv2.sh
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-chmod +x $mrv2_dir/1.2.1/run_mrv2.sh
+# app icon setup
+cd $SCRIPT_DIR
 
-ln -sfv "$mrv2_dir/1.2.1/run_mrv2.sh" $mrv2_dir/latest
-chmod +x $mrv2_dir/latest
+cp ../assets/mrv2.png "$2"/mrv2.png
+echo "Adding desktop file"
+chmod +X create_desktop_file.py
+python3 create_desktop_file.py --app_name="MRV2" --version="$3" --latest_path="$2"'/mrv2.sh "\\$@"' --categories="mrv2, sequence, player, images, exr, video" --destination=$2 --icon="$2"/mrv2.png
+echo "Desktop file created."
+
+chmod -R 777 $2/
+
+cat $2/*.desktop

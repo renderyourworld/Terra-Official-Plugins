@@ -15,6 +15,7 @@ class Downloader(Plugin):
     Git Loader
     """
 
+    _version_ = "1.0.0"
     _alias_ = "Downloader"
     icon = "https://freeiconshop.com/wp-content/uploads/edd/download-flat.png"
     description = "Clone down a repository from a Git Source"

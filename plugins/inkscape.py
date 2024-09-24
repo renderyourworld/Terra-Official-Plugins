@@ -5,6 +5,7 @@ Installer for Inkscape on linux systems.
 # std
 import os
 from subprocess import run
+from pathlib import Path
 
 # 3rd
 from terra import Plugin
@@ -15,11 +16,12 @@ class InkscapeInstaller(Plugin):
     Inkscape installer plugin.
     """
 
+    _version_ = "1.0.0"
     _alias_ = "Inkscape Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/inkscape.png?raw=true"
     description = "A Free and open source vector graphics editor."
-    category = "Media and Entertainment"
-    tags = ["Inkscape", "editor", "media", "graphics", "kde"]
+    category = "Applications"
+    tags = ["Inkscape", "vector", "media", "graphics", "editor"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
@@ -34,14 +36,11 @@ class InkscapeInstaller(Plugin):
             "url",
             "https://inkscape.org/gallery/item/44616/Inkscape-091e20e-x86_64.AppImage",
         )
-        self.destination = kwargs.get("destination")
+        self.destination = Path(kwargs.get("destination")).as_posix()
 
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 

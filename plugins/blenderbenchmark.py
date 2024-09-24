@@ -5,6 +5,7 @@ Installer for blenderbenchmark on linux systems.
 # std
 import os
 from subprocess import run
+from pathlib import Path
 
 # 3rd
 from terra import Plugin
@@ -15,11 +16,12 @@ class BlenderbenchmarkInstaller(Plugin):
     Blenderbenchmark installer plugin.
     """
 
-    _alias_ = "Blenderbenchmark Installer"
+    _version_ = "1.0.0"
+    _alias_ = "Blender Benchmark"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/blenderbenchmark.png?raw=true"
-    description = "Blenderbenchmark is an acronym for KDE Non-Linear Video Editor. It works on GNU/Linux, Windows and BSD."
-    category = "Media and Entertainment"
-    tags = ["vfx", "editor", "media", "Blender", "benchmark", "kde"]
+    description = "Blender benchmark your system. Requires Blender to be installed."
+    category = "Benchmark"
+    tags = ["vfx", "3d", "blender", "benchmark"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
@@ -34,14 +36,11 @@ class BlenderbenchmarkInstaller(Plugin):
             "url",
             "https://opendata.blender.org/cdn/BlenderBenchmark2.0/script/blender-benchmark-script-2.0.0.tar.gz",
         )
-        self.destination = kwargs.get("destination")
+        self.destination = Path(kwargs.get("destination")).as_posix()
 
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 

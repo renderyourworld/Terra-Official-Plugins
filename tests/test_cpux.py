@@ -10,11 +10,10 @@ def test_cpux():
     Test xnview installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'CpuX Installer')
+    plugin = handler.get_plugin("plugin", "CpuX Installer")
     assert plugin is not None
+    assert plugin._version_ is not None
+
     handler.run_plugin(
-        'plugin',
-        'CpuX Installer',
-        allow_failure=False,
-        destination='/apps/cpux'
+        "plugin", "CpuX Installer", allow_failure=False, destination="/apps/cpux"
     )

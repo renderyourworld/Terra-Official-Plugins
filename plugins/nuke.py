@@ -5,6 +5,7 @@ Handles installing Nuke by the Foundry
 # std
 import os
 from subprocess import run
+from pathlib import Path
 
 # 3rd
 from terra import Plugin
@@ -15,13 +16,27 @@ class NukeInstaller(Plugin):
     Nuke
     """
 
+    _version_ = "1.0.0"
     _alias_ = "Nuke Installer"
     icon = "https://www.foundry.com/sites/default/files/2021-03/ICON_NUKE-rgb-yellow-01.png"
     description = "Install The Foundry's Nuke to a target directory."
-    category = "Media and Entertainment"
-    tags = ["nuke", "foundry", "media", "vfx", "visual effects"]
+    category = "Applications"
+    tags = [
+        "nuke",
+        "foundry",
+        "compositing",
+        "vfx",
+        "visual effects",
+        "color",
+        "grading",
+        "3d",
+        "animation",
+        "rendering",
+    ]
     fields = [
-        Plugin.field("version", "Version of Nuke to install. i.e. Nuke14.0v2", required=True),
+        Plugin.field(
+            "version", "Version of Nuke to install. i.e. Nuke14.0v2", required=True
+        ),
         Plugin.field("destination", "Destination directory", required=True),
     ]
 
@@ -31,14 +46,11 @@ class NukeInstaller(Plugin):
         """
         # store on instance
         self.version = kwargs.get("version")
-        self.destination = kwargs.get("destination")
+        self.destination = Path(kwargs.get("destination")).as_posix()
 
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 

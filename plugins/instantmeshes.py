@@ -1,10 +1,11 @@
 """
-Installer for instantmeshes on linux systems.
+Installer for Instantmeshes on linux systems.
 """
 
 # std
 import os
 from subprocess import run
+from pathlib import Path
 
 # 3rd
 from terra import Plugin
@@ -12,14 +13,15 @@ from terra import Plugin
 
 class InstantmeshesInstaller(Plugin):
     """
-    instantmeshes  installer plugin.
+    instantmeshes installer plugin.
     """
 
+    _version_ = "1.0.0"
     _alias_ = "Instantmeshes Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/instantmeshes.png?raw=true"
     description = "Instant Field-Aligned Meshes - remeshing tool."
-    category = "Media and Entertainment"
-    tags = ["instantmeshes", "editor", "media", "vfx", "geometry", "mesh", "remesh", "3d"]
+    category = "Applications"
+    tags = ["instantmeshes", "remesh", "3d", "vfx", "geometry", "mesh", "vfx"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
@@ -34,14 +36,11 @@ class InstantmeshesInstaller(Plugin):
             "url",
             "https://instant-meshes.s3.eu-central-1.amazonaws.com/instant-meshes-linux.zip",
         )
-        self.destination = kwargs.get("destination")
+        self.destination = Path(kwargs.get("destination")).as_posix()
 
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 

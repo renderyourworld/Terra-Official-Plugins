@@ -5,6 +5,7 @@ Handles installing PyCharm by JetBrains
 # std
 import os
 from subprocess import run
+from pathlib import Path
 
 # 3rd
 from terra import Plugin
@@ -15,13 +16,16 @@ class PyCharmInstaller(Plugin):
     PyCharm
     """
 
+    _version_ = "1.0.0"
     _alias_ = "PyCharm Installer"
     icon = "https://intellij-support.jetbrains.com/hc/user_images/5l0fLOoDkFwpjU_ZKu7Ofg.png"
     description = "Python development IDE by JetBrains."
     category = "Software Development"
     tags = ["ide", "python", "development", "jetbrains"]
     fields = [
-        Plugin.field("version", "Version of PyCharm to install. i.e. 2024.1.4", required=False),
+        Plugin.field(
+            "version", "Version of PyCharm to install. i.e. 2024.1.4", required=False
+        ),
         Plugin.field("destination", "Destination directory", required=True),
     ]
 
@@ -31,14 +35,11 @@ class PyCharmInstaller(Plugin):
         """
         # store on instance
         self.version = kwargs.get("version", "2024.1.4")
-        self.destination = kwargs.get("destination")
+        self.destination = Path(kwargs.get("destination")).as_posix()
 
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")
-
-        if not self.destination.endswith("/"):
-            self.destination += "/"
 
         os.makedirs(self.destination, exist_ok=True)
 

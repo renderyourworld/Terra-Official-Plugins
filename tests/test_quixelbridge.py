@@ -10,11 +10,12 @@ def test_quixelbridge():
     Test QuixelBridge installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'QuixelBridge Installer')
+    plugin = handler.get_plugin("plugin", "QuixelBridge Installer")
     assert plugin is not None
+    assert plugin._version_ is not None
     handler.run_plugin(
-        'plugin',
-        'QuixelBridge Installer',
+        "plugin",
+        "QuixelBridge Installer",
         allow_failure=False,
-        destination='/apps/quixelbridge'
+        destination="/apps/quixelbridge",
     )

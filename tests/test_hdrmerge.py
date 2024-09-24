@@ -10,11 +10,12 @@ def test_hdrmerge():
     Test hdrmerge installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'Hdrmerge Installer')
+    plugin = handler.get_plugin("plugin", "Hdrmerge Installer")
     assert plugin is not None
+    assert plugin._version_ is not None
     handler.run_plugin(
-        'plugin',
-        'Hdrmerge Installer',
+        "plugin",
+        "Hdrmerge Installer",
         allow_failure=False,
-        destination='/apps/hdrmerge'
+        destination="/apps/hdrmerge",
     )

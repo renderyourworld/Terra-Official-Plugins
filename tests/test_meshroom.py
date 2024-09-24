@@ -10,11 +10,12 @@ def test_meshroom():
     Test meshroom installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'Meshroom Installer')
+    plugin = handler.get_plugin("plugin", "Meshroom Installer")
     assert plugin is not None
+    assert plugin._version_ is not None
     handler.run_plugin(
-        'plugin',
-        'Meshroom Installer',
+        "plugin",
+        "Meshroom Installer",
         allow_failure=False,
-        destination='/apps/meshroom'
+        destination="/apps/meshroom",
     )
