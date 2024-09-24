@@ -33,12 +33,23 @@ class Plugin:
         return inspect.getfile(cls)
 
     @staticmethod
-    def field(name: str, description: str, required: bool = False, type: str = "select", data: dict = None) -> dict:
+    def field(
+        name: str,
+        description: str,
+        required: bool = False,
+        type: str = "select",
+        data: dict = None,
+    ) -> dict:
         """
         Create a field
         """
-        return {"name": name, "description": description, "required": required, "type": type, "data": data}
-
+        return {
+            "name": name,
+            "description": description,
+            "required": required,
+            "type": type,
+            "data": data,
+        }
 
     def update_metadata(self, metadata: dict) -> None:  # pragma: no cover
         """
@@ -47,6 +58,7 @@ class Plugin:
         self.logger.info(f"Updating metadata: {metadata}")
         try:
             import src.plugins.service as service
+
             service.set_metadata(os.environ["INSTALL_NAME"], metadata)
         except ImportError:
             self.logger.error("Service module not found, running in dev mode.")
@@ -61,7 +73,6 @@ class Plugin:
             name = self.__class__.__name__
         self.logger.info(f"Initializing {name} Plugin")
 
-
     def run(self, allow_failure=True, *args, **kwargs) -> None:  # pragma: no cover
         """
         Initialize the Plugin
@@ -74,6 +85,7 @@ class Plugin:
 
                 self.logger.info("Metadata: ".format(_metadata))
                 self.update_metadata(_metadata)
+
         except Exception as error:
             self.logger.error(f"Error: {error}")
             self.logger.error(format_exc())
@@ -94,13 +106,9 @@ class Plugin:
         """
         self.logger.info("No custom installer provided.")
 
-
     @staticmethod
     def uninstall(self, *args, **kwargs) -> None:  # pragma: no cover
         """
         Run uninstall process
         """
         self.logger.info("No custom uninstaller provided.")
-
-
-
