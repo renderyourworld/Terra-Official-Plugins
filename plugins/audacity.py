@@ -40,7 +40,7 @@ class AudacityInstaller(Plugin):
             "https://github.com/audacity/audacity/releases/download/Audacity-3.6.1/audacity-linux-3.6.1-x64.AppImage",
         )
         self.destination = Path(kwargs.get("destination")).as_posix()
-        self.executable = Path(self.destination).joinpath("audacity", "audacity.sh")
+        self.executable = Path(self.destination).joinpath("audacity.sh").as_posix()
 
         # validate
         if not self.destination:

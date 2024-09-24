@@ -107,7 +107,6 @@ class Plugin:
                 raise error
 
 
-
     def preflight(self, *args, **kwargs) -> bool:  # pragma: no cover
         """
         Run preflight
