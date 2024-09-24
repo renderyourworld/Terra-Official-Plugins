@@ -95,6 +95,7 @@ class Plugin:
             preflight = self.preflight(*args, **kwargs)
             if preflight or preflight is None:
                 self.install(*args, **kwargs)
+
                 self.logger.info("Metadata: ".format(_metadata))
 
                 _metadata = self.filter_strings_in_metadata(_metadata)
