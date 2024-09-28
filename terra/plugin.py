@@ -33,11 +33,23 @@ class Plugin:
         return inspect.getfile(cls)
 
     @staticmethod
-    def field(name: str, description: str, required: bool = False, type: str = "select", data: dict = None) -> dict:
+    def field(
+        name: str,
+        description: str,
+        required: bool = False,
+        type: str = "select",
+        data: dict = None,
+    ) -> dict:
         """
         Create a field
         """
-        return {"name": name, "description": description, "required": required, "type": type, "data": data}
+        return {
+            "name": name,
+            "description": description,
+            "required": required,
+            "type": type,
+            "data": data,
+        }
 
     def update_metadata(self, metadata: dict) -> None:  # pragma: no cover
         """
@@ -47,8 +59,22 @@ class Plugin:
         try:
             import src.plugins.service as service
             service.set_metadata(os.environ["INSTALL_NAME"], metadata)
+
         except ImportError:
             self.logger.error("Service module not found, running in dev mode.")
+
+    def filter_for_strings_in_metadata(self, metadata: dict) -> dict:
+        """
+        Filter for strings in metadata (we dont want to store objects)
+        """
+        filtered_metadata = {}
+        self.logger.info(f"Filtering metadata: {metadata}")
+        for key, value in metadata.items():
+            if isinstance(value, str):
+                filtered_metadata[key] = value
+
+        return filtered_metadata
+
 
     def __init__(self, logger: Logger):  # pragma: no cover
         """
@@ -64,15 +90,25 @@ class Plugin:
         """
         Initialize the Plugin
         """
+        _metadata = self.__dict__
+
         try:
             preflight = self.preflight(*args, **kwargs)
             if preflight or preflight is None:
                 self.install(*args, **kwargs)
+
+                self.logger.info("Metadata: ".format(_metadata))
+
+                only_strings_metadata = self.filter_for_strings_in_metadata(_metadata)
+
+                self.update_metadata(only_strings_metadata)
+
         except Exception as error:
             self.logger.error(f"Error: {error}")
             self.logger.error(format_exc())
             if not allow_failure:
                 raise error
+
 
     def preflight(self, *args, **kwargs) -> bool:  # pragma: no cover
         """
@@ -88,13 +124,9 @@ class Plugin:
         """
         self.logger.info("No custom installer provided.")
 
-
     @staticmethod
     def uninstall(self, *args, **kwargs) -> None:  # pragma: no cover
         """
         Run uninstall process
         """
         self.logger.info("No custom uninstaller provided.")
-
-
-

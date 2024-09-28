@@ -15,6 +15,7 @@ class unrealInstaller(Plugin):
     """
     unreal installer plugin.
     """
+
     _version_ = "0.1.0"
     _alias_ = "unreal Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/missing.png?raw=true"
@@ -39,14 +40,10 @@ class unrealInstaller(Plugin):
         )
         self.download_bridge_url = kwargs.get(
             "bridge_url",
-            "https://ucs-blob-store.s3-accelerate.amazonaws.com/blobs/16/11/44fe-b519-4e8f-a303-ffa2b0a8f668?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA2SBBZFECCYQWRK6G%2F20240921%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240921T145352Z&X-Amz-Expires=3600&X-Amz-Signature=f3bacace6962d793519c0cfa3a20c9261b111acd0b8a14643cf1ffa897f93bfb&X-Amz-SignedHeaders=host&response-content-disposition=inline%3Bfilename%3D%22file.zip%22%3Bfilename%2A%3DUTF-8%27%27Linux_Bridge_5.4.0_2024.0.1.zip&x-id=GetObject"
+            "https://ucs-blob-store.s3-accelerate.amazonaws.com/blobs/16/11/44fe-b519-4e8f-a303-ffa2b0a8f668?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA2SBBZFECCYQWRK6G%2F20240921%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240921T145352Z&X-Amz-Expires=3600&X-Amz-Signature=f3bacace6962d793519c0cfa3a20c9261b111acd0b8a14643cf1ffa897f93bfb&X-Amz-SignedHeaders=host&response-content-disposition=inline%3Bfilename%3D%22file.zip%22%3Bfilename%2A%3DUTF-8%27%27Linux_Bridge_5.4.0_2024.0.1.zip&x-id=GetObject",
         )
         self.destination = Path(kwargs.get("destination")).as_posix()
-        self.unreal_version = kwargs.get(
-            "unreal_version",
-            "5.4.4"
-        )
-
+        self.unreal_version = kwargs.get("unreal_version", "5.4.4")
 
         # validate
         if not self.destination:

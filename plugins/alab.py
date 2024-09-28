@@ -23,6 +23,7 @@ class AlabInstaller(Plugin):
     category = "Samples"
     tags = ["alab", "samples", "files", "cg", "3d", "usd"]
     fields = []
+    executable = "/apps/alab/alab.sh"
 
     def preflight(self, *args, **kwargs) -> bool:
         """

@@ -45,6 +45,7 @@ class BlenderInstaller(Plugin):
         # store on instance
         self.version = kwargs.get("version", "4.2.0")
         self.destination = Path(kwargs.get("destination")).as_posix()
+        self.executable = Path(self.destination).joinpath("latest").as_posix()
 
         # validate
         if not self.destination:
