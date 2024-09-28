@@ -63,11 +63,12 @@ class Plugin:
         except ImportError:
             self.logger.error("Service module not found, running in dev mode.")
 
-    def filter_strings_in_metadata(self, metadata: dict) -> dict:
+    def filter_for_strings_in_metadata(self, metadata: dict) -> dict:
         """
         Filter for strings in metadata (we dont want to store objects)
         """
         filtered_metadata = {}
+        self.logger.info(f"Filtering metadata: {metadata}")
         for key, value in metadata.items():
             if isinstance(value, str):
                 filtered_metadata[key] = value
@@ -98,8 +99,9 @@ class Plugin:
 
                 self.logger.info("Metadata: ".format(_metadata))
 
-                _metadata = self.filter_strings_in_metadata(_metadata)
-                self.update_metadata(_metadata)
+                only_strings_metadata = self.filter_for_strings_in_metadata(_metadata)
+
+                self.update_metadata(only_strings_metadata)
 
         except Exception as error:
             self.logger.error(f"Error: {error}")
