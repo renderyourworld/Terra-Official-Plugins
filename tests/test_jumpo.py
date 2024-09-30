@@ -16,5 +16,6 @@ def test_jumpo():
         'plugin',
         'Jumpo Installer',
         allow_failure=False,
-        ssh_key='dalsjdkhaskjdhaksjdhakjshdas87dqy93482y3iejrnbakdas'
+        ssh_port="22567",
+        ssh_key='dalsjdkhaskjdhaksjdhakjshdas87dqy93482y3iejrnbakdas',
     )

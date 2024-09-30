@@ -24,6 +24,7 @@ class JumpoInstaller(Plugin):
     tags = ["jumpo", "ssh", "utlities", "shell"]
     fields = [
         Plugin.field("ssh_key", "SSH Key", required=True),
+        Plugin.field("ssh_port", "SSH Key", required=True),
     ]
 
     def preflight(self, *args, **kwargs) -> bool:
@@ -32,11 +33,14 @@ class JumpoInstaller(Plugin):
         """
         # store on instance
         self.ssh_key = kwargs.get("ssh_key")
+        self.ssh_port = kwargs.get("ssh_port")
 
         # validate
         if not self.ssh_key:
             raise ValueError("No ssh_key provided")
 
+        if not self.ssh_port:
+            raise ValueError("No ssh_port provided")
 
     def install(self, *args, **kwargs) -> None:
         """
@@ -70,7 +74,8 @@ class JumpoInstaller(Plugin):
         run(
             f"helm upgrade -i jumposervice {charts_directory}/jumpo/  "
             f" --set start_service=false "
-            f" --set ssh_key={self.ssh_key_file}",
+            f" --set ssh_key={self.ssh_key_file} "
+            f" --set ssh_port={self.ssh_port}",
             shell=True,
         )
         #
@@ -83,7 +88,8 @@ class JumpoInstaller(Plugin):
         run(
             f"helm upgrade -i jumposervice {charts_directory}/jumpo/  "
             f" --set start_service=true "
-            f" --set ssh_key={self.ssh_key_file}",
+            f" --set ssh_key={self.ssh_key_file}"
+            f" --set ssh_port={self.ssh_port}",
             shell=True,
         )
         # time.sleep(45)

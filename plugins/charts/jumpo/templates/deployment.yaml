@@ -58,7 +58,7 @@ spec:
               value: "true" #optional
           ports:
             - name: "endpoint"
-              containerPort: 2222
+              containerPort: {{ .Values.ssh_port }}
               protocol: TCP
       volumes:
         - name: ssh-key
