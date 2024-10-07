@@ -7,6 +7,6 @@ export DEADLINE_CUSTOM_PATH=TERA_CUSTOMPATH
 
 # export DEADLINE_LOCAL_USER_PATH=~/.thinkbox
 
-ln -sf DESTINATION/client/userdata/monitor-juno.dmstyle ~/.config/Thinkbox/monitor-juno.dmstyle
+ln -sf DESTINATION/client/userdata/monitor-juno.dmstyle ~/.config/Thinkbox/"Deadline Monitor Styles 10.ini"
 echo "Deadline in Setup done"
 
