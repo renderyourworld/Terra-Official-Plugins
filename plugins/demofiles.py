@@ -16,10 +16,11 @@ class DemofilesInstaller(Plugin):
     Demofiles installer plugin.
     """
 
+    _version_ = "1.0.0"
     _alias_ = "Demofiles Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/samples.png?raw=true"
     description = "Demo files downloaders"
-    category = "Media and Entertainment"
+    category = "Samples"
     tags = ["demofiles", "editor", "media", "editorial", "kde"]
     fields = [
         Plugin.field("destination", "Destination directory", required=True),
@@ -32,7 +33,6 @@ class DemofilesInstaller(Plugin):
         # store on instance
         self.download_url = "url"
         self.destination = Path(kwargs.get("destination")).as_posix()
-
 
         # validate
         if not self.destination:

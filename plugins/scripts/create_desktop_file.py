@@ -2,8 +2,12 @@ import os
 import pathlib
 
 import click
+
+
 @click.command()
-@click.option("--app_name", default="20.0.668", help="Set Houdini version, default is 20.0")
+@click.option(
+    "--app_name", default="20.0.668", help="Set Houdini version, default is 20.0"
+)
 @click.option("--version", default="/apps/houdini", help="installation directory")
 @click.option("--latest_path", default="None")
 @click.option("--categories", default="None")
@@ -11,22 +15,30 @@ import click
 @click.option("--destination", default="None")
 @click.option("--icon", default="None")
 @click.option("--terminal", default="None")
-def create_desktop_file(app_name=None, version=None, latest_path=None, categories=None, debug=None, destination=None, icon=None, terminal=None):
-    """Create a desktop file for the application based on the provided arguments.
-    """
+def create_desktop_file(
+    app_name=None,
+    version=None,
+    latest_path=None,
+    categories=None,
+    debug=None,
+    destination=None,
+    icon=None,
+    terminal=None,
+):
+    """Create a desktop file for the application based on the provided arguments."""
     if terminal == "True":
         terminator = "terminator -x "
     else:
         terminator = ""
-    desktop_file = f'''[Desktop Entry]
+    desktop_file = f"""[Desktop Entry]
 Name={app_name} {version}
 Exec={terminator}{latest_path}
 Terminal=false
 Type=Application
 Categories=X-Polaris
-Icon={icon}'''
+Icon={icon}"""
 
-    desktop_path = destination + "/" + app_name.lower()+ "_" + version + ".desktop"
+    desktop_path = destination + "/" + app_name.lower() + "_" + version + ".desktop"
     desktop_path = pathlib.Path(desktop_path).as_posix()
     with open(desktop_path, "w") as f:
         f.write(desktop_file)

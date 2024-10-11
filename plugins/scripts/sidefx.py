@@ -14,18 +14,18 @@ from requests.packages.urllib3.util.retry import Retry  # pylint: disable=import
 
 
 def service(
-        client_id,
-        client_secret_key,
-        access_token_url="https://www.sidefx.com/oauth2/application_token",
-        endpoint_url="https://www.sidefx.com/api/",
-        access_token=None,
-        access_token_expiry_time=None,
-        timeout=None,
+    client_id,
+    client_secret_key,
+    access_token_url="https://www.sidefx.com/oauth2/application_token",
+    endpoint_url="https://www.sidefx.com/api/",
+    access_token=None,
+    access_token_expiry_time=None,
+    timeout=None,
 ):  # pylint: disable=missing-function-docstring, too-many-arguments
     if (
-            access_token is None
-            or access_token_expiry_time is None
-            or access_token_expiry_time < time.time()
+        access_token is None
+        or access_token_expiry_time is None
+        or access_token_expiry_time < time.time()
     ):
         access_token, access_token_expiry_time = get_access_token_and_expiry_time(
             access_token_url, client_id, client_secret_key, timeout=timeout
@@ -36,7 +36,9 @@ def service(
     )
 
 
-class _Service(object):  # pylint: disable=useless-object-inheritance, too-few-public-methods
+class _Service(
+    object
+):  # pylint: disable=useless-object-inheritance, too-few-public-methods
     def __init__(self, endpoint_url, access_token, access_token_expiry_time, timeout):
         self.endpoint_url = endpoint_url
         self.access_token = access_token
@@ -45,6 +47,7 @@ class _Service(object):  # pylint: disable=useless-object-inheritance, too-few-p
 
     def __getattr__(self, attr_name):
         return _APIFunction(attr_name, self)
+
 
 # pylint: disable=useless-object-inheritance
 class _APIFunction(object):
@@ -56,18 +59,21 @@ class _APIFunction(object):
         # This isn't actually an API function, but a family of them.  Append
         # the requested function name to our name.
         # pylint: disable=too-many-function-args
-        return _APIFunction(
-            f"{self.function_name}.{attr_name}", self.service)
+        return _APIFunction(f"{self.function_name}.{attr_name}", self.service)
 
     def __call__(self, *args, **kwargs):
         return call_api_with_access_token(
-            self.service.endpoint_url, self.service.access_token,
-            self.function_name, args, kwargs,
-            timeout=self.service.timeout)
+            self.service.endpoint_url,
+            self.service.access_token,
+            self.function_name,
+            args,
+            kwargs,
+            timeout=self.service.timeout,
+        )
+
 
 # pylint: disable=useless-object-inheritance, too-few-public-methods, redundant-u-string-prefix, super-with-arguments, too-many-arguments
-class File(
-    object):
+class File(object):
     """Pass parameters of this type to API functions as a way of uploading
     large files.  Note that these File parameters must be specified by keyword
     arguments when calling the functions.
@@ -98,7 +104,7 @@ class ResponseFile(object):  # pylint: disable=useless-object-inheritance
 
 
 def get_access_token_and_expiry_time(
-        access_token_url, client_id, client_secret_key, timeout=None
+    access_token_url, client_id, client_secret_key, timeout=None
 ):
     """Given an API client (id and secret key) that is allowed to make API
     calls, return an access token that can be used to make calls.
@@ -113,7 +119,7 @@ def get_access_token_and_expiry_time(
     response = requests.post(
         access_token_url,
         headers={
-            "Authorization": u"Basic {0}".format(
+            "Authorization": "Basic {0}".format(
                 base64.b64encode(
                     "{0}:{1}".format(client_id, client_secret_key).encode()
                 ).decode("utf-8")
@@ -141,12 +147,14 @@ class AuthorizationError(Exception):
     """
 
     def __init__(self, http_code, message):
-        super(AuthorizationError, self).__init__(message)  # pylint: disable=super-with-arguments, too-many-arguments
+        super(AuthorizationError, self).__init__(
+            message
+        )  # pylint: disable=super-with-arguments, too-many-arguments
         self.http_code = http_code
 
 
 def call_api_with_access_token(
-        endpoint_url, access_token, function_name, args, kwargs, timeout=None
+    endpoint_url, access_token, function_name, args, kwargs, timeout=None
 ):  # pylint: disable=too-many-arguments
     """Call into the API using an access token that was returned by
     get_access_token.
@@ -157,7 +165,9 @@ def call_api_with_access_token(
             if isinstance(arg_value, File):
                 file_data[arg_name] = (
                     arg_value.filename,
-                    open(arg_value.filename, "rb"),  # pylint: disable=consider-using-with
+                    open(
+                        arg_value.filename, "rb"
+                    ),  # pylint: disable=consider-using-with
                     "application/octet-stream",
                 )
             else:
@@ -169,7 +179,9 @@ def call_api_with_access_token(
     for arg_name in file_data:
         del kwargs[arg_name]
 
-    post_data = dict(json=json.dumps([function_name, args, kwargs]))  # pylint: disable=use-dict-literal
+    post_data = dict(
+        json=json.dumps([function_name, args, kwargs])
+    )  # pylint: disable=use-dict-literal
 
     # urllib3 renamed the method_whitelist argument to allowed_methods, so
     # handle different versions of urllib3.
@@ -218,7 +230,10 @@ class APIError(Exception):
         self.http_code = http_code
 
     def __str__(self):
-        return "%s %s" % (self.http_code, self.args[0])  # pylint: disable=consider-using-f-string
+        return "%s %s" % (
+            self.http_code,
+            self.args[0],
+        )  # pylint: disable=consider-using-f-string
 
 
 def _extract_traceback_from_response(response):

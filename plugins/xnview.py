@@ -6,6 +6,7 @@ Installer for Xnview on linux systems.
 import os
 from subprocess import run
 from pathlib import Path
+
 # 3rd
 from terra import Plugin
 
@@ -14,11 +15,13 @@ class XnviewInstaller(Plugin):
     """
     Xnview installer plugin.
     """
+
+    _version_ = "1.0.0"
     _alias_ = "Xnview Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/xnview.png?raw=true"
     description = "XnView MP is a versatile and powerful photo viewer, image management, image resizer."
-    category = "Media and Entertainment"
-    tags = ["Xnview", "editor", "media", "editorial", "photo"]
+    category = "Applications"
+    tags = ["Xnview", "viewer", "media", "photo"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
@@ -48,11 +51,11 @@ class XnviewInstaller(Plugin):
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if (
-                run(
-                    f"bash {scripts_directory}/xnview-installer.sh {self.download_url} {self.destination}",
-                    shell=True,
-                    check=False,
-                ).returncode
-                != 0
+            run(
+                f"bash {scripts_directory}/xnview-installer.sh {self.download_url} {self.destination}",
+                shell=True,
+                check=False,
+            ).returncode
+            != 0
         ):
             raise RuntimeError("Failed to install xnview")

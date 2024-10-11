@@ -1,2 +1,2 @@
 echo "Switching to squashfs-root directory"
-ROOT_APP/"Instant Meshes"
+junogl ROOT_APP/"Instant Meshes"

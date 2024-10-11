@@ -14,6 +14,7 @@ cluster:
 down:
 	@kind delete cluster --name terra-plugins
 
+#dev: local-test
 dev: test
 
 # development
@@ -97,3 +98,6 @@ server: install-docs
 
 app-%:
 	@template/templateapp/makeapp.sh "$(subst app-,,$@)"
+
+cleanup:
+	@docker system prune -af

@@ -16,5 +16,8 @@ def test_houdini():
         'Houdini Installer',
         allow_failure=False,
         destination='/apps/houdini',
-        version='20.0.668',
+        version='20.5.278',
+        install_volume='terra-test-claim',
+        client_id='',
+        client_secret=''
     )

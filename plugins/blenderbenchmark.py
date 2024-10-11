@@ -16,10 +16,11 @@ class BlenderbenchmarkInstaller(Plugin):
     Blenderbenchmark installer plugin.
     """
 
+    _version_ = "1.0.0"
     _alias_ = "Blender Benchmark"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/blenderbenchmark.png?raw=true"
     description = "Blender benchmark your system. Requires Blender to be installed."
-    category = "Media and Entertainment"
+    category = "Benchmark"
     tags = ["vfx", "3d", "blender", "benchmark"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
@@ -36,6 +37,7 @@ class BlenderbenchmarkInstaller(Plugin):
             "https://opendata.blender.org/cdn/BlenderBenchmark2.0/script/blender-benchmark-script-2.0.0.tar.gz",
         )
         self.destination = Path(kwargs.get("destination")).as_posix()
+        self.executable = None
 
         # validate
         if not self.destination:

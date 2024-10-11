@@ -12,6 +12,7 @@ sys.path.append(os.path.abspath(f"{__file__}/../"))
 
 import sidefx
 
+
 @click.command()
 @click.option("--version", default="20.0", help="Set Houdini version, default is 20.0")
 @click.option("--build", default="751", help="Set Houdini build, default is 751")
@@ -19,8 +20,7 @@ import sidefx
 @click.option("--secret", default="None", help="Sidefx client secret")
 @click.option("--output", default="None", help="Temp path location")
 def run_download(version=None, build=None, key=None, secret=None, output=None):
-    """Download a specific Houdini build from the SideFX website.
-    """
+    """Download a specific Houdini build from the SideFX website."""
     target_release = {
         "version": os.environ.get("HOUDINI_VERSION", str(version)),
         "build": os.environ.get("HOUDINI_BUILD", str(build)),
@@ -48,8 +48,8 @@ def run_download(version=None, build=None, key=None, secret=None, output=None):
     for _got_version in releases_list:
         if _got_version["platform"]:
             if (
-                    _got_version["platform"] == target_release["platform"]
-                    and _got_version["release"] == target_release["release"]
+                _got_version["platform"] == target_release["platform"]
+                and _got_version["release"] == target_release["release"]
             ):
                 if _got_version["build"] == target_release["build"]:
                     print(_got_version)
@@ -80,7 +80,6 @@ def run_download(version=None, build=None, key=None, secret=None, output=None):
             file_hash.update(chunk)
     if file_hash.hexdigest() != _download_release["hash"]:
         raise ValueError("Checksum does not match!")
-
 
 
 if __name__ == "__main__":

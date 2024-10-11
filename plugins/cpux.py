@@ -15,9 +15,13 @@ class CpuXInstaller(Plugin):
     """
     CpuX installer plugin.
     """
+
+    _version_ = "1.0.0"
     _alias_ = "CpuX Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/cpux.png?raw=true"
-    description = "CPU-X is a software that gathers information on CPU, motherboard and more."
+    description = (
+        "CPU-X is a software that gathers information on CPU, motherboard and more."
+    )
     category = "Utility"
     tags = ["cpux", "stats", "system", "utilities"]
     fields = [
@@ -49,11 +53,11 @@ class CpuXInstaller(Plugin):
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if (
-                run(
-                    f"bash {scripts_directory}/cpux-installer.sh {self.download_url} {self.destination}",
-                    shell=True,
-                    check=False,
-                ).returncode
-                != 0
+            run(
+                f"bash {scripts_directory}/cpux-installer.sh {self.download_url} {self.destination}",
+                shell=True,
+                check=False,
+            ).returncode
+            != 0
         ):
             raise RuntimeError("Failed to install Cpux")

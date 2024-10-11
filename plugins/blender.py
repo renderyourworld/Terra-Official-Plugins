@@ -10,18 +10,31 @@ from pathlib import Path
 # 3rd
 from terra import Plugin
 
+
 class BlenderInstaller(Plugin):
     """
     Blender
     """
 
+    _version_ = "1.0.0"
     _alias_ = "Blender Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/blender.png?raw=true"
     description = "Blender is licensed as GNU GPL, owned by its contributors. For that reason Blender is Free and Open Source software, forever."
-    category = "Media and Entertainment"
-    tags = ["3d", "animation", "vfx", "blender", "visual effects"]
+    category = "Applications"
+    tags = [
+        "3d",
+        "animation",
+        "vfx",
+        "blender",
+        "visual effects",
+        "rendering",
+        "cg",
+        "modeling",
+    ]
     fields = [
-        Plugin.field("version", "Version of Blender to install. i.e. 4.2.0", required=False),
+        Plugin.field(
+            "version", "Version of Blender to install. i.e. 4.2.0", required=False
+        ),
         Plugin.field("destination", "Destination directory", required=True),
     ]
 
@@ -32,6 +45,7 @@ class BlenderInstaller(Plugin):
         # store on instance
         self.version = kwargs.get("version", "4.2.0")
         self.destination = Path(kwargs.get("destination")).as_posix()
+        self.executable = Path(self.destination).joinpath("latest").as_posix()
 
         # validate
         if not self.destination:

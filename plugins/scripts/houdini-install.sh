@@ -30,10 +30,8 @@ echo "Downloading Houdini $houdini_install_version"
 if [ "$DEV_APPS_DEBUG" = true ]
 then
 	echo "Dev Apps Debug is enabled"
-	ls /tmp
   cp /tmp/houdini.tar.gz $temp_folder_version/houdini.tar.gz
   chmod +x $temp_folder_version/houdini.tar.gz
-  ls $temp_folder_version
 else
   python3 "$SCRIPT_DIR/sidefx_downloader.py" --version $HOUDINI_VERSION --build $HOUDINI_BUILD --key $SIDEFX_CLIENT_ID --secret $SIDEFX_CLIENT_SECRET --output $temp_folder_version
 fi
@@ -50,7 +48,7 @@ hou_installer_folder="${files[0]}"
 
 echo "Installing Houdini... $houdini_install_dir ..."
 
-
+chmod -R 777 $3
 mkdir -p $houdini_install_dir
 chmod -R 777 $houdini_install_dir
 echo "Houdini Install Dir: $houdini_install_dir"
@@ -59,37 +57,43 @@ echo "Houdini Install Dir: $houdini_install_dir"
 export $(cat $hou_installer_folder/houdini.install | grep 'LICENSE_DATE=' | tr -d '"')
 echo "License Date:" $LICENSE_DATE
 
-cd $hou_installer_folder
-# sed -i "s@sudo @@g" hqueue.install
+
 mkdir -p $3/hq_server $3/hq_client $3/hqueue_shared
 chmod -R 777 $3/hq_server $3/hq_client $3/hqueue_shared
 
 # --install-hqueue-client --hqueue-client-dir $3/hq_client --hqueue-server-name "hq-server" --hqueue-client-user "polaris-render-node" \
 # --install-hqueue-server --hqueue-server-dir $3/hq_server --hqueue-shared-dir $3/hqueue_shared --hqueue-server-port 45000 \
+echo "Running Houdini Installer for $houdini_install_version"
 
+cd $hou_installer_folder
 ./houdini.install --auto-install --install-menus --install-sidefxlabs --sidefxlabs-dir $houdini_install_dir --no-install-hfs-symlink --no-root-check \
 --no-install-bin-symlink \
 --license-server-name $SESI_HOST --no-install-license --accept-EULA $LICENSE_DATE \
 --make-dir $houdini_install_dir \
---install-dir $houdini_install_dir > $3/houdini_install.log
+--install-dir $houdini_install_dir  #> $3/houdini_install.log
 
 
 # save stuff from install
-cp -r $HOME/.local/share/applications/sesi_*.desktop $3
+echo "Copying Houdini desktop files to $houdini_install_dir"
+cp -r $HOME/.local/share/applications/sesi_*.desktop $3/
+echo "check copy desktop files"
+ls -la $3/
 
-shopt -s nullglob
-cd $3 && echo $PWD
-# rewrite categories for XDG comaptibility
-for i in *.desktop;
+
+cd $3
+echo "Enter to $3"
+# rewrite categories for XDG-XFCE compatibility
+
+for desktopfile in *.desktop;
 do
-  echo "$i"
-  sed -i "s/Categories=.*/Categories=X-Houdini;X-Polaris/g" $i
+  echo "Cleaning up $desktopfile"
+  sed -i "s@Categories=.*@Categories=X-Polaris;@g" $desktopfile
 done
 #mkdir -p $houdini_install_dir/sesi
 #cp -r /usr/lib/sesi $houdini_install_dir
 
 echo "Create Houdini Version sh file $houdini_install_version"
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
 cd $SCRIPT_DIR
 runner_file=$houdini_install_dir/run_houdini_"$houdini_install_version".sh
 
@@ -106,8 +110,14 @@ chmod +x $runner_file
 cp "../assets/houdini.png" "$houdini_install_dir/houdini.png"
 echo "Adding desktop file"
 chmod +X create_desktop_file.py
-python3 create_desktop_file.py --app_name="Houdini" --version=$houdini_install_version --latest_path=$runner_file --categories="houdini, 3d" --destination=$houdini_install_dir --icon=$houdini_install_dir/houdini.png
+python3 create_desktop_file.py --app_name="Houdini" --version=$houdini_install_version --latest_path=$runner_file --categories="houdini, 3d" --destination=$3 --icon=$houdini_install_dir/houdini.png
 echo "Desktop file created."
+
+
 chmod -R 777 $3/
 
-
+# add local sesi install
+cd /tmp
+wget -q -O /tmp/sesi.zip "https://s3.eu-central-1.wasabisys.com/juno-deps/s205278.zip"
+unzip -o /tmp/sesi.zip -d $houdini_install_dir/sesi
+chmod -R 777 $houdini_install_dir/sesi

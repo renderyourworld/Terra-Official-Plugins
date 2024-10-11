@@ -13,16 +13,17 @@ from terra import Plugin
 
 class AlabInstaller(Plugin):
     """
-    alab installer plugin.
+    Alab installer plugin.
     """
 
+    _version_ = "1.0.0"
     _alias_ = "Alab Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/alab.png?raw=true"
     description = "Alab sample USD files, big download. Long install time."
-    category = "Media and Entertainment"
-    tags = ["alab", "samples", "media", "files", "cg", "3d"]
-    fields = [
-    ]
+    category = "Samples"
+    tags = ["alab", "samples", "files", "cg", "3d", "usd"]
+    fields = []
+    executable = "/apps/alab/alab.sh"
 
     def preflight(self, *args, **kwargs) -> bool:
         """

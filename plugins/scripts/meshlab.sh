@@ -1,4 +1,4 @@
 echo "Switching to squashfs-root directory"
 cd ROOT_APP/squashfs-root/
 echo "Running Meshlab"
-./AppRun
+junogl ROOT_APP/squashfs-root/AppRun

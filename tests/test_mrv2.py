@@ -9,12 +9,13 @@ def test_mrv2():
     Test Mrv2 installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'Mrv2 Installer')
+    plugin = handler.get_plugin("plugin", "Mrv2 Installer")
     assert plugin is not None
+    assert plugin._version_ is not None
     handler.run_plugin(
-        'plugin',
-        'Mrv2 Installer',
+        "plugin",
+        "Mrv2 Installer",
         allow_failure=False,
-        destination='/apps/mrv2',
-        version='Mrv2-1.2.1'
+        destination="/apps/mrv2",
+        app_version="1.2.6"
     )

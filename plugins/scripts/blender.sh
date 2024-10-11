@@ -1,3 +1,2 @@
-cd ROOT_APP/
 echo "Running Blender"
-./latest
+junogl ROOT_APP/blender

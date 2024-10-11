@@ -15,11 +15,22 @@ class UsdPackInstaller(Plugin):
     UsdPack installer plugin.
     """
 
+    _version_ = "1.0.0"
     _alias_ = "UsdPack Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/usdview.png?raw=true"
     description = "NVIDIA Compiled USD binaries for Linux"
-    category = "Media and Entertainment"
-    tags = ["usd", "editor", "media", "editorial", "vfx"]
+    category = "Applications"
+    tags = [
+        "usd",
+        "usdview",
+        "samples",
+        "visual effect",
+        "vfx",
+        "python",
+        "3d",
+        "cg",
+        "animation",
+    ]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
@@ -52,11 +63,11 @@ class UsdPackInstaller(Plugin):
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         self.logger.info(f"Loading scripts from {scripts_directory}")
         if (
-                run(
-                    f"bash {scripts_directory}/usdpack-installer.sh {self.download_url} {self.destination}",
-                    shell=True,
-                    check=False,
-                ).returncode
-                != 0
+            run(
+                f"bash {scripts_directory}/usdpack-installer.sh {self.download_url} {self.destination}",
+                shell=True,
+                check=False,
+            ).returncode
+            != 0
         ):
             raise RuntimeError("Failed to install Usd")

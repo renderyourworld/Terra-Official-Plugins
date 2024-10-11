@@ -15,4 +15,9 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp -v "$SCRIPT_DIR/comfyui.sh" ./
 chmod +x ./comfyui.sh
 
-ln -sfv "$1ComfyUI/comfyui.sh" "$1latest"
+ln -sfv "$1/ComfyUI/comfyui.sh" "$1/latest"
+
+chmod -R 777 "$1/"
+
+
+
