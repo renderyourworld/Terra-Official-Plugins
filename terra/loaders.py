@@ -39,12 +39,15 @@ class TerraPluginLoader(PluginLoader):
         return super().plugins
 
     def run_plugin(
-        self, plugin_type, name, allow_failure=True, *args, **kwargs
+        self, name, allow_failure=True, *args, **kwargs
     ):  # pragma: no cover
         """
         Run a plugin
         """
-        return self.get_plugin(plugin_type, name)(LOGGER).run(
+        target = self.get_plugin('plugin', name)
+        if not target:
+            target = self.get_plugin('workflow', name)
+        return target(LOGGER).run(
             allow_failure=allow_failure, *args, **kwargs
         )
 

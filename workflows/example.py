@@ -8,6 +8,8 @@ class Example(Workflow):
     Example Workflow
     """
 
+    _version_ = "1.0.0"
+    _alias_ = "Example Workflow"
     icon = "fas fa-code"
     description = "Example Workflow"
     category = "Example"
