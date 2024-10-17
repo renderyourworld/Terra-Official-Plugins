@@ -45,6 +45,7 @@ RUN pip install uv \
 
 COPY terra terra
 COPY plugins /opt/official-plugins/plugins/
+COPY workflows /opt/official-plugins/workflows/
 COPY tests tests
 
 CMD sh tests/run_tests.sh

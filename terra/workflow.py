@@ -1,5 +1,5 @@
 """
-Plugin Loader for the service module
+Workflow Loader for the service module
 """
 
 # std
@@ -12,10 +12,10 @@ from logging import Logger
 import pluginlib
 
 
-@pluginlib.Parent("plugin")
-class Plugin:
+@pluginlib.Parent("workflow")
+class Workflow:
     """
-    Base class for extensions
+    Base class for workflows
     """
 
     _skipload_: bool = True
@@ -24,7 +24,7 @@ class Plugin:
     fields: list[dict] = []
     category: str = "Uncategorized"
     tags: list[str] = []
-    context: str = "installer"
+    context: str = "workflow"
 
     @classmethod
     def source(cls) -> str:
@@ -38,7 +38,7 @@ class Plugin:
         name: str,
         description: str,
         required: bool = False,
-        type: str = "text",
+        type: str = "select",
         data: dict = None,
     ) -> dict:
         """
@@ -85,7 +85,7 @@ class Plugin:
         name = self.__class__._alias_
         if not name:
             name = self.__class__.__name__
-        self.logger.info(f"Initializing {name} Plugin")
+        self.logger.info(f"Initializing {name} Workflow")
 
     def run(self, allow_failure=True, *args, **kwargs) -> None:  # pragma: no cover
         """
@@ -119,15 +119,8 @@ class Plugin:
         return True
 
     @pluginlib.abstractmethod
-    def install(self, *args, **kwargs) -> None:  # pragma: no cover
+    def run(self, *args, **kwargs) -> None:  # pragma: no cover
         """
-        Run install process
+        Run workflow
         """
         self.logger.info("No custom installer provided.")
-
-    @staticmethod
-    def uninstall(self, *args, **kwargs) -> None:  # pragma: no cover
-        """
-        Run uninstall process
-        """
-        self.logger.info("No custom uninstaller provided.")
