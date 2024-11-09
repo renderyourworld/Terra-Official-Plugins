@@ -13,7 +13,6 @@ def test_pixelfudger():
     assert plugin is not None
     assert plugin._version_ is not None
     handler.run_plugin(
-        "plugin",
         "Pixelfudger v3.2",
         allow_failure=False,
         destination="/apps/pixelfudger",

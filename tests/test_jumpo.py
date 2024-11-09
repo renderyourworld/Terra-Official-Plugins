@@ -13,7 +13,6 @@ def test_jumpo():
     plugin = handler.get_plugin('plugin', 'Jumpo Installer')
     assert plugin is not None
     handler.run_plugin(
-        'plugin',
         'Jumpo Installer',
         allow_failure=False,
         ssh_port="22567",

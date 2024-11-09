@@ -14,5 +14,5 @@ def test_ffmpeg():
     assert plugin is not None
     assert plugin._version_ is not None
     handler.run_plugin(
-        "plugin", "Ffmpeg Support", allow_failure=False, destination="/apps/ffmpeg"
+        "Ffmpeg Support", allow_failure=False, destination="/apps/ffmpeg"
     )

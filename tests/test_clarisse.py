@@ -13,7 +13,6 @@ def test_clarisse():
     plugin = handler.get_plugin('plugin', 'clarisse Installer')
     assert plugin is not None
     handler.run_plugin(
-        'plugin',
         'clarisse Installer',
         allow_failure=False,
         destination='/apps/clarisse'

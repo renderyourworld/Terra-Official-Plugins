@@ -14,7 +14,6 @@ def test_wpsoffice():
     assert plugin is not None
     assert plugin._version_ is not None
     handler.run_plugin(
-        "plugin",
         "Wpsoffice Installer",
         allow_failure=False,
         destination="/apps/wpsoffice",

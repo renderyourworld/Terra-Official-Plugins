@@ -14,7 +14,6 @@ def test_silhouette2024():
     assert plugin is not None
     assert plugin._version_ is not None
     handler.run_plugin(
-        "plugin",
         "Silhouette2024 Installer",
         allow_failure=False,
         destination="/apps/silhouette2024",

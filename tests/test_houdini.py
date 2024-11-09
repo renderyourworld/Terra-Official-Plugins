@@ -12,7 +12,6 @@ def test_houdini():
     plugin = handler.get_plugin('plugin', 'Houdini Installer')
     assert plugin is not None
     handler.run_plugin(
-        'plugin',
         'Houdini Installer',
         allow_failure=False,
         destination='/apps/houdini',

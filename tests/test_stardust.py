@@ -14,7 +14,6 @@ def test_stardust():
     assert plugin is not None
     assert plugin._version_ is not None
     handler.run_plugin(
-        "plugin",
         "Stardust",
         allow_failure=False,
         pat="PERSONAL ACCES TOKEN HERE",

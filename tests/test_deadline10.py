@@ -15,7 +15,6 @@ def test_deadline10():
     assert plugin is not None
     assert plugin._version_ is not None
     handler.run_plugin(
-        'plugin',
         'Deadline10 Installer',
         allow_failure=False,
         destination='/apps/deadline10',
