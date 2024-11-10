@@ -47,8 +47,11 @@ class JunoPipeline(Plugin):
         meta_url = f"{luna_url}/meta"
 
         response = self.get_task(url=meta_url, task=delivery_task)
-        if response != 200 or not response.json():
+        if response == 200 and not response.json():
             response = self.create_task(url=meta_url, task=delivery_task)
+
+        print(response.text)
+        print(response.status_code)
 
         # handler = plugins()
         # handler.run_plugin(
