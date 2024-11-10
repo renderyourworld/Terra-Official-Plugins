@@ -107,5 +107,5 @@ class JunoPipeline(Plugin):
         """
         create a task in luna
         """
-        task['metadata'] = {'TemplateType': 'Output'}
+        # task['metadata'] = {'TemplateType': 'Output'}
         return request("post", url, json=task)
