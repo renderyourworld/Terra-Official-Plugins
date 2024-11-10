@@ -14,5 +14,5 @@ def test_q2rtx():
     assert plugin is not None
     assert plugin._version_ is not None
     handler.run_plugin(
-        "plugin", "Q2rtx Installer", allow_failure=False, destination="/apps/q2rtx"
+        "Q2rtx Installer", allow_failure=False, destination="/apps/q2rtx"
     )

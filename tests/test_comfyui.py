@@ -13,5 +13,5 @@ def test_comfyui():
     assert plugin is not None
     assert plugin._version_ is not None
     handler.run_plugin(
-        "plugin", "ComfyUI Installer", allow_failure=False, destination="/apps/comfyui"
+        "ComfyUI Installer", allow_failure=False, destination="/apps/comfyui"
     )

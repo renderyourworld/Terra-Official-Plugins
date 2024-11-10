@@ -15,5 +15,5 @@ def test_cpux():
     assert plugin._version_ is not None
 
     handler.run_plugin(
-        "plugin", "CpuX Installer", allow_failure=False, destination="/apps/cpux"
+        "CpuX Installer", allow_failure=False, destination="/apps/cpux"
     )

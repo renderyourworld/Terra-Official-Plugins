@@ -14,7 +14,6 @@ def test_gitloader():
     assert plugin is not None
     assert plugin._version_ is not None
     handler.run_plugin(
-        "plugin",
         "Git Loader",
         allow_failure=False,
         url="https://github.com/juno-fx/Terra-Official-Plugins.git",

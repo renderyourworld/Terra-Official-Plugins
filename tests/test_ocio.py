@@ -14,5 +14,5 @@ def test_ocio():
     assert plugin is not None
     assert plugin._version_ is not None
     handler.run_plugin(
-        "plugin", "Ocio Installer", allow_failure=False, destination="/apps/ocio"
+        "Ocio Installer", allow_failure=False, destination="/apps/ocio"
     )

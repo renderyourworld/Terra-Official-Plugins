@@ -13,7 +13,6 @@ def test_ldpk():
     plugin = handler.get_plugin('plugin', 'ldpk Installer')
     assert plugin is not None
     handler.run_plugin(
-        'plugin',
         'ldpk Installer',
         allow_failure=False,
         destination='/apps/ldpk'

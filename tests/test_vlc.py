@@ -14,5 +14,5 @@ def test_vlc():
     assert plugin is not None
     assert plugin._version_ is not None
     handler.run_plugin(
-        "plugin", "Vlc Installer", allow_failure=False, destination="/apps/vlc"
+        "Vlc Installer", allow_failure=False, destination="/apps/vlc"
     )

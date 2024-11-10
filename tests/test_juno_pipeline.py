@@ -12,4 +12,4 @@ def test_juno_pipeline():
     plugin = handler.get_plugin("plugin", "PyCharm Installer")
     assert plugin is not None
     assert plugin._version_ is not None
-    handler.run_plugin("plugin", "Juno Pipeline (Full)", allow_failure=False)
+    handler.run_plugin("Juno Pipeline (Full)", allow_failure=False)

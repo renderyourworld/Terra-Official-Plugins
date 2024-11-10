@@ -14,5 +14,5 @@ def test_alab():
     assert plugin is not None
     assert plugin._version_ is not None
     handler.run_plugin(
-        "plugin", "Alab Installer", allow_failure=False, destination="/apps/alab"
+        "Alab Installer", allow_failure=False, destination="/apps/alab"
     )

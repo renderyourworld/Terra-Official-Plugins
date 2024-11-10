@@ -14,7 +14,6 @@ def test_obsidian():
     assert plugin is not None
     assert plugin._version_ is not None
     handler.run_plugin(
-        "plugin",
         "Obsidian Installer",
         allow_failure=False,
         destination="/apps/obsidian",

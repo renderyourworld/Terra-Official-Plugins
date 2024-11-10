@@ -14,5 +14,5 @@ def test_krita():
     assert plugin is not None
     assert plugin._version_ is not None
     handler.run_plugin(
-        "plugin", "Krita Installer", allow_failure=False, destination="/apps/krita"
+        "Krita Installer", allow_failure=False, destination="/apps/krita"
     )

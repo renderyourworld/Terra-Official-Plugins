@@ -14,5 +14,5 @@ def test_tlm():
     assert plugin is not None
     assert plugin._version_ is not None
     handler.run_plugin(
-        "plugin", "Tlm Installer", allow_failure=False, destination="/apps/tlm"
+        "Tlm Installer", allow_failure=False, destination="/apps/tlm"
     )

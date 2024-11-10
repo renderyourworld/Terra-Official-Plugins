@@ -13,7 +13,6 @@ def test_downloader():
     assert plugin is not None
     assert plugin._version_ is not None
     handler.run_plugin(
-        "plugin",
         "Downloader",
         allow_failure=False,
         destination="/apps/download",

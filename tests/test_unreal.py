@@ -13,7 +13,6 @@ def test_unreal():
     plugin = handler.get_plugin('plugin', 'unreal Installer')
     assert plugin is not None
     handler.run_plugin(
-        'plugin',
         'unreal Installer',
         allow_failure=False,
         destination='/apps/unreal'
