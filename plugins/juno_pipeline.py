@@ -49,7 +49,6 @@ class JunoPipeline(Plugin):
         response = self.get_task(url=meta_url, task=delivery_task)
         if response == 200 and not response.json():
             response = self.create_task(url=meta_url, task=delivery_task)
-
         print(response.text)
         print(response.status_code)
 
@@ -108,5 +107,5 @@ class JunoPipeline(Plugin):
         """
         create a task in luna
         """
-
+        task['metadata'] = {'TemplateType': 'Output'}
         return request("post", url, json=task)
