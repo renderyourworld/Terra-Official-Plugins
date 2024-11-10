@@ -42,14 +42,13 @@ class JunoPipeline(Plugin):
         Run git pull and install to the target directory
         """
 
-        delivery_task = {'code': 'DeliveryTemplate', 'parent': None, 'type': 1040}
-        luna_url = 'http://luna:8000/'
+        delivery_task = {"code": "DeliveryTemplate", "parent": None, "type": 1040}
+        luna_url = "http://luna:8000/"
         meta_url = f"{luna_url}/meta"
 
         response = self.get_task(url=meta_url, task=delivery_task)
         if response != 200 or not response.json():
             response = self.create_task(url=meta_url, task=delivery_task)
-
 
         # handler = plugins()
         # handler.run_plugin(
@@ -99,9 +98,7 @@ class JunoPipeline(Plugin):
         get a task from luna
         """
         url = f"{url}/meta/filter"
-        response = request(
-            "post", url, json=task
-        )
+        response = request("post", url, json=task)
         return response
 
     def create_task(self, url, task):
@@ -110,4 +107,3 @@ class JunoPipeline(Plugin):
         """
 
         return request("post", url, json=task)
-

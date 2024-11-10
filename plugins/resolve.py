@@ -23,9 +23,7 @@ class ResolveInstaller(Plugin):
     category = "Applications"
     tags = ["resolve", "video", "editor", "timeline", "edit"]
     fields = [
-        Plugin.field(
-            "version_to_install", "Version to install, 18 or 19", required=True
-        ),
+        Plugin.field("version_to_install", "Version to install, 18 or 19", required=True),
         Plugin.field("destination", "Destination directory", required=True),
     ]
 

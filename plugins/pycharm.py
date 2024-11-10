@@ -23,9 +23,7 @@ class PyCharmInstaller(Plugin):
     category = "Software Development"
     tags = ["ide", "python", "development", "jetbrains"]
     fields = [
-        Plugin.field(
-            "version", "Version of PyCharm to install. i.e. 2024.1.4", required=False
-        ),
+        Plugin.field("version", "Version of PyCharm to install. i.e. 2024.1.4", required=False),
         Plugin.field("destination", "Destination directory", required=True),
     ]
 

@@ -1,4 +1,4 @@
-""""
+""" "
 Installer for meshlab on linux systems.
 """
 
@@ -19,7 +19,9 @@ class MeshlabInstaller(Plugin):
     _version_ = "1.0.0"
     _alias_ = "Meshlab Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/meshlab.png?raw=true"
-    description = "MeshLab - the open source system for processing and editing 3D triangular meshes."
+    description = (
+        "MeshLab - the open source system for processing and editing 3D triangular meshes."
+    )
     category = "Applications"
     tags = ["mesh", "cg", "remesh", "tools", "3d", "utility", "generation"]
     fields = [

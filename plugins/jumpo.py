@@ -16,6 +16,7 @@ class JumpoInstaller(Plugin):
     """
     jumpo installer plugin.
     """
+
     _version_ = "1.0.0"
     _alias_ = "Jumpo Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/jumpo.png?raw=true"
@@ -53,10 +54,9 @@ class JumpoInstaller(Plugin):
         print(self.ssh_key)
 
         self.ssh_key_file = Path("/tmp/key.txt").as_posix()
-        with open(self.ssh_key_file, 'w') as file:
+        with open(self.ssh_key_file, "w") as file:
             file.write(self.ssh_key)
         time.sleep(5)
-
 
         # setup jumpo files
         if (

@@ -19,16 +19,13 @@ class AudacityInstaller(Plugin):
     _version_ = "1.0.1"
     _alias_ = "Audacity Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/audacity.png?raw=true"
-    description = (
-        "Audacity is the world's most popular audio editing and recording app."
-    )
+    description = "Audacity is the world's most popular audio editing and recording app."
     category = "Audio"
     tags = ["Audacity", "editor", "media", "audio", "sound"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
     ]
-
 
     def preflight(self, *args, **kwargs) -> bool:
         """

@@ -38,7 +38,6 @@ class ldpkInstaller(Plugin):
         )
         self.destination = Path(kwargs.get("destination")).as_posix()
 
-
         # validate
         if not self.destination:
             raise ValueError("No destination directory provided")

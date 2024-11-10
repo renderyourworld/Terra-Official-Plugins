@@ -59,6 +59,7 @@ class Workflow:
         self.logger.info(f"Updating metadata: {metadata}")
         try:
             import src.plugins.service as service
+
             service.set_metadata(os.environ["INSTALL_NAME"], metadata)
 
         except ImportError:
@@ -75,7 +76,6 @@ class Workflow:
                 filtered_metadata[key] = value
 
         return filtered_metadata
-
 
     def __init__(self, logger: Logger):  # pragma: no cover
         """
@@ -109,7 +109,6 @@ class Workflow:
             self.logger.error(format_exc())
             if not allow_failure:
                 raise error
-
 
     def preflight(self, *args, **kwargs) -> bool:  # pragma: no cover
         """

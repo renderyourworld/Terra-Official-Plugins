@@ -24,9 +24,7 @@ class Sublime3Installer(Plugin):
     category = "Software Development"
     tags = ["Sublime3", "text", "editor", "code", "python"]
     fields = [
-        Plugin.field(
-            "version", "Version of Sublime3 to install. i.e. Sublime3", required=True
-        ),
+        Plugin.field("version", "Version of Sublime3 to install. i.e. Sublime3", required=True),
         Plugin.field("destination", "Destination directory", required=True),
     ]
 
