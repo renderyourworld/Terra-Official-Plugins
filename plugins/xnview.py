@@ -19,7 +19,9 @@ class XnviewInstaller(Plugin):
     _version_ = "1.0.0"
     _alias_ = "Xnview Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/xnview.png?raw=true"
-    description = "XnView MP is a versatile and powerful photo viewer, image management, image resizer."
+    description = (
+        "XnView MP is a versatile and powerful photo viewer, image management, image resizer."
+    )
     category = "Applications"
     tags = ["Xnview", "viewer", "media", "photo"]
     fields = [

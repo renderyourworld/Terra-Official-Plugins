@@ -19,7 +19,9 @@ class LiquiGenInstaller(Plugin):
     _version_ = "1.0.0"
     _alias_ = "LiquiGen Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/liquigen.png?raw=true"
-    description = "LiquiGen allows you to create anything from water and blood to ketchup and slime."
+    description = (
+        "LiquiGen allows you to create anything from water and blood to ketchup and slime."
+    )
     category = "Applications"
     tags = ["liquigen", "simulation", "3d", "vfx", "mesh", "vfx", "visual effects"]
     fields = [

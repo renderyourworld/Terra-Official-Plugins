@@ -35,9 +35,7 @@ class HoudiniInstaller(Plugin):
         "procedural",
     ]
     fields = [
-        Plugin.field(
-            "version", "Version of Houdini to install. i.e. 20.5.278", required=True
-        ),
+        Plugin.field("version", "Version of Houdini to install. i.e. 20.5.278", required=True),
         Plugin.field("destination", "Destination directory", required=True),
         Plugin.field("client_id", "SideFX Cliend ID", required=True),
         Plugin.field("client_secret", "SIdeFX Client secret", required=True),

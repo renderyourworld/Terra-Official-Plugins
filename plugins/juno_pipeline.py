@@ -4,6 +4,7 @@ Juno's Pipeline Bundle
 
 # std
 import os
+from requests import request
 
 # 3rd
 from terra import Plugin
@@ -40,13 +41,24 @@ class JunoPipeline(Plugin):
         """
         Run git pull and install to the target directory
         """
-        handler = plugins()
-        handler.run_plugin(
-            "plugin",
-            "Pixelfudger v3.2",
-            allow_failure=False,
-            destination="/pipe/nuke/external/",
-        )
+
+        delivery_task = {"code": "DeliveryTemplate", "parent": None, "type": 1040}
+        luna_url = "http://luna:8000/"
+        meta_url = f"{luna_url}/meta"
+
+        response = self.get_task(url=meta_url, task=delivery_task)
+        status_code = response.status_code
+        if status_code == 200 and not response.json():
+            response = self.create_task(url=meta_url, task=delivery_task)
+        print(response.status_code)
+
+        # handler = plugins()
+        # handler.run_plugin(
+        #     "plugin",
+        #     "Pixelfudger v3.2",
+        #     allow_failure=False,
+        #     destination="/pipe/nuke/external/",
+        # )
 
         # handler.run_plugin(
         #     "plugin",
@@ -82,3 +94,18 @@ class JunoPipeline(Plugin):
         #     destination="/apps/nuke",
         #     version="Nuke15.1v1",
         # )
+
+    def get_task(self, url, task):
+        """
+        get a task from luna
+        """
+        url = f"{url}/filter"
+        response = request("post", url, json=task)
+        return response
+
+    def create_task(self, url, task):
+        """
+        create a task in luna
+        """
+        task['metadata'] = {'TemplateType': 'Delivery'}
+        return request("post", url, json=task)

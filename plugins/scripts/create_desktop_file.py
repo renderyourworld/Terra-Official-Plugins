@@ -5,9 +5,7 @@ import click
 
 
 @click.command()
-@click.option(
-    "--app_name", default="20.0.668", help="Set Houdini version, default is 20.0"
-)
+@click.option("--app_name", default="20.0.668", help="Set Houdini version, default is 20.0")
 @click.option("--version", default="/apps/houdini", help="installation directory")
 @click.option("--latest_path", default="None")
 @click.option("--categories", default="None")

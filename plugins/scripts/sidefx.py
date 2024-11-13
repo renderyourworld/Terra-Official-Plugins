@@ -1,4 +1,4 @@
-""""This module provides a simple way to call into the SideFX API.
+""" "This module provides a simple way to call into the SideFX API.
 It is as it is provided dfrom the SideFX website and updated linting errors."""
 
 from __future__ import print_function, absolute_import
@@ -31,14 +31,10 @@ def service(
             access_token_url, client_id, client_secret_key, timeout=timeout
         )
 
-    return _Service(
-        endpoint_url, access_token, access_token_expiry_time, timeout=timeout
-    )
+    return _Service(endpoint_url, access_token, access_token_expiry_time, timeout=timeout)
 
 
-class _Service(
-    object
-):  # pylint: disable=useless-object-inheritance, too-few-public-methods
+class _Service(object):  # pylint: disable=useless-object-inheritance, too-few-public-methods
     def __init__(self, endpoint_url, access_token, access_token_expiry_time, timeout):
         self.endpoint_url = endpoint_url
         self.access_token = access_token
@@ -103,9 +99,7 @@ class ResponseFile(object):  # pylint: disable=useless-object-inheritance
 # Code that implements authentication and raw calls into the API:
 
 
-def get_access_token_and_expiry_time(
-    access_token_url, client_id, client_secret_key, timeout=None
-):
+def get_access_token_and_expiry_time(access_token_url, client_id, client_secret_key, timeout=None):
     """Given an API client (id and secret key) that is allowed to make API
     calls, return an access token that can be used to make calls.
     """
@@ -120,9 +114,9 @@ def get_access_token_and_expiry_time(
         access_token_url,
         headers={
             "Authorization": "Basic {0}".format(
-                base64.b64encode(
-                    "{0}:{1}".format(client_id, client_secret_key).encode()
-                ).decode("utf-8")
+                base64.b64encode("{0}:{1}".format(client_id, client_secret_key).encode()).decode(
+                    "utf-8"
+                )
             ),
         },
         data=post_data,
@@ -131,9 +125,7 @@ def get_access_token_and_expiry_time(
     if response.status_code != 200:
         raise AuthorizationError(
             response.status_code,
-            "{0}: {1}".format(
-                response.status_code, _extract_traceback_from_response(response)
-            ),
+            "{0}: {1}".format(response.status_code, _extract_traceback_from_response(response)),
         )
 
     response_json = response.json()
@@ -147,9 +139,7 @@ class AuthorizationError(Exception):
     """
 
     def __init__(self, http_code, message):
-        super(AuthorizationError, self).__init__(
-            message
-        )  # pylint: disable=super-with-arguments, too-many-arguments
+        super(AuthorizationError, self).__init__(message)  # pylint: disable=super-with-arguments, too-many-arguments
         self.http_code = http_code
 
 
@@ -165,9 +155,7 @@ def call_api_with_access_token(
             if isinstance(arg_value, File):
                 file_data[arg_name] = (
                     arg_value.filename,
-                    open(
-                        arg_value.filename, "rb"
-                    ),  # pylint: disable=consider-using-with
+                    open(arg_value.filename, "rb"),  # pylint: disable=consider-using-with
                     "application/octet-stream",
                 )
             else:
@@ -179,9 +167,7 @@ def call_api_with_access_token(
     for arg_name in file_data:
         del kwargs[arg_name]
 
-    post_data = dict(
-        json=json.dumps([function_name, args, kwargs])
-    )  # pylint: disable=use-dict-literal
+    post_data = dict(json=json.dumps([function_name, args, kwargs]))  # pylint: disable=use-dict-literal
 
     # urllib3 renamed the method_whitelist argument to allowed_methods, so
     # handle different versions of urllib3.

@@ -32,9 +32,7 @@ class BlenderInstaller(Plugin):
         "modeling",
     ]
     fields = [
-        Plugin.field(
-            "version", "Version of Blender to install. i.e. 4.2.0", required=False
-        ),
+        Plugin.field("version", "Version of Blender to install. i.e. 4.2.0", required=False),
         Plugin.field("destination", "Destination directory", required=True),
     ]
 

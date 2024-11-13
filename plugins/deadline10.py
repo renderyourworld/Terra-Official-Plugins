@@ -26,9 +26,7 @@ class Deadline10Installer(Plugin):
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("install_volume", "The name of the install volume", required=True),
-        Plugin.field(
-            "database_volume", "The name of the database volume", required=True
-        ),
+        Plugin.field("database_volume", "The name of the database volume", required=True),
         Plugin.field("destination", "Destination directory", required=True),
         Plugin.field("custom_plugins_path", "Custom Plugins path", required=False),
     ]
@@ -43,8 +41,7 @@ class Deadline10Installer(Plugin):
         self.install_volume = kwargs.get("install_volume")
         self.database_volume = kwargs.get("database_volume")
         self.custom_plugins_path = kwargs.get(
-            "custom_plugins_path"
-            or pathlib.Path(self.destination).joinpath("custom").as_posix()
+            "custom_plugins_path" or pathlib.Path(self.destination).joinpath("custom").as_posix()
         )
 
         # validate

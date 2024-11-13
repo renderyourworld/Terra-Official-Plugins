@@ -19,9 +19,7 @@ class KritaInstaller(Plugin):
     _version_ = "1.0.0"
     _alias_ = "Krita Installer"
     icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/krita.png?raw=true"
-    description = (
-        "Krita is a sketching and painting program designed for digital artists. "
-    )
+    description = "Krita is a sketching and painting program designed for digital artists. "
     category = "Applications"
     tags = ["graphics", "editor", "media", "photoshop", "paint", "krita"]
     fields = [

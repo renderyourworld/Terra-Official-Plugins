@@ -34,9 +34,7 @@ class NukeInstaller(Plugin):
         "rendering",
     ]
     fields = [
-        Plugin.field(
-            "version", "Version of Nuke to install. i.e. Nuke14.0v2", required=True
-        ),
+        Plugin.field("version", "Version of Nuke to install. i.e. Nuke14.0v2", required=True),
         Plugin.field("destination", "Destination directory", required=True),
     ]
 

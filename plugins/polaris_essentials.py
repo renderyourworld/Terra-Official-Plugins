@@ -54,14 +54,10 @@ class PolarisEssentials(Plugin):
         )
 
         # add Vlc
-        handler.run_plugin(
-            "plugin", "Vlc Installer", allow_failure=False, destination="/apps/vlc"
-        )
+        handler.run_plugin("plugin", "Vlc Installer", allow_failure=False, destination="/apps/vlc")
 
         # add TLM
-        handler.run_plugin(
-            "plugin", "Tlm Installer", allow_failure=False, destination="/apps/tlm"
-        )
+        handler.run_plugin("plugin", "Tlm Installer", allow_failure=False, destination="/apps/tlm")
 
         # add user Templates
         handler.run_plugin(
