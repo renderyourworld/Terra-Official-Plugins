@@ -41,8 +41,8 @@ class JunoPipeline(Plugin):
         """
         Run git pull and install to the target directory
         """
-
-        delivery_task = {"code": "DeliveryTemplate", "parent": None, "type": 1040}
+        # ShowPrep Task called DeliveryTemplate
+        delivery_task = {"code": "DeliveryTemplate", "parent": None, "type": 1140}
         luna_url = "http://luna:8000/"
         meta_url = f"{luna_url}/meta"
 
