@@ -58,7 +58,7 @@ class Workflow:
         """
         self.logger.info(f"Updating metadata: {metadata}")
         try:
-            import src.plugins.service as service
+            from src.plugins import service
 
             service.set_metadata(os.environ["INSTALL_NAME"], metadata)
 

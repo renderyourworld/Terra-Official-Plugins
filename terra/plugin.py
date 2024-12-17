@@ -58,7 +58,7 @@ class Plugin:
         """
         self.logger.info(f"Updating metadata: {metadata}")
         try:
-            import src.plugins.service as service
+            from src.plugins import service
 
             service.set_metadata(os.environ["INSTALL_NAME"], metadata)
 
@@ -124,7 +124,7 @@ class Plugin:
         """
         self.logger.info("No custom installer provided.")
 
-    @staticmethod
+    @pluginlib.abstractmethod
     def uninstall(self, *args, **kwargs) -> None:  # pragma: no cover
         """
         Run uninstall process
