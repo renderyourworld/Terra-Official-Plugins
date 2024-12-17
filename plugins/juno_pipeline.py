@@ -49,7 +49,7 @@ class JunoPipeline(Plugin):
         response = self.get_task(url=meta_url, task=delivery_task)
         status_code = response.status_code
         print('TESTING')
-        print(reponse.json())
+        print(response.json())
         if status_code == 200 and not response.json():
             response = self.create_task(url=meta_url, task=delivery_task)
         print(response.status_code)
