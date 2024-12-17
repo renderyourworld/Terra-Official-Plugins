@@ -33,7 +33,32 @@ If you are curious, you can take a look in the `k8s` directory at the root of th
 make install
 ```
 
-## Creating a New Plugin
+## Creating a New Plugin from Template
+
+The repository comes with a template plugin that you can use to get started.
+To create a new plugin from the template, you can run the following command:
+
+```bash
+make app-houdini22.5
+```
+The make command will copy the template plugins structure in all required directories and rename the files to match the new plugin name.
+
+The plugins files will need to be edited to match the new plugin name and description.
+
+Check the plugin python files in plugins/ and plugins/scripts directories and update the plugin name and description. Add the links or fields necesary for the plugin to work.
+Change the shell script in the plugins/scripts directory to do what your app would need to do like in a regular shell session.
+
+Usualy there is a download link to curl or wget and a destination directory to install the downloaded file passed from python to shell script.
+
+Add an icon to the plugins directory with the name of the plugin and the extension .png.
+This icon will be used in the Terra UI. You can provide an url to an image or use a local image.
+The plugin will be ready to be tested after the changes are made.
+
+You are not bound to this template by any means, this just show the easy way to create a new plugin from template with boilerplate plugin code.
+Instead sh scripts, you could be using python scripts or any other language that you are comfortable with and its available in the Terra environment.
+
+
+## Creating a New Plugin from scratch
 
 We are going to create a simple plugin that will clone a repository
 from a git repository to a specified directory. We will make it as 
