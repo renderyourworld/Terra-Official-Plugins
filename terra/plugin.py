@@ -91,10 +91,9 @@ class Plugin:
         """
         Initialize the Plugin
         """
-        _metadata = self.__dict__
-
         try:
             preflight = self.preflight(*args, **kwargs)
+            _metadata = self.__dict__
             if preflight or preflight is None:
                 self.install(*args, **kwargs)
 
