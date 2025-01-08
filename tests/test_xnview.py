@@ -16,3 +16,4 @@ def test_xnview():
     handler.run_plugin(
         "Xnview Installer", allow_failure=False, destination="/apps/xnview"
     )
+    handler.remove_plugin(name="Xnview Installer", destination="/apps/xnview")

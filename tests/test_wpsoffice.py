@@ -18,3 +18,4 @@ def test_wpsoffice():
         allow_failure=False,
         destination="/apps/wpsoffice",
     )
+    handler.remove_plugin(name="Wpsoffice Installer", destination="/apps/wpsoffice")

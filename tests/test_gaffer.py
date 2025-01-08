@@ -16,3 +16,5 @@ def test_gaffer():
     handler.run_plugin(
         "Gaffer Installer", allow_failure=False, destination="/apps/gaffer"
     )
+
+    handler.remove_plugin(name="Gaffer Installer", destination="/apps/gaffer")

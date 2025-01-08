@@ -18,3 +18,4 @@ def test_rawtherapee():
         allow_failure=False,
         destination="/apps/rawtherapee",
     )
+    handler.remove_plugin(name="Rawtherapee Installer", destination="/apps/rawtherapee")

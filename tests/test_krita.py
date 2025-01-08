@@ -16,3 +16,4 @@ def test_krita():
     handler.run_plugin(
         "Krita Installer", allow_failure=False, destination="/apps/krita"
     )
+    handler.remove_plugin(name="Krita Installer", destination="/apps/krita")

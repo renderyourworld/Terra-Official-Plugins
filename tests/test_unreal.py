@@ -17,3 +17,4 @@ def test_unreal():
         allow_failure=False,
         destination='/apps/unreal'
     )
+    handler.remove_plugin(name="unreal Installer", destination="/apps/unreal")

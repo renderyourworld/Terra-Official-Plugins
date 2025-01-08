@@ -17,3 +17,4 @@ def test_NukeSurvivalToolkit():
         allow_failure=False,
         destination="/apps/nukesurvivalkit",
     )
+    handler.remove_plugin(name="Nuke Survival Toolkit v2.1.1", destination="/apps/nukesurvivalkit")

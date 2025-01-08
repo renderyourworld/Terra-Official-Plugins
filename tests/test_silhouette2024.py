@@ -18,3 +18,4 @@ def test_silhouette2024():
         allow_failure=False,
         destination="/apps/silhouette2024",
     )
+    handler.remove_plugin(name="Silhouette2024 Installer", destination="/apps/silhouette2024")

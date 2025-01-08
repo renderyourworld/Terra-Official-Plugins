@@ -18,3 +18,4 @@ def test_imagestacker():
         allow_failure=False,
         destination="/apps/imagestacker",
     )
+    handler.remove_plugin(name="Imagestacker Installer", destination="/apps/imagestacker")

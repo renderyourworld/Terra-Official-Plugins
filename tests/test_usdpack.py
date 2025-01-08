@@ -16,3 +16,4 @@ def test_usdpack():
     handler.run_plugin(
         "UsdPack Installer", allow_failure=False, destination="/apps/usd"
     )
+    handler.remove_plugin(name="UsdPack Installer", destination="/apps/usd")

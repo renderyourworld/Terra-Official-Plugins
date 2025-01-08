@@ -74,4 +74,8 @@ class FfmpegInstaller(Plugin):
                 ).returncode
                 != 0
         ):
-            raise RuntimeError(f"Failed to remove {self._alias_}")
+            raise RuntimeError(
+                f"Failed to remove {self._alias_}. Please read trough the logs and try to manually remove it.")
+
+        else:
+            self.logger.info(f"Successfully removed {self._alias_} plugin.")

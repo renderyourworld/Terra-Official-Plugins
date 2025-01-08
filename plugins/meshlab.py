@@ -64,6 +64,19 @@ class MeshlabInstaller(Plugin):
 
     def uninstall(self, *args, **kwargs) -> None:
         """
-        Uninstall the application.
+        Uninstall the plugin.
         """
-        self.logger.info("Uninstalling not implemented")
+        self.logger.info(f"Removing {self._alias_}")
+        self.destination = Path(kwargs.get("destination")).as_posix()
+        if (
+                run(
+                    f"rm -rf {self.destination}",
+                    shell=True,
+                    check=False,
+                ).returncode
+                != 0
+        ):
+            raise RuntimeError(f"Failed to remove {self._alias_}. Please read trough the logs and try to manually remove it.")
+
+        else:
+            self.logger.info(f"Successfully removed {self._alias_} plugin.")

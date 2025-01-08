@@ -16,3 +16,4 @@ def test_tlm():
     handler.run_plugin(
         "Tlm Installer", allow_failure=False, destination="/apps/tlm"
     )
+    handler.remove_plugin(name="Tlm Installer", destination="/apps/tlm")

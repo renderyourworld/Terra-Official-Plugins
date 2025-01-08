@@ -16,3 +16,4 @@ def test_meshlab():
     handler.run_plugin(
         "Meshlab Installer", allow_failure=False, destination="/apps/meshlab"
     )
+    handler.remove_plugin(name="Meshlab Installer", destination="/apps/meshlab")

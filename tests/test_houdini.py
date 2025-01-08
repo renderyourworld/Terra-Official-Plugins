@@ -20,3 +20,4 @@ def test_houdini():
         client_id='',
         client_secret=''
     )
+    handler.remove_plugin(name="Houdini Installer", destination="/apps/houdini")

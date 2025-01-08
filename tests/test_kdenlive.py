@@ -18,3 +18,5 @@ def test_kdenlive():
         allow_failure=False,
         destination="/apps/kdenlive",
     )
+
+    handler.remove_plugin(name="Kdenlive Installer", destination="/apps/kdenlive")

@@ -18,3 +18,4 @@ def test_mrv2():
         destination="/apps/mrv2",
         app_version="1.2.6"
     )
+    handler.remove_plugin(name="Mrv2 Installer", destination="/apps/mrv2")

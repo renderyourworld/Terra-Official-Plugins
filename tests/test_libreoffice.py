@@ -18,3 +18,4 @@ def test_libreoffice():
         allow_failure=False,
         destination="/apps/libreoffice",
     )
+    handler.remove_plugin(name="Libreoffice Installer", destination="/apps/libreoffice")

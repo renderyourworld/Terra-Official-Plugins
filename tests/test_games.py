@@ -16,3 +16,5 @@ def test_games():
     handler.run_plugin(
         "Games Installer", allow_failure=False, destination="/apps/games"
     )
+
+    handler.remove_plugin(name="Games Installer", destination="/apps/games")

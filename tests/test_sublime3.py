@@ -18,3 +18,4 @@ def test_nuke():
         destination="/apps/sublime3",
         version="3211",
     )
+    handler.remove_plugin(name="Sublime3 Installer", destination="/apps/sublime3")

@@ -18,3 +18,4 @@ def test_obsidian():
         allow_failure=False,
         destination="/apps/obsidian",
     )
+    handler.remove_plugin(name="Obsidian Installer", destination="/apps/Installer")

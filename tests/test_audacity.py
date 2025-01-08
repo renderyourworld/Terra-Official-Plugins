@@ -20,4 +20,4 @@ def test_audacity():
     )
 
     # test removal
-    handler.remove_plugin(name="Audacity Installer")
+    handler.remove_plugin(name="Audacity Installer", destination="/apps/audacity")

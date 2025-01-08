@@ -18,3 +18,4 @@ def test_instantmeshes():
         allow_failure=False,
         destination="/apps/instantmeshes",
     )
+    handler.remove_plugin(name="Instantmeshes Installer", destination="/apps/instantmeshes")

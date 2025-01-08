@@ -18,3 +18,5 @@ def test_downloader():
         destination="/apps/download",
         url="https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png",
     )
+
+    handler.remove_plugin(name="Downloader", destination="/apps/download")

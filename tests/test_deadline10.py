@@ -28,3 +28,7 @@ def test_deadline10():
     print(response)
     print(response.text)
     print(response.status_code)
+
+
+    handler.remove_plugin(name="Deadline10 Installer", destination="/apps/deadline10")
+    handler.remove_plugin(name="Deadline10 Installer", destination="/apps/deadline10plugins")

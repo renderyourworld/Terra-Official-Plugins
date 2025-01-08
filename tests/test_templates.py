@@ -18,3 +18,4 @@ def test_templates():
         allow_failure=False,
         destination="/apps/templates",
     )
+    handler.remove_plugin(name="Templates Installer", destination="/apps/templates")

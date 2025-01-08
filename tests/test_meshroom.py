@@ -18,3 +18,4 @@ def test_meshroom():
         allow_failure=False,
         destination="/apps/meshroom",
     )
+    handler.remove_plugin(name="Meshroom Installer", destination="/apps/meshroom")

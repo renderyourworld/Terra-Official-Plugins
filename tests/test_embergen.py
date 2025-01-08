@@ -18,3 +18,5 @@ def test_embergen():
         allow_failure=False,
         destination="/apps/embergen",
     )
+
+    handler.remove_plugin(name="Embergen Installer", destination="/apps/embergen")
