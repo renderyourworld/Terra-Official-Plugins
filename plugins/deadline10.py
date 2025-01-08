@@ -122,3 +122,9 @@ class Deadline10Installer(Plugin):
 
         # wait to settle
         time.sleep(90)
+
+    def uninstall(self, *args, **kwargs) -> None:
+        """
+        Uninstall the application.
+        """
+        self.logger.info("Uninstalling not implemented")

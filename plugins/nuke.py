@@ -68,3 +68,9 @@ class NukeInstaller(Plugin):
             != 0
         ):
             raise RuntimeError("Failed to install Nuke")
+
+    def uninstall(self, *args, **kwargs) -> None:
+        """
+        Uninstall the application.
+        """
+        self.logger.info("Uninstalling not implemented")

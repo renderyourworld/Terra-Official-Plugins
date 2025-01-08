@@ -59,3 +59,9 @@ class FfmpegInstaller(Plugin):
             != 0
         ):
             raise RuntimeError("Failed to install ffmpeg")
+
+    def uninstall(self, *args, **kwargs) -> None:
+        """
+        Uninstall the application.
+        """
+        self.logger.info("Uninstalling not implemented")

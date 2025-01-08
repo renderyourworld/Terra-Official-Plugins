@@ -10,7 +10,7 @@ def test_ffmpeg():
     Test ffmpeg installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin("plugin", "Ffmpeg Support")
+    plugin = handler.get_plugin("plugin", "FfmpegInstaller")
     assert plugin is not None
     assert plugin._version_ is not None
     handler.run_plugin(

@@ -54,3 +54,9 @@ class NukeSurvivalToolkit_v211(Plugin):
         )
         os.unlink(f"{destination}/v2.1.1")
         shutil.rmtree(f"{destination}/NukeSurvivalToolkit_publicRelease-2.1.1")
+
+    def uninstall(self, *args, **kwargs) -> None:
+        """
+        Uninstall the application.
+        """
+        self.logger.info("Uninstalling not implemented")

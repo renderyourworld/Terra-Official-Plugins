@@ -69,3 +69,9 @@ class HdrmergeInstaller(Plugin):
             != 0
         ):
             raise RuntimeError("Failed to install Hdrmerge")
+
+    def uninstall(self, *args, **kwargs) -> None:
+        """
+        Uninstall the application.
+        """
+        self.logger.info("Uninstalling not implemented")

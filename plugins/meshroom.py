@@ -73,3 +73,9 @@ class MeshroomInstaller(Plugin):
             != 0
         ):
             raise RuntimeError("Failed to install meshroom")
+
+    def uninstall(self, *args, **kwargs) -> None:
+        """
+        Uninstall the application.
+        """
+        self.logger.info("Uninstalling not implemented")

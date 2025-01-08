@@ -96,3 +96,9 @@ class JumpoInstaller(Plugin):
         #
 
         time.sleep(600)
+
+    def uninstall(self, *args, **kwargs) -> None:
+        """
+        Uninstall the application.
+        """
+        self.logger.info("Uninstalling not implemented")

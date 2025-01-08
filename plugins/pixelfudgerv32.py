@@ -56,3 +56,9 @@ class Pixelfudger_v32(Plugin):
                 )
                 os.remove(f"{destination}/{download}")
                 break
+
+    def uninstall(self, *args, **kwargs) -> None:
+        """
+        Uninstall the application.
+        """
+        self.logger.info("Uninstalling not implemented")

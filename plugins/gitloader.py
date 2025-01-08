@@ -61,3 +61,9 @@ class GitLoader(Plugin):
         repo.git.checkout(self.ref)
 
         self.update_metadata({"install_location": self.destination})
+
+    def uninstall(self, *args, **kwargs) -> None:
+        """
+        Uninstall the application.
+        """
+        self.logger.info("Uninstalling not implemented")
