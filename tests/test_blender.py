@@ -18,3 +18,7 @@ def test_blender():
         destination="/apps/blender",
         version="4.2.1",
     )
+
+    # test removal
+    handler.remove_plugin(name="Blender Installer", destination="/apps/blender")
+
