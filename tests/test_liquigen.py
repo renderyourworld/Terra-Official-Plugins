@@ -18,3 +18,4 @@ def test_liquigen():
         allow_failure=False,
         destination="/apps/liquigen",
     )
+    handler.remove_plugin(name="LiquiGen Installer", destination="/apps/liquigen")

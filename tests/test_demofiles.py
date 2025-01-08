@@ -18,3 +18,5 @@ def test_demofiles():
         allow_failure=False,
         destination="/apps/demofiles",
     )
+
+    handler.remove_plugin(name="Demofiles Installer", destination="/apps/demofiles")

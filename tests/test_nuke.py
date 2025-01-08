@@ -18,3 +18,4 @@ def test_nuke():
         destination="/apps/nuke",
         version="Nuke14.0v2",
     )
+    handler.remove_plugin(name="Nuke Installer", destination="/apps/nuke")

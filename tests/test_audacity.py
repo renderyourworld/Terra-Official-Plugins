@@ -18,3 +18,6 @@ def test_audacity():
         allow_failure=False,
         destination="/apps/audacity",
     )
+
+    # test removal
+    handler.remove_plugin(name="Audacity Installer", destination="/apps/audacity")

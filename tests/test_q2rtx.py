@@ -16,3 +16,4 @@ def test_q2rtx():
     handler.run_plugin(
         "Q2rtx Installer", allow_failure=False, destination="/apps/q2rtx"
     )
+    handler.remove_plugin(name="Q2rtx Installer", destination="/apps/q2rtx")

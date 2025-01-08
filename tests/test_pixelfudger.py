@@ -17,3 +17,4 @@ def test_pixelfudger():
         allow_failure=False,
         destination="/apps/pixelfudger",
     )
+    handler.remove_plugin(name="Pixelfudger v3.2", destination="/apps/pixelfudger")

@@ -128,3 +128,9 @@ class PolarisEssentials(Plugin):
         handler.run_plugin(
             "plugin", "Krita Installer", allow_failure=False, destination="/apps/krita"
         )
+
+    def uninstall(self, *args, **kwargs) -> None:
+        """
+        Uninstall the application.
+        """
+        self.logger.info("Uninstalling not implemented")

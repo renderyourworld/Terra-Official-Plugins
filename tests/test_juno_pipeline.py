@@ -21,3 +21,4 @@ def test_juno_pipeline():
     response = requests.post(f"{meta_url}", json=delivery_task, timeout=600)
     assert type(response.json()) == list
     assert len(response.json()) == 1
+

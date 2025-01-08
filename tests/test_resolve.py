@@ -19,3 +19,4 @@ def test_resolve():
         destination="/apps/resolve",
         version_to_install="18",
     )
+    handler.remove_plugin(name="Resolve Installer", destination="/apps/resolve")

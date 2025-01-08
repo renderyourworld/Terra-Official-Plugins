@@ -18,3 +18,4 @@ def test_pureref():
         destination="/apps/pureref",
         version="2",
     )
+    handler.remove_plugin(name="PureRef Installer", destination="/apps/pureref")

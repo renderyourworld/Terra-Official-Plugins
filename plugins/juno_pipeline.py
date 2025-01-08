@@ -112,3 +112,9 @@ class JunoPipeline(Plugin):
         task["metadata"] = {"TemplateType": "Delivery"}
         print(task)
         return request("post", url, json=task)
+
+    def uninstall(self, *args, **kwargs) -> None:
+        """
+        Uninstall the application.
+        """
+        self.logger.info("Uninstalling not implemented")

@@ -1,5 +1,7 @@
 echo "Installing ffmpeg..."
-wget -q -O /tmp/ffmpeg.tar.xz https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-amd64-static.tar.xz
+echo "Downloading ffmpeg from $1"
+#wget -q -O /tmp/ffmpeg.tar.xz https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-amd64-static.tar.xz
+wget -q -O /tmp/ffmpeg.tar.xz $1
 cd /tmp
 mkdir ffmpeginstall
 tar xvf ffmpeg.tar.xz -C /tmp/ffmpeginstall > /dev/null

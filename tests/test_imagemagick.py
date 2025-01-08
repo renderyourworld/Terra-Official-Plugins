@@ -18,3 +18,4 @@ def test_imagemagick():
         allow_failure=False,
         destination="/apps/imagemagick",
     )
+    handler.remove_plugin(name="Imagemagick Installer", destination="/apps/imagemagick")

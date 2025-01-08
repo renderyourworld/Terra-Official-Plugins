@@ -18,3 +18,4 @@ def test_hdrmerge():
         allow_failure=False,
         destination="/apps/hdrmerge",
     )
+    handler.remove_plugin(name="Hdrmerge Installer", destination="/apps/hdrmerge")

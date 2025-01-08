@@ -18,3 +18,4 @@ def test_inkscape():
         allow_failure=False,
         destination="/apps/inkscape",
     )
+    handler.remove_plugin(name="Inkscape Installer", destination="/apps/inkscape")

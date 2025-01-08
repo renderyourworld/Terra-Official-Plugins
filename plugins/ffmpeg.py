@@ -34,7 +34,7 @@ class FfmpegInstaller(Plugin):
         # store on instance
         self.download_url = kwargs.get(
             "url",
-            "ffmpeg",
+            "https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-amd64-static.tar.xz",
         )
         self.destination = Path(kwargs.get("destination")).as_posix()
 
@@ -46,7 +46,7 @@ class FfmpegInstaller(Plugin):
 
     def install(self, *args, **kwargs) -> None:
         """
-        Download and unpack the appimage to the destination directory.
+        Download and unpack the application to the destination directory.
         """
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         self.logger.info(f"Loading scripts from {scripts_directory}")
@@ -59,3 +59,23 @@ class FfmpegInstaller(Plugin):
             != 0
         ):
             raise RuntimeError("Failed to install ffmpeg")
+
+    def uninstall(self, *args, **kwargs) -> None:
+        """
+        Uninstall the application.
+        """
+        self.logger.info(f"Removing {self._alias_}")
+        self.destination = Path(kwargs.get("destination")).as_posix()
+        if (
+                run(
+                    f"rm -rf {self.destination}",
+                    shell=True,
+                    check=False,
+                ).returncode
+                != 0
+        ):
+            raise RuntimeError(
+                f"Failed to remove {self._alias_}. Please read trough the logs and try to manually remove it.")
+
+        else:
+            self.logger.info(f"Successfully removed {self._alias_} plugin.")

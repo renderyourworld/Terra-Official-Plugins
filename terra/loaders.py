@@ -48,6 +48,13 @@ class TerraPluginLoader(PluginLoader):
         return target(LOGGER).run(allow_failure=allow_failure, *args, **kwargs)
 
 
+    def remove_plugin(self, name, destination):
+        target = self.get_plugin("plugin", name)
+        if not target:
+            target = self.get_plugin("workflow", name)
+        return target(LOGGER).uninstall(name=name, destination=destination)
+
+
 def plugins(paths: List[str] = None) -> TerraPluginLoader:
     """
     Load All Plugins

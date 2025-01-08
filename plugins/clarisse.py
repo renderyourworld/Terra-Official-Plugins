@@ -34,7 +34,7 @@ class clarisseInstaller(Plugin):
         # store on instance
         self.download_url = kwargs.get(
             "url",
-            "clarisse",
+            "https://s3.eu-central-1.wasabisys.com/juno-deps/cifx/isotropix_clarisse_5.0_sp14_linux64.tar.gz",
         )
         self.destination = Path(kwargs.get("destination")).as_posix()
 
@@ -59,3 +59,9 @@ class clarisseInstaller(Plugin):
             != 0
         ):
             raise RuntimeError("Failed to install clarisse")
+
+    def uninstall(self, *args, **kwargs) -> None:
+        """
+        Uninstall the application.
+        """
+        self.logger.info("Uninstalling not implemented")

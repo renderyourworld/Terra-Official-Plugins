@@ -17,3 +17,4 @@ def test_ldpk():
         allow_failure=False,
         destination='/apps/ldpk'
     )
+    handler.remove_plugin(name="ldpk Installer", destination="/apps/ldpk")

@@ -16,3 +16,5 @@ def test_geogen():
     handler.run_plugin(
         "GeoGen Installer", allow_failure=False, destination="/apps/geogen"
     )
+
+    handler.remove_plugin(name="GeoGen Installer", destination="/apps/geogen")

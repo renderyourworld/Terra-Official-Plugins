@@ -18,3 +18,6 @@ def test_blenderbenchmark():
         allow_failure=False,
         destination="/apps/blenderbenchmark",
     )
+
+   # test removal
+    handler.remove_plugin(name="Blender Benchmark", destination="/apps/blenderbenchmark")

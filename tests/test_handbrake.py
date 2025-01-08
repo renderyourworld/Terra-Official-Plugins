@@ -18,3 +18,4 @@ def test_handbrake():
         allow_failure=False,
         destination="/apps/handbrake",
     )
+    handler.remove_plugin(name="Handbrake Installer", destination="/apps/handbrake")

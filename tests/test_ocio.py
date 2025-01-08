@@ -16,3 +16,4 @@ def test_ocio():
     handler.run_plugin(
         "Ocio Installer", allow_failure=False, destination="/apps/ocio"
     )
+    handler.remove_plugin(name="Ocio Installer", destination="/apps/ocio")

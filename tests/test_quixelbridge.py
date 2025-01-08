@@ -18,3 +18,4 @@ def test_quixelbridge():
         allow_failure=False,
         destination="/apps/quixelbridge",
     )
+    handler.remove_plugin(name="QuixelBridge Installer", destination="/apps/quixelbridge")

@@ -17,3 +17,4 @@ def test_cpux():
     handler.run_plugin(
         "CpuX Installer", allow_failure=False, destination="/apps/cpux"
     )
+    handler.remove_plugin(name="CpuX Installer", destination="/apps/cpux")

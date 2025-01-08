@@ -18,3 +18,4 @@ def test_pycharm():
         destination="/apps/pycharm",
         version="2024.1.4",
     )
+    handler.remove_plugin(name="PyCharm Installer", destination="/apps/pycharm")

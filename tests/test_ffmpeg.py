@@ -16,3 +16,6 @@ def test_ffmpeg():
     handler.run_plugin(
         "Ffmpeg Support", allow_failure=False, destination="/apps/ffmpeg"
     )
+
+    # test removal
+    handler.remove_plugin(name="Ffmpeg Support", destination="/apps/ffmpeg")

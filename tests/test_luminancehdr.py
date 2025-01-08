@@ -18,3 +18,4 @@ def test_luminancehdr():
         allow_failure=False,
         destination="/apps/luminancehdr",
     )
+    handler.remove_plugin(name="Luminancehdr Installer", destination="/apps/luminancehdr")
