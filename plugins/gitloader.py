@@ -4,11 +4,11 @@ Cloning down a repository from a Git Source to a target directory.
 
 # std
 import os
+from pathlib import Path
 
 # 3rd
 from git import Repo
 from terra import Plugin
-
 
 class GitLoader(Plugin):
     """

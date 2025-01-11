@@ -128,7 +128,7 @@ class Deadline10Installer(Plugin):
         Uninstall the plugin.
         """
         self.logger.info(f"Removing {self._alias_}")
-        self.destination = Path(kwargs.get("destination")).as_posix()
+        self.destination = pathlib.Path(kwargs.get("destination")).as_posix()
         if (
                 run(
                     f"rm -rf {self.destination}",
