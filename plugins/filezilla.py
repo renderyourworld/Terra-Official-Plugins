@@ -34,6 +34,7 @@ class FilezillaInstaller(Plugin):
         self.download_url = "https://s3.eu-central-1.wasabisys.com/juno-deps/FileZilla_3.68.1_x86_64-linux-gnu.tar.xz"
         self.destination = Path(kwargs.get("destination")).as_posix()
 
+        self.executable = "/apps/filezilla/Filezilla3/bin/filezilla"
 
         # validate
         if not self.destination:
