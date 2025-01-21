@@ -1,3 +1,3 @@
 echo "Running filezilla!"
-cd ROOT_APP/Filezilla3/bin
+cd ROOT_APP/FileZilla3/bin
 ./filezilla

@@ -19,7 +19,7 @@ cd $SCRIPT_DIR
 cp "../assets/filezilla.png" "$2/filezilla.png"
 echo "Adding desktop file"
 chmod +X create_desktop_file.py
-python3 create_desktop_file.py --app_name="Filezilla" --version="3.6" --latest_path="$2"/filezilla.sh --categories="filezilla" --destination="$2" --icon="$2"/filezilla.png --terminal="False"
+python3 create_desktop_file.py --app_name="FileZilla" --version="3.6" --latest_path="$2"/filezilla.sh --categories="filezilla" --destination="$2" --icon="$2"/filezilla.png --terminal="False"
 echo "Desktop file created."
 chmod -R 777 "$2/"
 #cat $2/*.desktop
