@@ -31,7 +31,7 @@ class FilezillaInstaller(Plugin):
         Check if the target directory exists and validate the arguments passed.
         """
         # store on instance
-        self.download_url = "https://dl2.cdn.filezilla-project.org/client/FileZilla_3.68.1_x86_64-linux-gnu.tar.xz?h=bx4_WM65P_lM9atNDAB7sA&x=1737486020"
+        self.download_url = "https://s3.eu-central-1.wasabisys.com/juno-deps/FileZilla_3.68.1_x86_64-linux-gnu.tar.xz"
         self.destination = Path(kwargs.get("destination")).as_posix()
 
 
@@ -56,3 +56,22 @@ class FilezillaInstaller(Plugin):
             != 0
         ):
             raise RuntimeError("Failed to install filezilla")
+
+    def uninstall(self, *args, **kwargs) -> None:
+        """
+        Uninstall the plugin.
+        """
+        self.logger.info(f"Removing {self._alias_}")
+        self.destination = Path(kwargs.get("destination")).as_posix()
+        if (
+                run(
+                    f"rm -rf {self.destination}",
+                    shell=True,
+                    check=False,
+                ).returncode
+                != 0
+        ):
+            raise RuntimeError(f"Failed to remove {self._alias_}. Please read trough the logs and try to manually remove it.")
+
+        else:
+            self.logger.info(f"Successfully removed {self._alias_} plugin.")

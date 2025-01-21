@@ -10,11 +10,10 @@ def test_filezilla():
     Test Filezilla installer.
     """
     handler = plugins()
-    plugin = handler.get_plugin('plugin', 'Filezilla Installer')
+    plugin = handler.get_plugin("plugin", "Filezilla Installer")
     assert plugin is not None
+    assert plugin._version_ is not None
     handler.run_plugin(
-        'plugin',
-        'Filezilla Installer',
-        allow_failure=False,
-        destination='/apps/filezilla'
+        "Filezilla Installer", allow_failure=False, destination="/apps/filezilla"
     )
+    #handler.remove_plugin(name="Filezilla Installer", destination="/apps/filezilla")

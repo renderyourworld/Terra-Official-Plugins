@@ -1,5 +1,6 @@
 echo "Installing filezilla..."
-
+echo $1
+echo $2
 
 wget -q -O /tmp/filezilla.tar.xz "$1"
 chmod +x /tmp/filezilla.tar.xz
