@@ -6,7 +6,7 @@ wget -q -O /tmp/filezilla.tar.xz "$1"
 chmod +x /tmp/filezilla.tar.xz
 #
 echo "Extracting filezilla..."
-tar -xvf /tmp/filezilla.tar.xz -C "$2"/ > /dev/null
+tar -xvf /tmp/filezilla.tar.xz -C "$2"
 
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
@@ -19,7 +19,7 @@ cd $SCRIPT_DIR
 cp "../assets/filezilla.png" "$2/filezilla.png"
 echo "Adding desktop file"
 chmod +X create_desktop_file.py
-python3 create_desktop_file.py --app_name="Filezilla" --version="30.0" --latest_path="$2"/filezilla.sh --categories="filezilla" --destination="$2" --icon="$2"/filezilla.png --terminal="False"
+python3 create_desktop_file.py --app_name="Filezilla" --version="3.6" --latest_path="$2"/filezilla.sh --categories="filezilla" --destination="$2" --icon="$2"/filezilla.png --terminal="False"
 echo "Desktop file created."
 chmod -R 777 "$2/"
 #cat $2/*.desktop
