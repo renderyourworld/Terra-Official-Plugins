@@ -18,8 +18,8 @@ class NukeSamuraiInstaller(Plugin):
 
     _version_ = "1.0.0"
     _alias_ = "NukeSamurai Installer"
-    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/missing.png?raw=true"
-    description = "NukeSamurai SAM2 plugin for Nuke 15"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/nukesamurai.png?raw=true"
+    description = "NukeSamurai SAM2 plugin for Nuke 15. Requires GPU Instance"
     category = "Media and Entertainment"
     tags = ["NukeSamurai", "editor", "media", "editorial", "kde"]
     fields = [
