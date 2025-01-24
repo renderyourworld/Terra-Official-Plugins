@@ -43,9 +43,9 @@ pip install -i https://pypi.org/simple -e ".[notebooks]"
 pip install -i https://pypi.org/simple matplotlib==3.7 tikzplotlib jpeg4py opencv-python lmdb pandas scipy loguru ninja
 
 # download checkpoints
-cd checkpoints && \
-./download_ckpts.sh && \
-cd ..
+cd checkpoints
+./download_ckpts.sh > /dev/null
+
 
 mv $BUILDER/NukeSamurai $1
 chmod -R 777 $1
