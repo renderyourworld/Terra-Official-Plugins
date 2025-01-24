@@ -42,12 +42,13 @@ pip install -i https://pypi.org/simple -e .
 pip install -i https://pypi.org/simple -e ".[notebooks]"
 pip install -i https://pypi.org/simple matplotlib==3.7 tikzplotlib jpeg4py opencv-python lmdb pandas scipy loguru ninja
 
-## download checkpoints
-#cd checkpoints && \
-#./download_ckpts.sh && \
-#cd ..
-#
-#mv $BUILDER/NukeSamurai $1
-#echo "NukeSamurai installed to $1"
-#
-#
+# download checkpoints
+cd checkpoints && \
+./download_ckpts.sh && \
+cd ..
+
+mv $BUILDER/NukeSamurai $1
+chmod -R 777 $1
+echo "NukeSamurai installed to $1"
+
+
