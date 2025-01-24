@@ -1,4 +1,4 @@
-echo "Switching to squashfs-root directory"
+echo "Runngin templateapp"
 cd ROOT_APP/squashfs-root/
-echo "Running templateapp!"
+
 ./AppRun
