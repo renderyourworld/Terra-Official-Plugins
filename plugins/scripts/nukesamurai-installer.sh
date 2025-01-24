@@ -14,10 +14,9 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 pyenv install 3.10.10
-pyenv local 3.10
+pyenv global 3.10
 echo "Python 3.10 installed ?"
 python3 --version
-
 
 echo "Installing NukeSamurai to /apps/nuke_samurai"
 export BUILDER=/tmp/nuke_samurai
@@ -27,6 +26,7 @@ mkdir -p $BUILDER
 cd $BUILDER
 git clone https://github.com/Theo-SAMINADIN-td/NukeSamurai.git
 cd $BUILDER/NukeSamurai
+pyenv global 3.10
 
 echo "Installing NukeSamurai PIP deps"
 python3 -m venv $BUILDER/NukeSamurai/venv
