@@ -4,8 +4,8 @@
 
 apt install python3.10 git -y
 
-echo "Installing NukeSamurai to $1"
-export BUILDER=/tmp/samurai-builder
+echo "Installing NukeSamurai to /apps/nuke_samurai"
+export BUILDER=/tmp/nuke_samurai
 mkdir -p $BUILDER
 
 # git clone the NukeSamurai repo
@@ -27,3 +27,8 @@ pip install matplotlib==3.7 tikzplotlib jpeg4py opencv-python lmdb pandas scipy 
 cd checkpoints && \
 ./download_ckpts.sh && \
 cd ..
+
+mv $BUILDER/NukeSamurai $1
+echo "NukeSamurai installed to $1"
+
+
