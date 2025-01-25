@@ -45,10 +45,17 @@ pip install -i https://pypi.org/simple matplotlib==3.7 tikzplotlib jpeg4py openc
 # download checkpoints
 cd checkpoints
 ./download_ckpts.sh > /dev/null
+echo "Checkpoints downloaded"
 
+# setup nukes init.py to load the venv for us
+echo "Setting up Nuke init.py python path"
+echo 'nuke.pluginAddPath("/apps/nukesamurai/", addToSysPath=True)' > $BUILDER/NukeSamurai/init.py
+echo 'nuke.pluginAddPath("/apps/nukesamurai/NukeSamurai/venv/lib/python3.10/site-packages", addToSysPath=True)' > $BUILDER/NukeSamurai/init.py
 
 mv $BUILDER/NukeSamurai $1
+
 chmod -R 777 $1
+
 echo "NukeSamurai installed to $1"
 
 
