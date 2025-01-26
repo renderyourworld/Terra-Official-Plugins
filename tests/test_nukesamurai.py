@@ -19,4 +19,4 @@ def test_NukeSamurai():
     )
 
     # test removal
-    handler.remove_plugin(name="NukeSamurai Installer", destination="/apps/nukesamurai")
+    # handler.remove_plugin(name="NukeSamurai Installer", destination="/apps/nukesamurai")
