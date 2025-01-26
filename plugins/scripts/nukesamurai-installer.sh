@@ -58,4 +58,11 @@ chmod -R 777 $1
 
 echo "NukeSamurai installed to $1"
 
+# app icon setup
 
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+cd $SCRIPT_DIR
+cp "../assets/nuke.png" "$2/nuke.png"
+echo "Adding desktop file"
+chmod +X create_desktop_file.py
+python3 create_desktop_file.py --app_name="NukeSamurai" --version=$1 --latest_path="$1"/nukesamura-start.sh --categories="nuke, samurai" --destination="$1" --icon="$1"/nuke.png --terminal="False"
