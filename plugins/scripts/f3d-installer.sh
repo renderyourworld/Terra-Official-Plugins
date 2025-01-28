@@ -6,7 +6,13 @@ mkdir -p $2
 chmod -R 777 $2
 
 echo "Extracting f3d..."
-tar xvf /tmp/f3d.tar.gz -C $2
+tar xvf /tmp/f3d.tar.gz -C $2 &> /dev/null
+mv
+ls /apps/f3d
+
+files=( "$2"/*/ )
+f3d_installer_folder="${files[0]}"
+echo "Got version > $f3d_installer_folder"
 
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
