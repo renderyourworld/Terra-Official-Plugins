@@ -34,7 +34,7 @@ class F3dInstaller(Plugin):
         # store on instance
         self.download_url = kwargs.get(
             "url",
-            "f3d",
+            "https://github.com/f3d-app/f3d/releases/download/nightly/F3D-3.0.0-37-g7addac35-Linux-x86_64-raytracing.tar.gz",
         )
         self.destination = Path(kwargs.get("destination")).as_posix()
 
