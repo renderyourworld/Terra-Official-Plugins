@@ -23,7 +23,7 @@ cd $SCRIPT_DIR
 cp "../assets/f3d.png" "$2/f3d.png"
 echo "Adding desktop file"
 chmod +X create_desktop_file.py
-python3 create_desktop_file.py --app_name="F3d" --version="3.0" --latest_path="$2"/f3d.sh --categories="f3d" --destination="$2" --icon="$2"/f3d.png --terminal="True"
+python3 create_desktop_file.py --app_name="F3d" --version="3.0" --latest_path="$2"/f3d.sh --categories="f3d" --destination="$2" --icon="$2"/f3d.png --terminal="False"
 
 echo "Desktop file created."
 chmod -R 777 "$2/"
