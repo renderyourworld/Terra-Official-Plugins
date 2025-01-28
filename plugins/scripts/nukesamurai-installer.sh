@@ -15,8 +15,9 @@ eval "$(pyenv virtualenv-init -)"
 
 pyenv install 3.10.10
 pyenv global 3.10
-echo "Python 3.10 installed ?"
-python3 --version
+#echo "Python 3.10 installed ?"
+#python3 --version
+pip install --upgrade pip click
 
 echo "Installing NukeSamurai to /apps/nuke_samurai"
 export BUILDER=/tmp/nuke_samurai
@@ -31,11 +32,9 @@ pyenv global 3.10
 echo "Installing NukeSamurai PIP deps"
 python3 -m venv $BUILDER/NukeSamurai/venv
 source venv/bin/activate
-echo "Check pip / venv?"
-pip --version
 
-#
-## pull pip deps
+
+# pull pip deps
 pip install -i https://pypi.org/simple torch==2.3.1+cu118 torchvision==0.18.1 --extra-index-url https://download.pytorch.org/whl/cu118
 cd $BUILDER/NukeSamurai/sam2_repo
 pip install -i https://pypi.org/simple -e .
@@ -44,7 +43,7 @@ pip install -i https://pypi.org/simple matplotlib==3.7 tikzplotlib jpeg4py openc
 
 # download checkpoints
 cd checkpoints
-./download_ckpts.sh > /dev/null
+./download_ckpts.sh &> /dev/null
 echo "Checkpoints downloaded"
 
 # setup nukes init.py to load the venv for us
@@ -58,14 +57,15 @@ chmod -R 777 $1
 
 echo "NukeSamurai installed to $1"
 echo "Adding Juno Spice"
-pip install -i https://pypi.org/simple click
+
 # app icon setup
+echo "Adding desktop file"
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cd $SCRIPT_DIR
 cp "../assets/nuke.png" "$2/nuke.png"
-echo "Adding desktop file"
 chmod +X create_desktop_file.py
-python3 create_desktop_file.py --app_name="Nuke Samurai" --version=$1 --latest_path="$1"/nukesamurai-start.sh --categories="nuke, samurai" --destination="$1" --icon="$1"/nuke.png --terminal="True"
+
+python3 create_desktop_file.py --app_name="NukeSamurai" --version="1.0" --latest_path="$1"/"nukesamurai-start.sh" --categories="nuke, samurai" --destination="$1" --icon="$1"/nuke.png --terminal="True"
 cp $SCRIPT_DIR/nukesamurai-start.sh $1/nukesamurai-start.sh
 chmod -R 777 $1
 
