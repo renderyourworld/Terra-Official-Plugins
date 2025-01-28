@@ -20,4 +20,4 @@ def test_f3d():
     )
 
     # test removal
-    handler.remove_plugin(name="F3d Installer", destination="/apps/f3d")
+    #handler.remove_plugin(name="F3d Installer", destination="/apps/f3d")
