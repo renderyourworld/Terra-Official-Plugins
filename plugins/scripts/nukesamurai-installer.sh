@@ -58,7 +58,7 @@ chmod -R 777 $1
 
 echo "NukeSamurai installed to $1"
 echo "Adding Juno Spice"
-pip install click
+pip install -i https://pypi.org/simple click
 # app icon setup
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cd $SCRIPT_DIR
