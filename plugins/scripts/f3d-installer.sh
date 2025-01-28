@@ -7,17 +7,15 @@ chmod -R 777 $2
 
 echo "Extracting f3d..."
 tar xvf /tmp/f3d.tar.gz -C $2 &> /dev/null
-mv
-ls /apps/f3d
 
 files=( "$2"/*/ )
 f3d_installer_folder="${files[0]}"
 echo "Got version > $f3d_installer_folder"
-
-
+full_path=$(realpath $f3d_installer_folder)
+echo "Full path to bin > " $full_path
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cp -v "$SCRIPT_DIR/f3d.sh" "$2/"
-sed -i "s@ROOT_APP@$2@g" "$2/f3d.sh"
+sed -i "s@ROOT_APP@$full_path@g" "$2/f3d.sh"
 chmod +x "$2/f3d.sh"
 chmod -R 777 "$2"
 ## app icon setup
