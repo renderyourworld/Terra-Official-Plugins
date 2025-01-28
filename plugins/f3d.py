@@ -18,10 +18,10 @@ class F3dInstaller(Plugin):
 
     _version_ = "1.0.0"
     _alias_ = "F3d Installer"
-    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/missing.png?raw=true"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/f3d.png?raw=true"
     description = "F3d 3d viewer"
-    category = "Media and Entertainment"
-    tags = ["f3d", "editor", "3d", "viewer", "geometry"]
+    category = "Utility"
+    tags = ["f3d", "3d", "viewer", "geometry"]
     fields = [
         Plugin.field("url", "Download URL", required=False),
         Plugin.field("destination", "Destination directory", required=True),
