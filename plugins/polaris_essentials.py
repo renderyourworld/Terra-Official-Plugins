@@ -43,24 +43,26 @@ class PolarisEssentials(Plugin):
         handler = plugins()
 
         # add firefox
-        handler.run_plugin(name="Firefox Browser", allow_failure=False)
+        handler.run_plugin("plugin", "Firefox Browser", allow_failure=False)
 
         # add WPS Office
         handler.run_plugin(
-            name="Wpsoffice Installer",
+            "plugin",
+            "Wpsoffice Installer",
             allow_failure=False,
             destination="/apps/wpsoffice",
         )
 
         # add Vlc
-        handler.run_plugin(name="Vlc Installer", allow_failure=False, destination="/apps/vlc")
+        handler.run_plugin("plugin", "Vlc Installer", allow_failure=False, destination="/apps/vlc")
 
         # add TLM
-        handler.run_plugin(name="Tlm Installer", allow_failure=False, destination="/apps/tlm")
+        handler.run_plugin("plugin", "Tlm Installer", allow_failure=False, destination="/apps/tlm")
 
         # add user Templates
         handler.run_plugin(
-            name="Templates Installer",
+            "plugin",
+            "Templates Installer",
             allow_failure=False,
             destination="/apps/templates",
         )
@@ -75,7 +77,8 @@ class PolarisEssentials(Plugin):
 
         # add Sublime3
         handler.run_plugin(
-            name="Sublime3 Installer",
+            "plugin",
+            "Sublime3 Installer",
             allow_failure=False,
             destination="/apps/sublime3",
             version="3211",
@@ -83,7 +86,8 @@ class PolarisEssentials(Plugin):
 
         # add PyCharm
         handler.run_plugin(
-            name="PyCharm Installer",
+            "plugin",
+            "PyCharm Installer",
             allow_failure=False,
             destination="/apps/pycharm",
             version="2024.1.4",
@@ -91,7 +95,8 @@ class PolarisEssentials(Plugin):
 
         # add PureRef
         handler.run_plugin(
-            name="PureRef Installer",
+            "plugin",
+            "PureRef Installer",
             allow_failure=False,
             destination="/apps/pureref",
             version="2",
@@ -99,19 +104,21 @@ class PolarisEssentials(Plugin):
 
         # add obsidian
         handler.run_plugin(
-            name="Obsidian Installer",
+            "plugin",
+            "Obsidian Installer",
             allow_failure=False,
             destination="/apps/obsidian",
         )
 
         # add ocio
         handler.run_plugin(
-            name="Ocio Installer", allow_failure=False, destination="/apps/ocio"
+            "plugin", "Ocio Installer", allow_failure=False, destination="/apps/ocio"
         )
 
         # add mrv2 player
         handler.run_plugin(
-            name="Mrv2 Installer",
+            "plugin",
+            "Mrv2 Installer",
             allow_failure=False,
             destination="/apps/mrv2",
             version="Mrv2-1.2.1",
@@ -119,7 +126,7 @@ class PolarisEssentials(Plugin):
 
         # add krita
         handler.run_plugin(
-            name="Krita Installer", allow_failure=False, destination="/apps/krita"
+            "plugin", "Krita Installer", allow_failure=False, destination="/apps/krita"
         )
 
     def uninstall(self, *args, **kwargs) -> None:
