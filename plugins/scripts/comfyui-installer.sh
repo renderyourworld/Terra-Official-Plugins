@@ -24,14 +24,15 @@ uv pip install -i https://pypi.org/simple -r requirements.txt
 # edit config from the comfy manager
 #sed -i "s@normal@weak@g" "$1/ComfyUI/user/default/ComfyUI-Manager/config.ini"
 
-
+cp
 # app icon setup
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cd $SCRIPT_DIR
+cp "comfyui.sh" "$1/run_comfyui.sh"
 cp "../assets/comfyui.png" "$2/comfyui.png"
 echo "Adding desktop file"
 chmod +X create_desktop_file.py
-python3 create_desktop_file.py --app_name="ComfyUI" --version="1.3" --latest_path="$1"/comfyui.sh --categories="comfyui, ai" --destination="$1" --icon="$1"/comfyui.png
+python3 create_desktop_file.py --app_name="ComfyUI" --version="1.3" --latest_path="$1"/run_comfyui.sh --categories="comfyui, ai" --destination="$1" --icon="$1"/comfyui.png
 echo "Desktop file created."
 chmod -R 777 "$1/"
 
