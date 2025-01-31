@@ -1,6 +1,7 @@
 echo "Installing ComfyUI to $1"
 
 export PIP_INDEX_URL=https://pypi.org/simple
+export UV_LINK_MODE=copy
 
 cd "$1"
 git clone https://github.com/comfyanonymous/ComfyUI.git
