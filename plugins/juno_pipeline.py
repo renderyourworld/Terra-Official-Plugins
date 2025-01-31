@@ -65,6 +65,8 @@ class JunoPipeline(Plugin):
             version="Nuke15.1v1",
 
         )
+
+        print('Preparing To create for Juno Nuke Desktop File')
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         if (
             run(
