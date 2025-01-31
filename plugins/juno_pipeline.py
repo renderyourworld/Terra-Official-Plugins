@@ -28,15 +28,7 @@ class JunoPipeline(Plugin):
         """
         Check if the target directory exists
         """
-        # if not os.path.exists("/pipe"):
-        #     raise ValueError(
-        #         "The pipeline directory does not exist. Please ensure the pipeline is mounted to /pipe."
-        #     )
-
-        # if not os.path.exists("/apps"):
-        #     raise ValueError(
-        #         "The apps directory does not exist. Please ensure the apps are mounted to /apps."
-        #     )
+        print('testing preflight')
 
     def install(self, *args, **kwargs) -> None:
         """
@@ -46,7 +38,7 @@ class JunoPipeline(Plugin):
         delivery_task = {"code": "DeliveryTemplate", "parent": None, "type": 1140}
         luna_url = "http://luna:8000/"
         meta_url = f"{luna_url}/meta"
-
+        print('testing install')
         response = self.get_task(url=meta_url, task=delivery_task)
         status_code = response.status_code
 
