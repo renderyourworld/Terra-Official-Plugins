@@ -51,7 +51,6 @@ class JunoPipeline(Plugin):
         print('Preparing Nuke 15.1v1 install')
         handler.run_plugin(
             name="Nuke Installer",
-            plugin="Nuke Installer",
             allow_failure=False,
             destination="/apps/nuke",
             version="Nuke15.1v1",
@@ -69,41 +68,6 @@ class JunoPipeline(Plugin):
             != 0
         ):
             raise RuntimeError("Failed to install Nuke")
-
-        # handler.run_plugin(
-        #     "plugin",
-        #     "Kdenlive Installer",
-        #     allow_failure=False,
-        #     destination="/apps/kdenlive",
-        # )
-        #
-        # handler.run_plugin(
-        #     "plugin",
-        #     "Blender Installer",
-        #     allow_failure=False,
-        #     destination="/apps/blender",
-        #     version="4.2.0",
-        # )
-        #
-        # handler.run_plugin(
-        #     "plugin",
-        #     "PyCharm Installer",
-        #     allow_failure=False,
-        #     destination="/apps/pycharm",
-        #     version="2024.1.4",
-        # )
-        #
-        # handler.run_plugin(
-        #     "plugin", "ComfyUI Installer", allow_failure=False, destination="/apps/comfyui"
-        # )
-        #
-        # handler.run_plugin(
-        #     "plugin",
-        #     "Nuke Installer",
-        #     allow_failure=False,
-        #     destination="/apps/nuke",
-        #     version="Nuke15.1v1",
-        # )
 
     def get_task(self, url, task):
         """
