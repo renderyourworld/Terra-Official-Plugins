@@ -3,12 +3,32 @@ echo "Installing ComfyUI to $1"
 export PIP_INDEX_URL=https://pypi.org/simple
 export UV_LINK_MODE=copy
 
+# we need to rebuild python
+apt update -y &&  apt upgrade -y && apt update -y
+apt install build-essential libssl-dev zlib1g-dev \
+libbz2-dev libreadline-dev libsqlite3-dev curl \
+libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev -y
+
+curl https://pyenv.run | bash
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+pyenv install 3.10.12
+pyenv global 3.10.12
+echo "Python 3.10.12 installed ?"
+python3 --version
+# test
+pip install --upgrade pip click
+
+
 cd "$1"
 git clone https://github.com/comfyanonymous/ComfyUI.git
 git config --global --add safe.directory $1/ComfyUI
 
 cd ComfyUI
-python3 -m venv venv
+python3 -m venv venv --copies
 source venv/bin/activate
 pip install uv
 echo ""
