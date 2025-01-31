@@ -49,10 +49,11 @@ class JunoPipeline(Plugin):
 
         handler = plugins()
         print('Preparing Nuke 15.1v1 install')
+        nuke_destination = "/apps/nuke"
         handler.run_plugin(
             name="Nuke Installer",
             allow_failure=False,
-            destination="/apps/nuke",
+            destination=nuke_destination,
             version="Nuke15.1v1",
 
         )
@@ -61,7 +62,7 @@ class JunoPipeline(Plugin):
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         if (
             run(
-                f"bash {scripts_directory}/juno-pipeline-installer.sh Nuke15.1v1 /apps/nuke",
+                f"bash {scripts_directory}/juno-pipeline-installer.sh {nuke_destination}",
                 shell=True,
                 check=False,
             ).returncode
