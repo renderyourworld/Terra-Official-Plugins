@@ -22,16 +22,28 @@ def create_desktop_file(
     destination=None,
     icon=None,
     terminal=None,
+    junogl=None,
 ):
     """Create a desktop file for the application based on the provided arguments."""
+
+    # update terminal option - donest break current runs!
+    # desktop files need to be lowercase true or false
     if terminal == "True":
-        terminator = "terminator -x "
+        terminal_run = "true"
     else:
-        terminator = ""
+        terminal_run = "false"
+
+    # update junogl option - dont break current runs!
+    if junogl == "True":
+        junogl_run = "junogl "
+    else:
+        junogl_run = ""
+
+
     desktop_file = f"""[Desktop Entry]
 Name={app_name} {version}
-Exec={terminator}{latest_path}
-Terminal=false
+Exec={junogl_run}{latest_path}
+Terminal={terminal_run}
 Type=Application
 Categories=X-Polaris
 Icon={icon}"""
