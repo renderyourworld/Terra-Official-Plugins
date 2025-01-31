@@ -28,3 +28,5 @@ python3 create_desktop_file.py --app_name="F3d" --version="3.0" --latest_path="$
 echo "Desktop file created."
 chmod -R 777 "$2/"
 
+cat $2/*.desktop
+

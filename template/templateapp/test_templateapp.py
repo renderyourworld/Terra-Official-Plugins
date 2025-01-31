@@ -14,7 +14,6 @@ def test_templateapp():
     assert plugin is not None
     assert plugin._version_ is not None
     handler.run_plugin(
-        'plugin',
         'templateapp Installer',
         allow_failure=False,
         destination='/apps/templateapp'

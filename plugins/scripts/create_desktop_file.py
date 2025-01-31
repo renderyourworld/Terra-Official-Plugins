@@ -13,6 +13,7 @@ import click
 @click.option("--destination", default="None")
 @click.option("--icon", default="None")
 @click.option("--terminal", default="None")
+@click.option("--junogl", default="None")
 def create_desktop_file(
     app_name=None,
     version=None,
@@ -22,16 +23,28 @@ def create_desktop_file(
     destination=None,
     icon=None,
     terminal=None,
+    junogl=None,
 ):
     """Create a desktop file for the application based on the provided arguments."""
+
+    # update terminal option - donest break current runs!
+    # desktop files need to be lowercase true or false
     if terminal == "True":
-        terminator = "terminator -x "
+        terminal = "true"
     else:
-        terminator = ""
+        terminal = "false"
+
+    # update junogl option - dont break current runs!
+    if junogl == "True":
+        junogl_run = "junogl "
+    else:
+        junogl_run = ""
+
+
     desktop_file = f"""[Desktop Entry]
 Name={app_name} {version}
-Exec={terminator}{latest_path}
-Terminal=false
+Exec={junogl_run}{latest_path}
+Terminal={terminal}
 Type=Application
 Categories=X-Polaris
 Icon={icon}"""
