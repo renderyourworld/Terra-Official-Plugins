@@ -4,6 +4,7 @@ Juno's Pipeline Bundle
 
 # std
 import os
+from subprocess import run
 from requests import request
 
 # 3rd
@@ -51,15 +52,29 @@ class JunoPipeline(Plugin):
 
         if status_code == 200 and not response.json():
             response = self.create_task(url=meta_url, task=delivery_task)
-        print(response.status_code)
+            if response.status_code == 200:
+                print('ShowPrep task Created')
 
-        # handler = plugins()
-        # handler.run_plugin(
-        #     "plugin",
-        #     "Pixelfudger v3.2",
-        #     allow_failure=False,
-        #     destination="/pipe/nuke/external/",
-        # )
+        handler = plugins()
+        print('Preparing Nuke 15.1v1 install')
+        handler.run_plugin(
+            "Nuke Pipeline Install",
+            "Nuke Installer",
+            allow_failure=False,
+            destination="/apps/nuke",
+            version="Nuke15.1v1",
+
+        )
+        scripts_directory = os.path.abspath(f"{__file__}/../scripts")
+        if (
+            run(
+                f"bash {scripts_directory}/juno-pipeline-installer.sh Nuke15.1v1 /apps/nuke",
+                shell=True,
+                check=False,
+            ).returncode
+            != 0
+        ):
+            raise RuntimeError("Failed to install Nuke")
 
         # handler.run_plugin(
         #     "plugin",
