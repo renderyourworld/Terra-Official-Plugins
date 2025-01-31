@@ -24,7 +24,7 @@ uv pip install -i https://pypi.org/simple -r requirements.txt
 # edit config from the comfy manager
 #sed -i "s@normal@weak@g" "$1/ComfyUI/user/default/ComfyUI-Manager/config.ini"
 
-cp
+
 # app icon setup
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cd $SCRIPT_DIR

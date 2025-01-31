@@ -15,4 +15,4 @@ def test_comfyui():
     handler.run_plugin(
         "ComfyUI Installer", allow_failure=False, destination="/apps/comfyui"
     )
-    handler.remove_plugin(name="ComfyUI Installer", destination="/apps/comfyui")
+    #handler.remove_plugin(name="ComfyUI Installer", destination="/apps/comfyui")
