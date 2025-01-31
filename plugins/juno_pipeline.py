@@ -59,7 +59,7 @@ class JunoPipeline(Plugin):
                 'destination': nuke_destination,
             }
         }
-        request.post(url=install_url, json=data)
+        request("post", install_url, json=data)
         print('Preparing To create for Juno Nuke Desktop File')
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         if (
