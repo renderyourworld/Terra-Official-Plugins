@@ -47,17 +47,19 @@ class JunoPipeline(Plugin):
             if response.status_code == 200:
                 print('ShowPrep task Created')
 
-        handler = plugins()
         print('Preparing Nuke 15.1v1 install')
         nuke_destination = "/apps/nuke"
-        handler.run_plugin(
-            name="Nuke Installer",
-            allow_failure=False,
-            destination=nuke_destination,
-            version="Nuke15.1v1",
 
-        )
-
+        install_url = 'http://terra:8000/plugins/install'
+        data = {
+            'install_name': 'Nuke Pipeline Install',
+            'plugin_name': 'Nuke Installer',
+            'fields': {
+                'version': 'Nuke15.1v1',
+                'destination': nuke_destination,
+            }
+        }
+        request.post(url=install_url, json=data)
         print('Preparing To create for Juno Nuke Desktop File')
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         if (
