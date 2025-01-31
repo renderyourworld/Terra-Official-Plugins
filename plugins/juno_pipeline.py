@@ -52,7 +52,7 @@ class JunoPipeline(Plugin):
 
         install_url = 'http://terra:8000/plugins/install'
         data = {
-            'install_name': 'Nuke Pipeline Install',
+            'install_name': 'Nuke Pipeline 15.1v1',
             'plugin_name': 'Nuke Installer',
             'fields': {
                 'version': 'Nuke15.1v1',
