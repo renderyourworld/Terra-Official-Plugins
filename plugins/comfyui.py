@@ -18,7 +18,7 @@ class ComfyUIInstaller(Plugin):
 
     _version_ = "1.0.0"
     _alias_ = "ComfyUI Installer"
-    icon = "https://avatars.githubusercontent.com/u/121283862?v=4"
+    icon = "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/assets/comfyui.png?raw=true"
     description = "The most powerful and modular stable diffusion GUI, api and backend with a graph/nodes interface."
     category = "Media and Entertainment"
     tags = [
