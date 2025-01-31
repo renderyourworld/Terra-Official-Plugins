@@ -50,8 +50,8 @@ class JunoPipeline(Plugin):
         handler = plugins()
         print('Preparing Nuke 15.1v1 install')
         handler.run_plugin(
-            "Nuke Pipeline Install",
-            "Nuke Installer",
+            name="Nuke Installer",
+            plugin="Nuke Installer",
             allow_failure=False,
             destination="/apps/nuke",
             version="Nuke15.1v1",
