@@ -30,7 +30,9 @@ git config --global --add safe.directory $1/ComfyUI
 cd ComfyUI
 python3 -m venv venv --copies
 source venv/bin/activate
+pip install --upgrade pip
 pip install uv
+uv pip install --upgrade pip
 echo ""
 echo "Installing requirements. This could take a while."
 echo ""
@@ -50,6 +52,7 @@ uv pip install -i https://pypi.org/simple -r requirements.txt
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cd $SCRIPT_DIR
 cp "comfyui.sh" "$1/run_comfyui.sh"
+cp "comfyui.sh.source" "$1/comfyui.sh.source"
 cp "../assets/comfyui.png" "$2/comfyui.png"
 echo "Adding desktop file"
 chmod +X create_desktop_file.py
