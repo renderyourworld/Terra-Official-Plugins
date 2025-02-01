@@ -1,4 +1,3 @@
-echo "Runngin nerfstudio"
-cd ROOT_APP/squashfs-root/
-
-./AppRun
+echo "Running nerfstudio"
+cd ROOT_APP/nerfstudio-webui
+venv/python3 webui.py
