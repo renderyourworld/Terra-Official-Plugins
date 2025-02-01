@@ -9,30 +9,24 @@ from requests import request
 
 # 3rd
 from terra import Plugin
-from terra.loaders import plugins
 
 
 class JunoPipeline(Plugin):
     """
-    Git Loader
+    Juno Pipeline Installer
     """
 
     _version_ = "1.0.0"
     _alias_ = "Juno Pipeline (Full)"
     icon = "https://avatars.githubusercontent.com/u/77702266?s=200&v=4"
-    description = "Install the Juno Pipeline for 2D Visual Effects. Ships with Nuke, Blender, Houdini, and more."
+    description = "Install the Juno Pipeline for 2D Visual Effects. Ships with Juno Nuke"
     category = "Pipeline"
     tags = ["vfx", "pipeline", "juno", "2d", "visual effects"]
 
-    def preflight(self, *args, **kwargs) -> bool:
-        """
-        Check if the target directory exists
-        """
-        print('testing preflight')
 
     def install(self, *args, **kwargs) -> None:
         """
-        Run git pull and install to the target directory
+        Create our ShowPrep Task and install nuke
         """
         # ShowPrep Task called DeliveryTemplate
         delivery_task = {"code": "DeliveryTemplate", "parent": None, "type": 1140}
@@ -88,9 +82,3 @@ class JunoPipeline(Plugin):
         task["metadata"] = {"TemplateType": "Delivery"}
         print(task)
         return request("post", url, json=task)
-
-    def uninstall(self, *args, **kwargs) -> None:
-        """
-        Uninstall the application.
-        """
-        self.logger.info("Uninstalling not implemented")
