@@ -15,7 +15,14 @@ cd $SCRIPT_DIR
 cp "../assets/lmstudio.png" "$2/lmstudio.png"
 echo "Adding desktop file"
 chmod +X create_desktop_file.py
-python3 create_desktop_file.py --app_name="LMStudio" --version="0.39" --latest_path="$2"/lmstudio.sh --categories="lmstudio" --destination="$2" --icon="$2"/lmstudio.png --terminal="False"
+python3 create_desktop_file.py --app_name="LMStudio" --version="0.39" --latest_path="$2"/lmstudio.sh --categories="lmstudio" --destination="$2" --icon="$2"/lmstudio.png --terminal="True" --junogl="True"
 echo "Desktop file created."
-chmod -R 777 "$2/"
+
 cat $2/*.desktop
+
+# add models cache dir so we offload from user home directory and not burden storage with sam models
+mkdir -p $2/cache
+mkdir -p $2/cache/models
+
+chmod -R 777 "$2/"
+
