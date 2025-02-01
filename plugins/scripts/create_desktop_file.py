@@ -48,6 +48,7 @@ Terminal={terminal}
 Type=Application
 Categories=X-Polaris
 Icon={icon}"""
+
     desktop_path = destination + "/" + app_name.lower() + "_" + version + ".desktop"
     desktop_path = pathlib.Path(desktop_path).as_posix()
     with open(desktop_path, "w") as f:
