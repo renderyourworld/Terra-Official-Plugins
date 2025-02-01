@@ -28,16 +28,17 @@ source $1/venv/bin/activate
 uv pip install --upgrade pip
 uv pip install torch==2.1.2+cu118 torchvision==0.16.2+cu118 --extra-index-url https://download.pytorch.org/whl/cu118
 uv pip install nvidia-cuda-nvcc
-
+echo "Torch install"
 uv pip install ninja git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch
 
 echo "Install NerfStudio"
+
 uv pip install nerfstudio
-uv pip install -e .[dev]
+echo "docs install"
 uv pip install -e .[docs]
-
+echo "gradio install"
 uv pip install gradio
-
+echo "clone install"
 git clone https://github.com/nerfstudio-project/nerfstudio-webui.git
 
 # app icon setup
