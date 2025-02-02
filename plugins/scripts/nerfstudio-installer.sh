@@ -5,40 +5,28 @@ export UV_LINK_MODE=copy
 
 # we need to rebuild python
 apt update -y &&  apt upgrade -y && apt update -y
-apt install build-essential libssl-dev zlib1g-dev \
-libbz2-dev libreadline-dev libsqlite3-dev curl \
-libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev -y
 
-curl https://pyenv.run | bash
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
-cd "$1"
-pyenv install 3.10.12
-pyenv global 3.10.12
+uv python install 3.10.12
+
+uv venv $1/venv
+
 echo "Python 3.10.12 installed ?"
 python3 --version
 
 echo "Installing NerfStudio PIP deps"
-python3 -m venv venv --copies
+#python3 -m venv venv --copies
 source $1/venv/bin/activate
-
 uv pip install --upgrade pip
-uv pip install torch==2.1.2+cu118 torchvision==0.16.2+cu118 --extra-index-url https://download.pytorch.org/whl/cu118
-uv pip install nvidia-cuda-nvcc
-echo "Torch install"
-uv pip install ninja git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch
 
 echo "Install NerfStudio"
-
 uv pip install nerfstudio
-echo "docs install"
-uv pip install -e .[docs]
-echo "gradio install"
+
+echo "Install Gradio"
 uv pip install gradio
-echo "clone install"
+
+echo "Clone WebUI install"
+cd $1
 git clone https://github.com/nerfstudio-project/nerfstudio-webui.git
 
 # app icon setup
