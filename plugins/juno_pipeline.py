@@ -4,6 +4,7 @@ Juno's Pipeline Bundle
 
 # std
 import os
+from http.client import HTTPException
 from subprocess import run
 from requests import request
 
@@ -52,14 +53,18 @@ class JunoPipeline(Plugin):
 
         install_url = 'http://terra:8000/plugins/install'
         data = {
-            'install_name': 'Nuke Pipeline 15.1v1',
+            'install_name': 'Nuke15 Pipeline',
             'plugin_name': 'Nuke Installer',
             'fields': {
                 'version': 'Nuke15.1v1',
                 'destination': nuke_destination,
             }
         }
-        request("post", install_url, json=data)
+        response = request("post", install_url, json=data)
+        if response.status_code != 200:
+            raise HTTPException(f'Nuke Install Error {response.status_code}: {response.text}')
+
+        print(f'Nuke Install Requested: {response.status_code}: {response.text}')
         print('Preparing To create for Juno Nuke Desktop File')
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         if (
@@ -70,7 +75,7 @@ class JunoPipeline(Plugin):
             ).returncode
             != 0
         ):
-            raise RuntimeError("Failed to install Nuke")
+            raise RuntimeError("Failed to create juno nuke desktop file")
 
     def get_task(self, url, task):
         """
