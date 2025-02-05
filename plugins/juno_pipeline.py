@@ -23,6 +23,12 @@ class JunoPipeline(Plugin):
     category = "Pipeline"
     tags = ["vfx", "pipeline", "juno", "2d", "visual effects"]
 
+    def preflight(self, *args, **kwargs) -> bool:
+        """
+        run a preflight check
+        """
+
+        print('Preflight Checked')
 
     def install(self, *args, **kwargs) -> None:
         """
@@ -82,3 +88,9 @@ class JunoPipeline(Plugin):
         task["metadata"] = {"TemplateType": "Delivery"}
         print(task)
         return request("post", url, json=task)
+
+    def uninstall(self, *args, **kwargs) -> None:
+        """
+        Uninstall the application.
+        """
+        self.logger.info("Uninstalling not implemented")
