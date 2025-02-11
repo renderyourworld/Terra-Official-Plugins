@@ -62,6 +62,7 @@ class JunoPipeline(Plugin):
         data = {
             'install_name': 'Firefox',
             'plugin_name': 'Firefox Browser',
+            'fields': {}
         }
         response = request("post", INSTALL_URL, json=data)
         if response.status_code != 200:
