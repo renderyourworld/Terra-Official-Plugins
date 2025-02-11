@@ -11,6 +11,7 @@ from requests import request
 # 3rd
 from terra import Plugin
 
+INSTALL_URL = 'http://terra:8000/plugins/install'
 
 class JunoPipeline(Plugin):
     """
@@ -49,12 +50,10 @@ class JunoPipeline(Plugin):
                 print('ShowPrep task Created')
 
         # Install our preferred Apps automatically
-        install_url = 'http://terra:8000/plugins/install'
+        self.install_juno_nuke()
+        self.install_firefox()
 
-        self.install_juno_nuke(install_url=install_url)
-        self.install_firefox(install_url=install_url)
-
-    def install_firefox(self, install_url):
+    def install_firefox(self):
         """
         installs firefox
         """
@@ -64,11 +63,11 @@ class JunoPipeline(Plugin):
             'install_name': 'Firefox',
             'plugin_name': 'Firefox Browser',
         }
-        response = request("post", install_url, json=data)
+        response = request("post", INSTALL_URL, json=data)
         if response.status_code != 200:
             raise HTTPException(f'Firefox Install Error {response.status_code}: {response.text}')
 
-    def install_juno_nuke(self, install_url):
+    def install_juno_nuke(self):
         """
         install the preferred nuke version and create our juno nuke desktop file
         """
@@ -84,7 +83,7 @@ class JunoPipeline(Plugin):
                 'destination': nuke_destination,
             }
         }
-        response = request("post", install_url, json=data)
+        response = request("post", INSTALL_URL, json=data)
         if response.status_code != 200:
             raise HTTPException(f'Nuke Install Error {response.status_code}: {response.text}')
 
