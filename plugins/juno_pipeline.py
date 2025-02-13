@@ -11,6 +11,7 @@ from requests import request
 # 3rd
 from terra import Plugin
 
+INSTALL_URL = 'http://terra:8000/plugins/install'
 
 class JunoPipeline(Plugin):
     """
@@ -48,10 +49,33 @@ class JunoPipeline(Plugin):
             if response.status_code == 200:
                 print('ShowPrep task Created')
 
-        print('Preparing Nuke 15.1v1 install')
+        # Install our preferred Apps automatically
+        self.install_juno_nuke()
+        self.install_firefox()
+
+    def install_firefox(self):
+        """
+        installs firefox
+        """
+
+        self.logger.info('Preparing to install Fire fox')
+        data = {
+            'install_name': 'Firefox',
+            'plugin_name': 'Firefox Browser',
+            'fields': {}
+        }
+        response = request("post", INSTALL_URL, json=data)
+        if response.status_code != 200:
+            raise HTTPException(f'Firefox Install Error {response.status_code}: {response.text}')
+
+    def install_juno_nuke(self):
+        """
+        install the preferred nuke version and create our juno nuke desktop file
+        """
+        self.logger.info('Preparing Nuke 15.1v1 install')
         nuke_destination = "/apps/nuke"
 
-        install_url = 'http://terra:8000/plugins/install'
+
         data = {
             'install_name': 'Nuke15 Pipeline',
             'plugin_name': 'Nuke Installer',
@@ -60,20 +84,20 @@ class JunoPipeline(Plugin):
                 'destination': nuke_destination,
             }
         }
-        response = request("post", install_url, json=data)
+        response = request("post", INSTALL_URL, json=data)
         if response.status_code != 200:
             raise HTTPException(f'Nuke Install Error {response.status_code}: {response.text}')
 
-        print(f'Nuke Install Requested: {response.status_code}: {response.text}')
-        print('Preparing To create for Juno Nuke Desktop File')
+        self.logger.info(f'Nuke Install Requested: {response.status_code}: {response.text}')
+        self.logger.info('Preparing To create for Juno Nuke Desktop File')
         scripts_directory = os.path.abspath(f"{__file__}/../scripts")
         if (
-            run(
-                f"bash {scripts_directory}/juno-pipeline-installer.sh {nuke_destination}",
-                shell=True,
-                check=False,
-            ).returncode
-            != 0
+                run(
+                    f"bash {scripts_directory}/juno-pipeline-installer.sh {nuke_destination}",
+                    shell=True,
+                    check=False,
+                ).returncode
+                != 0
         ):
             raise RuntimeError("Failed to create juno nuke desktop file")
 
