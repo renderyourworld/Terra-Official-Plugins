@@ -63,8 +63,8 @@ class JunoPipeline(Plugin):
         self.logger.info('Preparing WPS install')
 
         data = {
-            'install_name': 'Nuke15 Pipeline',
-            'plugin_name': 'WPS',
+            'install_name': 'WPS',
+            'plugin_name': 'Wpsoffice Installer',
             'fields': {'destination': '/apps/wps'}
         }
         response = request("post", INSTALL_URL, json=data)
