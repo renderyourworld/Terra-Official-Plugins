@@ -32,10 +32,9 @@ class OrionEssentials(Plugin):
 
     def install(self, *args, **kwargs) -> None:
         """
-        Create our ShowPrep Task and install nuke
+        Install all of our preferred apps
         """
 
-        # Install our preferred Apps automatically
         self.install_wps()
         self.install_firefox()
 
