@@ -1,11 +1,9 @@
 """
-Juno's Pipeline Bundle
+Juno's Orion Essentials Bundle
 """
 
 # std
-import os
 from http.client import HTTPException
-from subprocess import run
 from requests import request
 
 # 3rd
@@ -13,9 +11,9 @@ from terra import Plugin
 
 INSTALL_URL = 'http://terra:8000/plugins/install'
 
-class JunoPipeline(Plugin):
+class OrionEssentials(Plugin):
     """
-    Juno Pipeline Installer
+    Orion Essentials bundle plugin
     """
 
     _version_ = "1.0.0"
