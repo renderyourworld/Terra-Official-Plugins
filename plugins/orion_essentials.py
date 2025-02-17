@@ -23,7 +23,7 @@ class JunoPipeline(Plugin):
     icon = "https://avatars.githubusercontent.com/u/77702266?s=200&v=4"
     description = "Install our Orion Essentials bundle. includes Firefox and WPS Office."
     category = "Utility"
-    tags = ["firefox", "web", "browser", "wpsoffice", "office", "word", "excel", "essential"]
+    tags = ["firefox", "web", "browser", "wpsoffice", "office", "word", "excel", "essential", "orion", "bundle"]
 
     def preflight(self, *args, **kwargs) -> bool:
         """
