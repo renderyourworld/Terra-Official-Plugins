@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: deadline-mongo
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: deadline-mongo
+  template:
+    metadata:
+      labels:
+        app: deadline-mongo
+    spec:
+      nodeSelector:
+        juno-innovations.com/service: "true"
+      containers:
+        - name: deadline-mongo
+          image: mongo:5.0.22
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 27017
+              name: "mongo-port"
+          volumeMounts:
+            - mountPath: /data/db
+              name: farm-data
+      volumes:
+        - name: farm-data
+          persistentVolumeClaim:
+            claimName: {{ .Values.database_volume }}
+

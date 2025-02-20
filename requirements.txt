@@ -1,6 +1,0 @@
-kubernetes
-GitPython
-pluginlib
-pytest
-click
-requests
