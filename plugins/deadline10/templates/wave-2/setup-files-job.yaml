@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: deadline10-setup-files
+spec:
+  backoffLimit: 1
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: installer
+          image: ubuntu:latest
+          command: ["sleep", "infinity"]
+          volumeMounts:
+            - name: installer
+              mountPath: /terra
+              subPath: bootstrap.sh
+            - name: installer
+              mountPath: /terra
+              subPath: packaged_scripts.base64
+      volumes:
+          - name: installer
+            configMap:
+              name: deadline10-scripts-configmap
+              defaultMode: 0500
