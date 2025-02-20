@@ -40,15 +40,16 @@ test-%: cluster dependencies
 	@kubectl -n argocd port-forward service/argocd-server 8080:80 > /dev/null 2>&1
 
 package-%:
-	@tar -czf scripts.tar ./plugins/$(subst package-,,$@)/scripts
-	@base64 -w 0 scripts.tar > scripts.base64
-	@rm -rf scripts.tar
-	@cp plugins/packaged-scripts-template.yaml ./plugins/$(subst package-,,$@)/templates/packaged-scripts.yaml
-	@sed -i '1s/^/  packaged_scripts.base64: "/' scripts.base64
-	@sed -i '1s/$$/"/' scripts.base64
-	@cat scripts.base64 >> ./plugins/$(subst package-,,$@)/templates/packaged-scripts.yaml
-	@sed -i 's/PLUGIN/$(subst package-,,$@)/g' ./plugins/$(subst package-,,$@)/templates/packaged-scripts.yaml
-	@rm -rf scripts.base64
+	@cd ./plugins/$(subst package-,,$@) \
+		&& tar -czf scripts.tar scripts \
+		&& base64 -w 0 scripts.tar > scripts.base64 \
+		&& rm -rf scripts.tar \
+		&& cp ../packaged-scripts-template.yaml ./templates/packaged-scripts.yaml \
+		&& sed -i '1s/^/  packaged_scripts.base64: "/' scripts.base64 \
+		&& sed -i '1s/$$/"/' scripts.base64 \
+		&& cat scripts.base64 >> ./templates/packaged-scripts.yaml \
+		&& sed -i 's/PLUGIN/$(subst package-,,$@)/g' ./templates/packaged-scripts.yaml \
+		&& rm -rf scripts.base64
 
 #app-%:
 #	@template/templateapp/makeapp.sh "$(subst app-,,$@)"
