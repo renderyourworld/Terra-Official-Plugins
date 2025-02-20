@@ -12,7 +12,7 @@ spec:
       containers:
         - name: installer
           image: ubuntu:latest
-          command: ["sleep", "infinity"]
+          command: ["/terra/bootstrap,sh"]
           volumeMounts:
             - name: installer
               mountPath: /terra/bootstrap.sh
