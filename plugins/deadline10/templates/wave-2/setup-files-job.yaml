@@ -13,10 +13,10 @@ spec:
           command: ["sleep", "infinity"]
           volumeMounts:
             - name: installer
-              mountPath: /terra
+              mountPath: /terra/bootstrap.sh
               subPath: bootstrap.sh
             - name: installer
-              mountPath: /terra
+              mountPath: /terra/scripts.base64
               subPath: packaged_scripts.base64
       volumes:
           - name: installer
