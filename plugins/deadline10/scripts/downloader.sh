@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e
+
 echo "Installing $1"
 
 # install wget

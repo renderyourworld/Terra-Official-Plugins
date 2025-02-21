@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e
+
 if [ -n "${SETUP_FILES}" ]; then
     ./setup_files.sh "$DESTINATION" "$CUSTOM_PATH"
 fi

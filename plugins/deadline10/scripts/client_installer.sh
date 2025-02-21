@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e
+
 installers=/apps/tmp/deadline10_installers
 echo "Installing Deadline 10 Client from $installers to $1"
 

@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e
+
 installers=/mnt/tmp/deadline10_installers
 echo "Starting Deadline 10 repository installation > $1"
 

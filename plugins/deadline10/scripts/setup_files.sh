@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e
+
 # this setups configmaps paths for deadline
 sed -i "s@DESTINATION@$1@g" ./run_webservice.sh
 sed -i "s@TERA_CUSTOMPATH@$2@g" ./run_webservice.sh

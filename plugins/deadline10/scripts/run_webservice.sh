@@ -1,4 +1,7 @@
 #!/bin/bash
+set -e
+
+#!/bin/bash
 hostname deadline-server
 mono --version
 ulimit -u unlimited
