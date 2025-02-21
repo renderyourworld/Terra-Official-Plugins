@@ -31,6 +31,9 @@ spec:
               subPath: packaged_scripts.base64
             - name: mount
               mountPath: {{ .Values.mount_location }}
+              {{- if .Values.install_volume_share }}install_volume_share
+              subPath: {{ .Values.install_volume_share }}
+              {{- end }}
       volumes:
           - name: installer
             configMap:

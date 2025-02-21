@@ -31,11 +31,14 @@ spec:
               subPath: packaged_scripts.base64
             - name: mount
               mountPath: {{ .Values.mount_location }}
+              {{- if .Values.install_volume_share }}
+              subPath: {{ .Values.install_volume_share }}
+              {{- end }}
       volumes:
-          - name: installer
-            configMap:
-              name: deadline10-scripts-configmap
-              defaultMode: 0500
-          - name: mount
-            persistentVolumeClaim:
-              claimName: {{ .Values.install_volume }}
+        - name: installer
+          configMap:
+            name: deadline10-scripts-configmap
+            defaultMode: 0500
+        - name: mount
+          persistentVolumeClaim:
+            claimName: {{ .Values.install_volume }}

@@ -22,9 +22,6 @@ spec:
         - name: d10container-webservice
           image: mono:latest
           command: [ "{{ .Values.mount_location }}{{ .Values.destination }}/service/run_webservice.sh" ]
-          volumeMounts:
-            - name: client
-              mountPath: {{ .Values.mount_location }}
           ports:
             - name: "endpoint"
               containerPort: 8080
@@ -32,7 +29,13 @@ spec:
             - name: "rest"
               containerPort: 8081
               protocol: TCP
+          volumeMounts:
+            - name: mount
+              mountPath: {{ .Values.mount_location }}
+              {{- if .Values.install_volume_share }}
+              subPath: {{ .Values.install_volume_share }}
+              {{- end }}
       volumes:
-        - name: client
+        - name: mount
           persistentVolumeClaim:
             claimName: {{ .Values.install_volume }}
