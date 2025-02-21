@@ -7,3 +7,5 @@ if [ -z "$DOWNLOAD" ]; then
     /terra/scripts/download.sh "$URL" "$DESTINATION"
     exit 0
 fi
+
+sleep infinity
