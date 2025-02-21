@@ -14,6 +14,7 @@ cat ./deadline10/deadline.ini
 # build directories
 mkdir -vp /mnt/$1/service
 mkdir -vp /mnt/$1/client
+mkdir -vp /mnt/$1/repository
 
 # copy the files to the destination
 cp -v ./run_webservice.sh /mnt/$1/service/run_webservice.sh

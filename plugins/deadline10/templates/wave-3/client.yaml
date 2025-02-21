@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: deadline10-repository-installer
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+spec:
+  backoffLimit: 1
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: installer
+          image: ubuntu:latest
+          env:
+            - name: REPO_INSTALLER
+              value: "true"
+            - name: DESTINATION
+              value: "{{ .Values.destination }}"
+            - name: CUSTOM_PATH
+              value: "{{ .Values.custom_plugins_path }}"
+          command: ["/terra/bootstrap.sh"]
+          volumeMounts:
+            - name: installer
+              mountPath: /terra/bootstrap.sh
+              subPath: bootstrap.sh
+            - name: installer
+              mountPath: /terra/scripts.base64
+              subPath: packaged_scripts.base64
+            - name: client
+              mountPath: /mnt
+      volumes:
+          - name: installer
+            configMap:
+              name: deadline10-scripts-configmap
+              defaultMode: 0500
+          - name: client
+            persistentVolumeClaim:
+              claimName: {{ .Values.install_volume }}
