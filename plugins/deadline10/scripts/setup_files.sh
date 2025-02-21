@@ -11,6 +11,10 @@ cat ./run_webservice.sh
 cat ./deadline10/deadline_env.sh
 cat ./deadline10/deadline.ini
 
+# build directories
+mkdir -vp /mnt/$1/service
+mkdir -vp /mnt/$1/client
+
 # copy the files to the destination
 cp -v ./run_webservice.sh /mnt/$1/service/run_webservice.sh
 cp -v ./deadline10/deadline_env.sh /mnt/$1/service/deadline_env.sh

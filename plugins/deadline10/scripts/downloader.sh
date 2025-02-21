@@ -1,5 +1,8 @@
 echo "Installing $1"
 
+apt update
+apt install -y wget
+
 echo "Downloading Deadline installer"
 installers=/apps/tmp/deadline10_installers
 mkdir -p $installers
