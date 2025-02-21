@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: deadline10-setup-files
+  name: deadline10-download
   annotations:
     argocd.argoproj.io/sync-wave: "2"
 spec:
@@ -13,12 +13,12 @@ spec:
         - name: installer
           image: ubuntu:latest
           env:
-            - name: SETUP_FILES
+            - name: DOWNLOAD
               value: "true"
             - name: DESTINATION
               value: "{{ .Values.destination }}"
-            - name: CUSTOM_PATH
-              value: "{{ .Values.custom_plugins_path }}"
+            - name: URL
+              value: "{{ .Values.url }}"
           command: ["/terra/bootstrap.sh"]
           volumeMounts:
             - name: installer
