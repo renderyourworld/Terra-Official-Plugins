@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+#set -e
 
 installers="$MOUNT_LOCATION/tmp/deadline10_installers"
 echo "Starting Deadline 10 repository installation > $1"
