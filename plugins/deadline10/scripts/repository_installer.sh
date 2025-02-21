@@ -32,8 +32,6 @@ mkdir -p $2/events
 chmod +x ./deadline10/eva.tar
 tar -xvf ./deadline10/eva.tar -C $1/repository/custom/events > /dev/null
 
-chmod -R 777 $3
-
 chmod +x $1/service/deadline_env.sh
 echo "Deadline 10 repository setup done."
 

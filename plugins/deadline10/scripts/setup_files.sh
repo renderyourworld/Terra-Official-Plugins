@@ -12,11 +12,11 @@ cat ./deadline10/deadline_env.sh
 cat ./deadline10/deadline.ini
 
 # build directories
-mkdir -vp /mnt/$1/service
-mkdir -vp /mnt/$1/client
-mkdir -vp /mnt/$1/repository
+mkdir -vp $1/service
+mkdir -vp $1/client
+mkdir -vp $1/repository
 
 # copy the files to the destination
-cp -v ./run_webservice.sh /mnt/$1/service/run_webservice.sh
-cp -v ./deadline10/deadline_env.sh /mnt/$1/service/deadline_env.sh
-cp -v ./deadline10/deadline.ini /mnt/$1/client/deadline.ini
+cp -v ./run_webservice.sh $1/service/run_webservice.sh
+cp -v ./deadline10/deadline_env.sh $1/service/deadline_env.sh
+cp -v ./deadline10/deadline.ini $1/client/deadline.ini
