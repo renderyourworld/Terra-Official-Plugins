@@ -12,10 +12,10 @@ data:
     base64 -d /terra/scripts.base64 > /terra/scripts.tar.gz
     
     # extract scripts to /terra/scripts
-    tar -xzf /terra/scripts.tar.gz -C /terra/
+    tar -xzvf /terra/scripts.tar.gz -C /terra/
     
     # make scripts executable
-    chmod +x /terra/scripts/*.sh
+    chmod +x -v /terra/scripts/*.sh
     
     # start entrypoint.sh
     /terra/scripts/entrypoint.sh
