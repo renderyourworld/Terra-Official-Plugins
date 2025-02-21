@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-installers=/mnt/tmp/deadline10_installers
+installers="$MOUNT_LOCATION/tmp/deadline10_installers"
 echo "Starting Deadline 10 repository installation > $1"
 
 # permissions
@@ -9,18 +9,20 @@ chmod +x $installers/DeadlineRepository-*-linux-x64-installer.run
 
 echo "Installing Deadline 10 repository from $installers"
 
-# install the repository
-$installers/DeadlineRepository-10.3.2.1-linux-x64-installer.run \
-      --debuglevel 4 \
-      --installmongodb false \
-      --mode unattended \
-      --requireSSL false \
-      --dbssl false \
-      --prefix $1/repository \
-      --dbname deadline10db \
-      --dbhost deadline-mongo \
-      --dbport 27017
-      #--setpermissions true
+for f in $installers/DeadlineRepository-*-linux-x64-installer.run; do
+  # install the repository
+  "$f" --debuglevel 4 \
+        --installmongodb false \
+        --mode unattended \
+        --requireSSL false \
+        --dbssl false \
+        --prefix $1/repository \
+        --dbname deadline10db \
+        --dbhost deadline-mongo \
+        --dbport 27017
+        #--setpermissions true
+done
+
 
 echo "Deadline 10 repository installed. Setting up ini files."
 # setup the repository

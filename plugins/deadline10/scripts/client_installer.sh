@@ -1,19 +1,20 @@
 #!/bin/bash
 set -e
 
-installers=/apps/tmp/deadline10_installers
+installers="$MOUNT_LOCATION/tmp/deadline10_installers"
 echo "Installing Deadline 10 Client from $installers to $1"
 
 # permissions
 chmod +x $installers/DeadlineClient-*-linux-x64-installer.run
 
 # install the client
-$installers/DeadlineClient-10.3.2.1-linux-x64-installer.run \
-      --debuglevel 4 \
-      --mode unattended \
-      --prefix $1/client \
-      --repositorydir $1/repository \
-      --connectiontype Direct
+for f in $installers/DeadlineClient-*-linux-x64-installer.run; do
+  "$f" --debuglevel 4 \
+        --mode unattended \
+        --prefix $1/client \
+        --repositorydir $1/repository \
+        --connectiontype Direct
+done
 
 cp -v ./deadline10/deadline.ini $1/client/deadline.ini
 cp -v ./assets/deadline10client.png $1/deadline10client.png

@@ -15,6 +15,8 @@ spec:
           env:
             - name: SETUP_FILES
               value: "true"
+            - name: MOUNT_LOCATION
+              value: "{{ .Values.mount_location }}"
             - name: DESTINATION
               value: "{{ .Values.mount_location }}{{ .Values.destination }}"
             - name: CUSTOM_PATH
