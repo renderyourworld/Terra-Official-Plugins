@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: deadline10-scripts-configmap
+  name: deadline10-scripts-configmap-cleanup
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/hook: PostDelete
 data:
   bootstrap.sh: |
     #!/bin/bash

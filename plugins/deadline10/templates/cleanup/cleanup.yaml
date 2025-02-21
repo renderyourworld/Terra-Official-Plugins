@@ -33,7 +33,7 @@ spec:
       volumes:
         - name: installer
           configMap:
-            name: deadline10-scripts-configmap
+            name: deadline10-scripts-configmap-cleanup
             defaultMode: 0500
         - name: mount
           persistentVolumeClaim:
