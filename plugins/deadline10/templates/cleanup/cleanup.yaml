@@ -4,6 +4,7 @@ metadata:
   name: deadline10-cleanup
   annotations:
     argocd.argoproj.io/hook: PostDelete
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   backoffLimit: 1
   template:
