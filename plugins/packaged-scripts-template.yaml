@@ -19,4 +19,5 @@ data:
     
     # start entrypoint.sh
     cd /terra/scripts
-    /entrypoint.sh
+    pwd
+    ./entrypoint.sh
