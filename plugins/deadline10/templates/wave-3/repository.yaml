@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: deadline10-client-installer
+  name: deadline10-repository-installer
   annotations:
     argocd.argoproj.io/sync-wave: "3"
 spec:
@@ -13,7 +13,7 @@ spec:
         - name: installer
           image: ubuntu:latest
           env:
-            - name: CLIENT_INSTALLER
+            - name: REPO_INSTALLER
               value: "true"
             - name: DESTINATION
               value: "{{ .Values.mount_location }}{{ .Values.destination }}"
@@ -30,10 +30,10 @@ spec:
             - name: mount
               mountPath: {{ .Values.mount_location }}
       volumes:
-        - name: installer
-          configMap:
-            name: deadline10-scripts-configmap
-            defaultMode: 0500
-        - name: mount
-          persistentVolumeClaim:
-            claimName: {{ .Values.install_volume }}
+          - name: installer
+            configMap:
+              name: deadline10-scripts-configmap
+              defaultMode: 0500
+          - name: mount
+            persistentVolumeClaim:
+              claimName: {{ .Values.install_volume }}
