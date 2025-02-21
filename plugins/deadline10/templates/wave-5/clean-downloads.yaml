@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: deadline10-clean_downloads
+  name: deadline10-clean-downloads
   annotations:
     argocd.argoproj.io/sync-wave: "5"
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
