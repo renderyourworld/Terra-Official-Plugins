@@ -1,7 +1,10 @@
+# shellcheck disable=SC2164
+cd /terra/scripts
+
 if [ -n "${SETUP_FILES}" ]; then
-    /terra/scripts/setup_files.sh "$DESTINATION" "$CUSTOM_PATH"
+    ./setup_files.sh "$DESTINATION" "$CUSTOM_PATH"
 fi
 
 if [ -n "${DOWNLOAD}" ]; then
-    /terra/scripts/downloader.sh "$URL" "$DESTINATION"
+    ./downloader.sh "$URL" "$DESTINATION"
 fi
