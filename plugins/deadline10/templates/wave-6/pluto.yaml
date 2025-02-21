@@ -1,11 +1,12 @@
 {{- if .Values.juno_pluto_image }}
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: pluto
   annotations:
     argocd.argoproj.io/sync-wave: "6"
 spec:
+  serviceName: pluto
   revisionHistoryLimit: 0
   replicas: 1
   selector:
