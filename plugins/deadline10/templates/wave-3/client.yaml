@@ -16,7 +16,7 @@ spec:
             - name: REPO_INSTALLER
               value: "true"
             - name: DESTINATION
-              value: "{{ .Values.destination }}"
+              value: "{{ .Values.mount_location }}{{ .Values.destination }}"
             - name: CUSTOM_PATH
               value: "{{ .Values.custom_plugins_path }}"
           command: ["/terra/bootstrap.sh"]
@@ -27,13 +27,13 @@ spec:
             - name: installer
               mountPath: /terra/scripts.base64
               subPath: packaged_scripts.base64
-            - name: client
-              mountPath: /mnt
+            - name: mount
+              mountPath: {{ .Values.mount_location }}
       volumes:
           - name: installer
             configMap:
               name: deadline10-scripts-configmap
               defaultMode: 0500
-          - name: client
+          - name: mount
             persistentVolumeClaim:
               claimName: {{ .Values.install_volume }}
