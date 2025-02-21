@@ -16,3 +16,7 @@ fi
 if [ -n "${CLIENT_INSTALLER}" ]; then
     ./client_installer.sh "$DESTINATION"
 fi
+
+if [ -n "${CLEANUP}" ]; then
+    ./cleanup.sh
+fi
