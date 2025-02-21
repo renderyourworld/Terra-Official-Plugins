@@ -21,6 +21,10 @@ if [ -n "${SETUP_DIRECTORIES}" ]; then
     ./setup_directories.sh "$DESTINATION"
 fi
 
+if [ -n "${CLEAN_DOWNLOAD}" ]; then
+    ./clean_download.sh
+fi
+
 if [ -n "${CLEANUP}" ]; then
     ./cleanup.sh
 fi

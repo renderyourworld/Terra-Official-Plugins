@@ -1,3 +1,1 @@
-ls -la "$DESTINATION"
-
-sleep 60
+rm -rfv "$DESTINATION"
