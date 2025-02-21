@@ -1,8 +1,5 @@
 #!/bin/bash
 set -e
-
-#!/bin/bash
-hostname deadline-server
 mono --version
 ulimit -u unlimited
 source DESTINATION/service/deadline_env.sh
