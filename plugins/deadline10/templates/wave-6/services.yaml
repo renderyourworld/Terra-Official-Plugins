@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: deadline-server
   annotations:
-    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-wave: "6"
 spec:
   selector:
     app: deadline-server

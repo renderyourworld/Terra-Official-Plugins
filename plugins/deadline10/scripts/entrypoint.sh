@@ -17,6 +17,10 @@ if [ -n "${CLIENT_INSTALLER}" ]; then
     ./client_installer.sh "$DESTINATION"
 fi
 
+if [ -n "${SETUP_DIRECTORIES}" ]; then
+    ./setup_directories.sh "$DESTINATION"
+fi
+
 if [ -n "${CLEANUP}" ]; then
     ./cleanup.sh
 fi
