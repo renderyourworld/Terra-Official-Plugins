@@ -1,5 +1,5 @@
 url: "https://thinkbox-installers.s3.us-west-2.amazonaws.com/Releases/Deadline/10.3/7_10.3.2.1/Deadline-10.3.2.1-linux-installers.tar"
 install_volume: apps-pv-claim
 database_volume: data-pv-claim
-destination: /apps/deadline
+destination: /deadline
 custom_plugins_path:
