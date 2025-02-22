@@ -10,16 +10,16 @@ tags:
   - AWS
 fields:
   - name: url
-    label: Download URL
+    description: Download URL
     required: true
   - name: database_volume
-    label: The name of the database volume
+    description: The name of the database volume
     required: true
     type: exclusive-volume
     mapping:
       name: database_volume
   - name: install_volume
-    label: The name of the install volume
+    description: The name of the install volume
     required: true
     type: shared-volume
     mapping:
@@ -27,14 +27,14 @@ fields:
       container_path: mount_location
       name: install_volume
   - name: destination
-    label: Destination directory
+    description: Destination directory
     required: true
   - name: custom_plugins_path
-    label: Custom Plugins path
+    description: Custom Plugins path
     required: false
   - name: juno_pluto_image
-    label: Pluto Render Wrangler image
+    description: Pluto Render Wrangler image
     required: false
   - name: juno_pluto_worker_count
-    label: Pluto Render Wrangler worker count
+    description: Pluto Render Wrangler worker count
     required: false
