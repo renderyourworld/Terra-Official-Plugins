@@ -1,0 +1,9 @@
+# storage mount
+install_volume: apps-pv-claim
+install_volume_share: /
+mount_location: /apps
+
+# configuration
+destination: /deadline
+ref: main
+url: https://github.com/juno-fx/Terra-Official-Plugins.git
