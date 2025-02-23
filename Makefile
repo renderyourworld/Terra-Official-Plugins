@@ -45,12 +45,14 @@ package-%:
 		&& base64 -w 0 scripts.tar > scripts.base64 \
 		&& rm -rf scripts.tar \
 		&& cp ../packaged-scripts-template.yaml ./templates/packaged-scripts.yaml \
+		&& cp ../metadata.yaml ./templates/metadata.yaml \
 		&& cp ../packaged-scripts-template-cleanup.yaml ./templates/packaged-scripts-cleanup.yaml \
 		&& sed -i '1s/^/  packaged_scripts.base64: "/' scripts.base64 \
 		&& sed -i '1s/$$/"/' scripts.base64 \
 		&& cat scripts.base64 >> ./templates/packaged-scripts.yaml \
 		&& cat scripts.base64 >> ./templates/packaged-scripts-cleanup.yaml \
 		&& sed -i 's/PLUGIN/$(subst package-,,$@)/g' ./templates/packaged-scripts.yaml \
+		&& sed -i 's/PLUGIN/$(subst package-,,$@)/g' ./templates/metadata.yaml \
 		&& sed -i 's/PLUGIN/$(subst package-,,$@)/g' ./templates/packaged-scripts-cleanup.yaml \
 		&& rm -rf scripts.base64
 
