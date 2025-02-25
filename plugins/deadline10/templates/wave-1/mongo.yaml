@@ -30,4 +30,4 @@ spec:
       volumes:
         - name: farm-data
           persistentVolumeClaim:
-            claimName: {{ .Values.database_volume }}
+            claimName: {{ .Values.database_volume.name }}
