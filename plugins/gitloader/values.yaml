@@ -1,7 +1,8 @@
 # storage mount
-install_volume: apps-pv-claim
-install_volume_share: /
-mount_location: /apps
+install_volume:
+  name: apps-pv-claim
+  sub_path: /
+  container_path: /apps
 
 # configuration
 destination: /deadline

@@ -5,6 +5,10 @@ description: Clone down a repository from a Git Source
 category: Utility
 tags: ["git", "loader", "repository", "clone"]
 fields:
+  - name: install_volume
+    description: The name of the install volume
+    required: true
+    type: shared-volume
   - name: url
     description: Git Repository URL
     required: true

@@ -17,7 +17,7 @@ spec:
             - name: CLEANUP
               value: "true"
             - name: DESTINATION
-              value: "{{ .Values.mount_location }}{{ .Values.destination }}"
+              value: "{{ .Values.install_volume.container_path }}{{ .Values.destination }}"
           command: ["/terra/bootstrap.sh"]
           volumeMounts:
             - name: installer
@@ -27,15 +27,15 @@ spec:
               mountPath: /terra/scripts.base64
               subPath: packaged_scripts.base64
             - name: mount
-              mountPath: {{ .Values.mount_location }}
-              {{- if .Values.install_volume_share }}
-              subPath: {{ .Values.install_volume_share }}
+              mountPath: {{ .Values.install_volume.container_path }}
+              {{- if .Values.install_volume.sub_path }}
+              subPath: {{ .Values.install_volume.sub_path }}
               {{- end }}
       volumes:
         - name: installer
           configMap:
-            name: deadline10-scripts-configmap
+            name: gitloader-scripts-configmap-cleanup
             defaultMode: 0500
         - name: mount
           persistentVolumeClaim:
-            claimName: {{ .Values.install_volume }}
+            claimName: {{ .Values.install_volume.name }}

@@ -17,16 +17,10 @@ fields:
     description: The name of the database volume
     required: true
     type: exclusive-volume
-    mapping:
-      name: database_volume
   - name: install_volume
     description: The name of the install volume
     required: true
     type: shared-volume
-    mapping:
-      volume_subpath: install_volume_share
-      container_path: mount_location
-      name: install_volume
   - name: destination
     description: Destination directory
     required: true

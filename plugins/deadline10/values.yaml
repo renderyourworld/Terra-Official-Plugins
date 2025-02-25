@@ -1,8 +1,11 @@
 url: "https://thinkbox-installers.s3.us-west-2.amazonaws.com/Releases/Deadline/10.3/7_10.3.2.1/Deadline-10.3.2.1-linux-installers.tar"
-install_volume: apps-pv-claim
-install_volume_share: /
-mount_location: /apps
-database_volume: data-pv-claim
+install_volume:
+  name: apps-pv-claim
+  sub_path: /
+  container_path: /apps
+database_volume:
+  name: data-pv-claim
+  container_path: /apps
 destination: /deadline
 custom_plugins_path:
 juno_pluto_image:

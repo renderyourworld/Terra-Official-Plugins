@@ -27,15 +27,7 @@ spec:
           volumeMounts:
             - mountPath: /data/db
               name: farm-data
-            - name: mount
-              mountPath: {{ .Values.mount_location }}
-              {{- if .Values.install_volume_share }}
-              subPath: {{ .Values.install_volume_share }}
-              {{- end }}
       volumes:
         - name: farm-data
           persistentVolumeClaim:
             claimName: {{ .Values.database_volume }}
-        - name: mount
-          persistentVolumeClaim:
-            claimName: {{ .Values.install_volume }}
