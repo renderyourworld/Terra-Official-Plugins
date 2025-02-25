@@ -5,7 +5,6 @@ install_volume:
   container_path: /apps
 database_volume:
   name: data-pv-claim
-  container_path: /apps
 destination: /deadline
 custom_plugins_path:
 juno_pluto_image:
