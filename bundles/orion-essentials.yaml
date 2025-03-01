@@ -20,7 +20,7 @@ plugins:
       destination:
         hardcoded: '/asdfasdf/asfdasdf/asdfasdf'
   - plugin: deadline10
-    name:
+    name: Deadline 10
     values:
       install_volume:
         reference: install_volume
