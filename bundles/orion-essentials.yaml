@@ -12,15 +12,15 @@ fields:
     required: true
     type: shared-volume
 plugins:
-  - plugin: nuke
-    name: Juno Nuke
+  - plugin: Git Loader
+    name: Orion Git Loader
     values:
       install_volume:
         reference: install_volume
       destination:
         hardcoded: '/asdfasdf/asfdasdf/asdfasdf'
-  - plugin: deadline10
-    name: Deadline 10
+  - plugin: Deadline 10
+    name: Orion Deadline 10
     values:
       install_volume:
         reference: install_volume
