@@ -7,13 +7,12 @@ echo "Extracting firefox..."
 /tmp/firefox.appimage --appimage-extract > /dev/null
 mv ./squashfs-root "$2/"
 
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-cp -v "$SCRIPT_DIR/firefox.sh" "$2/"
+cp -v ./firefox.sh $2/
 sed -i "s@ROOT_APP@$2@g" "$2/firefox.sh"
 chmod +x "$2/firefox.sh"
 
 # app icon setup
-cd $SCRIPT_DIR
+cd ./
 cp "../assets/firefox.png" "$2/firefox.png"
 echo "Adding desktop file"
 chmod +X create_desktop_file.py
