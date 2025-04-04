@@ -19,7 +19,7 @@ chmod +x "$2/firefox.sh"
 
 # app icon setup
 cp "./assets/firefox.png" "$2/firefox.png"
-cp "./firefox.desktop" "$2/firefox.desktop"
+cp "./assets/firefox.desktop" "$2/firefox.desktop"
 # replace our icon/exec placeholder strings with proper values
 
 sed -i -e "s/DESTINATION-PATH/$2/firefox.sh/g" "$2/firefox.desktop"
