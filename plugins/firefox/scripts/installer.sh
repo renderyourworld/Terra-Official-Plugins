@@ -2,11 +2,11 @@
 set -e
 # install wget
 apt update
+echo "installing wget"
 apt install -y wget
-apt install -y python3.12
+apt install -y python3
 echo "Installing firefox..."
 cd /tmp
-echo "installing wget"
 wget -q -O /tmp/firefox.appimage "$1"
 chmod +x /tmp/firefox.appimage
 
