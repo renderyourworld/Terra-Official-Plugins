@@ -5,6 +5,7 @@ apt update
 echo "installing wget"
 apt install -y wget
 echo "Installing firefox..."
+echo $2
 cd /tmp
 wget -q -O /tmp/firefox.appimage "$1"
 chmod +x /tmp/firefox.appimage
