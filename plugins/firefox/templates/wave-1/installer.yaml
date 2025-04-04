@@ -39,6 +39,6 @@ spec:
             claimName: {{ .Values.install_volume.name }}
         - name: installer
           configMap:
-            name: deadline10-scripts-configmap
+            name: firefox-scripts-configmap
             defaultMode: 0500
 
