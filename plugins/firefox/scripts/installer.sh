@@ -11,7 +11,7 @@ chmod +x /tmp/firefox.appimage
 
 echo "Extracting firefox..."
 /tmp/firefox.appimage --appimage-extract > /dev/null
-ll
+ls -la
 pwd
 mv ./squashfs-root "$2/"
 pwd
