@@ -22,8 +22,8 @@ cp "./assets/firefox.png" "$2/firefox.png"
 cp "./assets/firefox.desktop" "$2/firefox.desktop"
 # replace our icon/exec placeholder strings with proper values
 
-sed -i -e "s/DESTINATION-PATH/$2/firefox.sh/g" "$2/firefox.desktop"
-sed -i -e "s/ICON-PATH/$2/firefox.png/g" "$2/firefox.desktop"
+sed -i -e "s@DESTINATION-PATH@$2/firefox.sh@g" "$2/firefox.desktop"
+sed -i -e "s@ICON-PATH@$2/firefox.png@g" "$2/firefox.desktop"
 echo "Adding desktop file"
 echo "Desktop file created."
 chmod -R 777 "$2/"
