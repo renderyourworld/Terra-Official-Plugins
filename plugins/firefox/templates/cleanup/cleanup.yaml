@@ -3,7 +3,7 @@ kind: Job
 metadata:
   name: firefox-cleanup
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/hook: PostDelete
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   backoffLimit: 1
