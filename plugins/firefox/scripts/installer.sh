@@ -3,7 +3,7 @@ set -e
 # install wget
 apt update
 apt install -y wget
-apt install python3.12
+apt install -y python3.12
 echo "Installing firefox..."
 cd /tmp
 echo "installing wget"
