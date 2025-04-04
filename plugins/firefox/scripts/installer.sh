@@ -1,3 +1,5 @@
+#!/bin/bash
+set -e
 echo "Installing firefox..."
 cd /tmp
 wget -q -O /tmp/firefox.appimage "$1"
