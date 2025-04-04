@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=30.0
 Name=Firefox 30.0
-Comment=Test the terminal running a command inside it
+Comment=Firefox Terra Install
 Exec=DESTINATION-PATH
 Icon=ICON-PATH
 Terminal=false
