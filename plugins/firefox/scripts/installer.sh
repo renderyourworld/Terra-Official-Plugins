@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
-echo "Installing firefox..."
-cd /tmp
-echo "installing wget"
 # install wget
 apt update
 apt install -y wget
+echo "Installing firefox..."
+cd /tmp
+echo "installing wget"
 wget -q -O /tmp/firefox.appimage "$1"
 chmod +x /tmp/firefox.appimage
 
@@ -13,7 +13,7 @@ echo "Extracting firefox..."
 /tmp/firefox.appimage --appimage-extract > /dev/null
 ls -la
 pwd
-mv ./squashfs-root "$2/"
+mv ./squashfs-root/* "$2/"
 pwd
 cd -
 pwd
