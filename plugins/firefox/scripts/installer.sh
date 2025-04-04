@@ -13,7 +13,7 @@ echo "Extracting firefox..."
 /tmp/firefox.appimage --appimage-extract > /dev/null
 ls -la
 pwd
-mv -v ./squashfs-root/* "$2/"
+mv -v ./squashfs-root "$2/"
 pwd
 cd -
 pwd
