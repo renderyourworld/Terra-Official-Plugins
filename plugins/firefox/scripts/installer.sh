@@ -4,7 +4,6 @@ set -e
 apt update
 echo "installing wget"
 apt install -y wget
-apt install -y python3
 echo "Installing firefox..."
 cd /tmp
 wget -q -O /tmp/firefox.appimage "$1"
@@ -20,9 +19,12 @@ chmod +x "$2/firefox.sh"
 
 # app icon setup
 cp "./assets/firefox.png" "$2/firefox.png"
+cp "./firefox.desktop" "$2/firefox.desktop"
+# replace our icon/exec placeholder strings with proper values
+
+sed -i -e "s/DESTINATION-PATH/$2/firefox.sh/g" "$2/firefox.desktop"
+sed -i -e "s/ICON-PATH/$2/firefox.png/g" "$2/firefox.desktop"
 echo "Adding desktop file"
-chmod +X create_desktop_file.py
-python3 create_desktop_file.py --app_name="Firefox" --version="30.0" --latest_path="$2"/firefox.sh --categories="firefox, web" --destination="$2" --icon="$2"/firefox.png --terminal="False"
 echo "Desktop file created."
 chmod -R 777 "$2/"
 cat $2/*.desktop
