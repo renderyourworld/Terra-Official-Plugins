@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: firefox-download
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  backoffLimit: 1
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: installer
+          image: ubuntu:latest
+          env:
+            - name: INSTALL
+              value: "true"
+            - name: DESTINATION
+              value: "{{ .Values.install_volume.container_path }}{{ .Values.destination }}"
+            - name: URL
+              value: "{{ .Values.url }}"
+          command: ["/terra/bootstrap.sh"]
