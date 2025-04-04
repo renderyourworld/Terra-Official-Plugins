@@ -11,10 +11,11 @@ dependencies: cluster
 	@echo " >> Installing ArgoCD << "
 	@kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 	@echo "Waiting for ArgoCD to be ready..."
-	@(kubectl get pods -n argocd | grep argocd-server) || (sleep 15 && kubectl wait --namespace argocd \
+	@sleep 15
+	@kubectl wait --namespace argocd \
 		--for=condition=ready pod \
 		--selector=app.kubernetes.io/name=argocd-server \
-		--timeout=90s)
+		--timeout=90s
 	@echo " >> ArgoCD Ready << "
 	@echo " >> Setting Example Volumes << "
 	@kubectl apply -n argocd -f k8s/
