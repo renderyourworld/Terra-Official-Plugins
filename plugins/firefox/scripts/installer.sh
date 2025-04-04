@@ -18,9 +18,7 @@ sed -i "s@ROOT_APP@$2@g" "$2/firefox.sh"
 chmod +x "$2/firefox.sh"
 
 # app icon setup
-pwd
-ls -la
-cp "../assets/firefox.png" "$2/firefox.png"
+cp "./assets/firefox.png" "$2/firefox.png"
 echo "Adding desktop file"
 chmod +X create_desktop_file.py
 python3 create_desktop_file.py --app_name="Firefox" --version="30.0" --latest_path="$2"/firefox.sh --categories="firefox, web" --destination="$2" --icon="$2"/firefox.png --terminal="False"
