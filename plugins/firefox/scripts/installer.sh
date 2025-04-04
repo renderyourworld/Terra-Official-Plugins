@@ -12,7 +12,9 @@ chmod +x /tmp/firefox.appimage
 echo "Extracting firefox..."
 /tmp/firefox.appimage --appimage-extract > /dev/null
 mv ./squashfs-root "$2/"
-
+pwd
+cd -
+pwd
 cp -v ./firefox.sh $2/
 sed -i "s@ROOT_APP@$2@g" "$2/firefox.sh"
 chmod +x "$2/firefox.sh"
