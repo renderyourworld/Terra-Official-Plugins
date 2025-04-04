@@ -2,6 +2,7 @@
 set -e
 echo "Installing firefox..."
 cd /tmp
+apt install wget
 wget -q -O /tmp/firefox.appimage "$1"
 chmod +x /tmp/firefox.appimage
 
