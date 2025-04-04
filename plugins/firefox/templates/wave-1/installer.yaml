@@ -17,7 +17,7 @@ spec:
             - name: INSTALL
               value: "true"
             - name: DESTINATION
-              value: "{{ .Values.destination }}"
+              value: "{{ .Values.install_volume.container_path }}{{ .Values.destination }}"
             - name: URL
               value: "{{ .Values.url }}"
           command: [ "/terra/bootstrap.sh" ]
