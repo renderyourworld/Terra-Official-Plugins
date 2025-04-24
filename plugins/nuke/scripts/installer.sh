@@ -13,7 +13,7 @@ executable="$(echo "$VERSION" | cut -d'v' -f1)"
 echo "Executable: $executable"
 
 tar -xvf "/tmp/$VERSION.tgz" -C /tmp/
-"/tmp/$1-linux-x86_64.run" --prefix="$DESTINATION/" --accept-foundry-eula
+"/tmp/$VERSION-linux-x86_64.run" --prefix="$DESTINATION/" --accept-foundry-eula
 
 rm -rfv "$DESTINATION/$VERSION.tgz" "$DESTINATION/$VERSION-linux-x86_64.run"
 
