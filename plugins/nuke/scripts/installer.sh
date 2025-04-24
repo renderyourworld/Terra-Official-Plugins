@@ -1,5 +1,8 @@
 set -e
 
+apt update
+apt install curl -y
+
 echo "Installing $VERSION"
 echo "Destination $DESTINATION"
 
