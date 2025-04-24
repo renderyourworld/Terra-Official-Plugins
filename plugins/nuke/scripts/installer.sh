@@ -17,15 +17,16 @@ tar -xvf "/tmp/$VERSION.tgz" -C /tmp/
 
 rm -rfv "$DESTINATION/$VERSION.tgz" "$DESTINATION/$VERSION-linux-x86_64.run"
 
-#SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-#
-## app icon setup
-#cd $SCRIPT_DIR
-#cp "../assets/nuke.png" "$2/nuke.png"
-#echo "Adding desktop file"
-#chmod +X create_desktop_file.py
-#python3 create_desktop_file.py --app_name="Nuke" --version=$1 --latest_path="$2"/latest --categories="nuke, compositing" --destination="$2" --icon="$2"/nuke.png --terminal="False"
-#echo "Desktop file created."
-#
-#cat $2/*.desktop
+# app icon setup
+cp -v ./assets/nuke.png $DESTINATION/
+cp -v ./assets/nuke.desktop $DESTINATION/
+
+LAUNCH="$DESTINATION/$VERSION/$executable"
+ICON="$DESTINATION/nuke.png"
+
+sed -i -e 's/APP-VERSION/$VERSION/g' $DESTINATION/nuke.desktop
+sed -i -e 's/DESTINATION-PATH/$LAUNCH/g' $DESTINATION/nuke.desktop
+sed -i -e 's/ICON-PATH/$ICON/g' $DESTINATION/nuke.desktop
+
+cat $DESTINATION/*.desktop
 
