@@ -3,9 +3,9 @@ set -e
 apt update
 apt install curl -y
 
+executable="$(echo "$VERSION" | cut -d'v' -f1)"
 LAUNCH="$DESTINATION/$VERSION/$executable"
 ICON="$DESTINATION/nuke.png"
-executable="$(echo "$VERSION" | cut -d'v' -f1)"
 
 echo "Installing $VERSION"
 echo "Destination $DESTINATION"
