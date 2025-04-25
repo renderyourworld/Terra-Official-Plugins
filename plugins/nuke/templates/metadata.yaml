@@ -4,3 +4,5 @@ metadata:
   name: nuke-terra-metadata
 data:
   chart: "{{ .Chart.Name }}"
+  version: "{{ .Values.version }}"
+  executable: "{{ .Values.install_volume.container_path }}{{ .Values.destination }}/{{ .Values.version }}/launch"
