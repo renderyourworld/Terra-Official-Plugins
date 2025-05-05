@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: terra-test
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  sources:
+    - repoURL: https://github.com/juno-fx/Terra-Official-Plugins.git
+      path: ./plugins/{{ .Values.plugin }}/
+      targetRevision: {{ .Values.branch }}
+      helm:
+        parameters:
+          - name: "namespace"
+            value: ""
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+    syncOptions:
+      - CreateNamespace=true

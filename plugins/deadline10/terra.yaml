@@ -1,0 +1,35 @@
+resource_id: deadline10
+name: Deadline 10
+icon: https://junovfx.com/dog.png
+description: AWS Thinkbox Deadline 10 render farm software for distributed computing.
+category: Rendering Management
+tags:
+  - deadline10
+  - render farm
+  - distributed computing
+  - Thinkbox
+  - AWS
+fields:
+  - name: url
+    description: Download URL
+    required: true
+  - name: database_volume
+    description: The name of the database volume
+    required: true
+    type: exclusive-volume
+  - name: install_volume
+    description: The name of the install volume
+    required: true
+    type: shared-volume
+  - name: destination
+    description: Destination directory
+    required: true
+  - name: custom_plugins_path
+    description: Custom Plugins path
+    required: false
+  - name: juno_pluto_image
+    description: Pluto Render Wrangler image
+    required: false
+  - name: juno_pluto_worker_count
+    description: Pluto Render Wrangler worker count
+    required: false

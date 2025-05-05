@@ -5,7 +5,9 @@ nodes:
     extraMounts:
       - hostPath: ./
         containerPath: /repo
-      - hostPath: ./.apps       # AURORA
-        containerPath: /apps
+      - hostPath: ./.apps/data/
+        containerPath: /apps/data/
+      - hostPath: ./.apps/installs/
+        containerPath: /apps/installs/
     labels:
-      junovfx/node: service
+      juno-innovations.com/service: "true"

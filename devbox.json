@@ -1,0 +1,17 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.12.0/.schema/devbox.schema.json",
+  "packages": [
+    "kind@latest",
+    "docker@latest",
+    "kubectl@latest",
+    "gnumake@latest",
+    "python3@latest"
+  ],
+  "shell": {
+    "init_hook": [
+      ". $VENV_DIR/bin/activate",
+      "pip install --upgrade pip",
+      "pip install yamllint"
+    ]
+  }
+}
