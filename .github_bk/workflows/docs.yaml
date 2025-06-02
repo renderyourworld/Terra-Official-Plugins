@@ -8,15 +8,10 @@ permissions:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on:
+      - X64
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: 3.x
-      - uses: actions/cache@v3
-        with:
-          key: ${{ github.ref }}
-          path: .cache
-      - run: pip install -r docs-requirements.txt
-      - run: mkdocs gh-deploy --force
+      - run: python3.12 -m venv venv
+      - run: venv/bin/pip install -r requirements.txt
+      - run: venv/bin/mkdocs gh-deploy --force
