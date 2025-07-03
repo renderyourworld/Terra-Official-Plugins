@@ -1,9 +1,10 @@
 # Welcome
 
-<figure markdown="span">
-  ![Orion Logo](assets/logos/terra.png)
-  <figcaption>Terra Plugin System</figcaption>
-</figure>
+<span class="theme-aware-image">
+  <img src="assets/logos/terra/terra-light.png" class="light-only" alt="Terra Logo">
+  <img src="assets/logos/terra/terra-dark.png" class="dark-only" alt="Terra Logo">
+</span>
+
 
 ## **Terra: Opening Up the World of Kubernetes**
 
