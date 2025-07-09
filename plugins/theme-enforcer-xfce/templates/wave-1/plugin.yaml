@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: theme-enforcer-xfce-plugin
+  labels:
+    kuiper.juno-innovations.com/plugin: "true"
+data:
+  entrypoint.sh: |
+    #!/bin/bash
+
+    set -e
+
+    echo
+    echo "Enforcing XFCE theme settings..."
+    home="/home/$USER"
+    echo "Home directory calculated: $home"
+
+    # check if home directory exists
+    if [ ! -d "$home" ]; then
+      echo "Home directory $home does not exist. Exiting."
+      exit 0
+    fi
+    # get the UID from the environment. If not set, fail the init process
+    if [ -z "$UID" ]; then
+      echo "UID environment variable is not set. Exiting."
+      exit 1
+    fi
+
+    # get the users GID from the environment. If not set, use the UID as the GID
+    if [ -z "$GID" ]; then
+      echo "GID environment variable is not set. Using UID as GID."
+      GID="$UID"
+    fi
+
+    echo "Deleting existing user xfce config files and force fallback to xdg."
+    rm -rf "$home/.config/xfce4"
+
+    echo "Pulling in default .config from the system skel directory."
+    cp -r /etc/skel/.config/* "$home/.config/"
+
+    echo "XFCE theme settings enforced successfully."
+    echo
