@@ -1,4 +1,4 @@
 apiVersion: v1
 name: minecraft
 version: 0.0.1
-icon: https://1000logos.net/wp-content/uploads/2018/10/Minecraft-Logo-2011.png
+icon: https://raw.githubusercontent.com/renderyourworld/Terra-Official-Plugins/add-minecraft-game-client/plugins/minecraft/scripts/assets/minecraft.png

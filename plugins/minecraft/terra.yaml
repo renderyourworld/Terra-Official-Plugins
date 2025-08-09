@@ -1,7 +1,7 @@
 resource_id: minecraft
 name: Minecraft Launcher
-icon: https://1000logos.net/wp-content/uploads/2018/10/Minecraft-Logo-2011.png
-description: A launcher for minecraft
+icon: https://raw.githubusercontent.com/renderyourworld/Terra-Official-Plugins/add-minecraft-game-client/plugins/minecraft/scripts/assets/minecraft.png
+description: A launcher for Minecraft
 category: Gaming
 tags:
   - gaming
