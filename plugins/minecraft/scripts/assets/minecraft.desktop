@@ -1,9 +1,9 @@
 [Desktop Entry]
-Version=1.4.0
-Name=Rustdesk 1.4.0
-Comment=Rustdesk Terra Install
+Version=latest
+Name=Minecraft Launcher
+Comment=Launcher for Minecraft
 Exec=DESTINATION-PATH
 Icon=ICON-PATH
-Terminal=false
+Terminal=true
 Type=Application
 Categories=X-Polaris

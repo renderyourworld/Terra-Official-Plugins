@@ -1,6 +1,6 @@
-url: "https://github.com/rustdesk/rustdesk/releases/download/1.4.0/rustdesk-1.4.0-x86_64.AppImage"
+url: "https://launcher.mojang.com/download/Minecraft.tar.gz"
 install_volume:
   name: apps-pv-claim
   sub_path:
   container_path: /apps
-destination: /rustdesk
+destination: /minecraft
