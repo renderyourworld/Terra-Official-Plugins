@@ -1,38 +1,47 @@
 #!/bin/bash
 set -e
 
-echo "Installing $1 -> $2"
+echo "Installing Miecraft Launcher from $1 into $2"
 
 # install wget
 apt update
 apt install -y wget
 
-echo "Installing rustdesk..."
-wget -O "/tmp/rustdesk.AppImage" $1
+echo "Downloading Minecraft Launcher..."
+wget -O "/tmp/Minecraft.tar.gz" $1
 
-chmod +x /tmp/rustdesk.AppImage
-echo "Extracting rustdesk..."
-/tmp/rustdesk.AppImage --appimage-extract > /dev/null
-cp -r -v ./squashfs-root "$2/"
-cd /terra/scripts
+echo "Extracting the Minecraft Launcher..."
+tar -xzf "/tmp/Minecraft.tar.gz" -C "/tmp"
+
+# Move 'minecraft-launcher' directory to destination directory
+mv -v "/tmp/minecraft-launcher" "$2/"
+
+cd "$2/minecraft-launcher"
+pwd
 ls -la
-cp -v ./rustdesk.sh $2/
-sed -i "s@ROOT_APP@$2@g" "$2/rustdesk.sh"
-chmod +x "$2/rustdesk.sh"
+
+echo "#!/bin/bash" > launcher.sh
+echo "exec \"$2/minecraft-launcher/minecraft-launcher\"" >> launcher.sh
+
+chmod +x "launcher.sh"
+
 
 # app icon setup
-cp "./assets/rustdesk.png" "$2/rustdesk.png"
-cp "./assets/rustdesk.desktop" "$2/rustdesk.desktop"
+echo "Copying desktop files..."
+cd /terra/scripts
+ls -la
+cp "./assets/minecraft.png" "$2/minecraft.png"
+cp "./assets/minecraft.desktop" "$2/minecraft.desktop"
 
 # replace our icon/exec placeholder strings with proper values
 cd $2
 pwd
 ls -la
-sed -i -e "s@DESTINATION-PATH@$2/rustdesk.sh@g" "$2/rustdesk.desktop"
-sed -i -e "s@ICON-PATH@$2/rustdesk.png@g" "$2/rustdesk.desktop"
+sed -i -e "s@DESTINATION-PATH@$2/minecraft-launcher/launcher.sh@g" "$2/minecraft.desktop"
+sed -i -e "s@ICON-PATH@$2/minecraft-launcher/minecraft.png@g" "$2/minecraft.desktop"
 echo "Adding desktop file"
-echo "Desktop file created."
 chmod -R 777 "$2/"
+echo "Desktop file created."
 cat $2/*.desktop
 
 
