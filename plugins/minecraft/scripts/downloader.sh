@@ -7,6 +7,8 @@ echo "Installing Miecraft Launcher from $1 into $2"
 apt update
 apt install -y wget
 
+mkdir -vp "$2/"
+
 echo "Downloading Minecraft Launcher..."
 wget -O "/tmp/Minecraft.tar.gz" $1
 
@@ -15,12 +17,6 @@ tar -xzf "/tmp/Minecraft.tar.gz" -C "/tmp"
 
 cd "$2"
 ls -la
-
-echo "Checking for old minecraft-launcher file..."
-if [ -f "minecraft-launcher" ]; then
-    echo "Found existing file. Removing..."
-    rm "minecraft-launcher"
-fi
 
 # Move 'minecraft-launcher' directory to destination directory
 mv -v "/tmp/minecraft-launcher" "$2/"
@@ -31,9 +27,9 @@ cd "$2/minecraft-launcher"
 pwd
 ls -la
 
+# Building launcher
 echo "#!/bin/bash" > launcher.sh
 echo "exec \"$2/minecraft-launcher/minecraft-launcher\"" >> launcher.sh
-
 chmod +x "launcher.sh"
 
 
