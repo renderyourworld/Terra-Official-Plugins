@@ -13,6 +13,9 @@ wget -O "/tmp/Minecraft.tar.gz" $1
 echo "Extracting the Minecraft Launcher..."
 tar -xzf "/tmp/Minecraft.tar.gz" -C "/tmp"
 
+cd "$2"
+ls -la
+
 # Move 'minecraft-launcher' directory to destination directory
 mv -v "/tmp/minecraft-launcher" "$2/"
 
