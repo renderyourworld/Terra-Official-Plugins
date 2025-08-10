@@ -18,6 +18,12 @@ tar -xzf "/tmp/Minecraft.tar.gz" -C "/tmp"
 cd "$2"
 ls -la
 
+echo "Checking for old minecraft-launcher directory..."
+if [ -d "minecraft-launcher" ]; then
+    echo "Found existing directory. Removing it and its contents..."
+    rm -rf "minecraft-launcher"
+fi
+
 # Move 'minecraft-launcher' directory to destination directory
 mv -v "/tmp/minecraft-launcher" "$2/"
 
