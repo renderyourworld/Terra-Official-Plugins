@@ -16,6 +16,8 @@ tar -xzf "/tmp/Minecraft.tar.gz" -C "/tmp"
 # Move 'minecraft-launcher' directory to destination directory
 mv -v "/tmp/minecraft-launcher" "$2/"
 
+cd "$2"
+ls -la
 cd "$2/minecraft-launcher"
 pwd
 ls -la
