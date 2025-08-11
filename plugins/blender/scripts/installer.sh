@@ -18,7 +18,7 @@ wget -O "/tmp/blender-$VERSION-linux-x64.tar.xz" "https://download.blender.org/r
 
 echo "Extracting Blender..."
 mkdir -p "$INSTALL_DIR"
-tar -xJvf "/tmp/blender-$VERSION-linux-x64.tar.xz" -C "$DESTINATION/" > /dev/null
+tar -xJvf "/tmp/blender-$VERSION-linux-x64.tar.xz" -C "$DESTINATION/"
 chmod -R 555 "$DESTINATION"
 
 # App icon setup
