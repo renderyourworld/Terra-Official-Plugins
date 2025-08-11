@@ -21,6 +21,7 @@ mkdir -p "$INSTALL_DIR"
 tar -xJvf "/tmp/blender-$VERSION-linux-x64.tar.xz" -C "$DESTINATION/"
 chmod -R 555 "$DESTINATION"
 
+
 # App icon setup
 echo "Adding desktop files"
 cp -v "${PWD}/assets/blender.png" "$INSTALL_DIR/"
