@@ -3,7 +3,7 @@ set -e
 
 # Update packages and install wget
 apt update
-apt install -y wget
+apt install -y wget xz-utils
 
 # Set local variables
 INSTALL_DIR="$DESTINATION/blender-$VERSION"
@@ -20,7 +20,6 @@ echo "Extracting Blender..."
 mkdir -p "$INSTALL_DIR"
 tar -xJvf "/tmp/blender-$VERSION-linux-x64.tar.xz" -C "$DESTINATION/"
 chmod -R 555 "$DESTINATION"
-
 
 # App icon setup
 echo "Adding desktop files"
