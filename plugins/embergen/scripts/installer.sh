@@ -7,8 +7,8 @@ apt install -y wget unzip
 
 # Set local variables
 LAUNCH="$DESTINATION/EmberGen-$VERSION/embergen2"
-ICON="$DESTINATION/embergen.png"
-DESKTOP_FILE="$DESTINATION/embergen.desktop"
+ICON="$DESTINATION/EmberGen-$VERSION/embergen.png"
+DESKTOP_FILE="$DESTINATION/EmberGen-$VERSION/embergen.desktop"
 
 # Download and Install the application
 echo "Installing Embergen Version $VERSION into $DESTINATION"
@@ -22,7 +22,7 @@ chmod -R 555 "$DESTINATION"
 
 # App icon setup
 echo "Adding desktop files"
-cp -v "${PWD}/assets/embergen.png" "$DESTINATION/"
+cp -v "${PWD}/assets/embergen.png" "$DESTINATION/EmberGen-$VERSION"
 rm -rfv "$DESKTOP_FILE"
 
 echo "[Desktop Entry]
