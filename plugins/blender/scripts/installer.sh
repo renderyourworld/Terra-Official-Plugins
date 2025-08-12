@@ -6,8 +6,8 @@ apt update
 apt install -y wget xz-utils
 
 # Set local variables
-INSTALL_DIR="$DESTINATION/blender-$VERSION"
-LAUNCH="$INSTALL_DIR/blender-$VERSION-linux-x64/blender"
+INSTALL_DIR="$DESTINATION/blender-$VERSION-linux-x64"
+LAUNCH="$INSTALL_DIR/blender %f"
 ICON="$INSTALL_DIR/blender.png"
 RELEASE=$(echo $VERSION | cut -d'.' -f1-2) # split 4.5.1 to 4.5
 
@@ -17,7 +17,6 @@ echo "Downloading Blender..."
 wget -O "/tmp/blender-$VERSION-linux-x64.tar.xz" "https://download.blender.org/release/Blender$RELEASE/blender-$VERSION-linux-x64.tar.xz"
 
 echo "Extracting Blender..."
-mkdir -p "$INSTALL_DIR"
 tar -xJvf "/tmp/blender-$VERSION-linux-x64.tar.xz" -C "$DESTINATION/"
 chmod -R 555 "$DESTINATION"
 
@@ -29,12 +28,14 @@ rm -rfv "$INSTALL_DIR/blender.desktop"
 echo "[Desktop Entry]
 Version=$VERSION
 Name=Blender $VERSION
-Comment=Blender 3D Software
+Comment=3D modeling, animation, rendering and post-production
 Exec=$LAUNCH
 Icon=$ICON
 Terminal=true
 Type=Application
-Categories=X-Polaris" >> "$INSTALL_DIR"/blender.desktop
+Categories=X-Polaris
+MimeType=application/x-blender
+StartupWMClass=Blender" >> "$INSTALL_DIR"/blender.desktop
 
-echo "Desktop file created."
+echo "Desktop file created at $INSTALL_DIR/blender.desktop"
 cat "$INSTALL_DIR"/*.desktop

@@ -2,7 +2,7 @@
 set -e
 
 if [ -n "$CLEANUP" ]; then
-  rm -rvf "$DESTINATION/blender-$VERSION"
+  rm -rvf "$DESTINATION/blender-$VERSION-linux-x64"
   exit 0
 fi
 
