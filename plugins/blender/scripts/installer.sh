@@ -8,7 +8,7 @@ apt install -y wget xz-utils
 # Set local variables
 INSTALL_DIR="$DESTINATION/blender-$VERSION-linux-x64"
 LAUNCH="$INSTALL_DIR/blender %f"
-ICON="$INSTALL_DIR/blender.png"
+ICON="$DESTINATION/blender.png"
 RELEASE=$(echo $VERSION | cut -d'.' -f1-2) # split 4.5.1 to 4.5
 
 # Download and Install the application
@@ -22,8 +22,8 @@ chmod -R 555 "$DESTINATION"
 
 # App icon setup
 echo "Adding desktop files"
-cp -v "${PWD}/assets/blender.png" "$INSTALL_DIR/"
-rm -rfv "$INSTALL_DIR/blender.desktop"
+cp -v "${PWD}/assets/blender.png" "$DESTINATION/"
+rm -rfv "$DESTINATION/blender.desktop"
 
 echo "[Desktop Entry]
 Version=$VERSION
@@ -35,7 +35,7 @@ Terminal=true
 Type=Application
 Categories=X-Polaris
 MimeType=application/x-blender
-StartupWMClass=Blender" >> "$INSTALL_DIR"/blender.desktop
+StartupWMClass=Blender" >> "$DESTINATION"/blender.desktop
 
-echo "Desktop file created at $INSTALL_DIR/blender.desktop"
-cat "$INSTALL_DIR"/*.desktop
+echo "Desktop file created at $DESTINATION/blender.desktop"
+cat "$DESTINATION"/*.desktop
