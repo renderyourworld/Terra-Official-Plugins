@@ -2,7 +2,7 @@
 set -e
 
 if [ -n "$CLEANUP" ]; then
-  rm -rvf "$DESTINATION/embergen-$VERSION-linux"
+  rm -rvf "$DESTINATION/"
   exit 0
 fi
 
