@@ -1,4 +1,4 @@
 apiVersion: v1
 name: blender
 version: 0.0.1
-icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Blender_logo_no_text.svg/1200px-Blender_logo_no_text.svg.png"
+icon: "https://github.com/juno-fx/Terra-Official-Plugins/blob/main/plugins/blender/scripts/assets/blender.png?raw=true"
