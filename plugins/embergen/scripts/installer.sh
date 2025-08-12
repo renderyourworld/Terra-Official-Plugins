@@ -6,8 +6,9 @@ apt update
 apt install -y wget unzip
 
 # Set local variables
-LAUNCH="$DESTINATION/embergen2"
+LAUNCH="$DESTINATION/EmberGen-$VERSION/embergen2"
 ICON="$DESTINATION/embergen.png"
+DESKTOP_FILE="$DESTINATION/embergen.desktop"
 
 # Download and Install the application
 echo "Installing Embergen Version $VERSION into $DESTINATION"
@@ -17,18 +18,13 @@ wget -O "/tmp/embergen-$VERSION-linux.zip" "https://jangafx-software-files.s3.am
 echo "Extracting Embergen..."
 unzip -o "/tmp/embergen-$VERSION-linux.zip" -d "$DESTINATION"
 
-# Move contents of extracted directory to destination
-find "$DESTINATION/EmberGen-$VERSION" -maxdepth 1 -mindepth 1 -exec mv -t "$DESTINATION" {} +
-
-# Remove the now empty directory
-rm -rf "$DESTINATION/EmberGen-$VERSION"
 
 chmod -R 555 "$DESTINATION"
 
 # App icon setup
 echo "Adding desktop files"
 cp -v "${PWD}/assets/embergen.png" "$DESTINATION/"
-rm -rfv "$DESTINATION/embergen.desktop"
+rm -rfv "$DESKTOP_FILE"
 
 echo "[Desktop Entry]
 Version=$VERSION
@@ -40,7 +36,7 @@ Terminal=true
 Type=Application
 Categories=X-Polaris
 MimeType=application/x-embergen
-StartupWMClass=Embergen" >> "$DESTINATION"/embergen.desktop
+StartupWMClass=Embergen" >> "$DESKTOP_FILE"
 
-echo "Desktop file created at $DESTINATION/embergen.desktop"
+echo "Desktop file created at $DESKTOP_FILE"
 cat "$DESTINATION"/*.desktop
