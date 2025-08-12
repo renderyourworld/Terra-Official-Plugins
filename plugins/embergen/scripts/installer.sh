@@ -6,19 +6,24 @@ apt update
 apt install -y wget unzip
 
 # Set local variables
-INSTALL_DIR="$DESTINATION/embergen-$VERSION-linux"
-LAUNCH="$INSTALL_DIR/embergen"
+LAUNCH="$DESTINATION/embergen"
 ICON="$DESTINATION/embergen.png"
 
 # Download and Install the application
-echo "Installing Embergen Version $VERSION into $INSTALL_DIR"
+echo "Installing Embergen Version $VERSION into $DESTINATION"
 echo "Downloading Embergen..."
 wget -O "/tmp/embergen-$VERSION-linux.zip" "https://jangafx-software-files.s3.amazonaws.com/embergen/installers/linux/embergen-$VERSION-linux.zip"
 
 echo "Extracting Embergen..."
-unzip "/tmp/embergen-$VERSION-linux.zip" -d "$DESTINATION/"
-mv "$DESTINATION/embergen-$VERSION-linux" "$INSTALL_DIR"
-chmod -R 555 "$INSTALL_DIR"
+unzip "/tmp/embergen-$VERSION-linux.zip" -d "$DESTINATION"
+
+# Move contents of extracted directory to destination
+find "$DESTINATION/EmberGen-$VERSION" -maxdepth 1 -mindepth 1 -exec mv -t "$DESTINATION" {} +
+
+# Remove the now empty directory
+rm -rf "$DESTINATION/EmberGen-$VERSION"
+
+chmod -R 555 "$DESTINATION"
 
 # App icon setup
 echo "Adding desktop files"
