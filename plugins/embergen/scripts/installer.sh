@@ -38,4 +38,4 @@ MimeType=application/x-embergen
 StartupWMClass=Embergen" >> "$DESKTOP_FILE"
 
 echo "Desktop file created at $DESKTOP_FILE"
-cat "$DESTINATION"/*.desktop
+cat "$DESKTOP_FILE"
