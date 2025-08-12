@@ -6,7 +6,7 @@ apt update
 apt install -y wget unzip
 
 # Set local variables
-LAUNCH="$DESTINATION/embergen"
+LAUNCH="$DESTINATION/embergen2"
 ICON="$DESTINATION/embergen.png"
 
 # Download and Install the application
