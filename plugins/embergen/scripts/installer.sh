@@ -15,7 +15,7 @@ echo "Downloading Embergen..."
 wget -O "/tmp/embergen-$VERSION-linux.zip" "https://jangafx-software-files.s3.amazonaws.com/embergen/installers/linux/embergen-$VERSION-linux.zip"
 
 echo "Extracting Embergen..."
-unzip "/tmp/embergen-$VERSION-linux.zip" -d "$DESTINATION"
+unzip -o "/tmp/embergen-$VERSION-linux.zip" -d "$DESTINATION"
 
 # Move contents of extracted directory to destination
 find "$DESTINATION/EmberGen-$VERSION" -maxdepth 1 -mindepth 1 -exec mv -t "$DESTINATION" {} +
