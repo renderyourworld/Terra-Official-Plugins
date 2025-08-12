@@ -18,7 +18,6 @@ wget -O "/tmp/embergen-$VERSION-linux.zip" "https://jangafx-software-files.s3.am
 echo "Extracting Embergen..."
 unzip -o "/tmp/embergen-$VERSION-linux.zip" -d "$DESTINATION"
 
-
 chmod -R 555 "$DESTINATION"
 
 # App icon setup
