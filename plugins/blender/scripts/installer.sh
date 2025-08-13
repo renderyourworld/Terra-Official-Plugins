@@ -8,7 +8,7 @@ apt install -y wget xz-utils
 # Set local variables
 INSTALL_DIR="$DESTINATION/blender-$VERSION-linux-x64"
 LAUNCH="$INSTALL_DIR/blender %f"
-ICON="$DESTINATION/blender.png"
+ICON="$INSTALL_DIR/blender.png"
 DESKTOP_FILE="$INSTALL_DIR/blender-$VERSION.desktop"
 RELEASE=$(echo $VERSION | cut -d'.' -f1-2) # split 4.5.1 to 4.5
 
