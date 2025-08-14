@@ -1,0 +1,17 @@
+resource_id: krita
+name: Krita 5.2.9
+icon: https://krita.org/images/krita-logo.png
+description: Krita is a professional FREE and open source painting program. It is made by artists that want to see affordable art tools for everyone.
+category: VDI
+tags:
+  - remote desktop
+  - rustdesk
+  - remote access
+fields:
+  - name: install_volume
+    description: The name of the install volume
+    required: true
+    type: shared-volume
+  - name: destination
+    description: Destination directory
+    required: true

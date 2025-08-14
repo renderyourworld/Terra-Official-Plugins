@@ -1,0 +1,6 @@
+url: "https://download.kde.org/stable/krita/5.2.9/krita-5.2.9-x86_64.AppImage"
+install_volume:
+  name: apps-pv-claim
+  sub_path:
+  container_path: /apps
+destination: /krita

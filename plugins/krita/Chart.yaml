@@ -1,0 +1,4 @@
+apiVersion: v1
+name: krita
+version: 0.0.1
+icon: https://krita.org/images/krita-logo.png
