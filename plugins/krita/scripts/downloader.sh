@@ -1,21 +1,26 @@
 #!/bin/bash
 set -e
 
-echo "Installing $1 -> $2"
-
-# install wget
+# Update packages and install wget
 apt update
 apt install -y wget
 
-echo "Installing rustdesk..."
-wget -O "/tmp/rustdesk.AppImage" $1
+# Set local variables
+LAUNCH="$DESTINATION/krita %f"
+ICON="$DESTINATION/krita.png"
+DESKTOP_FILE="$DESTINATION/krita.desktop"
 
-chmod +x /tmp/rustdesk.AppImage
-echo "Extracting rustdesk..."
-/tmp/rustdesk.AppImage --appimage-extract > /dev/null
+# Download and Install the application
+echo "Installing Krita into $DESTINATION"
+echo "Downloading Krita..."
+wget -O "/tmp/krita.AppImage" $URL
+chmod +x /tmp/krita.AppImage
+
+echo "Extracting Krita..."
+/tmp/krita.AppImage --appimage-extract > /dev/null
 cp -r -v ./squashfs-root "$2/"
 cd /terra/scripts
-ls -la
+
 cp -v ./rustdesk.sh $2/
 sed -i "s@ROOT_APP@$2@g" "$2/rustdesk.sh"
 chmod +x "$2/rustdesk.sh"

@@ -6,5 +6,6 @@ if [ -n "${DOWNLOAD}" ]; then
 fi
 
 if [ -n "${CLEANUP}" ]; then
-    ./cleanup.sh
+    rm -rfv "$DESTINATION"
+    exit 0
 fi
