@@ -17,6 +17,7 @@ wget -O "/tmp/krita.AppImage" $URL
 chmod +x /tmp/krita.AppImage
 
 echo "Extracting Krita..."
+mkdir -p ${DESTINATION}
 /tmp/krita.AppImage --appimage-extract > /dev/null
 chmod -R 777 "$DESTINATION/"
 
