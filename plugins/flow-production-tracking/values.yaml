@@ -1,4 +1,3 @@
-# configuration
 url: "https://sg-software.ems.autodesk.com/deploy/desktop/flow_production_tracking-current-1.x86_64.rpm"
 install_volume:
   name: apps-pv-claim
