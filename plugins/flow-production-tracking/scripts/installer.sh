@@ -17,11 +17,10 @@ echo "Installing Autodesk Flow Production Tracking into $INSTALL_DIR"
 echo "Downloading Autodesk Flow Production Tracking..."
 wget -O "/tmp/$RPM_FILE" "$URL"
 
+# Extract the RPM package
 echo "Extracting Flow Production Tracking..."
 mkdir -p "$INSTALL_DIR"
 cd /tmp
-
-# Extract the RPM package
 rpm2cpio "$RPM_FILE" | cpio -idmv
 
 # Move the extracted files to the installation directory
@@ -31,7 +30,7 @@ chmod -R 555 "$INSTALL_DIR"
 
 # App icon setup
 echo "Adding desktop files"
-cp -v "${PWD}/assets/flow.png" "$INSTALL_DIR/"
+cp -v "/terra/scripts/assets/flow.png" "$INSTALL_DIR/"
 rm -rfv "$DESKTOP_FILE"
 
 echo "[Desktop Entry]
