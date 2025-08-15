@@ -6,7 +6,7 @@ apt update
 apt install -y wget
 
 # Set local variables
-LAUNCH="$DESTINATION/krita %f"
+LAUNCH="$DESTINATION/squashfs-root/AppRun"
 ICON="$DESTINATION/krita.png"
 DESKTOP_FILE="$DESTINATION/krita.desktop"
 
@@ -18,27 +18,26 @@ chmod +x /tmp/krita.AppImage
 
 echo "Extracting Krita..."
 /tmp/krita.AppImage --appimage-extract > /dev/null
-cp -r -v ./squashfs-root "$2/"
-cd /terra/scripts
+chmod -R 777 "$DESTINATION/"
 
-cp -v ./rustdesk.sh $2/
-sed -i "s@ROOT_APP@$2@g" "$2/rustdesk.sh"
-chmod +x "$2/rustdesk.sh"
+# App icon setup
+echo "Adding desktop files"
+cp -v "/terra/scripts/assets/krita.png" "$DESTINATION/"
+rm -rfv "$DESKTOP_FILE"
 
-# app icon setup
-cp "./assets/rustdesk.png" "$2/rustdesk.png"
-cp "./assets/rustdesk.desktop" "$2/rustdesk.desktop"
+echo "[Desktop Entry]
+Version=5.2.9
+Name=Krita 5.2.9
+Comment=Krita is a professional FREE and open source painting program.
+Exec=$LAUNCH
+Icon=$ICON
+Terminal=true
+Type=Application
+Categories=X-Polaris
+StartupWMClass=krita" >> "$DESKTOP_FILE"
 
-# replace our icon/exec placeholder strings with proper values
-cd $2
-pwd
-ls -la
-sed -i -e "s@DESTINATION-PATH@$2/rustdesk.sh@g" "$2/rustdesk.desktop"
-sed -i -e "s@ICON-PATH@$2/rustdesk.png@g" "$2/rustdesk.desktop"
-echo "Adding desktop file"
-echo "Desktop file created."
-chmod -R 777 "$2/"
-cat $2/*.desktop
+echo "Desktop file created at $DESKTOP_FILE"
+cat "$DESKTOP_FILE"
 
 
 
