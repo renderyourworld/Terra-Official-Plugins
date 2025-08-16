@@ -18,6 +18,7 @@ chmod +x /tmp/krita.AppImage
 
 echo "Extracting Krita..."
 mkdir -p ${DESTINATION}
+cd "$DESTINATION/"
 /tmp/krita.AppImage --appimage-extract > /dev/null
 chmod -R 777 "$DESTINATION/"
 
