@@ -1,4 +1,4 @@
-resource_id: flow
+resource_id: flow-production-tracking
 name: Autodesk Flow Production Tracking v2.1.0
 icon: "https://global.discourse-cdn.com/shotgunsoftware/original/2X/e/e9c7b2033d3dc2d7fadac71d426d1c572f175e27.png"
 description: Powerful cloud-based project management and production tracking tool designed for creative teams.
