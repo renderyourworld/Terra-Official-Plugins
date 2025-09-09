@@ -9,7 +9,6 @@ apt install -y wget unzip
 LAUNCH="$DESTINATION/EmberGen-$VERSION/embergen2"
 ICON="$DESTINATION/EmberGen-$VERSION/embergen.png"
 DESKTOP_FILE="$DESTINATION/EmberGen-$VERSION/embergen.desktop"
-DESKTOP_FILE_GPU="$DESTINATION/EmberGen-$VERSION/embergen-gpu.desktop"
 
 # Download and Install the application
 echo "Installing Embergen Version $VERSION into $DESTINATION"
@@ -38,18 +37,5 @@ Categories=X-Polaris
 MimeType=application/x-embergen
 StartupWMClass=Embergen" >> "$DESKTOP_FILE"
 
-echo "[Desktop Entry]
-Version=$VERSION
-Name=Embergen $VERSION GPU
-Comment=Real-time volumetric effects
-Exec=vglrun -d /dev/dri/card0 $LAUNCH
-Icon=$ICON
-Terminal=true
-Type=Application
-Categories=X-Polaris
-MimeType=application/x-embergen
-StartupWMClass=Embergen" >> "$DESKTOP_FILE_GPU"
-
 echo "Desktop file created at $DESKTOP_FILE"
-echo "Desktop file created at $DESKTOP_FILE_GPU"
-cat "$DESTINATION/EmberGen-$VERSION/"*.desktop
+cat "$DESKTOP_FILE"
