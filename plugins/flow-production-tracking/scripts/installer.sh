@@ -44,3 +44,5 @@ Categories=X-Polaris" >> "$DESKTOP_FILE"
 
 echo "Desktop file created at $DESKTOP_FILE"
 cat "$DESKTOP_FILE"
+
+echo "Testing"
