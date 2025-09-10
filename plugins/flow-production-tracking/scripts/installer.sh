@@ -22,8 +22,10 @@ echo "Extracting Flow Production Tracking..."
 mkdir -p "$INSTALL_DIR"
 cd /tmp
 rpm2cpio "$RPM_FILE" | cpio -idmv
+echo "Extraction complete."
 
 # Move the extracted files to the installation directory
+echo "Moving files to $INSTALL_DIR"
 mv /tmp/opt/Shotgun/* "$INSTALL_DIR/"
 
 chmod -R 555 "$INSTALL_DIR"
