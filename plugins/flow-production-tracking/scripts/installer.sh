@@ -10,24 +10,30 @@ INSTALL_DIR="$DESTINATION/flow-production-tracking"
 LAUNCH="$INSTALL_DIR/Shotgun"
 ICON="$INSTALL_DIR/flow.png"
 DESKTOP_FILE="$INSTALL_DIR/flow-production-tracking.desktop"
-RPM_FILE="flow_production_tracking-current-1.x86_64.rpm"
+RPM_FILE="flow.rpm"
 
 # Download and Install the application
 echo "Installing Autodesk Flow Production Tracking into $INSTALL_DIR"
+mkdir -p "$INSTALL_DIR"
+cd "$INSTALL_DIR"
+
 echo "Downloading Autodesk Flow Production Tracking..."
-wget -O "/tmp/$RPM_FILE" "$URL"
+wget -O "$RPM_FILE" "$URL"
 
 # Extract the RPM package
 echo "Extracting Flow Production Tracking..."
-mkdir -p "$INSTALL_DIR"
-cd /tmp
 rpm2cpio "$RPM_FILE" | cpio -idmv
 echo "Extraction complete."
 
 # Move the extracted files to the installation directory
 echo "Moving files to $INSTALL_DIR"
-mv /tmp/opt/Shotgun/* "$INSTALL_DIR/"
+mv opt/Shotgun/* .
 echo "Files moved."
+
+echo "Cleaning up files"
+rm -rf opt
+rm -rf "$RPM_FILE"
+echo "Cleanup complete."
 
 echo "Setting permissions"
 chmod --verbose -R 555 "$INSTALL_DIR"
