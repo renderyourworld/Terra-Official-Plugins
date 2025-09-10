@@ -27,8 +27,11 @@ echo "Extraction complete."
 # Move the extracted files to the installation directory
 echo "Moving files to $INSTALL_DIR"
 mv /tmp/opt/Shotgun/* "$INSTALL_DIR/"
+echo "Files moved."
 
-chmod -R 555 "$INSTALL_DIR"
+echo "Setting permissions"
+chmod --verbose -R 555 "$INSTALL_DIR"
+echo "Permissions set."
 
 # App icon setup
 echo "Adding desktop files"
