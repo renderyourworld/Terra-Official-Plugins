@@ -3,7 +3,7 @@ set -e
 
 # Update packages and install wget
 apt update
-apt install -y wget xz-utils libxcb-xinerama0 libxcb-icccm4 libxcb-image0 libxcb-shm0 libxcb-keysyms1 libxcb-render-util0 libxcb-sync1 libxcb-xfixes0 libxcb-cursor0 rpm2cpio cpio qt5-qmake libqt5core5a
+apt install -y wget xz-utils libxcb-xinerama0 libxcb-icccm4 libxcb-image0 libxcb-shm0 libxcb-keysyms1 libxcb-render-util0 libxcb-sync1 libxcb-xfixes0 libxcb-cursor0 rpm2cpio cpio libqt6core6 qt6-qmake qt6-base-dev qt6-base-dev-tools
 
 # Set local variables
 INSTALL_DIR="$DESTINATION/flow-production-tracking"
@@ -36,7 +36,7 @@ rm -rf "$RPM_FILE"
 echo "Cleanup complete."
 
 echo "Setting permissions"
-chmod --verbose -R 555 "$INSTALL_DIR"
+chmod -R 555 "$INSTALL_DIR"
 echo "Permissions set."
 
 # App icon setup
