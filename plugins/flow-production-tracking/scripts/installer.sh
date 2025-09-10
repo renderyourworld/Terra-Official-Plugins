@@ -3,7 +3,7 @@ set -e
 
 # Update packages and install wget
 apt update
-apt install -y wget xz-utils libxcb-xinerama0 libxcb-icccm4 libxcb-image0 libxcb-shm0 libxcb-keysyms1 libxcb-render-util0 libxcb-sync1 libxcb-xfixes0 libxcb-cursor0 rpm2cpio cpio qt5-default
+apt install -y wget xz-utils libxcb-xinerama0 libxcb-icccm4 libxcb-image0 libxcb-shm0 libxcb-keysyms1 libxcb-render-util0 libxcb-sync1 libxcb-xfixes0 libxcb-cursor0 rpm2cpio cpio qt5-qmake libqt5core5a
 
 # Set local variables
 INSTALL_DIR="$DESTINATION/flow-production-tracking"
