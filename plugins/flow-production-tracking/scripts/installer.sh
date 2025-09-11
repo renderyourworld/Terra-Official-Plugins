@@ -3,7 +3,7 @@ set -e
 
 # Update packages and install wget
 apt update
-apt install -y wget xz-utils libxcb-xinerama0 libxcb-icccm4 libxcb-image0 libxcb-shm0 libxcb-keysyms1 libxcb-render-util0 libxcb-sync1 libxcb-xfixes0 libxcb-cursor0 rpm2cpio cpio libqt6core6 qt6-base-dev
+apt install -y wget xz-utils libxcb-cursor0 libxcb1 qt6-qpa-plugins rpm2cpio cpio
 
 # Set local variables
 INSTALL_DIR="$DESTINATION/flow-production-tracking"
