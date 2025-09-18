@@ -3,7 +3,7 @@ set -e
 
 # Update packages and install wget
 apt update
-apt install -y wget xz-utils libxcb-cursor0 libxcb1 qt6-qpa-plugins rpm2cpio cpio
+apt install -y wget xz-utils rpm2cpio cpio
 
 # Set local variables
 INSTALL_DIR="$DESTINATION/flow-production-tracking"
