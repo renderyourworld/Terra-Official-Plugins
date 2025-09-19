@@ -35,10 +35,6 @@ rm -rf opt
 rm -rf "$RPM_FILE"
 echo "Cleanup complete."
 
-echo "Setting permissions"
-chmod -R 555 "$INSTALL_DIR"
-echo "Permissions set."
-
 # App icon setup
 echo "Adding desktop files"
 cp -v "/terra/scripts/assets/flow.png" "$INSTALL_DIR/"
